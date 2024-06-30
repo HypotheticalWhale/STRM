@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpns35tyg81l5"]
+
+[ext_resource type="Script" path="res://Tile/TileNode.gd" id="1_tpinp"]
+[ext_resource type="Texture2D" uid="uid://dnrobqk3knu76" path="res://Assets/Terrain/Ground.png" id="1_u5m4j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_475tv"]
+size = Vector2(32, 32)
+
+[node name="TileNode" type="Area2D"]
+script = ExtResource("1_tpinp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_u5m4j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_475tv")

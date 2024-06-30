@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://5mdcoqkmfhua"]
+
+[ext_resource type="Script" path="res://Classes/BaseClass/BaseClass.gd" id="1_jp6ry"]
+[ext_resource type="Texture2D" uid="uid://yuvjni03k5od" path="res://Assets/Sprites/Units/AssassinRed.png" id="2_c13hi"]
+
+[node name="BaseClass" type="Node2D"]
+script = ExtResource("1_jp6ry")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_c13hi")
