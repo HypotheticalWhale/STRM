@@ -18,6 +18,7 @@ func spawn_units():
 	var count = 0
 	for unit in PlayerData.player1_units.values():
 		add_child(unit)
+		unit.set_sprite_blue()
 		tile_coords = Vector2(0,count)*Globals.TILE_SIZE
 		unit.global_position = tile_coords
 		all_tiles[tile_coords].occupied_by = unit
@@ -26,6 +27,7 @@ func spawn_units():
 	count = 0
 	for unit in PlayerData.player2_units.values():
 		add_child(unit)
+		unit.set_sprite_red()		
 		tile_coords = Vector2(3,count)*Globals.TILE_SIZE
 		unit.global_position = tile_coords
 		all_tiles[tile_coords].occupied_by = unit		

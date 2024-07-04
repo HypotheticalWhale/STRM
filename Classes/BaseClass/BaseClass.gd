@@ -13,3 +13,15 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+func set_sprite_blue():
+	if $RedSprite.visible == true:
+		$RedSprite.visible = false
+	if $BlueSprite.visible != true:
+		$BlueSprite.visible = true
+		
+func set_sprite_red():
+	if $RedSprite.visible != true:
+		$RedSprite.visible = true
+	if $BlueSprite.visible == true:
+		$BlueSprite.visible = false
