@@ -1,17 +1,19 @@
 extends Node2D
+class_name BaseClass
 
 var MAX_HEALTH
 var CURRENT_HEALTH
 var TEAM
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	await initialize_stats()
+	await initialize_sprites()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func initialize_sprites():
+	pass
+	
+func initialize_stats():
 	pass
 
 func set_sprite_blue():
