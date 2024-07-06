@@ -11,7 +11,7 @@ func _ready():
 	PlayerData.create_units()
 	spawn_tiles()
 	spawn_units()
-	$TurnTimer.start()
+	$UI/TurnTimerUI/TurnTimer.start()
 	if starting_player == "P1":
 		turn_on_p1_ui()
 	else:
