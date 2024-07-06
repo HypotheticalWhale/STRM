@@ -72,3 +72,20 @@ func turn_on_p1_ui():
 func turn_on_p2_ui():
 	$UI/Player1.visible = false
 	$UI/Player2.visible = true
+
+func show_select_menu(menu_position):
+	$UI/SelectOptions.visible = true
+	$UI/SelectOptions.global_position = menu_position
+	hide_info_menu()
+	
+func show_info_menu(menu_position):
+	$UI/NotYourOptions.visible = true
+	$UI/NotYourOptions.global_position = menu_position
+	hide_select_menu()
+	
+func hide_select_menu():
+	$UI/SelectOptions.visible = false
+
+func hide_info_menu():
+	$UI/NotYourOptions.visible = false
+	
