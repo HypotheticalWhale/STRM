@@ -40,6 +40,23 @@ theme_override_constants/margin_left = 5
 layout_mode = 2
 text = "P2"
 
+[node name="SelectOptions" type="VBoxContainer" parent="UI"]
+visible = false
+offset_right = 78.0
+offset_bottom = 101.0
+
+[node name="Button1" type="Button" parent="UI/SelectOptions"]
+layout_mode = 2
+text = "Move"
+
+[node name="Button2" type="Button" parent="UI/SelectOptions"]
+layout_mode = 2
+text = "Action"
+
+[node name="Button3" type="Button" parent="UI/SelectOptions"]
+layout_mode = 2
+text = "End Turn"
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(491, 276)
 zoom = Vector2(1.3, 1.3)

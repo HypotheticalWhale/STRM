@@ -17,3 +17,5 @@ func toggle_player_turn():
 		WHOSTURNISIT = "P2"
 	return
 
+	
+
