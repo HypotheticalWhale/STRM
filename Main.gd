@@ -28,7 +28,7 @@ func spawn_units():
 		unit.set_sprite_blue()
 		tile_coords = Vector2(2,count)*Globals.TILE_SIZE
 		unit.global_position = tile_coords
-		all_tiles[tile_coords].occupied_by = unit
+		all_tiles[tile_coords].occupied_by["unit"] = unit
 		count += 1
 		
 	count = 2
@@ -37,7 +37,7 @@ func spawn_units():
 		unit.set_sprite_red()		
 		tile_coords = Vector2(GRID_SIZE[0]-1,count)*Globals.TILE_SIZE
 		unit.global_position = tile_coords
-		all_tiles[tile_coords].occupied_by = unit		
+		all_tiles[tile_coords].occupied_by["unit"] = unit
 		count += 1
 
 func spawn_tiles():
@@ -74,18 +74,18 @@ func turn_on_p2_ui():
 	$UI/Player2.visible = true
 
 func show_select_menu(menu_position):
-	$UI/SelectOptions.visible = true
-	$UI/SelectOptions.global_position = menu_position
+	$SelectOptions.visible = true
+	$SelectOptions.global_position = menu_position
 	hide_info_menu()
 	
 func show_info_menu(menu_position):
-	$UI/NotYourOptions.visible = true
-	$UI/NotYourOptions.global_position = menu_position
+	$NotYourOptions.visible = true
+	$NotYourOptions.global_position = menu_position
 	hide_select_menu()
 	
 func hide_select_menu():
-	$UI/SelectOptions.visible = false
+	$SelectOptions.visible = false
 
 func hide_info_menu():
-	$UI/NotYourOptions.visible = false
+	$NotYourOptions.visible = false
 	
