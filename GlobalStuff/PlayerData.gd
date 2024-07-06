@@ -18,18 +18,18 @@ func _ready():
 
 func create_units():
 	player1_units["unit1"] = get_random_unit()
-	player1_units["unit1"].TEAM = 1
+	player1_units["unit1"].TEAM = "P1"
 	player1_units["unit2"] = get_random_unit()
-	player1_units["unit2"].TEAM = 1
+	player1_units["unit2"].TEAM = "P1"
 	player1_units["unit3"] = get_random_unit()
-	player1_units["unit3"].TEAM = 1
+	player1_units["unit3"].TEAM = "P1"
 	
 	player2_units["unit1"] = get_random_unit()
-	player2_units["unit1"].TEAM = 2
+	player2_units["unit1"].TEAM = "P2"
 	player2_units["unit2"] = get_random_unit()
-	player2_units["unit2"].TEAM = 2
+	player2_units["unit2"].TEAM = "P2"
 	player2_units["unit3"] = get_random_unit()
-	player2_units["unit3"].TEAM = 2
+	player2_units["unit3"].TEAM = "P2"
 
 	
 func get_random_unit():

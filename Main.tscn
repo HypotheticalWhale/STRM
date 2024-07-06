@@ -40,22 +40,44 @@ theme_override_constants/margin_left = 5
 layout_mode = 2
 text = "P2"
 
-[node name="SelectOptions" type="VBoxContainer" parent="UI"]
-visible = false
+[node name="SelectOptions" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SelectButtons" type="VBoxContainer" parent="UI/SelectOptions"]
 offset_right = 78.0
 offset_bottom = 101.0
 
-[node name="Button1" type="Button" parent="UI/SelectOptions"]
+[node name="MoveButton" type="Button" parent="UI/SelectOptions/SelectButtons"]
 layout_mode = 2
 text = "Move"
 
-[node name="Button2" type="Button" parent="UI/SelectOptions"]
+[node name="ActionButton" type="Button" parent="UI/SelectOptions/SelectButtons"]
 layout_mode = 2
 text = "Action"
 
-[node name="Button3" type="Button" parent="UI/SelectOptions"]
+[node name="EndButton" type="Button" parent="UI/SelectOptions/SelectButtons"]
 layout_mode = 2
 text = "End Turn"
+
+[node name="NotYourOptions" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NotYourButtons" type="VBoxContainer" parent="UI/NotYourOptions"]
+custom_minimum_size = Vector2(80, 2.08165e-12)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MoreInfoButton" type="Button" parent="UI/NotYourOptions/NotYourButtons"]
+layout_mode = 2
+text = "Info
+"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(491, 276)

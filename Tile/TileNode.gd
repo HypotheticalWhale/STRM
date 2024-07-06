@@ -21,7 +21,13 @@ func _on_mouse_exited():
 
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		if occupied_by:
+		if occupied_by and Globals.WHOSTURNISIT == occupied_by.TEAM:
 			get_parent().show_select_menu(global_position)
+		elif occupied_by and Globals.WHOSTURNISIT != occupied_by.TEAM:
+			get_parent().show_info_menu(global_position)			
+		else:
+			get_parent().hide_select_menu()
+			get_parent().hide_info_menu()			
+			
 		print("tile at ",tile_coordinates," is clicked")
 		print("tile at ",tile_coordinates," has ", occupied_by)
