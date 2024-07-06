@@ -2,7 +2,11 @@ extends Area2D
 
 var has_object : bool = false
 var tile_coordinates
-var occupied_by
+var occupied_by = {
+	"unit" : "",
+	"terrain": "",
+	"structure": ""
+}
 @onready var highlighted_tile = $Selected
 @onready var regular_tile = $NotSelected
 # Called when the node enters the scene tree for the first time.
@@ -21,9 +25,9 @@ func _on_mouse_exited():
 
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		if occupied_by and Globals.WHOSTURNISIT == occupied_by.TEAM:
+		if occupied_by["unit"] and Globals.WHOSTURNISIT == occupied_by["unit"].TEAM:
 			get_parent().show_select_menu(global_position)
-		elif occupied_by and Globals.WHOSTURNISIT != occupied_by.TEAM:
+		elif occupied_by["unit"] and Globals.WHOSTURNISIT != occupied_by["unit"].TEAM:
 			get_parent().show_info_menu(global_position)			
 		else:
 			get_parent().hide_select_menu()
