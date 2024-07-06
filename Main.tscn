@@ -40,6 +40,17 @@ theme_override_constants/margin_left = 5
 layout_mode = 2
 text = "P2"
 
+[node name="CommonUI" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TimerIcon" type="TextureRect" parent="UI/CommonUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(491, 276)
 zoom = Vector2(1.3, 1.3)
