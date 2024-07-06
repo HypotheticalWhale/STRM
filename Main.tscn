@@ -46,6 +46,8 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="TimerIcon" type="TextureRect" parent="UI"]
+
 [node name="SelectButtons" type="VBoxContainer" parent="UI/SelectOptions"]
 offset_right = 78.0
 offset_bottom = 101.0
