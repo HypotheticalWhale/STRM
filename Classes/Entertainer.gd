@@ -4,6 +4,7 @@ extends BaseClass
 
 func initialize_stats():
 	CURRENT_HEALTH = 60
+	MOVEMENT = 4
 	
 
 func initialize_sprites():
