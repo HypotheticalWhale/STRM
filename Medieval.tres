@@ -1,0 +1,26 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://c1p3wf57gbru2"]
+
+[ext_resource type="Texture2D" uid="uid://dxsi055t1wcnb" path="res://Assets/UI/ButtonNormal.png" id="1_0keg2"]
+[ext_resource type="Texture2D" uid="uid://b1wnrp8q0hish" path="res://Assets/UI/MedievalPanel.png" id="1_y8y5v"]
+[ext_resource type="FontFile" uid="uid://blxvfg2chyfy7" path="res://Fonts/Pixeled English Font.ttf" id="3_wx55d"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0e6wo"]
+texture = ExtResource("1_0keg2")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iq4wv"]
+texture = ExtResource("1_y8y5v")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[resource]
+default_font = ExtResource("3_wx55d")
+default_font_size = 16
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/styles/normal = SubResource("StyleBoxTexture_0e6wo")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_iq4wv")

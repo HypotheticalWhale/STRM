@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpycaudat764"]
+[gd_scene load_steps=6 format=3 uid="uid://cpycaudat764"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_5hkoq"]
+[ext_resource type="Texture2D" uid="uid://bnm0op8tgjbiv" path="res://Assets/UI/Timer/Timer.png" id="2_j0qa6"]
+[ext_resource type="Theme" uid="uid://c1p3wf57gbru2" path="res://Medieval.tres" id="2_vidso"]
 [ext_resource type="Script" path="res://UI/TurnTimerUI.gd" id="2_wpr50"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_37004"]
+content_margin_left = 18.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+texture = ExtResource("2_j0qa6")
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_5hkoq")
@@ -11,19 +20,24 @@ visible = false
 z_index = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="SelectButtons" type="VBoxContainer" parent="SelectOptions"]
-offset_right = 78.0
-offset_bottom = 101.0
+[node name="PanelContainer" type="PanelContainer" parent="SelectOptions"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("2_vidso")
 
-[node name="MoveButton" type="Button" parent="SelectOptions/SelectButtons"]
+[node name="SelectButtons" type="VBoxContainer" parent="SelectOptions/PanelContainer"]
+layout_mode = 2
+theme = ExtResource("2_vidso")
+
+[node name="MoveButton" type="Button" parent="SelectOptions/PanelContainer/SelectButtons"]
 layout_mode = 2
 text = "Move"
 
-[node name="ActionButton" type="Button" parent="SelectOptions/SelectButtons"]
+[node name="ActionButton" type="Button" parent="SelectOptions/PanelContainer/SelectButtons"]
 layout_mode = 2
 text = "Action"
 
-[node name="EndButton" type="Button" parent="SelectOptions/SelectButtons"]
+[node name="EndButton" type="Button" parent="SelectOptions/PanelContainer/SelectButtons"]
 layout_mode = 2
 text = "End Turn"
 
@@ -35,6 +49,7 @@ z_index = 1
 custom_minimum_size = Vector2(80, 2.08165e-12)
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("2_vidso")
 
 [node name="MoreInfoButton" type="Button" parent="NotYourOptions/NotYourButtons"]
 layout_mode = 2
@@ -57,6 +72,9 @@ theme_override_constants/margin_left = 5
 
 [node name="TurnLabel" type="Label" parent="UI/Player1/MarginContainer"]
 layout_mode = 2
+theme = ExtResource("2_vidso")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
 text = "P1"
 
 [node name="Player2" type="Control" parent="UI"]
@@ -74,16 +92,30 @@ theme_override_constants/margin_left = 5
 
 [node name="TurnLabel" type="Label" parent="UI/Player2/MarginContainer"]
 layout_mode = 2
+theme = ExtResource("2_vidso")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
 text = "P2"
 
-[node name="TurnTimerUI" type="TextureRect" parent="UI"]
+[node name="TurnTimerUI" type="PanelContainer" parent="UI"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
+offset_left = -96.0
+offset_bottom = 96.0
 grow_horizontal = 0
+theme = ExtResource("2_vidso")
+theme_override_styles/panel = SubResource("StyleBoxTexture_37004")
 script = ExtResource("2_wpr50")
+
+[node name="Label" type="Label" parent="UI/TurnTimerUI"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_vidso")
+theme_type_variation = &"HeaderSmall"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 16
 
 [node name="TurnTimer" type="Timer" parent="UI/TurnTimerUI"]
 wait_time = 20.0
