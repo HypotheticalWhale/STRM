@@ -2,9 +2,12 @@ extends Node2D
 
 @export var GRID_SIZE = [20,10]
 var tile_path = preload("res://Tile/TileNode.tscn")
+var selected_tile
+var valid_tiles = []
 var tile_node
 var tile_coords
 var all_tiles = {}
+var available_tiles = []
 var starting_player = "P1"
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -49,6 +52,7 @@ func spawn_tiles():
 			tile_node.tile_coordinates = tile_coords
 			tile_node.global_position = tile_coords
 			all_tiles[tile_coords] = tile_node
+			valid_tiles.append(tile_coords)
 
 func get_occupied_tiles():
 	var occupied_tiles = []
@@ -73,12 +77,14 @@ func turn_on_p2_ui():
 	$UI/Player1.visible = false
 	$UI/Player2.visible = true
 
-func show_select_menu(menu_position):
+func show_select_menu(menu_position,tile_node):
+	selected_tile = tile_node
 	$SelectOptions.visible = true
 	$SelectOptions.global_position = menu_position
 	hide_info_menu()
 	
-func show_info_menu(menu_position):
+func show_info_menu(menu_position,tile_node):
+	selected_tile = tile_node	
 	$NotYourOptions.visible = true
 	$NotYourOptions.global_position = menu_position
 	hide_select_menu()
@@ -88,4 +94,64 @@ func hide_select_menu():
 
 func hide_info_menu():
 	$NotYourOptions.visible = false
+
+func highlight_available_tiles(available_tiles_coords):
+	clear_available_tiles()
+	var grid_pos
+	for tile_coords in available_tiles_coords:
+		grid_pos = tile_coords*Globals.TILE_SIZE
+		if grid_pos not in valid_tiles:
+			continue
+		if all_tiles[grid_pos].is_empty_tile():
+			continue
+		available_tiles.append(grid_pos)		
+		all_tiles[grid_pos].toggle_available_tile()
+
+func clear_available_tiles():
+	for grid_pos in available_tiles:
+		all_tiles[grid_pos].toggle_available_tile()
+	available_tiles = []
+
+
+func get_available_coordinates(start_pos: Vector2, movement_range: int):
+	var available_coords = []
+	var queue = []
+	var visited = {}
+
+	queue.append({"pos": start_pos, "moves": 0})
+	visited[start_pos] = true
+
+	while queue.size() > 0:
+		var current = queue.pop_front()
+		var current_pos = current["pos"]
+		var current_moves = current["moves"]
+
+		# If the current moves exceed the movement range, continue
+		if current_moves > movement_range:
+			continue
+
+		# Add the current position to the available coordinates
+		available_coords.append(current_pos)
+
+		# Define possible moves (up, down, left, right)
+		var possible_moves = [
+			Vector2(0, -1), # Up
+			Vector2(0, 1),  # Down
+			Vector2(-1, 0), # Left
+			Vector2(1, 0)   # Right
+		]
+
+		for move in possible_moves:
+			var new_pos = current_pos + move
+
+			# Check if the new position is already visited
+			if not visited.has(new_pos):
+				visited[new_pos] = true
+				queue.append({"pos": new_pos, "moves": current_moves + 1})
+
+	return available_coords
+
+
+func _on_move_button_pressed():
+	highlight_available_tiles(get_available_coordinates(selected_tile.global_position/Globals.TILE_SIZE,selected_tile.occupied_by["unit"].MOVEMENT)) 
 	
