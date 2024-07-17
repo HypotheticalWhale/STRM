@@ -121,8 +121,8 @@ theme_override_font_sizes/font_size = 16
 wait_time = 21.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(491, 276)
-zoom = Vector2(1.3, 1.3)
+position = Vector2(351, 164)
+zoom = Vector2(2, 2)
 
 [connection signal="pressed" from="SelectOptions/PanelContainer/SelectButtons/MoveButton" to="." method="_on_move_button_pressed"]
 [connection signal="pressed" from="SelectOptions/PanelContainer/SelectButtons/EndButton" to="." method="_on_end_button_pressed"]
