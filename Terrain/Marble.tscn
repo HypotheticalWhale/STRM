@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://bakj7hp2yr2nq"]
+
+[ext_resource type="PackedScene" uid="uid://beftcxptuutu2" path="res://Terrain/Terrain.tscn" id="1_j5vhs"]
+[ext_resource type="Script" path="res://Terrain/Marble.gd" id="2_2pxb1"]
+[ext_resource type="Texture2D" uid="uid://b84obb4yranim" path="res://Assets/Terrain/Marble.png" id="2_l0hh2"]
+
+[node name="Marble" instance=ExtResource("1_j5vhs")]
+script = ExtResource("2_2pxb1")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_l0hh2")

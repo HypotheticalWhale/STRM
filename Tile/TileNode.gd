@@ -5,7 +5,6 @@ var tile_coordinates
 var occupied_by = {
 	"unit" : "",
 	"terrain": "",
-	"structure": ""
 }
 @onready var highlighted_tile = $Selected
 @onready var regular_tile = $NotSelected
@@ -26,6 +25,7 @@ func _on_mouse_exited():
 
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		Globals.show_tile_info(self)
 		if occupied_by["unit"] and Globals.WHOSTURNISIT == occupied_by["unit"].TEAM:
 			get_parent().show_select_menu(global_position,self)
 			get_parent().clear_available_tiles()			
@@ -54,6 +54,23 @@ func is_empty_tile():
 		return true
 	if occupied_by["terrain"]:
 		return true
-	if occupied_by["structure"]:
-		return true
 		
+
+func add_terrain(terrain_type : String):
+	if terrain_type == "marble":
+		var new_terrain = load("res://Terrain/Marble.tscn").instantiate()
+		add_child(new_terrain)
+		occupied_by["terrain"] = new_terrain
+		
+	if terrain_type == "garden":
+		var new_terrain = load("res://Terrain/Garden.tscn").instantiate()
+		add_child(new_terrain)
+		occupied_by["terrain"] = new_terrain
+
+	if terrain_type == "throne":
+		var new_terrain = load("res://Terrain/Throne.tscn").instantiate()
+		add_child(new_terrain)
+		occupied_by["terrain"] = new_terrain
+
+func get_terrain():
+	return occupied_by["terrain"]

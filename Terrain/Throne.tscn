@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxvmgfwifgj26"]
+
+[ext_resource type="PackedScene" uid="uid://beftcxptuutu2" path="res://Terrain/Terrain.tscn" id="1_72xgf"]
+[ext_resource type="Script" path="res://Terrain/Throne.gd" id="2_rsxjn"]
+[ext_resource type="Texture2D" uid="uid://dbewe5p00nx26" path="res://Assets/Terrain/Throne.png" id="2_wdhyo"]
+
+[node name="Throne" instance=ExtResource("1_72xgf")]
+script = ExtResource("2_rsxjn")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_wdhyo")
