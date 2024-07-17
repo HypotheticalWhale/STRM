@@ -7,5 +7,5 @@ func initialize_stats():
 	
 
 func initialize_sprites():
-	$RedSprite.texture = load("res://Assets/Sprites/Units/LancerRed.png")
-	$BlueSprite.texture = load("res://Assets/Sprites/Units/LancerBlue.png")
+	$RedSprite.texture = load("res://Assets/Sprites/Units/ServantRed.png")
+	$BlueSprite.texture = load("res://Assets/Sprites/Units/ServantBlue.png")

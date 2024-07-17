@@ -1,5 +1,5 @@
 extends Node2D
-
+@onready var turn_timer = $UI/TurnTimerUI/TurnTimer
 @export var GRID_SIZE = [20,10]
 var tile_path = preload("res://Tile/TileNode.tscn")
 var selected_tile
@@ -14,7 +14,7 @@ func _ready():
 	PlayerData.create_units()
 	spawn_tiles()
 	spawn_units()
-	$UI/TurnTimerUI/TurnTimer.start()
+	turn_timer.start()
 	if starting_player == "P1":
 		turn_on_p1_ui()
 	else:
@@ -78,6 +78,8 @@ func get_occupied_tiles():
 
 
 func _on_turn_timer_timeout():
+	hide_info_menu()
+	hide_select_menu()
 	await Globals.toggle_player_turn()
 	if Globals.WHOSTURNISIT == "P1":
 		turn_on_p1_ui()
@@ -170,3 +172,7 @@ func get_available_coordinates(start_pos: Vector2, movement_range: int):
 func _on_move_button_pressed():
 	highlight_available_tiles(get_available_coordinates(selected_tile.global_position/Globals.TILE_SIZE,selected_tile.occupied_by["unit"].MOVEMENT)) 
 	
+func _on_end_button_pressed():
+	turn_timer.stop()	
+	_on_turn_timer_timeout()
+	turn_timer.start()

@@ -119,7 +119,7 @@ theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 16
 
 [node name="TurnTimer" type="Timer" parent="UI/TurnTimerUI"]
-wait_time = 20.0
+wait_time = 21.0
 
 [node name="TileInfo" type="Control" parent="UI"]
 layout_mode = 3
@@ -178,8 +178,10 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(320, 176)
-zoom = Vector2(2.3, 2.3)
+
+position = Vector2(351, 164)
+zoom = Vector2(2, 2)
 
 [connection signal="pressed" from="SelectOptions/PanelContainer/SelectButtons/MoveButton" to="." method="_on_move_button_pressed"]
+[connection signal="pressed" from="SelectOptions/PanelContainer/SelectButtons/EndButton" to="." method="_on_end_button_pressed"]
 [connection signal="timeout" from="UI/TurnTimerUI/TurnTimer" to="." method="_on_turn_timer_timeout"]

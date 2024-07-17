@@ -1,13 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://5mdcoqkmfhua"]
 
-[ext_resource type="Texture2D" uid="uid://yuvjni03k5od" path="res://Assets/Sprites/Units/AssassinRed.png" id="2_c13hi"]
 [ext_resource type="Texture2D" uid="uid://br5uybqvg0inb" path="res://Assets/Sprites/Units/AssassinBlue.png" id="3_f2qt2"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fxq3u"]
+load_path = "res://.godot/imported/AssassinRed.png-df6cf629b919be945d87fffeb36057d0.ctex"
 
 [node name="BaseClass" type="Node2D"]
 
 [node name="RedSprite" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("2_c13hi")
+texture = SubResource("CompressedTexture2D_fxq3u")
 
 [node name="BlueSprite" type="Sprite2D" parent="."]
 texture = ExtResource("3_f2qt2")

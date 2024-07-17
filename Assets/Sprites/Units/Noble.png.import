@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4q46e4tgwlgx"
-path="res://.godot/imported/AssassinRed.png-df6cf629b919be945d87fffeb36057d0.ctex"
+uid="uid://dm2jl11fobc68"
+path="res://.godot/imported/Noble.png-d1210ca6a2cb6bd0e8cbd241672b1835.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Units/AssassinRed.png"
-dest_files=["res://.godot/imported/AssassinRed.png-df6cf629b919be945d87fffeb36057d0.ctex"]
+source_file="res://Assets/Sprites/Units/Noble.png"
+dest_files=["res://.godot/imported/Noble.png-d1210ca6a2cb6bd0e8cbd241672b1835.ctex"]
 
 [params]
 
