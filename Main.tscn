@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpycaudat764"]
+[gd_scene load_steps=10 format=3 uid="uid://cpycaudat764"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_5hkoq"]
 [ext_resource type="Texture2D" uid="uid://bnm0op8tgjbiv" path="res://Assets/UI/Timer/Timer.png" id="2_j0qa6"]
@@ -6,6 +6,10 @@
 [ext_resource type="Script" path="res://UI/TurnTimerUI.gd" id="2_wpr50"]
 [ext_resource type="Script" path="res://UI/TileInfo.gd" id="5_sqfni"]
 [ext_resource type="Shader" path="res://Scrolling.gdshader" id="6_a0eb8"]
+[ext_resource type="Texture2D" uid="uid://cbo8lyb5v4uib" path="res://Assets/UI/BG.png" id="7_hwd5n"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lawlm"]
+shader = ExtResource("6_a0eb8")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_37004"]
 content_margin_left = 18.0
@@ -13,9 +17,6 @@ content_margin_top = 16.0
 content_margin_right = 16.0
 content_margin_bottom = 16.0
 texture = ExtResource("2_j0qa6")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lawlm"]
-shader = ExtResource("6_a0eb8")
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_5hkoq")
@@ -60,6 +61,14 @@ theme = ExtResource("2_vidso")
 layout_mode = 2
 text = "Info
 "
+
+[node name="ScrollingBG" type="TextureRect" parent="."]
+z_index = -1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_lawlm")
+offset_right = 960.0
+offset_bottom = 960.0
+texture = ExtResource("7_hwd5n")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -176,11 +185,6 @@ stretch_mode = 5
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-
-[node name="ScrollingBG" type="TextureRect" parent="UI"]
-material = SubResource("ShaderMaterial_lawlm")
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(351, 164)
