@@ -66,8 +66,15 @@ text = "Info
 z_index = -1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_lawlm")
-offset_right = 960.0
-offset_bottom = 960.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -480.0
+offset_top = -480.0
+offset_right = 906.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("7_hwd5n")
 
 [node name="UI" type="CanvasLayer" parent="."]
