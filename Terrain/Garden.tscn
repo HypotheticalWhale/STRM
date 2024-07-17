@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://bakfmpumuimet"]
 
 [ext_resource type="PackedScene" uid="uid://beftcxptuutu2" path="res://Terrain/Terrain.tscn" id="1_tklw6"]
-[ext_resource type="Texture2D" uid="uid://dnrobqk3knu76" path="res://Assets/Terrain/Ground.png" id="2_3topv"]
 [ext_resource type="Script" path="res://Terrain/Garden.gd" id="2_qu5mi"]
+[ext_resource type="Texture2D" uid="uid://bd7bbg0ams3f6" path="res://Assets/Terrain/Garden.png" id="3_kmcws"]
 
 [node name="Garden" instance=ExtResource("1_tklw6")]
 script = ExtResource("2_qu5mi")
 
 [node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("2_3topv")
+texture = ExtResource("3_kmcws")

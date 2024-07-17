@@ -1,16 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cb7uncrutabop"]
+[gd_scene load_steps=3 format=3 uid="uid://cb7uncrutabop"]
 
 [ext_resource type="PackedScene" uid="uid://5mdcoqkmfhua" path="res://Classes/BaseClass/BaseClass.tscn" id="1_6u2af"]
 [ext_resource type="Script" path="res://Classes/Servant.gd" id="2_enwjj"]
-[ext_resource type="Texture2D" uid="uid://cs2v3ghmch4wv" path="res://Assets/Sprites/Units/ServantRed.png" id="3_d76nt"]
-[ext_resource type="Texture2D" uid="uid://dcwnarrjrbve7" path="res://Assets/Sprites/Units/ServantBlue.png" id="4_ywp72"]
 
 [node name="Servant" instance=ExtResource("1_6u2af")]
 script = ExtResource("2_enwjj")
-
-[node name="RedSprite" parent="." index="0"]
-texture = ExtResource("3_d76nt")
-
-[node name="BlueSprite" parent="." index="1"]
-texture = ExtResource("4_ywp72")
-flip_h = true
