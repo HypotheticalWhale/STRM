@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4q46e4tgwlgx"
-path="res://.godot/imported/AssassinRed.png-df6cf629b919be945d87fffeb36057d0.ctex"
+uid="uid://bi7xarywnl6kn"
+path="res://.godot/imported/Assassin.png-6dc7378db2ed9771994c48b74955bc18.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Units/AssassinRed.png"
-dest_files=["res://.godot/imported/AssassinRed.png-df6cf629b919be945d87fffeb36057d0.ctex"]
+source_file="res://Assets/Sprites/Units/Assassin.png"
+dest_files=["res://.godot/imported/Assassin.png-6dc7378db2ed9771994c48b74955bc18.ctex"]
 
 [params]
 
