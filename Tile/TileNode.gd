@@ -52,8 +52,6 @@ func toggle_available_tile():
 func is_empty_tile():
 	if occupied_by["unit"]:
 		return true
-	if occupied_by["terrain"]:
-		return true
 		
 
 func add_terrain(terrain_type : String):
