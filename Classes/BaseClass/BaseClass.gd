@@ -5,6 +5,7 @@ var MAX_HEALTH
 var CURRENT_HEALTH
 var TEAM
 var MOVEMENT
+var ACTIONS
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	await initialize_stats()

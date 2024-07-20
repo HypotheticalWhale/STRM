@@ -46,21 +46,28 @@ offset_right = 40.0
 offset_bottom = 40.0
 theme = ExtResource("2_vidso")
 
-[node name="SelectButtons" type="VBoxContainer" parent="SelectOptions/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="SelectOptions/PanelContainer"]
+layout_mode = 2
+
+[node name="SelectButtons" type="VBoxContainer" parent="SelectOptions/PanelContainer/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_vidso")
 
-[node name="MoveButton" type="Button" parent="SelectOptions/PanelContainer/SelectButtons"]
+[node name="MoveButton" type="Button" parent="SelectOptions/PanelContainer/HBoxContainer/SelectButtons"]
 layout_mode = 2
 text = "Move"
 
-[node name="ActionButton" type="Button" parent="SelectOptions/PanelContainer/SelectButtons"]
+[node name="ActionButton" type="Button" parent="SelectOptions/PanelContainer/HBoxContainer/SelectButtons"]
 layout_mode = 2
 text = "Action"
 
-[node name="EndButton" type="Button" parent="SelectOptions/PanelContainer/SelectButtons"]
+[node name="EndButton" type="Button" parent="SelectOptions/PanelContainer/HBoxContainer/SelectButtons"]
 layout_mode = 2
 text = "End Turn"
+
+[node name="ActionButtons" type="VBoxContainer" parent="SelectOptions/PanelContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
 
 [node name="NotYourOptions" type="Node2D" parent="."]
 visible = false
@@ -197,6 +204,7 @@ size_flags_vertical = 3
 position = Vector2(351, 164)
 zoom = Vector2(2, 2)
 
-[connection signal="pressed" from="SelectOptions/PanelContainer/SelectButtons/MoveButton" to="." method="_on_move_button_pressed"]
-[connection signal="pressed" from="SelectOptions/PanelContainer/SelectButtons/EndButton" to="." method="_on_end_button_pressed"]
+[connection signal="pressed" from="SelectOptions/PanelContainer/HBoxContainer/SelectButtons/MoveButton" to="." method="_on_move_button_pressed"]
+[connection signal="pressed" from="SelectOptions/PanelContainer/HBoxContainer/SelectButtons/ActionButton" to="." method="_on_action_button_pressed"]
+[connection signal="pressed" from="SelectOptions/PanelContainer/HBoxContainer/SelectButtons/EndButton" to="." method="_on_end_button_pressed"]
 [connection signal="timeout" from="UI/TurnTimerUI/TurnTimer" to="." method="_on_turn_timer_timeout"]

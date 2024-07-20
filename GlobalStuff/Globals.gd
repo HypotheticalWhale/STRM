@@ -2,6 +2,8 @@ extends Node
 
 const TILE_SIZE = 32
 var WHOSTURNISIT = "P1"
+var TAKENACTION
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

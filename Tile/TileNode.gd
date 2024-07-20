@@ -26,19 +26,35 @@ func _on_mouse_exited():
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		Globals.show_tile_info(self)
-		if occupied_by["unit"] and Globals.WHOSTURNISIT == occupied_by["unit"].TEAM:
-			get_parent().show_select_menu(global_position,self)
-			get_parent().clear_available_tiles()			
-		elif occupied_by["unit"] and Globals.WHOSTURNISIT != occupied_by["unit"].TEAM:
+		if occupied_by["unit"] and Globals.WHOSTURNISIT != occupied_by["unit"].TEAM:
 			get_parent().show_info_menu(global_position,self)			
 			get_parent().clear_available_tiles()			
+			return
+###################################### if player has moved with or used an action ######################################
+		if Globals.TAKENACTION and not occupied_by["unit"]:
+			get_parent().show_info_menu(global_position,self)			
+			get_parent().clear_available_tiles()			
+			return
+		if Globals.TAKENACTION and Globals.TAKENACTION != occupied_by["unit"]:
+			get_parent().show_info_menu(global_position,self)			
+			get_parent().clear_available_tiles()			
+			return
+		if Globals.TAKENACTION and Globals.TAKENACTION == occupied_by["unit"]:
+			get_parent().show_select_menu(global_position,self)
+			get_parent().clear_available_tiles()
+			return
+
+###################################### if player has not moved with or used an action ######################################
+		if occupied_by["unit"]:
+			get_parent().show_select_menu(global_position,self)
+			get_parent().clear_available_tiles()			
 		else:
-			if available_tile.visible == true:
+			if available_tile.visible == true: #move action on available tile
 				occupied_by["unit"] = get_parent().selected_tile.occupied_by["unit"]
 				get_parent().selected_tile.occupied_by["unit"].global_position = global_position
-				
+				Globals.TAKENACTION = get_parent().selected_tile.occupied_by["unit"]
 				get_parent().selected_tile.occupied_by["unit"] = ""
-				
+				get_parent().disable_move_button()
 			get_parent().clear_available_tiles()						
 			get_parent().hide_select_menu()
 			get_parent().hide_info_menu()			
