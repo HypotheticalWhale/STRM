@@ -76,15 +76,6 @@ func get_occupied_tiles():
 			occupied_tiles.append(tile)
 	return occupied_tiles
 
-
-func _on_turn_timer_timeout():
-	hide_info_menu()
-	hide_select_menu()
-	await Globals.toggle_player_turn()
-	if Globals.WHOSTURNISIT == "P1":
-		turn_on_p1_ui()
-	if Globals.WHOSTURNISIT == "P2":		
-		turn_on_p2_ui()
 		
 func turn_on_p1_ui():
 	$UI/Player1.visible = true
@@ -95,6 +86,7 @@ func turn_on_p2_ui():
 	$UI/Player2.visible = true
 
 func show_select_menu(menu_position,tile_node):
+	hide_action_buttons()	
 	selected_tile = tile_node
 	$SelectOptions.visible = true
 	$SelectOptions.global_position = menu_position
@@ -112,6 +104,19 @@ func hide_select_menu():
 func hide_info_menu():
 	$NotYourOptions.visible = false
 
+func show_action_buttons():
+	$SelectOptions/PanelContainer/HBoxContainer/ActionButtons.visible = true
+
+func hide_action_buttons():
+	$SelectOptions/PanelContainer/HBoxContainer/ActionButtons.visible = false
+	
+
+func disable_move_button():
+	$SelectOptions/PanelContainer/HBoxContainer/SelectButtons/MoveButton.disabled = true
+	
+func disable_action_button():
+	$SelectOptions/PanelContainer/HBoxContainer/SelectButtons/ActionButton.disabled = true
+	
 func highlight_available_tiles(available_tiles_coords):
 	clear_available_tiles()
 	var grid_pos
@@ -168,11 +173,32 @@ func get_available_coordinates(start_pos: Vector2, movement_range: int):
 
 	return available_coords
 
-
 func _on_move_button_pressed():
 	highlight_available_tiles(get_available_coordinates(selected_tile.global_position/Globals.TILE_SIZE,selected_tile.occupied_by["unit"].MOVEMENT)) 
-	
+	hide_action_buttons()
+	hide_select_menu()
 func _on_end_button_pressed():
 	turn_timer.stop()	
 	_on_turn_timer_timeout()
 	turn_timer.start()
+	
+func _on_turn_timer_timeout():
+	hide_info_menu()
+	hide_select_menu()	
+	$SelectOptions/PanelContainer/HBoxContainer/SelectButtons/MoveButton.disabled = false
+	$SelectOptions/PanelContainer/HBoxContainer/SelectButtons/ActionButton.disabled = false
+	Globals.TAKENACTION = ""	
+	await Globals.toggle_player_turn()
+	if Globals.WHOSTURNISIT == "P1":
+		turn_on_p1_ui()
+	if Globals.WHOSTURNISIT == "P2":		
+		turn_on_p2_ui()
+	
+func _on_action_button_pressed():
+	var button
+	print(selected_tile.occupied_by["unit"].ACTIONS)
+	for action in selected_tile.occupied_by["unit"].ACTIONS:
+		button = Button.new()
+		button.text = action
+		$SelectOptions/PanelContainer/HBoxContainer/ActionButtons.add_child(button)
+	show_action_buttons()

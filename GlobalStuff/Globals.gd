@@ -2,6 +2,7 @@ extends Node
 
 const TILE_SIZE = 32
 var WHOSTURNISIT = "P1"
+var TAKENACTION
 var quests : Dictionary = {
 	"fight" : {
 		"description" : "get hit or hit something",

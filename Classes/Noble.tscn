@@ -5,3 +5,6 @@
 
 [node name="Noble" instance=ExtResource("1_7r7x2")]
 script = ExtResource("2_cef56")
+
+[node name="BlueSprite" parent="." index="1"]
+flip_h = true

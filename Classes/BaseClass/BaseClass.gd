@@ -5,6 +5,7 @@ var MAX_HEALTH
 var CURRENT_HEALTH
 var TEAM
 var MOVEMENT
+var ACTIONS
 var QUEST : String
 
 # quest specific
