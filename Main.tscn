@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cpycaudat764"]
+[gd_scene load_steps=11 format=3 uid="uid://cpycaudat764"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_5hkoq"]
 [ext_resource type="Texture2D" uid="uid://bnm0op8tgjbiv" path="res://Assets/UI/Timer/Timer.png" id="2_j0qa6"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://UI/TileInfo.gd" id="5_sqfni"]
 [ext_resource type="Shader" path="res://Scrolling.gdshader" id="6_a0eb8"]
 [ext_resource type="Texture2D" uid="uid://cbo8lyb5v4uib" path="res://Assets/UI/BG.png" id="7_hwd5n"]
+[ext_resource type="Script" path="res://UI/LevelUp.gd" id="8_x7oqh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lawlm"]
 shader = ExtResource("6_a0eb8")
@@ -186,9 +187,72 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="LevelUp" type="MarginContainer" parent="UI"]
+process_mode = 2
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_vidso")
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 128
+script = ExtResource("8_x7oqh")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/LevelUp"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/LevelUp/PanelContainer"]
+layout_mode = 2
+
+[node name="ChooseSkill" type="Label" parent="UI/LevelUp/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Choose Skill"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/LevelUp/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="UI/LevelUp/PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 28)
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="UI/LevelUp/PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 28)
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="UI/LevelUp/PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 28)
+layout_mode = 2
+
+[node name="SkillInfo" type="Label" parent="UI/LevelUp/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 512)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 48
+text = "Description here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Confirm" type="Button" parent="UI/LevelUp/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 64
+text = "Confirm
+"
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(351, 164)
 zoom = Vector2(2, 2)
 
 [connection signal="pressed" from="SelectOptions/PanelContainer/SelectButtons/MoveButton" to="." method="_on_move_button_pressed"]
 [connection signal="timeout" from="UI/TurnTimerUI/TurnTimer" to="." method="_on_turn_timer_timeout"]
+[connection signal="pressed" from="UI/LevelUp/PanelContainer/VBoxContainer/Confirm" to="UI/LevelUp" method="_on_confirm_pressed"]

@@ -2,6 +2,12 @@ extends Node
 
 const TILE_SIZE = 32
 var WHOSTURNISIT = "P1"
+var quests : Dictionary = {
+	"fight" : {
+		"description" : "get hit or hit something",
+		"reward" : 50	#gains 50 xp
+	}
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,7 +17,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-	
+
 	
 func toggle_player_turn():
 	if WHOSTURNISIT == "P2":
@@ -29,3 +35,6 @@ func show_tile_info(tile : Object):
 	tile_info.visible = true
 	tile_info.update_info(tile.get_terrain().type, tile.get_terrain().defense, tile.get_terrain().movement_penalty)
 
+
+func get_quest_xp(completed_quest : String):
+	return quests[completed_quest]["reward"]
