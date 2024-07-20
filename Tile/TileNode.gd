@@ -32,7 +32,7 @@ func _on_input_event(viewport, event, shape_idx):
 			return
 ###################################### if player has moved with or used an action ######################################
 		if Globals.TAKENACTION and not occupied_by["unit"]:
-			get_parent().show_info_menu(global_position,self)			
+			get_parent().show_info_menu(global_position,self)		
 			get_parent().clear_available_tiles()			
 			return
 		if Globals.TAKENACTION and Globals.TAKENACTION != occupied_by["unit"]:
