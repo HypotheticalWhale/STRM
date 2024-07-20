@@ -1,7 +1,8 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://bkqipfaxijp3i"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://bkqipfaxijp3i"]
 
 [ext_resource type="Texture2D" uid="uid://dxsi055t1wcnb" path="res://Assets/UI/ButtonNormal.png" id="1_0keg2"]
 [ext_resource type="Texture2D" uid="uid://b1wnrp8q0hish" path="res://Assets/UI/MedievalPanel.png" id="1_y8y5v"]
+[ext_resource type="Texture2D" uid="uid://qupsi3grjt4h" path="res://Assets/UI/LabelBackground.png" id="2_sf2lc"]
 [ext_resource type="FontFile" uid="uid://blxvfg2chyfy7" path="res://Fonts/Pixeled English Font.ttf" id="3_wx55d"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0e6wo"]
@@ -10,6 +11,13 @@ texture_margin_left = 3.0
 texture_margin_top = 3.0
 texture_margin_right = 3.0
 texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uqel7"]
+texture = ExtResource("2_sf2lc")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iq4wv"]
 texture = ExtResource("1_y8y5v")
@@ -26,4 +34,5 @@ Button/styles/normal = SubResource("StyleBoxTexture_0e6wo")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/constants/outline_size = 2
+Label/styles/normal = SubResource("StyleBoxTexture_uqel7")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_iq4wv")
