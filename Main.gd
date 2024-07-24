@@ -177,6 +177,7 @@ func _on_move_button_pressed():
 	highlight_available_tiles(get_available_coordinates(selected_tile.global_position/Globals.TILE_SIZE,selected_tile.occupied_by["unit"].MOVEMENT)) 
 	hide_action_buttons()
 	hide_select_menu()
+	
 func _on_end_button_pressed():
 	turn_timer.stop()	
 	_on_turn_timer_timeout()
@@ -196,9 +197,12 @@ func _on_turn_timer_timeout():
 	
 func _on_action_button_pressed():
 	var button
+	var action_button_container = $SelectOptions/PanelContainer/HBoxContainer/ActionButtons
 	print(selected_tile.occupied_by["unit"].ACTIONS)
+	for child in action_button_container.get_children():
+		child.queue_free()
 	for action in selected_tile.occupied_by["unit"].ACTIONS:
 		button = Button.new()
 		button.text = action
-		$SelectOptions/PanelContainer/HBoxContainer/ActionButtons.add_child(button)
+		action_button_container.add_child(button)
 	show_action_buttons()
