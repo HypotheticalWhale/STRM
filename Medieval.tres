@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dxsi055t1wcnb" path="res://Assets/UI/ButtonNormal.png" id="1_0keg2"]
 [ext_resource type="Texture2D" uid="uid://b1wnrp8q0hish" path="res://Assets/UI/MedievalPanel.png" id="1_y8y5v"]
-[ext_resource type="Texture2D" uid="uid://qupsi3grjt4h" path="res://Assets/UI/LabelBackground.png" id="2_sf2lc"]
+[ext_resource type="Texture2D" path="res://Assets/UI/LabelBackground.png" id="2_sf2lc"]
 [ext_resource type="FontFile" uid="uid://blxvfg2chyfy7" path="res://Fonts/Pixeled English Font.ttf" id="3_wx55d"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0e6wo"]
