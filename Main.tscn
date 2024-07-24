@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://UI/TurnTimerUI.gd" id="2_wpr50"]
 [ext_resource type="Script" path="res://UI/TileInfo.gd" id="5_sqfni"]
 [ext_resource type="Shader" path="res://Scrolling.gdshader" id="6_a0eb8"]
-[ext_resource type="Texture2D" path="res://Assets/UI/BG.png" id="7_hwd5n"]
+[ext_resource type="Texture2D" uid="uid://cbo8lyb5v4uib" path="res://Assets/UI/BG.png" id="7_hwd5n"]
 [ext_resource type="Script" path="res://UI/LevelUp.gd" id="8_x7oqh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lawlm"]

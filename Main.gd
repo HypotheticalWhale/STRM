@@ -2,12 +2,14 @@ extends Node2D
 @onready var turn_timer = $UI/TurnTimerUI/TurnTimer
 @export var GRID_SIZE = [20,10]
 var tile_path = preload("res://Tile/TileNode.tscn")
+var action_button = preload("res://UI/ActionButton.tscn")
 var selected_tile
 var valid_tiles = []
 var tile_node
 var tile_coords
 var all_tiles = {}
 var available_tiles = []
+var available_attack_tiles = []
 var starting_player = "P1"
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -119,6 +121,7 @@ func disable_action_button():
 	
 func highlight_available_tiles(available_tiles_coords):
 	clear_available_tiles()
+	clear_available_attack_tiles()
 	var grid_pos
 	for tile_coords in available_tiles_coords:
 		grid_pos = tile_coords*Globals.TILE_SIZE
@@ -133,6 +136,11 @@ func clear_available_tiles():
 	for grid_pos in available_tiles:
 		all_tiles[grid_pos].toggle_available_tile()
 	available_tiles = []
+	
+func clear_available_attack_tiles():
+	for grid_pos in available_tiles:
+		all_tiles[grid_pos].toggle_available_tile()
+	available_attack_tiles = []
 
 
 func get_available_coordinates(start_pos: Vector2, movement_range: int):
@@ -198,11 +206,29 @@ func _on_turn_timer_timeout():
 func _on_action_button_pressed():
 	var button
 	var action_button_container = $SelectOptions/PanelContainer/HBoxContainer/ActionButtons
-	print(selected_tile.occupied_by["unit"].ACTIONS)
+	
 	for child in action_button_container.get_children():
 		child.queue_free()
 	for action in selected_tile.occupied_by["unit"].ACTIONS:
-		button = Button.new()
+		button = action_button.instantiate()
 		button.text = action
+		button.skill_owner = selected_tile.occupied_by["unit"]
+		button.skill_name = action
 		action_button_container.add_child(button)
+		button.pressed.connect(on_skill_pressed.bind(button))
 	show_action_buttons()
+
+func on_skill_pressed(button):
+	print(button.skill_owner)
+	print(button.skill_name)
+	var attack_coords = Globals.rotate_skill_to_direction("N",button.skill_name)
+	var grid_pos
+	clear_available_tiles()
+	clear_available_attack_tiles()
+	for tile in attack_coords:
+		grid_pos = selected_tile.global_position + tile * Globals.TILE_SIZE
+		if grid_pos in valid_tiles:
+			all_tiles[grid_pos].toggle_available_attack_tile()
+			available_attack_tiles.append(grid_pos)		
+			
+			
