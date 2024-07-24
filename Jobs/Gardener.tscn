@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2q8becy55bh"]
+
+[ext_resource type="PackedScene" uid="uid://b5uij24beffcq" path="res://Jobs/Job.tscn" id="1_hsgxh"]
+[ext_resource type="Script" path="res://Jobs/Gardener.gd" id="2_bv5ve"]
+
+[node name="Gardener" instance=ExtResource("1_hsgxh")]
+script = ExtResource("2_bv5ve")
