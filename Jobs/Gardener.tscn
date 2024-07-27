@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2q8becy55bh"]
+[gd_scene load_steps=6 format=3 uid="uid://c2q8becy55bh"]
 
 [ext_resource type="PackedScene" uid="uid://b5uij24beffcq" path="res://Jobs/Job.tscn" id="1_hsgxh"]
 [ext_resource type="Script" path="res://Jobs/Gardener.gd" id="2_bv5ve"]
+[ext_resource type="Texture2D" uid="uid://itjth5t82ow3" path="res://Assets/Sprites/Units/Gardener.png" id="3_5m7uf"]
+[ext_resource type="Texture2D" uid="uid://bqvjrjocfr2s5" path="res://Assets/Sprites/Units/GardenerRed.png" id="4_2u5ob"]
+[ext_resource type="Texture2D" uid="uid://dlbpuljj7acba" path="res://Assets/Sprites/Units/GardenerBluet.png" id="5_5ygsl"]
 
 [node name="Gardener" instance=ExtResource("1_hsgxh")]
 script = ExtResource("2_bv5ve")
+
+[node name="Uncolored" parent="." index="0"]
+texture = ExtResource("3_5m7uf")
+
+[node name="Red" parent="." index="1"]
+texture = ExtResource("4_2u5ob")
+
+[node name="Blue" parent="." index="2"]
+texture = ExtResource("5_5ygsl")

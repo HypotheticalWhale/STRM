@@ -22,6 +22,7 @@ var jobs : Dictionary = {
 var passives : Dictionary = {
 	"green_thumbs" : "Gives nonsense, please replace this with actual passive"
 }
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
