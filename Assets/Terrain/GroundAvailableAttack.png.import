@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blyr1abn8w7s5"
-path="res://.godot/imported/GroundAvailable.png-6ede873c709fc8a0fb6ad483a395b02a.ctex"
+uid="uid://dtka3epc5eepk"
+path="res://.godot/imported/GroundAvailableAttack.png-626e215b08548fa3814af05e61e3a392.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Terrain/GroundAvailable.png"
-dest_files=["res://.godot/imported/GroundAvailable.png-6ede873c709fc8a0fb6ad483a395b02a.ctex"]
+source_file="res://Assets/Terrain/GroundAvailableAttack.png"
+dest_files=["res://.godot/imported/GroundAvailableAttack.png-626e215b08548fa3814af05e61e3a392.ctex"]
 
 [params]
 

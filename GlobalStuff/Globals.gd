@@ -9,6 +9,10 @@ var quests : Dictionary = {
 		"reward" : 50	#gains 50 xp
 	}
 }
+var skills = {
+	"Sweep Attack": [Vector2(1,0),Vector2(0,1),Vector2(0,-1)],
+	"trim_bushes": [Vector2(1,0),Vector2(0,1),Vector2(0,-1)]
+}
 
 var jobs : Dictionary = {
 	"gardener" : "res://Jobs/Gardener.tscn",
@@ -52,3 +56,22 @@ func show_tile_info(tile : Object):
 
 func get_quest_xp(completed_quest : String):
 	return quests[completed_quest]["reward"]
+
+func rotate_skill_to_direction(direction,skill_name):
+	var new_skill_coords = []
+	var coord
+	if direction == "E":
+		return skills[skill_name]
+	if direction == "W":
+		for skill in skills[skill_name]:
+			new_skill_coords.append(skill*-1)
+		return new_skill_coords
+	if direction == "N":
+		for skill in skills[skill_name]:
+			new_skill_coords.append(Vector2(skill[1],skill[0]*-1))
+		return new_skill_coords	
+	if direction == "S":
+		for skill in skills[skill_name]:
+			new_skill_coords.append(Vector2(skill[1],skill[0]))
+		return new_skill_coords
+		

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpns35tyg81l5"]
+[gd_scene load_steps=7 format=3 uid="uid://dpns35tyg81l5"]
 
 [ext_resource type="Script" path="res://Tile/TileNode.gd" id="1_tpinp"]
 [ext_resource type="Texture2D" uid="uid://de7axcru4sais" path="res://Assets/Tiles/Selected.png" id="2_q5gex"]
 [ext_resource type="Texture2D" uid="uid://bnjxmllu3n2m3" path="res://Assets/Tiles/Available.png" id="4_qmyxl"]
+[ext_resource type="Texture2D" uid="uid://dtka3epc5eepk" path="res://Assets/Terrain/GroundAvailableAttack.png" id="5_o724k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_475tv"]
 size = Vector2(32, 32)
@@ -17,7 +18,12 @@ texture = ExtResource("2_q5gex")
 
 [node name="Available" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("4_qmyxl")
+texture = ExtResource("4_dxcrv")
+
+[node name="AvailableAttack" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("5_o724k")
+
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_475tv")

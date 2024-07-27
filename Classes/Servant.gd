@@ -4,7 +4,7 @@ extends BaseClass
 func initialize_stats():
 	CURRENT_HEALTH = 60
 	MOVEMENT = 3
-	ACTIONS = ["SweepAttack","PoopyTest"]
+	ACTIONS = ["Sweep Attack","Poopy Test"]
 	QUEST = "fight"
 	POTENTIAL_JOBS = ["gardener", "gardener", "gardener"]
 
