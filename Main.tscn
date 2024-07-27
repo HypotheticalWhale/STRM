@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cpycaudat764"]
+[gd_scene load_steps=12 format=3 uid="uid://cpycaudat764"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_5hkoq"]
 [ext_resource type="Texture2D" uid="uid://bnm0op8tgjbiv" path="res://Assets/UI/Timer/Timer.png" id="2_j0qa6"]
@@ -8,6 +8,7 @@
 [ext_resource type="Shader" path="res://Scrolling.gdshader" id="6_a0eb8"]
 [ext_resource type="Texture2D" uid="uid://cbo8lyb5v4uib" path="res://Assets/UI/BG.png" id="7_hwd5n"]
 [ext_resource type="Script" path="res://UI/LevelUp.gd" id="8_x7oqh"]
+[ext_resource type="Script" path="res://UI/LevelUpUI/JobButton.gd" id="9_7relu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lawlm"]
 shader = ExtResource("6_a0eb8")
@@ -236,24 +237,70 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons"]
-custom_minimum_size = Vector2(128, 28)
+[node name="Container" type="Container" parent="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons"]
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="Button2" type="Button" parent="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons"]
-custom_minimum_size = Vector2(128, 28)
+[node name="JobButton0" type="TextureButton" parent="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons" groups=["JobButtons"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
+stretch_mode = 0
+script = ExtResource("9_7relu")
 
-[node name="Button3" type="Button" parent="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons"]
-custom_minimum_size = Vector2(128, 28)
+[node name="Container2" type="Container" parent="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons"]
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="SkillInfo" type="Label" parent="UI/LevelUp/PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 512)
+[node name="JobButton1" type="TextureButton" parent="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons" groups=["JobButtons"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+stretch_mode = 0
+script = ExtResource("9_7relu")
+
+[node name="Container4" type="Container" parent="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="JobButton2" type="TextureButton" parent="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons" groups=["JobButtons"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+stretch_mode = 0
+script = ExtResource("9_7relu")
+
+[node name="Container3" type="Container" parent="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="JobDescription" type="Label" parent="UI/LevelUp/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 48
 text = "Description here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkillInfo" type="Label" parent="UI/LevelUp/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 48
+text = "Skill information here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PassiveInfo" type="Label" parent="UI/LevelUp/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 48
+text = "Passive information here"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -272,4 +319,5 @@ zoom = Vector2(2, 2)
 [connection signal="pressed" from="SelectOptions/PanelContainer/HBoxContainer/SelectButtons/ActionButton" to="." method="_on_action_button_pressed"]
 [connection signal="pressed" from="SelectOptions/PanelContainer/HBoxContainer/SelectButtons/EndButton" to="." method="_on_end_button_pressed"]
 [connection signal="timeout" from="UI/TurnTimerUI/TurnTimer" to="." method="_on_turn_timer_timeout"]
+[connection signal="pressed" from="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons/JobButton0" to="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons/JobButton0" method="_on_pressed"]
 [connection signal="pressed" from="UI/LevelUp/PanelContainer/VBoxContainer/Confirm" to="UI/LevelUp" method="_on_confirm_pressed"]
