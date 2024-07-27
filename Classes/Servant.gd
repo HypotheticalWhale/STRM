@@ -6,6 +6,7 @@ func initialize_stats():
 	MOVEMENT = 3
 	ACTIONS = ["Sweep Attack","Poopy Test"]
 	QUEST = "fight"
+	POTENTIAL_JOBS = ["gardener", "gardener", "gardener"]
 
 
 func initialize_sprites():

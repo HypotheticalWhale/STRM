@@ -7,6 +7,7 @@ var TEAM
 var MOVEMENT
 var ACTIONS
 var QUEST : String
+var POTENTIAL_JOBS : Array[String]
 
 # quest specific
 var xp : int
@@ -46,6 +47,7 @@ func attack():
 		
 
 func level_up_if_possible():
+	print("level up if possible")
 	if xp < max_xp:
 		return	# not possible to level yet
 	if xp >= max_xp:
@@ -55,4 +57,7 @@ func level_up_if_possible():
 		get_tree().paused = true
 		lvl_ui.visible = true
 		
-
+		if len($Jobs.get_children()) == 0:	# if unit has no jobs yet
+			lvl_ui.update_jobs(POTENTIAL_JOBS)
+		else:	# if unit has a job, take the most recent one
+			lvl_ui.update_jobs($Jobs.get_children()[-1].potential_jobs)

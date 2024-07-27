@@ -13,3 +13,5 @@ texture = SubResource("CompressedTexture2D_fxq3u")
 
 [node name="BlueSprite" type="Sprite2D" parent="."]
 texture = ExtResource("3_f2qt2")
+
+[node name="Jobs" type="Node2D" parent="."]

@@ -14,6 +14,19 @@ var skills = {
 	"trim_bushes": [Vector2(1,0),Vector2(0,1),Vector2(0,-1)]
 }
 
+var jobs : Dictionary = {
+	"gardener" : "res://Jobs/Gardener.tscn",
+	"butler" : "res://Jobs/Butler.tscn",
+	"chef" : "res://Jobs/Chef.tscn",
+	"lawnsguard" : "res://Jobs/Lawnsguard.tscn",
+	"dog_handler" : "res://Jobs/DogHandler.tscn",
+	"card_solider" : "res://Jobs/CardSoldier.tscn"
+}
+
+var passives : Dictionary = {
+	"green_thumbs" : "Gives nonsense, please replace this with actual passive"
+}
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
