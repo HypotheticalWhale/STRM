@@ -19,11 +19,10 @@ func _ready():
 
 func _on_mouse_entered():
 	highlighted_tile.visible = true
-
+	get_parent().highlighted_tile = self
 
 func _on_mouse_exited():
 	highlighted_tile.visible = false
-
 
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -32,18 +31,49 @@ func _on_input_event(viewport, event, shape_idx):
 			get_parent().show_info_menu(global_position,self)			
 			get_parent().clear_available_tiles()			
 			return
+			
 ###################################### if player has moved with or used an action ######################################
+		if Globals.TAKENACTION and available_attack_tile.visible == true:
+			print("i attack here")
+			get_parent().clear_available_tiles()			
+			get_parent().clear_available_attack_tiles()
+			get_parent().hide_select_menu()
+			get_parent().hide_info_menu()			
+			get_parent().disable_action_button()
+			get_parent().attacking = false
+			return
+			
+		if Globals.TAKENACTION and available_tile.visible == true:
+			occupied_by["unit"] = get_parent().selected_tile.occupied_by["unit"]
+			get_parent().selected_tile.occupied_by["unit"].global_position = global_position
+			get_parent().selected_tile.occupied_by["unit"] = ""
+			get_parent().disable_move_button()
+			get_parent().clear_available_tiles()			
+			get_parent().clear_available_attack_tiles()
+			get_parent().hide_select_menu()
+			get_parent().hide_info_menu()			
+			return 
+			
 		if Globals.TAKENACTION and not occupied_by["unit"]:
 			get_parent().show_info_menu(global_position,self)		
 			get_parent().clear_available_tiles()			
+			get_parent().clear_available_attack_tiles()
+			get_parent().hide_select_menu()
+			get_parent().hide_info_menu()			
 			return
+			
 		if Globals.TAKENACTION and Globals.TAKENACTION != occupied_by["unit"]:
 			get_parent().show_info_menu(global_position,self)			
 			get_parent().clear_available_tiles()			
+			get_parent().clear_available_attack_tiles()
+			get_parent().hide_select_menu()
+			get_parent().hide_info_menu()			
 			return
+			
 		if Globals.TAKENACTION and Globals.TAKENACTION == occupied_by["unit"]:
 			get_parent().show_select_menu(global_position,self)
 			get_parent().clear_available_tiles()
+			get_parent().clear_available_attack_tiles()
 			return
 
 ###################################### if player has not moved with or used an action ######################################
@@ -58,10 +88,15 @@ func _on_input_event(viewport, event, shape_idx):
 				Globals.TAKENACTION = get_parent().selected_tile.occupied_by["unit"]
 				get_parent().selected_tile.occupied_by["unit"] = ""
 				get_parent().disable_move_button()
+				
 			elif available_attack_tile.visible == true:
 				print("i attack here")
+				Globals.TAKENACTION = get_parent().selected_tile.occupied_by["unit"]				
 				get_parent().clear_available_attack_tiles()
+				get_parent().disable_action_button()
+				get_parent().attacking = false
 			get_parent().clear_available_tiles()						
+			get_parent().clear_available_attack_tiles()
 			get_parent().hide_select_menu()
 			get_parent().hide_info_menu()			
 			

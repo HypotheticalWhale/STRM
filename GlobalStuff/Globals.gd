@@ -45,7 +45,7 @@ func get_quest_xp(completed_quest : String):
 	return quests[completed_quest]["reward"]
 
 func rotate_skill_to_direction(direction,skill_name):
-	var new_skill_coords
+	var new_skill_coords = []
 	var coord
 	if direction == "E":
 		return skills[skill_name]
@@ -55,10 +55,10 @@ func rotate_skill_to_direction(direction,skill_name):
 		return new_skill_coords
 	if direction == "N":
 		for skill in skills[skill_name]:
-			new_skill_coords.append(Vector2(skill[1]),Vector2(skill[0]))
+			new_skill_coords.append(Vector2(skill[1],skill[0]*-1))
 		return new_skill_coords	
 	if direction == "S":
 		for skill in skills[skill_name]:
-			new_skill_coords.append(Vector2(skill[1]),Vector2(skill[0]*-1))
+			new_skill_coords.append(Vector2(skill[1],skill[0]))
 		return new_skill_coords
 		
