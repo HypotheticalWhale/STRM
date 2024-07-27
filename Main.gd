@@ -3,7 +3,7 @@ extends Node2D
 @export var GRID_SIZE = [20,10]
 var tile_path = preload("res://Tile/TileNode.tscn")
 var action_button = preload("res://UI/ActionButton.tscn")
-@onready var selected_tile
+var selected_tile
 var valid_tiles = []
 var tile_node
 var tile_coords
