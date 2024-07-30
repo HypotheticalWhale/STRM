@@ -216,9 +216,6 @@ func _on_turn_timer_timeout():
 		turn_on_p2_ui()
 	
 func _on_action_button_pressed():
-	# start debug level up
-	selected_tile.occupied_by["unit"].attack()
-	# end debug level up
 	var button
 	var action_button_container = $SelectOptions/PanelContainer/HBoxContainer/ActionButtons
 	

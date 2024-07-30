@@ -41,6 +41,9 @@ func _on_input_event(viewport, event, shape_idx):
 			get_parent().hide_info_menu()			
 			get_parent().disable_action_button()
 			get_parent().attacking = false
+			# start debug level up
+			get_parent().selected_tile.occupied_by["unit"].attack()
+			# end debug level up
 			return
 			
 		if Globals.TAKENACTION and available_tile.visible == true:
@@ -95,6 +98,7 @@ func _on_input_event(viewport, event, shape_idx):
 				get_parent().clear_available_attack_tiles()
 				get_parent().disable_action_button()
 				get_parent().attacking = false
+				get_parent().selected_tile.occupied_by["unit"].attack()				
 			get_parent().clear_available_tiles()						
 			get_parent().clear_available_attack_tiles()
 			get_parent().hide_select_menu()
