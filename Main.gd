@@ -231,8 +231,6 @@ func _on_action_button_pressed():
 	show_action_buttons()
 
 func on_skill_pressed(button,direction):
-	print(button.skill_owner)
-	print(button.skill_name)
 	button_pressed = button
 	attacking = true
 	var attack_coords = Globals.rotate_skill_to_direction(direction,button.skill_name)
@@ -258,7 +256,6 @@ func get_cursor_direction_relative_to_node(node: Node2D) -> String:
 		return mouse_relative_direction
 	var cursor_position = highlighted_tile.global_position
 	var node_position = node.global_position
-	print(cursor_position/Globals.TILE_SIZE, node_position/Globals.TILE_SIZE)
 	var direction = ""
 	var dx = cursor_position.x - node_position.x
 	var dy = cursor_position.y - node_position.y 
