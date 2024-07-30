@@ -68,12 +68,7 @@ func spawn_tiles():
 			# adding terrain
 			var manor_length : int = GRID_SIZE[0] * 0.4
 			if x_tile <= manor_length or x_tile > (GRID_SIZE[0] - manor_length):
-				print("y_tile: ", y_tile)
-				print(round(float(GRID_SIZE[1])/2))
-				print("x_tile: ", x_tile)
-				print(GRID_SIZE[0])
 				if (x_tile == 2 or x_tile == GRID_SIZE[0]-1) and y_tile == round(float(GRID_SIZE[1])/2):
-					print("entered")
 					tile_node.add_terrain("throne")
 				else:
 					tile_node.add_terrain("marble")
