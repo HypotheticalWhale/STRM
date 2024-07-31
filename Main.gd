@@ -43,7 +43,7 @@ func spawn_units():
 		tile_coords = Vector2(2,count)*Globals.TILE_SIZE
 		unit.global_position = tile_coords
 		all_tiles[tile_coords].occupied_by["unit"] = unit
-		count += 1
+		count += 2
 		
 	count = 2
 	for unit in PlayerData.player2_units.values():
@@ -52,7 +52,7 @@ func spawn_units():
 		tile_coords = Vector2(GRID_SIZE[0]-1,count)*Globals.TILE_SIZE
 		unit.global_position = tile_coords
 		all_tiles[tile_coords].occupied_by["unit"] = unit
-		count += 1
+		count += 2
 
 func spawn_tiles():
 	for x_tile in range(2,GRID_SIZE[0]):
@@ -68,12 +68,7 @@ func spawn_tiles():
 			# adding terrain
 			var manor_length : int = GRID_SIZE[0] * 0.4
 			if x_tile <= manor_length or x_tile > (GRID_SIZE[0] - manor_length):
-				print("y_tile: ", y_tile)
-				print(round(float(GRID_SIZE[1])/2))
-				print("x_tile: ", x_tile)
-				print(GRID_SIZE[0])
 				if (x_tile == 2 or x_tile == GRID_SIZE[0]-1) and y_tile == round(float(GRID_SIZE[1])/2):
-					print("entered")
 					tile_node.add_terrain("throne")
 				else:
 					tile_node.add_terrain("marble")
@@ -143,12 +138,13 @@ func highlight_available_tiles(available_tiles_coords):
 
 func clear_available_tiles():
 	for grid_pos in available_tiles:
-		all_tiles[grid_pos].toggle_available_tile()
+		all_tiles[grid_pos].toggle_available_tile()		
 	available_tiles = []
 	
 func clear_available_attack_tiles():
 	for grid_pos in available_attack_tiles:
-		all_tiles[grid_pos].toggle_available_attack_tile()
+		all_tiles[grid_pos].hide_available_attack_tile()
+		all_tiles[grid_pos].hide_target_tile()
 	available_attack_tiles = []
 
 
@@ -218,7 +214,6 @@ func _on_turn_timer_timeout():
 func _on_action_button_pressed():
 	var button
 	var action_button_container = $SelectOptions/PanelContainer/HBoxContainer/ActionButtons
-	
 	for child in action_button_container.get_children():
 		child.queue_free()
 	for action in selected_tile.occupied_by["unit"].ACTIONS:
@@ -227,7 +222,10 @@ func _on_action_button_pressed():
 		button.skill_owner = selected_tile.occupied_by["unit"]
 		button.skill_name = action
 		action_button_container.add_child(button)
-		button.pressed.connect(on_skill_pressed.bind(button,mouse_relative_direction))
+		if Globals.WHOSTURNISIT == "P2":
+			button.pressed.connect(on_skill_pressed.bind(button,"W"))
+		else:
+			button.pressed.connect(on_skill_pressed.bind(button,"E"))
 	show_action_buttons()
 
 func on_skill_pressed(button,direction):
@@ -242,12 +240,14 @@ func on_skill_pressed(button,direction):
 		if grid_pos not in valid_tiles:
 			continue
 		if not all_tiles[grid_pos].occupied_by["unit"]:
-			all_tiles[grid_pos].toggle_available_attack_tile()
+			all_tiles[grid_pos].show_available_attack_tile()
 			available_attack_tiles.append(grid_pos)		
 			continue
-		if Globals.WHOSTURNISIT != all_tiles[grid_pos].occupied_by["unit"].TEAM:
-			all_tiles[grid_pos].toggle_available_attack_tile()
-			available_attack_tiles.append(grid_pos)		
+		#if Globals.WHOSTURNISIT == all_tiles[grid_pos].occupied_by["unit"].TEAM:
+			#all_tiles[grid_pos].show_target_tile()
+			#available_attack_tiles.append(grid_pos)		
+		all_tiles[grid_pos].show_target_tile()
+		available_attack_tiles.append(grid_pos)	
 	hide_action_buttons()
 	hide_select_menu()
 			

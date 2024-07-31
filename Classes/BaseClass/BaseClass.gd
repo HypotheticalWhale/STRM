@@ -6,6 +6,7 @@ var CURRENT_HEALTH
 var TEAM
 var MOVEMENT
 var ACTIONS
+var DAMAGE
 var QUEST : String
 var POTENTIAL_JOBS : Array[String]
 
@@ -61,3 +62,12 @@ func level_up_if_possible():
 			lvl_ui.update_jobs(POTENTIAL_JOBS)
 		else:	# if unit has a job, take the most recent one
 			lvl_ui.update_jobs($Jobs.get_children()[-1].potential_jobs)
+
+func get_hit(damage):
+	CURRENT_HEALTH -= damage
+	if CURRENT_HEALTH <= 0:
+		print("im ded")
+		self.queue_free()
+	print("I get hit for: ", damage)
+	print("Max Health/Current Health: ",MAX_HEALTH,"/",CURRENT_HEALTH)
+	

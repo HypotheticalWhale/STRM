@@ -2,7 +2,9 @@ extends BaseClass
 
 
 func initialize_stats():
-	CURRENT_HEALTH = 80
+	MAX_HEALTH = 30
+	CURRENT_HEALTH = 30
+	DAMAGE = 10
 	MOVEMENT = 1
 	ACTIONS = ["Piercing Ray"]
 func initialize_sprites():
