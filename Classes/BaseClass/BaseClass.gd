@@ -55,6 +55,7 @@ func level_up_if_possible():
 		xp = xp - max_xp
 		#AnimationPlayer.play("level_up")
 		var lvl_ui = get_tree().current_scene.get_node("UI/LevelUp")
+		lvl_ui.unit_to_level = self
 		get_tree().paused = true
 		lvl_ui.visible = true
 		
@@ -70,4 +71,26 @@ func get_hit(damage):
 		self.queue_free()
 	print("I get hit for: ", damage)
 	print("Max Health/Current Health: ",MAX_HEALTH,"/",CURRENT_HEALTH)
+
+
+func add_job(job_name : String):
+	var job_node = load(Globals.jobs[job_name]).instantiate()
+	$Jobs.add_child(job_node)
+	await update_sprite()
+
+
+func update_sprite():
+	if $Jobs.get_child_count() == 0:	# Only has baseclass
+		if TEAM == "P1":
+			set_sprite_blue()
+		if TEAM == "P2":
+			set_sprite_red()
 	
+	if $Jobs.get_child_count() > 0:		# Has additional jobs
+		var newest_job = $Jobs.get_children()[-1]
+		$RedSprite.texture = newest_job.get_node("Red").texture
+		$BlueSprite.texture = newest_job.get_node("Blue").texture
+		if TEAM == "P1":
+			set_sprite_blue()
+		if TEAM == "P2":
+			set_sprite_red()
