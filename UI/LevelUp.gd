@@ -1,8 +1,10 @@
 extends MarginContainer
 
 var selected_job : String
+var unit_to_level : Object
 
 func _on_confirm_pressed():
+	await unit_to_level.add_job(selected_job)
 	get_tree().paused = false
 	visible = false
 
