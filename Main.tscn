@@ -210,11 +210,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource("2_vidso")
-theme_override_constants/margin_left = 128
-theme_override_constants/margin_top = 128
-theme_override_constants/margin_right = 128
-theme_override_constants/margin_bottom = 128
+theme_override_constants/margin_left = 256
+theme_override_constants/margin_top = 256
+theme_override_constants/margin_right = 256
+theme_override_constants/margin_bottom = 256
 script = ExtResource("8_x7oqh")
 
 [node name="PanelContainer" type="PanelContainer" parent="UI/LevelUp"]
@@ -224,7 +226,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ChooseSkill" type="Label" parent="UI/LevelUp/PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 128)
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_font_sizes/font_size = 48
@@ -243,7 +245,7 @@ size_flags_horizontal = 3
 
 [node name="JobButton0" type="TextureButton" parent="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons" groups=["JobButtons"]]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(256, 256)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 stretch_mode = 0
 script = ExtResource("9_7relu")
@@ -254,18 +256,7 @@ size_flags_horizontal = 3
 
 [node name="JobButton1" type="TextureButton" parent="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons" groups=["JobButtons"]]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(256, 256)
-layout_mode = 2
-stretch_mode = 0
-script = ExtResource("9_7relu")
-
-[node name="Container4" type="Container" parent="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="JobButton2" type="TextureButton" parent="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons" groups=["JobButtons"]]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(256, 256)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 stretch_mode = 0
 script = ExtResource("9_7relu")
@@ -274,35 +265,53 @@ script = ExtResource("9_7relu")
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="JobButton2" type="TextureButton" parent="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons" groups=["JobButtons"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+stretch_mode = 0
+script = ExtResource("9_7relu")
+
+[node name="Container4" type="Container" parent="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
 [node name="JobDescription" type="Label" parent="UI/LevelUp/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 128)
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 20
 text = "Description here"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SkillInfo" type="Label" parent="UI/LevelUp/PanelContainer/VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 128)
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/LevelUp/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 48
+
+[node name="SkillInfo" type="Label" parent="UI/LevelUp/PanelContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
 text = "Skill information here"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
-[node name="PassiveInfo" type="Label" parent="UI/LevelUp/PanelContainer/VBoxContainer"]
+[node name="PassiveInfo" type="Label" parent="UI/LevelUp/PanelContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 20
 text = "Passive information here"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Confirm" type="Button" parent="UI/LevelUp/PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -311,9 +320,73 @@ theme_override_font_sizes/font_size = 64
 text = "Confirm
 "
 
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 512
+theme_override_constants/margin_top = 512
+theme_override_constants/margin_right = 512
+theme_override_constants/margin_bottom = 512
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="ChooseSkill" type="Label" parent="UI/MarginContainer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Choose Skill"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="JobButtons" type="HBoxContainer" parent="UI/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="JobButton0" type="TextureButton" parent="UI/MarginContainer/PanelContainer/VBoxContainer/JobButtons" groups=["JobButtons"]]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+stretch_mode = 0
+script = ExtResource("9_7relu")
+
+[node name="JobButton1" type="TextureButton" parent="UI/MarginContainer/PanelContainer/VBoxContainer/JobButtons" groups=["JobButtons"]]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+stretch_mode = 0
+script = ExtResource("9_7relu")
+
+[node name="JobButton2" type="TextureButton" parent="UI/MarginContainer/PanelContainer/VBoxContainer/JobButtons" groups=["JobButtons"]]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+stretch_mode = 0
+script = ExtResource("9_7relu")
+
+[node name="JobDescription" type="Label" parent="UI/MarginContainer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 48
+text = "Description here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Confirm" type="Button" parent="UI/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 64
+text = "Confirm
+"
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(351, 164)
-zoom = Vector2(2, 2)
 
 [connection signal="pressed" from="SelectOptions/PanelContainer/HBoxContainer/SelectButtons/MoveButton" to="." method="_on_move_button_pressed"]
 [connection signal="pressed" from="SelectOptions/PanelContainer/HBoxContainer/SelectButtons/ActionButton" to="." method="_on_action_button_pressed"]
@@ -321,3 +394,5 @@ zoom = Vector2(2, 2)
 [connection signal="timeout" from="UI/TurnTimerUI/TurnTimer" to="." method="_on_turn_timer_timeout"]
 [connection signal="pressed" from="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons/JobButton0" to="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons/JobButton0" method="_on_pressed"]
 [connection signal="pressed" from="UI/LevelUp/PanelContainer/VBoxContainer/Confirm" to="UI/LevelUp" method="_on_confirm_pressed"]
+[connection signal="pressed" from="UI/MarginContainer/PanelContainer/VBoxContainer/JobButtons/JobButton0" to="UI/MarginContainer/PanelContainer/VBoxContainer/JobButtons/JobButton0" method="_on_pressed"]
+[connection signal="pressed" from="UI/MarginContainer/PanelContainer/VBoxContainer/Confirm" to="UI/LevelUp" method="_on_confirm_pressed"]
