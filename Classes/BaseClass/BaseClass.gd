@@ -48,7 +48,6 @@ func attack():
 		
 
 func level_up_if_possible():
-	print("level up if possible")
 	if xp < max_xp:
 		return	# not possible to level yet
 	if xp >= max_xp:
@@ -76,6 +75,7 @@ func get_hit(damage):
 func add_job(job_name : String):
 	var job_node = load(Globals.jobs[job_name]).instantiate()
 	$Jobs.add_child(job_node)
+	ACTIONS.append(job_node.skill)
 	await update_sprite()
 
 
