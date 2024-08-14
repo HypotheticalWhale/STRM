@@ -7,6 +7,7 @@ func _on_confirm_pressed():
 	await unit_to_level.add_job(selected_job)
 	get_tree().paused = false
 	visible = false
+	$PanelContainer/VBoxContainer/Confirm.set_deferred("disabled", true)
 
 
 func update_jobs(new_jobs : Array[String]):
@@ -30,3 +31,5 @@ func update_selected_job_details():
 	%SkillInfo.text = new_job.skill
 	%PassiveInfo.text = new_job.passive
 	remove_child(new_job)
+	
+	$PanelContainer/VBoxContainer/Confirm.set_deferred("disabled", false)

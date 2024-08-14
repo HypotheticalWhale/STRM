@@ -11,9 +11,9 @@ var quests : Dictionary = {
 }
 var skills = {
 	"Sweep Attack": [Vector2(1,0),Vector2(0,1),Vector2(0,-1)],
-	"Trim Bushes": [Vector2(1,0),Vector2(0,1),Vector2(0,-1)],
+	"Trim Bushes": [Vector2(1,-1),Vector2(1,1),Vector2(2,0),Vector2(3,-1),Vector2(3,1),Vector2(4,-2),Vector2(4,2)],
 	"Backstab": [Vector2(1,0)],
-	"Piercing Ray":[Vector2(1,0),Vector2(2,0),Vector2(3,0),Vector2(4,0)]
+	"Piercing Ray":[Vector2(1,0),Vector2(2,0),Vector2(3,0),Vector2(4,0)],
 }
 
 var jobs : Dictionary = {
