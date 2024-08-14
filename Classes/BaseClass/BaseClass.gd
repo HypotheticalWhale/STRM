@@ -7,6 +7,7 @@ var TEAM
 var MOVEMENT
 var ACTIONS
 var DAMAGE
+var CURRENT_JOB
 var QUEST : String
 var POTENTIAL_JOBS : Array[String]
 

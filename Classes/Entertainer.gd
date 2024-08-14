@@ -6,6 +6,7 @@ func initialize_stats():
 	CURRENT_HEALTH = 40
 	DAMAGE = 10
 	MOVEMENT = 4
+	CURRENT_JOB = "Entertainer"
 	ACTIONS = ["Backstab"]
 	
 func initialize_sprites():

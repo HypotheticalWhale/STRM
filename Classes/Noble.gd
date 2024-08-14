@@ -6,6 +6,7 @@ func initialize_stats():
 	CURRENT_HEALTH = 30
 	DAMAGE = 10
 	MOVEMENT = 1
+	CURRENT_JOB = "Noble"
 	ACTIONS = ["Piercing Ray"]
 func initialize_sprites():
 	$RedSprite.texture = load("res://Assets/Sprites/Units/NobleRed.png")
