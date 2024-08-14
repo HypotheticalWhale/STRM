@@ -17,7 +17,7 @@ var skills = {
 }
 
 var jobs : Dictionary = {
-	"Garden" : "res://Jobs/Gardener.tscn",
+	"Gardener" : "res://Jobs/Gardener.tscn",
 	"Butler" : "res://Jobs/Butler.tscn",
 	"Chef" : "res://Jobs/Chef.tscn",
 	"Lawns Guard" : "res://Jobs/Lawnsguard.tscn",
