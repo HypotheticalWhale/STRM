@@ -22,7 +22,25 @@ var jobs : Dictionary = {
 	"chef" : "res://Jobs/Chef.tscn",
 	"lawnsguard" : "res://Jobs/Lawnsguard.tscn",
 	"dog_handler" : "res://Jobs/DogHandler.tscn",
-	"card_solider" : "res://Jobs/CardSoldier.tscn"
+	"card_solider" : "res://Jobs/CardSoldier.tscn",
+	# servants
+	#poltergeist - prankster, used to be a resident
+	#stonecarver - carves statues
+	#vaultsguard - guards the safe. very important dude
+	#messenger - sends mail by horse
+	#pigeon courier - sends messages with pigeons
+	
+	
+	# nobles
+	#vampire child - hes a noble because he uhh is cool
+	#flute boy - could be a girl
+	#
+	
+	# entertainers
+	#beastmaster - takes care of the animals in collection
+	#alcohol man - makes alcohol for the residents
+	#baby juggler - 
+
 }
 
 var passives : Dictionary = {

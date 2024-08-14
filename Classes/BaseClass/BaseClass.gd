@@ -51,6 +51,7 @@ func level_up_if_possible():
 	if xp < max_xp:
 		return	# not possible to level yet
 	if xp >= max_xp:
+		print("xp crossed")
 		xp = xp - max_xp
 		#AnimationPlayer.play("level_up")
 		var lvl_ui = get_tree().current_scene.get_node("UI/LevelUp")
