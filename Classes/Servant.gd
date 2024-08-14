@@ -6,9 +6,10 @@ func initialize_stats():
 	CURRENT_HEALTH = 60
 	MOVEMENT = 2
 	DAMAGE = 10
+	CURRENT_JOB = "Servant"
 	ACTIONS = ["Sweep Attack"]
 	QUEST = "fight"
-	POTENTIAL_JOBS = ["gardener", "gardener", "gardener"]
+	POTENTIAL_JOBS = ["Gardener", "Gardener", "Gardener"]
 
 
 func initialize_sprites():

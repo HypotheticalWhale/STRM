@@ -17,12 +17,12 @@ var skills = {
 }
 
 var jobs : Dictionary = {
-	"gardener" : "res://Jobs/Gardener.tscn",
-	"butler" : "res://Jobs/Butler.tscn",
-	"chef" : "res://Jobs/Chef.tscn",
-	"lawnsguard" : "res://Jobs/Lawnsguard.tscn",
-	"dog_handler" : "res://Jobs/DogHandler.tscn",
-	"card_solider" : "res://Jobs/CardSoldier.tscn"
+	"Garden" : "res://Jobs/Gardener.tscn",
+	"Butler" : "res://Jobs/Butler.tscn",
+	"Chef" : "res://Jobs/Chef.tscn",
+	"Lawns Guard" : "res://Jobs/Lawnsguard.tscn",
+	"Dog Handler" : "res://Jobs/DogHandler.tscn",
+	"Card Soldier" : "res://Jobs/CardSoldier.tscn"
 }
 
 var passives : Dictionary = {
