@@ -36,7 +36,7 @@ func _process(delta):
 			on_skill_pressed(button_pressed,calc_direction)
 
 func spawn_units():
-	var label_list = ["FirstExp", "SecondExp", "ThirdExp"]
+	var label_list = ["FirstExpContainer/FirstExp", "SecondExpContainer/SecondExp", "ThirdExpContainer/ThirdExp"]
 	var label_count = 0
 	var count = 2
 	for unit in PlayerData.player1_units.values():
@@ -45,7 +45,8 @@ func spawn_units():
 		tile_coords = Vector2(2,count)*Globals.TILE_SIZE
 		unit.global_position = tile_coords
 		all_tiles[tile_coords].occupied_by["unit"] = unit
-		get_node("UI/Player2/MarginContainer/"+label_list[label_count]).text = unit.CURRENT_JOB
+		unit.UI_EXP_LINK = "UI/Player1/MarginContainer/LabelContainer/"+label_list[label_count]		
+		get_node("UI/Player1/MarginContainer/LabelContainer/"+label_list[label_count]).text = unit.CURRENT_JOB+" "
 		count += 2
 		label_count += 1
 		
@@ -57,7 +58,8 @@ func spawn_units():
 		tile_coords = Vector2(GRID_SIZE[0]-1,count)*Globals.TILE_SIZE
 		unit.global_position = tile_coords
 		all_tiles[tile_coords].occupied_by["unit"] = unit
-		get_node("UI/Player2/MarginContainer/"+label_list[label_count]).text = unit.CURRENT_JOB		
+		unit.UI_EXP_LINK = "UI/Player2/MarginContainer/LabelContainer/"+label_list[label_count]
+		get_node("UI/Player2/MarginContainer/LabelContainer/"+label_list[label_count]).text = unit.CURRENT_JOB +" "
 		count += 2
 		label_count += 1
 		

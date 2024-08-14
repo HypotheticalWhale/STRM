@@ -8,6 +8,7 @@ var MOVEMENT
 var ACTIONS
 var DAMAGE
 var CURRENT_JOB
+var UI_EXP_LINK
 var QUEST : String
 var POTENTIAL_JOBS : Array[String]
 
@@ -25,8 +26,6 @@ func initialize_sprites():
 	pass
 	
 func initialize_stats():
-	xp = 0
-	max_xp = 100
 	pass
 
 func set_sprite_blue():
@@ -45,6 +44,7 @@ func set_sprite_red():
 func attack():
 	if QUEST == "fight":
 		xp += Globals.get_quest_xp(QUEST)
+		get_parent().get_node(UI_EXP_LINK).get_parent().get_child(1).value = xp
 		await level_up_if_possible()
 		
 
@@ -54,7 +54,6 @@ func level_up_if_possible():
 	if xp >= max_xp:
 		print("xp crossed")
 		xp = xp - max_xp
-		#AnimationPlayer.play("level_up")
 		var lvl_ui = get_tree().current_scene.get_node("UI/LevelUp")
 		lvl_ui.unit_to_level = self
 		get_tree().paused = true

@@ -100,21 +100,66 @@ offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/margin_left = 5
 
-[node name="TurnLabel" type="Label" parent="UI/Player1/MarginContainer"]
+[node name="LabelContainer" type="VBoxContainer" parent="UI/Player1/MarginContainer"]
+custom_minimum_size = Vector2(400, 2.08165e-12)
+layout_mode = 2
+
+[node name="TurnLabel" type="Label" parent="UI/Player1/MarginContainer/LabelContainer"]
 layout_mode = 2
 theme = ExtResource("2_vidso")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 text = "P1"
 
-[node name="FirstExp" type="Label" parent="UI/Player1/MarginContainer"]
+[node name="FirstExpContainer" type="HBoxContainer" parent="UI/Player1/MarginContainer/LabelContainer"]
+custom_minimum_size = Vector2(400, 2.08165e-12)
 layout_mode = 2
+theme_override_constants/separation = 10
 
-[node name="SecondExp" type="Label" parent="UI/Player1/MarginContainer"]
+[node name="FirstExp" type="Label" parent="UI/Player1/MarginContainer/LabelContainer/FirstExpContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 0.2
+text = "ligma"
 
-[node name="ThirdExp" type="Label" parent="UI/Player1/MarginContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="UI/Player1/MarginContainer/LabelContainer/FirstExpContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+show_percentage = false
+
+[node name="SecondExpContainer" type="HBoxContainer" parent="UI/Player1/MarginContainer/LabelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SecondExp" type="Label" parent="UI/Player1/MarginContainer/LabelContainer/SecondExpContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 0.2
+
+[node name="ProgressBar" type="ProgressBar" parent="UI/Player1/MarginContainer/LabelContainer/SecondExpContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+show_percentage = false
+
+[node name="ThirdExpContainer" type="HBoxContainer" parent="UI/Player1/MarginContainer/LabelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ThirdExp" type="Label" parent="UI/Player1/MarginContainer/LabelContainer/ThirdExpContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 0.2
+
+[node name="ProgressBar" type="ProgressBar" parent="UI/Player1/MarginContainer/LabelContainer/ThirdExpContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+show_percentage = false
 
 [node name="Player2" type="Control" parent="UI"]
 visible = false
@@ -129,21 +174,64 @@ offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/margin_left = 5
 
-[node name="TurnLabel" type="Label" parent="UI/Player2/MarginContainer"]
+[node name="LabelContainer" type="VBoxContainer" parent="UI/Player2/MarginContainer"]
+custom_minimum_size = Vector2(400, 2.08165e-12)
+layout_mode = 2
+
+[node name="TurnLabel" type="Label" parent="UI/Player2/MarginContainer/LabelContainer"]
 layout_mode = 2
 theme = ExtResource("2_vidso")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 text = "P2"
 
-[node name="FirstExp" type="Label" parent="UI/Player2/MarginContainer"]
+[node name="FirstExpContainer" type="HBoxContainer" parent="UI/Player2/MarginContainer/LabelContainer"]
 layout_mode = 2
+theme_override_constants/separation = 10
 
-[node name="SecondExp" type="Label" parent="UI/Player2/MarginContainer"]
+[node name="FirstExp" type="Label" parent="UI/Player2/MarginContainer/LabelContainer/FirstExpContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 0.2
 
-[node name="ThirdExp" type="Label" parent="UI/Player2/MarginContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="UI/Player2/MarginContainer/LabelContainer/FirstExpContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+show_percentage = false
+
+[node name="SecondExpContainer" type="HBoxContainer" parent="UI/Player2/MarginContainer/LabelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SecondExp" type="Label" parent="UI/Player2/MarginContainer/LabelContainer/SecondExpContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 0.2
+
+[node name="ProgressBar" type="ProgressBar" parent="UI/Player2/MarginContainer/LabelContainer/SecondExpContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+show_percentage = false
+
+[node name="ThirdExpContainer" type="HBoxContainer" parent="UI/Player2/MarginContainer/LabelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ThirdExp" type="Label" parent="UI/Player2/MarginContainer/LabelContainer/ThirdExpContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 0.2
+
+[node name="ProgressBar" type="ProgressBar" parent="UI/Player2/MarginContainer/LabelContainer/ThirdExpContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+show_percentage = false
 
 [node name="TurnTimerUI" type="PanelContainer" parent="UI"]
 anchors_preset = 1
