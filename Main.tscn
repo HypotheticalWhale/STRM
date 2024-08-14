@@ -107,6 +107,15 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 text = "P1"
 
+[node name="FirstExp" type="Label" parent="UI/Player1/MarginContainer"]
+layout_mode = 2
+
+[node name="SecondExp" type="Label" parent="UI/Player1/MarginContainer"]
+layout_mode = 2
+
+[node name="ThirdExp" type="Label" parent="UI/Player1/MarginContainer"]
+layout_mode = 2
+
 [node name="Player2" type="Control" parent="UI"]
 visible = false
 layout_mode = 3
@@ -126,6 +135,15 @@ theme = ExtResource("2_vidso")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 text = "P2"
+
+[node name="FirstExp" type="Label" parent="UI/Player2/MarginContainer"]
+layout_mode = 2
+
+[node name="SecondExp" type="Label" parent="UI/Player2/MarginContainer"]
+layout_mode = 2
+
+[node name="ThirdExp" type="Label" parent="UI/Player2/MarginContainer"]
+layout_mode = 2
 
 [node name="TurnTimerUI" type="PanelContainer" parent="UI"]
 anchors_preset = 1
