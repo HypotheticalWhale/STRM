@@ -507,7 +507,7 @@ theme = ExtResource("2_vidso")
 script = ExtResource("10_sy41c")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(351, 164)
+position = Vector2(361, 132)
 
 [connection signal="pressed" from="SelectOptions/PanelContainer/HBoxContainer/SelectButtons/MoveButton" to="." method="_on_move_button_pressed"]
 [connection signal="pressed" from="SelectOptions/PanelContainer/HBoxContainer/SelectButtons/ActionButton" to="." method="_on_action_button_pressed"]
