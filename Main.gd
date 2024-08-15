@@ -221,6 +221,11 @@ func _on_turn_timer_timeout():
 	if Globals.WHOSTURNISIT == "P2":		
 		turn_on_p2_ui()
 	
+	# show reminder for next players turn
+	get_node("UI/NextPlayerReady").visible = true
+	get_node("UI/NextPlayerReady").text = Globals.WHOSTURNISIT + "'s turn. Click to start."
+	get_tree().paused = true
+	
 func _on_action_button_pressed():
 	var button
 	var action_button_container = $SelectOptions/PanelContainer/HBoxContainer/ActionButtons

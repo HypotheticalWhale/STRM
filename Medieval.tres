@@ -1,17 +1,27 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bkqipfaxijp3i"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://bkqipfaxijp3i"]
 
 [ext_resource type="Texture2D" uid="uid://dxsi055t1wcnb" path="res://Assets/UI/ButtonNormal.png" id="1_0keg2"]
 [ext_resource type="FontFile" uid="uid://bh45ir4rss8hs" path="res://Fonts/royal.ttf" id="1_w0n03"]
 [ext_resource type="Texture2D" uid="uid://b1wnrp8q0hish" path="res://Assets/UI/MedievalPanel.png" id="1_y8y5v"]
+[ext_resource type="Texture2D" uid="uid://bvuvn0apogs72" path="res://Assets/UI/ButtonHover.png" id="2_2l8tr"]
 [ext_resource type="Texture2D" uid="uid://qupsi3grjt4h" path="res://Assets/UI/LabelBackground.png" id="2_sf2lc"]
 [ext_resource type="FontFile" uid="uid://blxvfg2chyfy7" path="res://Fonts/Pixeled English Font.ttf" id="3_wx55d"]
+[ext_resource type="Texture2D" uid="uid://c5gm7un8vpxtr" path="res://Assets/UI/BarBackground.png" id="6_tu5vj"]
+[ext_resource type="Texture2D" uid="uid://7k6kxxwto16t" path="res://Assets/UI/BarFill.png" id="7_q2xqm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0pnb6"]
+texture = ExtResource("2_2l8tr")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0e6wo"]
 texture = ExtResource("1_0keg2")
-texture_margin_left = 3.0
-texture_margin_top = 3.0
-texture_margin_right = 3.0
-texture_margin_bottom = 3.0
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uqel7"]
 texture = ExtResource("2_sf2lc")
@@ -27,11 +37,26 @@ texture_margin_top = 4.0
 texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gybm3"]
+texture = ExtResource("6_tu5vj")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_igi4g"]
+texture = ExtResource("7_q2xqm")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
 [resource]
 default_font = ExtResource("3_wx55d")
 default_font_size = 16
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/fonts/font = ExtResource("1_w0n03")
+Button/styles/hover = SubResource("StyleBoxTexture_0pnb6")
 Button/styles/normal = SubResource("StyleBoxTexture_0e6wo")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
@@ -39,3 +64,5 @@ Label/constants/outline_size = 2
 Label/fonts/font = ExtResource("1_w0n03")
 Label/styles/normal = SubResource("StyleBoxTexture_uqel7")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_iq4wv")
+ProgressBar/styles/background = SubResource("StyleBoxTexture_gybm3")
+ProgressBar/styles/fill = SubResource("StyleBoxTexture_igi4g")
