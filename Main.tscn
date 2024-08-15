@@ -514,6 +514,8 @@ position = Vector2(361, 132)
 [connection signal="pressed" from="SelectOptions/PanelContainer/HBoxContainer/SelectButtons/EndButton" to="." method="_on_end_button_pressed"]
 [connection signal="timeout" from="UI/TurnTimerUI/TurnTimer" to="." method="_on_turn_timer_timeout"]
 [connection signal="pressed" from="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons/JobButton0" to="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons/JobButton0" method="_on_pressed"]
+[connection signal="pressed" from="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons/JobButton1" to="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons/JobButton1" method="_on_pressed"]
+[connection signal="pressed" from="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons/JobButton2" to="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons/JobButton2" method="_on_pressed"]
 [connection signal="pressed" from="UI/LevelUp/PanelContainer/VBoxContainer/Confirm" to="UI/LevelUp" method="_on_confirm_pressed"]
 [connection signal="pressed" from="UI/MarginContainer/PanelContainer/VBoxContainer/JobButtons/JobButton0" to="UI/MarginContainer/PanelContainer/VBoxContainer/JobButtons/JobButton0" method="_on_pressed"]
 [connection signal="pressed" from="UI/MarginContainer/PanelContainer/VBoxContainer/Confirm" to="UI/LevelUp" method="_on_confirm_pressed"]
