@@ -21,7 +21,7 @@ var jobs : Dictionary = {
 	"Butler" : "res://Jobs/Butler.tscn",
 	"Chef" : "res://Jobs/Chef.tscn",
 	"Lawns Guard" : "res://Jobs/Lawnsguard.tscn",
-	"Dog Handler" : "res://Jobs/DogHandler.tscn",
+	"Dog Walker" : "res://Jobs/DogWalker.tscn",
 	"Card Soldier" : "res://Jobs/CardSoldier.tscn"
 	# servants
 	#poltergeist - prankster, used to be a resident

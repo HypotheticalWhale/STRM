@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlbpuljj7acba"
-path="res://.godot/imported/GardenerBluet.png-7bcc60767147868fb70dea515175c8e8.ctex"
+uid="uid://cj4unf8eyop4f"
+path="res://.godot/imported/GardenerBlue.png-57516a431484ca6d3b014e72b5ed45ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Units/GardenerBluet.png"
-dest_files=["res://.godot/imported/GardenerBluet.png-7bcc60767147868fb70dea515175c8e8.ctex"]
+source_file="res://Assets/Sprites/Units/GardenerBlue.png"
+dest_files=["res://.godot/imported/GardenerBlue.png-57516a431484ca6d3b014e72b5ed45ff.ctex"]
 
 [params]
 

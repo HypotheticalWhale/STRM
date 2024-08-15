@@ -7,7 +7,7 @@ func initialize_stats():
 	MOVEMENT = 2
 	DAMAGE = 10
 	xp = 0
-	max_xp = 100
+	max_xp = 50
 	CURRENT_JOB = "Servant"
 	ACTIONS = ["Sweep Attack"]
 	QUEST = "fight"

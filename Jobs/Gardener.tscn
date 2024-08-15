@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Jobs/Gardener.gd" id="2_bv5ve"]
 [ext_resource type="Texture2D" uid="uid://itjth5t82ow3" path="res://Assets/Sprites/Units/Gardener.png" id="3_5m7uf"]
 [ext_resource type="Texture2D" uid="uid://bqvjrjocfr2s5" path="res://Assets/Sprites/Units/GardenerRed.png" id="4_2u5ob"]
-[ext_resource type="Texture2D" uid="uid://dlbpuljj7acba" path="res://Assets/Sprites/Units/GardenerBluet.png" id="5_5ygsl"]
+[ext_resource type="Texture2D" uid="uid://cj4unf8eyop4f" path="res://Assets/Sprites/Units/GardenerBlue.png" id="5_c7hmt"]
 
 [node name="Gardener" instance=ExtResource("1_hsgxh")]
 script = ExtResource("2_bv5ve")
@@ -16,4 +16,4 @@ texture = ExtResource("3_5m7uf")
 texture = ExtResource("4_2u5ob")
 
 [node name="Blue" parent="." index="2"]
-texture = ExtResource("5_5ygsl")
+texture = ExtResource("5_c7hmt")
