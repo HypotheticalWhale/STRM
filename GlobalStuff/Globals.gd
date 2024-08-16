@@ -14,6 +14,7 @@ var skills = {
 	"Trim Bushes": [Vector2(1,-1),Vector2(1,1),Vector2(2,0),Vector2(3,-1),Vector2(3,1),Vector2(4,-2),Vector2(4,2)],
 	"Backstab": [Vector2(1,0)],
 	"Piercing Ray":[Vector2(1,0),Vector2(2,0),Vector2(3,0),Vector2(4,0)],
+	"Diamond Defence": [Vector2(1,0),Vector2(2,0),Vector2(3,0),Vector2(2,1),Vector2(2,-1)],
 	"Circular Strike" : [Vector2(1,0),Vector2(0,1),Vector2(0,-1),Vector2(-1,0),Vector2(-1,-1),Vector2(1,-1),Vector2(-1,1),Vector2(1,1)]
 }
 

@@ -35,7 +35,6 @@ func _on_input_event(viewport, event, shape_idx):
 ###################################### if player has moved with or used an action ######################################
 		# move already, now want to attack
 		if Globals.TAKENACTION and (available_attack_tile.visible == true or target_tile.visible == true):
-			print("i attack here")
 			for tile in get_parent().available_attack_tiles:
 				if get_parent().all_tiles[tile].occupied_by["unit"]:
 					get_parent().all_tiles[tile].occupied_by["unit"].get_hit(get_parent().selected_tile.occupied_by["unit"].DAMAGE)

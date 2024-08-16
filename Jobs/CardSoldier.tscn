@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmtv1jge2dat2"]
+
+[ext_resource type="PackedScene" uid="uid://b5uij24beffcq" path="res://Jobs/Job.tscn" id="1_j7oqw"]
+[ext_resource type="Script" path="res://Jobs/CardSoldier.gd" id="2_g0jvw"]
+[ext_resource type="Texture2D" uid="uid://fyuq0l1bj38h" path="res://Assets/Sprites/Units/CardSoldier.png" id="3_cbdr5"]
+[ext_resource type="Texture2D" uid="uid://h7tl17nqoddr" path="res://Assets/Sprites/Units/CardSoldierRed.png" id="4_hxjfo"]
+[ext_resource type="Texture2D" uid="uid://oai6n3xf57nl" path="res://Assets/Sprites/Units/CardSoldierBlue.png" id="5_016mj"]
+
+[node name="CardSoldier" instance=ExtResource("1_j7oqw")]
+script = ExtResource("2_g0jvw")
+
+[node name="Uncolored" parent="." index="0"]
+texture = ExtResource("3_cbdr5")
+
+[node name="Red" parent="." index="1"]
+texture = ExtResource("4_hxjfo")
+
+[node name="Blue" parent="." index="2"]
+texture = ExtResource("5_016mj")
