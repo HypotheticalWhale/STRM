@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckovunvacmkg1"]
+[gd_scene load_steps=6 format=3 uid="uid://bmtv1jge2dat2"]
 
 [ext_resource type="PackedScene" uid="uid://b5uij24beffcq" path="res://Jobs/Job.tscn" id="1_j7oqw"]
 [ext_resource type="Script" path="res://Jobs/CardSoldier.gd" id="2_g0jvw"]

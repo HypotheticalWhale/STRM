@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cuqjt6guxvtmo"]
+[gd_scene load_steps=6 format=3 uid="uid://cejf44rnjn4fd"]
 
 [ext_resource type="PackedScene" uid="uid://b5uij24beffcq" path="res://Jobs/Job.tscn" id="1_udm05"]
 [ext_resource type="Script" path="res://Jobs/Charioteer.gd" id="2_4gxtq"]

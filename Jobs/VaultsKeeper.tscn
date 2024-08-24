@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dat2p2d6akc3q"]
+[gd_scene load_steps=6 format=3 uid="uid://dhvpr6731kajt"]
 
 [ext_resource type="PackedScene" uid="uid://b5uij24beffcq" path="res://Jobs/Job.tscn" id="1_wst2j"]
 [ext_resource type="Script" path="res://Jobs/VaultsKeeper.gd" id="2_dcvim"]
