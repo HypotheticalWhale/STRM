@@ -11,4 +11,5 @@ func update_textures():
 func _on_pressed():
 	await LevelUpUI.set_selected_job(job)
 	await LevelUpUI.update_selected_job_details()
+	LevelUpUI.get_node("PanelContainer/VBoxContainer/ChooseSkill").text = job
 	

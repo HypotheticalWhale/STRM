@@ -8,3 +8,5 @@ func _ready():
 	skill = "Trim Bushes"
 	passive = "Green Thumbs"
 	potential_jobs = ["Vaults Keeper", "Dog Walker", "Card Soldier"]
+	MOVEMENT = 5
+	DAMAGE = 5

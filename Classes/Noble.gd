@@ -2,10 +2,10 @@ extends BaseClass
 
 
 func initialize_stats():
-	MAX_HEALTH = 30
-	CURRENT_HEALTH = 30
+	MAX_HEALTH = 10
+	CURRENT_HEALTH = 10
 	DAMAGE = 10
-	MOVEMENT = 1
+	MOVEMENT = 2
 	CURRENT_JOB = "Noble"
 	ACTIONS = ["Piercing Ray"]
 	xp = 0

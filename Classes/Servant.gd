@@ -4,10 +4,10 @@ extends BaseClass
 func initialize_stats():
 	MAX_HEALTH = 60
 	CURRENT_HEALTH = 60
-	MOVEMENT = 2
-	DAMAGE = 10
+	MOVEMENT = 3
+	DAMAGE = 20
 	xp = 0
-	max_xp = 50
+	max_xp = 100
 	CURRENT_JOB = "Servant"
 	ACTIONS = ["Sweep Attack"]
 	QUEST = "fight"
