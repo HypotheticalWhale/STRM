@@ -51,7 +51,7 @@ func attack():
 	if QUEST == "fight":
 		if is_potential_jobs_empty():
 			return
-		xp = max(max_xp, xp + Globals.get_quest_xp(QUEST))
+		xp = xp + Globals.get_quest_xp(QUEST)
 		get_parent().get_node(UI_EXP_LINK).get_parent().get_child(1).value = xp
 		await level_up_if_possible()
 		
