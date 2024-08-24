@@ -41,9 +41,17 @@ func set_sprite_red():
 		$BlueSprite.visible = false
 
 
+func is_potential_jobs_empty():
+	if len($Jobs.get_children()) > 0 and len($Jobs.get_children()[-1].potential_jobs) == 0:	# if unit is at max job tier, do nothing
+		return true
+	return false
+	
+	
 func attack():
 	if QUEST == "fight":
-		xp += Globals.get_quest_xp(QUEST)
+		if is_potential_jobs_empty():
+			return
+		xp = max(max_xp, xp + Globals.get_quest_xp(QUEST))
 		get_parent().get_node(UI_EXP_LINK).get_parent().get_child(1).value = xp
 		await level_up_if_possible()
 		
@@ -63,6 +71,7 @@ func level_up_if_possible():
 			lvl_ui.update_jobs(POTENTIAL_JOBS)
 		else:	# if unit has a job, take the most recent one
 			lvl_ui.update_jobs($Jobs.get_children()[-1].potential_jobs)
+
 
 func get_hit(damage):
 	CURRENT_HEALTH -= damage

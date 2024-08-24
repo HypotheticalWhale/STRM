@@ -1,19 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhvpr6731kajt"]
+[gd_scene load_steps=6 format=3 uid="uid://dat2p2d6akc3q"]
 
-[ext_resource type="PackedScene" uid="uid://b5uij24beffcq" path="res://Jobs/Job.tscn" id="1_a454v"]
-[ext_resource type="Script" path="res://Jobs/VaultsKeeper.gd" id="2_524pl"]
-[ext_resource type="Texture2D" uid="uid://bxctdvlofco8q" path="res://Assets/Sprites/Units/LawnsGuard.png" id="3_l225i"]
-[ext_resource type="Texture2D" uid="uid://08c068hjjbvg" path="res://Assets/Sprites/Units/LawnsGuardRed.png" id="4_x0jab"]
-[ext_resource type="Texture2D" uid="uid://blp1gt12cg11x" path="res://Assets/Sprites/Units/LawnsGuardBlue.png" id="5_d87k1"]
+[ext_resource type="PackedScene" uid="uid://b5uij24beffcq" path="res://Jobs/Job.tscn" id="1_wst2j"]
+[ext_resource type="Script" path="res://Jobs/VaultsKeeper.gd" id="2_dcvim"]
+[ext_resource type="Texture2D" uid="uid://bxctdvlofco8q" path="res://Assets/Sprites/Units/LawnsGuard.png" id="3_ymhiy"]
+[ext_resource type="Texture2D" uid="uid://08c068hjjbvg" path="res://Assets/Sprites/Units/LawnsGuardRed.png" id="4_t3dqg"]
+[ext_resource type="Texture2D" uid="uid://blp1gt12cg11x" path="res://Assets/Sprites/Units/LawnsGuardBlue.png" id="5_wobeb"]
 
-[node name="VaultsKeeper" instance=ExtResource("1_a454v")]
-script = ExtResource("2_524pl")
+[node name="VaultsKeeper" instance=ExtResource("1_wst2j")]
+script = ExtResource("2_dcvim")
 
 [node name="Uncolored" parent="." index="0"]
-texture = ExtResource("3_l225i")
+texture = ExtResource("3_ymhiy")
 
 [node name="Red" parent="." index="1"]
-texture = ExtResource("4_x0jab")
+texture = ExtResource("4_t3dqg")
 
 [node name="Blue" parent="." index="2"]
-texture = ExtResource("5_d87k1")
+texture = ExtResource("5_wobeb")

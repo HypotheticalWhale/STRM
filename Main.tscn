@@ -400,7 +400,18 @@ custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="SkillInfo" type="Label" parent="UI/LevelUp/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Skill" type="VBoxContainer" parent="UI/LevelUp/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SkillLabel" type="Label" parent="UI/LevelUp/PanelContainer/VBoxContainer/HBoxContainer/Skill"]
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.5
+text = "Skill"
+horizontal_alignment = 1
+
+[node name="SkillInfo" type="Label" parent="UI/LevelUp/PanelContainer/VBoxContainer/HBoxContainer/Skill"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -411,7 +422,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="PassiveInfo" type="Label" parent="UI/LevelUp/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Passive" type="VBoxContainer" parent="UI/LevelUp/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PassiveLabel" type="Label" parent="UI/LevelUp/PanelContainer/VBoxContainer/HBoxContainer/Passive"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+text = "Passive"
+horizontal_alignment = 1
+
+[node name="PassiveInfo" type="Label" parent="UI/LevelUp/PanelContainer/VBoxContainer/HBoxContainer/Passive"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
