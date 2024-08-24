@@ -22,7 +22,7 @@ var jobs : Dictionary = {
 	"Gardener" : "res://Jobs/Gardener.tscn",
 	"Butler" : "res://Jobs/Butler.tscn",
 	"Chef" : "res://Jobs/Chef.tscn",
-	"Lawns Guard" : "res://Jobs/LawnsGuard.tscn",
+	"Vaults Keeper" : "res://Jobs/VaultsKeeper.tscn",
 	"Dog Walker" : "res://Jobs/DogWalker.tscn",
 	"Card Soldier" : "res://Jobs/CardSoldier.tscn"
 	# servants

@@ -6,3 +6,7 @@ var description : String
 var skill : String
 var passive : String
 var potential_jobs : Array[String]
+var MAX_HEALTH
+var CURRENT_HEALTH 
+var MOVEMENT
+var DAMAGE

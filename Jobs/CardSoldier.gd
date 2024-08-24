@@ -7,4 +7,5 @@ func _ready():
 	description = "A diamond in the rough, wait is this a crossover?"
 	skill = "Diamond Defence"
 	passive = "Die Mond"
-	potential_jobs = ["Lawns Guard", "Dog Walker", "Card Soldier"]
+	potential_jobs = ["Vaults Keeper", "Dog Walker", "Card Soldier"]
+	CURRENT_HEALTH
