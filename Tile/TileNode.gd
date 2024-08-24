@@ -3,8 +3,8 @@ extends Area2D
 var has_object : bool = false
 var tile_coordinates
 var occupied_by = {
-	"unit" : "",
-	"terrain": "",
+	"unit" : null,
+	"terrain": null,
 }
 @onready var highlighted_tile = $Selected
 @onready var available_tile = $Available

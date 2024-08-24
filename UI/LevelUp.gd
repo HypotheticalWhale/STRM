@@ -8,7 +8,7 @@ func _on_confirm_pressed():
 	get_tree().paused = false
 	visible = false
 	$PanelContainer/VBoxContainer/Confirm.set_deferred("disabled", true)
-
+	$PanelContainer/VBoxContainer/ChooseSkill.text = "Choose Skill"
 
 func update_jobs(new_jobs : Array[String]):
 	randomize()

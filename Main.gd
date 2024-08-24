@@ -88,7 +88,7 @@ func spawn_tiles():
 func get_occupied_tiles():
 	var occupied_tiles = []
 	for tile in all_tiles.values():
-		if tile.occupied_by != null:
+		if tile.occupied_by["unit"] != null:
 			occupied_tiles.append(tile)
 	return occupied_tiles
 
