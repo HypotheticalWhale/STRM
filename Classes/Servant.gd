@@ -11,12 +11,9 @@ func initialize_stats():
 	CURRENT_JOB = "Servant"
 	ACTIONS = ["Sweep Attack"]
 	QUEST = "fight"
-	POTENTIAL_JOBS = ["Gardener", "Lawns Guard", "Card Soldier"]
+	POTENTIAL_JOBS = ["Gardener", "Bell Boy", "Messenger"]
 
 
 func initialize_sprites():
 	$RedSprite.texture = load("res://Assets/Sprites/Units/ServantRed.png")
 	$BlueSprite.texture = load("res://Assets/Sprites/Units/ServantBlue.png")
-
-
-

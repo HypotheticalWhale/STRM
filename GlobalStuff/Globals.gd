@@ -19,12 +19,15 @@ var skills = {
 }
 
 var jobs : Dictionary = {
-	"Gardener" : "res://Jobs/Gardener.tscn",
-	"Butler" : "res://Jobs/Butler.tscn",
-	"Chef" : "res://Jobs/Chef.tscn",
-	"Lawns Guard" : "res://Jobs/LawnsGuard.tscn",
+	"Gardener": "res://Jobs/Gardener.tscn",
+	"Butler": "res://Jobs/Butler.tscn",
 	"Dog Walker" : "res://Jobs/DogWalker.tscn",
-	"Card Soldier" : "res://Jobs/CardSoldier.tscn"
+	"Card Soldier" : "res://Jobs/CardSoldier.tscn",
+	"Bell Boy" : "res://Jobs/BellBoy.tscn",
+	"Messenger": "res://Jobs/Messenger.tscn",
+	"Charioteer": "res://Jobs/Charioteer.tscn",
+	"Pigeon Commander": "res://Jobs/PigeonCommander.tscn",
+	"Vaults Keeper": "res://Jobs/VaultsKeeper.tscn",
 	# servants
 	#poltergeist - prankster, used to be a resident
 	#stonecarver - carves statues

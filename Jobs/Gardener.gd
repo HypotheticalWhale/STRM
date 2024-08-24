@@ -7,4 +7,4 @@ func _ready():
 	description = "Specializes in pruning trees and hooligans."
 	skill = "Trim Bushes"
 	passive = "Green Thumbs"
-	potential_jobs = ["Lawns Guard", "Dog Walker", "Card Soldier"]
+	potential_jobs = ["Vaults Keeper", "Dog Walker", "Card Soldier"]

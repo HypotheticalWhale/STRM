@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://cuqjt6guxvtmo"]
+
+[ext_resource type="PackedScene" uid="uid://b5uij24beffcq" path="res://Jobs/Job.tscn" id="1_udm05"]
+[ext_resource type="Script" path="res://Jobs/Charioteer.gd" id="2_4gxtq"]
+[ext_resource type="Texture2D" uid="uid://itjth5t82ow3" path="res://Assets/Sprites/Units/Gardener.png" id="3_0dtvx"]
+[ext_resource type="Texture2D" uid="uid://bqvjrjocfr2s5" path="res://Assets/Sprites/Units/GardenerRed.png" id="4_b2rdw"]
+[ext_resource type="Texture2D" uid="uid://cj4unf8eyop4f" path="res://Assets/Sprites/Units/GardenerBlue.png" id="5_2ic4k"]
+
+[node name="Charioteer" instance=ExtResource("1_udm05")]
+script = ExtResource("2_4gxtq")
+
+[node name="Uncolored" parent="." index="0"]
+texture = ExtResource("3_0dtvx")
+
+[node name="Red" parent="." index="1"]
+texture = ExtResource("4_b2rdw")
+
+[node name="Blue" parent="." index="2"]
+texture = ExtResource("5_2ic4k")
