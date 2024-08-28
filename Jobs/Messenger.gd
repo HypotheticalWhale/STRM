@@ -8,4 +8,6 @@ func _ready():
 	skill = "Fleet-footed Kick."	# dashes two squares (in one of 8 directions)
 	passive = "Fast runner"		# at the end any movement/active, deal damage to all adjacent units
 	potential_jobs = ["Charioteer", "Pigeon Commander", "Dog Walker"]
-	
+	MAX_HEALTH = 5
+	MOVEMENT = 3
+	DAMAGE = 5
