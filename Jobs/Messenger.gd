@@ -5,7 +5,7 @@ extends Job
 func _ready():
 	job_name = "Messenger"
 	description = "Used to be a triathlete."
-	skill = "Fleet-footed Kick."
-	passive = "Fast runner"
+	skill = "Fleet-footed Kick."	# dashes two squares (in one of 8 directions)
+	passive = "Fast runner"		# at the end any movement/active, deal damage to all adjacent units
 	potential_jobs = ["Charioteer", "Pigeon Commander", "Dog Walker"]
 	

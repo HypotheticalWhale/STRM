@@ -5,7 +5,7 @@ extends Job
 func _ready():
 	job_name = "Bell Boy"
 	description = "Charming, disarming lad."
-	skill = "Your weapons, please."
-	passive = "Kleptomaniac"
+	skill = "Your weapons, please."	# displaces target unit by 2 squares and disables them
+	passive = "Kleptomaniac"	# anytime he does damage, he gains attack
 	potential_jobs = ["Butler", "Vaults Keeper", "Charioteer"]
 	
