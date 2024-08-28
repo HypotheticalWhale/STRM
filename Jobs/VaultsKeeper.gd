@@ -7,3 +7,7 @@ func _ready():
 	skill = "Call the guards!"	# Strong melee area attack
 	passive = "Really tough."	# takes half damage
 	potential_jobs = []
+	MAX_HEALTH = 15
+	MOVEMENT = 2
+	DAMAGE = 10
+	

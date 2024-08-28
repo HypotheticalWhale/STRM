@@ -78,10 +78,6 @@ func get_hit(damage):
 	if CURRENT_HEALTH <= 0:
 		print("im ded")
 		self.queue_free()
-	for tile in get_parent().get_occupied_tiles():
-		print(typeof(tile.occupied_by["unit"]))
-		if self == tile.occupied_by["unit"]:
-			print(tile)
 	print("I get hit for: ", damage)
 	print("Current Health/Max Health: ",CURRENT_HEALTH,"/",MAX_HEALTH)
 
@@ -90,10 +86,10 @@ func add_job(job_name : String):
 	var job_node = load(Globals.jobs[job_name]).instantiate()
 	$Jobs.add_child(job_node)
 	ACTIONS.append(job_node.skill)
-	CURRENT_HEALTH = job_node.CURRENT_HEALTH
-	MAX_HEALTH = job_node.MAX_HEALTH
+	MAX_HEALTH += job_node.MAX_HEALTH
+	CURRENT_HEALTH = MAX_HEALTH
 	MOVEMENT = job_node.MOVEMENT
-	DAMAGE = job_node.DAMAGE
+	DAMAGE += job_node.DAMAGE
 	
 	await update_sprite()
 
