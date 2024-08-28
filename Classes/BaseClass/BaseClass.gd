@@ -93,7 +93,7 @@ func add_job(job_name : String):
 	CURRENT_HEALTH = job_node.CURRENT_HEALTH
 	MAX_HEALTH = job_node.MAX_HEALTH
 	MOVEMENT = job_node.MOVEMENT
-	DAMAGE = job_node.DAMAGE
+	DAMAGE += job_node.DAMAGE
 	
 	await update_sprite()
 

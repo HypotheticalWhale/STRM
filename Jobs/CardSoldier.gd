@@ -8,3 +8,5 @@ func _ready():
 	skill = "Diamond Defence"
 	passive = "Die Mond"
 	potential_jobs = []
+	MOVEMENT = 2
+	DAMAGE = 10

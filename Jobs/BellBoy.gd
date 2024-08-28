@@ -8,4 +8,5 @@ func _ready():
 	skill = "Your weapons, please."	# displaces target unit by 2 squares and disables them
 	passive = "Kleptomaniac"	# anytime he does damage, he gains attack
 	potential_jobs = ["Butler", "Vaults Keeper", "Charioteer"]
-	
+	MOVEMENT = 2
+	DAMAGE = 5
