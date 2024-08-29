@@ -107,6 +107,10 @@ func _on_input_event(viewport, event, shape_idx):
 				for tile in get_parent().available_attack_tiles:
 					if get_parent().all_tiles[tile].occupied_by["unit"]:
 						get_parent().all_tiles[tile].occupied_by["unit"].get_hit(get_parent().selected_tile.occupied_by["unit"].DAMAGE)
+						# note: need to know the skill used here, but this tilenode does not know
+						#get_parent().all_tiles[tile].occupied_by["unit"].get_effected(Globals.skills[get_parent().selected_tile.occupied_by["unit"].get_current_job()])
+
+						
 				Globals.TAKENACTION = get_parent().selected_tile.occupied_by["unit"]
 				get_parent().clear_available_attack_tiles()
 				get_parent().disable_action_button()
