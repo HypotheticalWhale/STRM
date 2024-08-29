@@ -36,24 +36,24 @@ func _on_input_event(viewport, event, shape_idx):
 		# move already, now want to attack
 		if Globals.TAKENACTION and (available_attack_tile.visible == true or target_tile.visible == true):
 			for tile in get_parent().available_attack_tiles:
+				var attack_tile_info = get_parent().available_attack_tiles[tile]
 				if get_parent().all_tiles[tile].occupied_by["unit"]:
-					get_parent().all_tiles[tile].occupied_by["unit"].get_hit(get_parent().selected_tile.occupied_by["unit"].DAMAGE)
+					# attack_tile_info contains a dictionary with various attack details such as damage
+					get_parent().all_tiles[tile].occupied_by["unit"].get_hit(attack_tile_info)
 			get_parent().attacking = false
 			get_parent().clear_available_tiles()			
 			get_parent().clear_available_attack_tiles()
 			get_parent().hide_select_menu()
 			get_parent().hide_info_menu()
 			get_parent().disable_action_button()
-			# start debug level up
-			get_parent().selected_tile.occupied_by["unit"].attack()
-			# end debug level up
+			await Globals.complete_fight_quest(Globals.TAKENACTION)
 			return
 			
 		# attack already, now want to move
 		if Globals.TAKENACTION and available_tile.visible == true:
 			occupied_by["unit"] = get_parent().selected_tile.occupied_by["unit"]
 			get_parent().selected_tile.occupied_by["unit"].global_position = global_position
-			get_parent().selected_tile.occupied_by["unit"] = ""
+			get_parent().selected_tile.occupied_by["unit"] = null
 			get_parent().disable_move_button()
 			get_parent().clear_available_tiles()			
 			get_parent().clear_available_attack_tiles()
@@ -99,23 +99,22 @@ func _on_input_event(viewport, event, shape_idx):
 				occupied_by["unit"] = get_parent().selected_tile.occupied_by["unit"]
 				get_parent().selected_tile.occupied_by["unit"].global_position = global_position
 				Globals.TAKENACTION = get_parent().selected_tile.occupied_by["unit"]
-				get_parent().selected_tile.occupied_by["unit"] = ""
+				get_parent().selected_tile.occupied_by["unit"] = null
 				get_parent().disable_move_button()
 			# havent move yet but want to attack
 			elif available_attack_tile.visible == true or target_tile.visible == true:
 				print("i attack here")
 				for tile in get_parent().available_attack_tiles:
 					if get_parent().all_tiles[tile].occupied_by["unit"]:
-						get_parent().all_tiles[tile].occupied_by["unit"].get_hit(get_parent().selected_tile.occupied_by["unit"].DAMAGE)
-						# note: need to know the skill used here, but this tilenode does not know
-						#get_parent().all_tiles[tile].occupied_by["unit"].get_effected(Globals.skills[get_parent().selected_tile.occupied_by["unit"].get_current_job()])
-
+						# attack_tile_info contains a dictionary with various attack details such as damage
+						var attack_tile_info = get_parent().available_attack_tiles[tile]
+						get_parent().all_tiles[tile].occupied_by["unit"].get_hit(attack_tile_info)
 						
 				Globals.TAKENACTION = get_parent().selected_tile.occupied_by["unit"]
 				get_parent().clear_available_attack_tiles()
 				get_parent().disable_action_button()
 				get_parent().attacking = false
-				get_parent().selected_tile.occupied_by["unit"].attack()
+				await Globals.complete_fight_quest(Globals.TAKENACTION)
 				
 			get_parent().clear_available_tiles()						
 			get_parent().clear_available_attack_tiles()

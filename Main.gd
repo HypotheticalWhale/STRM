@@ -264,32 +264,36 @@ func on_skill_pressed(button,direction):
 		grid_pos = selected_tile.global_position + tile * Globals.TILE_SIZE
 		if grid_pos not in valid_tiles:
 			continue
-		if not all_tiles[grid_pos].occupied_by["unit"]:	# pass in the damage and effects of a skill to each tile
-			all_tiles[grid_pos].show_available_attack_tile()
-			available_attack_tiles[grid_pos] = {}
 			
-			# calculate damage
-			var base_damage = button.skill_owner.DAMAGE
-			var skill_damage_multiplier = Globals.skills[button.skill_name]["damage multiplier"]
-			var backstab_damage_multiplier = 1.0
-			if Globals.skills[button.skill_name]["optional effects"].has("backstab"):
-				# also check if unit is behind another unit
-				backstab_damage_multiplier = Globals.skills[button.skill_name]["optional effects"]["backstab"]
-			var sweet_spot_damage_multiplier = 1.0
-			if Globals.skills[button.skill_name]["optional effects"].has("sweet spot"):
-				var sweet_spot_tile = Globals.rotate_coords_to_direction(direction, [Globals.skills[button.skill_name]["optional effects"]["sweet spot"]])[0]
-				if tile == sweet_spot_tile:
-					sweet_spot_damage_multiplier = 2
-			available_attack_tiles[grid_pos]["damage"] = base_damage * skill_damage_multiplier * backstab_damage_multiplier * sweet_spot_damage_multiplier
-			continue
-		#if Globals.WHOSTURNISIT == all_tiles[grid_pos].occupied_by["unit"].TEAM:
-			#all_tiles[grid_pos].show_target_tile()
-			#available_attack_tiles.append(grid_pos)		
-		#all_tiles[grid_pos].show_target_tile()
-		#available_attack_tiles.append(grid_pos)	
+		if not all_tiles[grid_pos].occupied_by["unit"]:
+			all_tiles[grid_pos].show_available_attack_tile()
+			
+		else: 
+			all_tiles[grid_pos].show_target_tile()
+		
+		# pass in damage and effects of a skill to each tile
+		available_attack_tiles[grid_pos] = {}
+		
+		# calculate damage and add it to available_attack_tiles[grid_pos]
+		var base_damage = button.skill_owner.DAMAGE
+		var skill_damage_multiplier = Globals.skills[button.skill_name]["damage multiplier"]
+		var sweet_spot_damage_multiplier = 1.0
+		if Globals.skills[button.skill_name]["optional effects"].has("sweet spot"):
+			var sweet_spot_tile = Globals.rotate_coords_to_direction(direction, [Globals.skills[button.skill_name]["optional effects"]["sweet spot"]])[0]
+			if tile == sweet_spot_tile:
+				sweet_spot_damage_multiplier = 2.0
+		available_attack_tiles[grid_pos]["damage"] = base_damage * skill_damage_multiplier * sweet_spot_damage_multiplier
+		
+		# account for knockback and add it to available_attack_tiles[grid_pos]
+		if Globals.skills[button.skill_name]["optional effects"].has("knockback"):
+			available_attack_tiles[grid_pos]["knockback"] = {}
+			available_attack_tiles[grid_pos]["knockback"]["direction"] = direction
+			available_attack_tiles[grid_pos]["knockback"]["distance"] = Globals.skills[button.skill_name]["optional effects"]["knockback"]
+			 
 	hide_action_buttons()
 	hide_select_menu()
-			
+
+
 func get_cursor_direction_relative_to_node(node: Node2D) -> String:
 	if not highlighted_tile:
 		return mouse_relative_direction

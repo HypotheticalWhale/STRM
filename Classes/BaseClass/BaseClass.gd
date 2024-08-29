@@ -45,42 +45,62 @@ func is_potential_jobs_empty():
 	if len($Jobs.get_children()) > 0 and len($Jobs.get_children()[-1].potential_jobs) == 0:	# if unit is at max job tier, do nothing
 		return true
 	return false
-	
-	
-func attack():
-	if QUEST == "fight":
-		if is_potential_jobs_empty():
-			return
-		xp = xp + Globals.get_quest_xp(QUEST)
-		get_parent().get_node(UI_EXP_LINK).get_parent().get_child(1).value = xp
-		await level_up_if_possible()
 		
 
-func level_up_if_possible():
-	if xp < max_xp:
-		return	# not possible to level yet
-	if xp >= max_xp:
-		print("xp crossed")
-		xp = xp - max_xp
-		var lvl_ui = get_tree().current_scene.get_node("UI/LevelUp")
-		lvl_ui.unit_to_level = self
-		get_tree().paused = true
-		lvl_ui.visible = true
-		
-		if len($Jobs.get_children()) == 0:	# if unit has no jobs yet
-			lvl_ui.update_jobs(POTENTIAL_JOBS)
-		else:	# if unit has a job, take the most recent one
-			lvl_ui.update_jobs($Jobs.get_children()[-1].potential_jobs)
+func level_up():
+	print("levelling up")
+	xp = xp - max_xp
+	var lvl_ui = get_tree().current_scene.get_node("UI/LevelUp")
+	lvl_ui.unit_to_level = self
+	get_tree().paused = true
+	lvl_ui.visible = true
+	
+	if len($Jobs.get_children()) == 0:	# if unit has no jobs yet
+		lvl_ui.update_jobs(POTENTIAL_JOBS)
+	else:	# if unit has a job, take the most recent one
+		lvl_ui.update_jobs($Jobs.get_children()[-1].potential_jobs)
 
 
-func get_hit(damage):
-	CURRENT_HEALTH -= damage
+func get_hit(attack_info: Dictionary):
+	# damage
+	CURRENT_HEALTH -= attack_info["damage"]
 	if CURRENT_HEALTH <= 0:
 		print("im ded")
+		get_tree().current_scene.all_tiles[global_position].occupied_by["unit"] = null
 		self.queue_free()
-	print("I get hit for: ", damage)
+	print("I get hit for: ", attack_info["damage"])
 	print("Current Health/Max Health: ",CURRENT_HEALTH,"/",MAX_HEALTH)
-
+	
+	# knockback
+	if attack_info.has("knockback"):
+		print("has knockback: ", attack_info["knockback"])
+		var destination_coords: Vector2 = global_position
+		var direction: String = attack_info["knockback"]["direction"]
+		var distance: int = attack_info["knockback"]["distance"]
+		var step_vector: Vector2
+		
+		if direction == "E":
+			step_vector = Vector2(1,0) * Globals.TILE_SIZE
+		if direction == "N":
+			step_vector = Vector2(0,-1) * Globals.TILE_SIZE
+		if direction == "W":
+			step_vector = Vector2(-1,0) * Globals.TILE_SIZE
+		if direction == "S":
+			step_vector = Vector2(0,1) * Globals.TILE_SIZE
+	
+		for i in range(distance):
+			var new_destination_coords: Vector2 = destination_coords + step_vector
+			if new_destination_coords not in get_tree().current_scene.valid_tiles:
+				print("can't knock back to invalid tile")
+				break
+			if get_tree().current_scene.all_tiles[new_destination_coords].occupied_by["unit"] != null:
+				print("can't knockback if theres a dude there")
+				break
+			destination_coords = new_destination_coords
+		
+		get_tree().current_scene.all_tiles[global_position].occupied_by["unit"] = null
+		global_position = destination_coords
+		get_tree().current_scene.all_tiles[global_position].occupied_by["unit"] = self
 
 func add_job(job_name : String):
 	var job_node = load(Globals.jobs[job_name]).instantiate()
