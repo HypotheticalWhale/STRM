@@ -6,16 +6,44 @@ var TAKENACTION
 var quests : Dictionary = {
 	"fight" : {
 		"description" : "get hit or hit something",
-		"reward" : 50	#gains 50 xp
+		"reward" : 100	#gains 50 xp
 	}
 }
 var skills = {
-	"Sweep Attack": [Vector2(1,0),Vector2(0,1),Vector2(0,-1)],
-	"Trim Bushes": [Vector2(1,-1),Vector2(1,1),Vector2(2,0),Vector2(3,-1),Vector2(3,1),Vector2(4,-2),Vector2(4,2)],
-	"Backstab": [Vector2(1,0)],
-	"Piercing Ray":[Vector2(1,0),Vector2(2,0),Vector2(3,0),Vector2(4,0)],
-	"Diamond Defence": [Vector2(1,0),Vector2(2,0),Vector2(3,0),Vector2(2,1),Vector2(2,-1)],
-	"Circular Strike" : [Vector2(1,0),Vector2(0,1),Vector2(0,-1),Vector2(-1,0),Vector2(-1,-1),Vector2(1,-1),Vector2(-1,1),Vector2(1,1)]
+	"Sweep Attack": {
+		"shape": [Vector2(1,0),Vector2(0,1),Vector2(0,-1)],
+		"damage multiplier": 0.1,
+		"optional effects": {
+			"knockback": 3
+		}
+	},
+	"Trim Bushes": {
+		"shape": [Vector2(1,-1),Vector2(1,1),Vector2(2,0),Vector2(3,-1),Vector2(3,1),Vector2(4,-2),Vector2(4,2)],
+		"damage multiplier": 1.1,
+		"optional effects": {
+			"sweet spot": Vector2(1,1)	# deals double damage at Vector2(1,1)
+		}
+	},
+	"Backstab": {
+		"shape": [Vector2(1,0)],
+		"damage multiplier": 1.0,
+		"optional effects": {
+			#"backstab": 1.5	# backstab modifies damage by 1.5X
+		}
+	},
+	"Piercing Ray": {
+		"shape": [Vector2(1,0),Vector2(2,0),Vector2(3,0),Vector2(4,0)],
+		"damage multiplier": 1.0,
+		"optional effects": {}
+	},
+	"Your weapons, please.": {
+		"shape": [Vector2(1,0), Vector2(2,0)],
+		"damage multiplier": 0.1,
+		"optional effects": {
+			"knockback": 2,	# knocks back 2 squares
+			"disable": 1	# disables unit for 1 turn
+		}
+	}
 }
 
 var jobs : Dictionary = {
@@ -81,21 +109,33 @@ func show_tile_info(tile : Object):
 func get_quest_xp(completed_quest : String):
 	return quests[completed_quest]["reward"]
 
-func rotate_skill_to_direction(direction,skill_name):
+func rotate_coords_to_direction(direction: String,skill_shape: Array):
 	var new_skill_coords = []
 	var coord
 	if direction == "E":
-		return skills[skill_name]
+		return skill_shape
 	if direction == "W":
-		for skill in skills[skill_name]:
+		for skill in skill_shape:
 			new_skill_coords.append(skill*-1)
 		return new_skill_coords
 	if direction == "N":
-		for skill in skills[skill_name]:
+		for skill in skill_shape:
 			new_skill_coords.append(Vector2(skill[1],skill[0]*-1))
 		return new_skill_coords	
 	if direction == "S":
-		for skill in skills[skill_name]:
+		for skill in skill_shape:
 			new_skill_coords.append(Vector2(skill[1],skill[0]))
 		return new_skill_coords
+
+
+func complete_fight_quest(unit: Object):
+	print(unit, " is completing fight quest")
+	if unit.QUEST != "fight":
+		return
+	if unit.is_potential_jobs_empty():
+		return
 		
+	unit.xp = unit.xp + quests["fight"]["reward"]
+	get_tree().current_scene.get_node(unit.UI_EXP_LINK).get_parent().get_child(1).value = unit.xp
+	if unit.xp >= unit.max_xp:
+		await unit.level_up()
