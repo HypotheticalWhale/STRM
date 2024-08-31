@@ -1,6 +1,7 @@
 extends Node2D
 @onready var turn_timer = $UI/TurnTimerUI/TurnTimer
 @export var GRID_SIZE = [20,10]
+
 var tile_path = preload("res://Tile/TileNode.tscn")
 var action_button = preload("res://UI/ActionButton.tscn")
 var selected_tile
@@ -19,10 +20,13 @@ var available_tiles = []
 ##}
 var available_attack_tiles: Dictionary
 #
+var astar = AStarGrid2D.new()
 
 var starting_player = "P1"
 var attacking = false
+var moving  = false
 var mouse_relative_direction = "E"
+var previous_highlighted_tile
 var highlighted_tile 
 var calc_direction
 var button_pressed
@@ -36,6 +40,13 @@ func _ready():
 		turn_on_p1_ui()
 	else:
 		turn_on_p2_ui()
+	astar.cell_size = Vector2i(Globals.TILE_SIZE,Globals.TILE_SIZE)
+	astar.region = Rect2(Vector2(2,2),Vector2(GRID_SIZE[0],GRID_SIZE[1]))
+	astar.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
+	astar.update()
+	for tile in get_occupied_tiles():
+		if tile.occupied_by["unit"].TEAM != Globals.WHOSTURNISIT:
+			astar.set_point_solid(tile.global_position/Globals.TILE_SIZE,true)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -44,7 +55,13 @@ func _process(delta):
 		if calc_direction != mouse_relative_direction:
 			mouse_relative_direction = calc_direction
 			on_skill_pressed(button_pressed,calc_direction)
-
+	if moving:
+		if previous_highlighted_tile != highlighted_tile and highlighted_tile.available_tile.visible:
+			previous_highlighted_tile = highlighted_tile
+			$MovementArrow.clear_points()
+			for point in astar.get_id_path(selected_tile.global_position/Globals.TILE_SIZE,highlighted_tile.global_position/Globals.TILE_SIZE):
+				$MovementArrow.add_point(point*Globals.TILE_SIZE)
+	
 func spawn_units():
 	var label_list = ["FirstExpContainer/FirstExp", "SecondExpContainer/SecondExp", "ThirdExpContainer/ThirdExp"]
 	var label_count = 0
@@ -146,20 +163,26 @@ func disable_action_button():
 func highlight_available_tiles(available_tiles_coords):
 	clear_available_tiles()
 	clear_available_attack_tiles()
+	moving = true
 	var grid_pos
+	
 	for tile_coords in available_tiles_coords:
 		grid_pos = tile_coords*Globals.TILE_SIZE
 		if grid_pos not in valid_tiles:
 			continue
 		if all_tiles[grid_pos].is_empty_tile():
 			continue
-		available_tiles.append(grid_pos)		
-		all_tiles[grid_pos].toggle_available_tile()
+		if len(astar.get_id_path(selected_tile.global_position/Globals.TILE_SIZE,tile_coords)) <= selected_tile.occupied_by["unit"].MOVEMENT+1:
+			available_tiles.append(grid_pos)
+			all_tiles[grid_pos].toggle_available_tile()
 
 func clear_available_tiles():
+	$MovementArrow.clear_points()
+	
 	for grid_pos in available_tiles:
-		all_tiles[grid_pos].toggle_available_tile()		
+		all_tiles[grid_pos].toggle_available_tile()
 	available_tiles = []
+	moving = false
 	
 func clear_available_attack_tiles():
 	for grid_pos in available_attack_tiles:
@@ -222,6 +245,8 @@ func _on_turn_timer_timeout():
 	clear_available_attack_tiles()
 	clear_available_tiles()
 	attacking = false
+	moving = false
+	$MovementArrow.clear_points()
 	$SelectOptions/PanelContainer/HBoxContainer/SelectButtons/MoveButton.disabled = false
 	$SelectOptions/PanelContainer/HBoxContainer/SelectButtons/ActionButton.disabled = false
 	Globals.TAKENACTION = ""	
@@ -230,6 +255,12 @@ func _on_turn_timer_timeout():
 		turn_on_p1_ui()
 	if Globals.WHOSTURNISIT == "P2":		
 		turn_on_p2_ui()
+	for tile in get_occupied_tiles():
+			if tile.occupied_by["unit"].TEAM != Globals.WHOSTURNISIT:
+				astar.set_point_solid(tile.global_position/Globals.TILE_SIZE,true)
+			else:
+				astar.set_point_solid(tile.global_position/Globals.TILE_SIZE,false)
+			
 	
 	# show reminder for next players turn
 	get_node("UI/NextPlayerReady").visible = true

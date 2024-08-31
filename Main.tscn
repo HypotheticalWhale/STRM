@@ -531,6 +531,11 @@ script = ExtResource("10_sy41c")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(361, 132)
 
+[node name="MovementArrow" type="Line2D" parent="."]
+z_index = 1
+default_color = Color(0, 0, 0, 1)
+end_cap_mode = 2
+
 [connection signal="pressed" from="SelectOptions/PanelContainer/HBoxContainer/SelectButtons/MoveButton" to="." method="_on_move_button_pressed"]
 [connection signal="pressed" from="SelectOptions/PanelContainer/HBoxContainer/SelectButtons/ActionButton" to="." method="_on_action_button_pressed"]
 [connection signal="pressed" from="SelectOptions/PanelContainer/HBoxContainer/SelectButtons/EndButton" to="." method="_on_end_button_pressed"]
