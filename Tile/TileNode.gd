@@ -90,6 +90,10 @@ func _on_input_event(viewport, event, shape_idx):
 ###################################### if player has not moved with or used an action ######################################
 		#if the plyaer is not attacking and he presses a square with a unit on it, that should be the trigger for the menu
 		if occupied_by["unit"] and not get_parent().attacking:
+			# disable the action button if unit is disabled
+			print("is still disabled")
+			if occupied_by["unit"].disabled_turns_left > 0:
+				get_parent().disable_action_button()
 			get_parent().show_select_menu(global_position,self)
 			get_parent().clear_available_tiles()			
 			get_parent().clear_available_attack_tiles()
