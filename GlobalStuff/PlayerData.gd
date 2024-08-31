@@ -1,14 +1,14 @@
 extends Node
 
 var player1_units = {
-	"unit1" : "",
-	"unit2" : "",
-	"unit3" : "",	
+	"unit1" : null,
+	"unit2" : null,
+	"unit3" : null,	
 }
 var player2_units = {
-	"unit1" : "",
-	"unit2" : "",
-	"unit3" : "",	
+	"unit1" : null,
+	"unit2" : null,
+	"unit3" : null,	
 }
 var available_units = ["res://Classes/Servant.tscn", "res://Classes/Noble.tscn", "res://Classes/Entertainer.tscn"]
 

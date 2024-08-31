@@ -26,9 +26,10 @@ var skills = {
 	},
 	"Backstab": {
 		"shape": [Vector2(1,0)],
-		"damage multiplier": 1.0,
+		"damage multiplier": 0.1,
 		"optional effects": {
 			#"backstab": 1.5	# backstab modifies damage by 1.5X
+			"disable": 1
 		}
 	},
 	"Piercing Ray": {
@@ -42,6 +43,13 @@ var skills = {
 		"optional effects": {
 			"knockback": 2,	# knocks back 2 squares
 			"disable": 1	# disables unit for 1 turn
+		}
+	},
+	"Fleet-footed Kick": {
+		"shape": [Vector2(2,0)],
+		"damage multiplier": 0.0,
+		"optional effects": {
+			"dash": null, # just dashes to the target tile. no other variables
 		}
 	}
 }
