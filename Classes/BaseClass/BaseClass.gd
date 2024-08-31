@@ -17,6 +17,9 @@ var xp : int
 var max_xp : int
 var num_hits_taken_and_dealt : int
 
+# status ailments
+var disabled_turns_left: int = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	await initialize_stats()
@@ -102,6 +105,13 @@ func get_hit(attack_info: Dictionary):
 		global_position = destination_coords
 		get_tree().current_scene.all_tiles[global_position].occupied_by["unit"] = self
 
+	# disable
+	if attack_info.has("disable"):
+		disabled_turns_left = attack_info["disable"]
+		# give it a disabled counter for each disable_duration
+		# at the start of owners turn, if disabled counter > 0, disable its attack button
+		# at the end of the owners turn, decrement it.
+		
 func add_job(job_name : String):
 	var job_node = load(Globals.jobs[job_name]).instantiate()
 	$Jobs.add_child(job_node)
