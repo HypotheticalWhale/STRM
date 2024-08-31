@@ -44,6 +44,13 @@ var skills = {
 			"knockback": 2,	# knocks back 2 squares
 			"disable": 1	# disables unit for 1 turn
 		}
+	},
+	"Fleet-footed Kick": {
+		"shape": [Vector2(2,0)],
+		"damage multiplier": 0.0,
+		"optional effects": {
+			"dash": null, # just dashes to the target tile. no other variables
+		}
 	}
 }
 
