@@ -14,7 +14,8 @@ var skills = {
 		"shape": [Vector2(1,0),Vector2(0,1),Vector2(0,-1)],
 		"damage multiplier": 0.1,
 		"optional effects": {
-			"knockback": 3
+			"knockback": 3,
+			"dash": null
 		}
 	},
 	"Trim Bushes": {

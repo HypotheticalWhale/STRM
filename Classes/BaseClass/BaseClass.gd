@@ -101,9 +101,7 @@ func get_hit(attack_info: Dictionary):
 				break
 			destination_coords = new_destination_coords
 		
-		get_tree().current_scene.all_tiles[global_position].occupied_by["unit"] = null
-		global_position = destination_coords
-		get_tree().current_scene.all_tiles[global_position].occupied_by["unit"] = self
+		await warp_to(destination_coords)
 
 	# disable
 	if attack_info.has("disable"):
@@ -123,6 +121,10 @@ func add_job(job_name : String):
 	
 	await update_sprite()
 
+func warp_to(destination_vector: Vector2):
+	get_tree().current_scene.all_tiles[global_position].occupied_by["unit"] = null
+	global_position = destination_vector
+	get_tree().current_scene.all_tiles[global_position].occupied_by["unit"] = self
 
 func update_sprite():
 	if $Jobs.get_child_count() == 0:	# Only has baseclass

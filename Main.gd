@@ -304,7 +304,10 @@ func on_skill_pressed(button,direction):
 		# pass in disable duration to tilenode
 		if Globals.skills[button.skill_name]["optional effects"].has("disable"):
 			available_attack_tiles[grid_pos]["disable"] = Globals.skills[button.skill_name]["optional effects"]["disable"]
-			
+		
+		# pass in dash to tilenode
+		if Globals.skills[button.skill_name]["optional effects"].has("dash"):
+			available_attack_tiles[grid_pos]["dash"] = Globals.skills[button.skill_name]["optional effects"]["dash"]
 	hide_action_buttons()
 	hide_select_menu()
 
