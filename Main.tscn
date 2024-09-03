@@ -439,7 +439,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 20
-text = "Passive information here"
+text = "Passive Information"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PassiveDesc" type="Label" parent="UI/LevelUp/PanelContainer/VBoxContainer/HBoxContainer/Passive"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Passive Description"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
