@@ -2,4 +2,4 @@
 
 1v1 Roguelike Tactics
 
-palette: monokai
+palette: minecraft
