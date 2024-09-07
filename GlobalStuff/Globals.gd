@@ -1,6 +1,11 @@
 extends Node
 
 const TILE_SIZE = 32
+var round = 1
+var score = {
+	"P1" : 0,
+	"P2" : 0
+}
 var WHOSTURNISIT = "P1"
 var TAKENACTION
 var quests : Dictionary = {

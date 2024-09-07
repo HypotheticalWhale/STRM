@@ -10,6 +10,7 @@ var occupied_by = {
 @onready var available_tile = $Available
 @onready var available_attack_tile = $AvailableAttack
 @onready var target_tile = $Target
+var is_manor = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -52,6 +53,10 @@ func _on_input_event(viewport, event, shape_idx):
 		# attack already, now want to move
 		if Globals.TAKENACTION and available_tile.visible == true:
 			occupied_by["unit"] = get_parent().selected_tile.occupied_by["unit"]
+			if is_manor:
+				get_parent().get_node("UI/EndRoundButton").visible = true
+				get_parent().get_node("UI/EndRoundButton").text = Globals.WHOSTURNISIT + ", YOU WIN!!"
+				get_tree().paused = true
 			get_parent().selected_tile.occupied_by["unit"].global_position = global_position
 			get_parent().selected_tile.occupied_by["unit"] = null
 			get_parent().disable_move_button()
@@ -94,6 +99,8 @@ func _on_input_event(viewport, event, shape_idx):
 			print("is still disabled")
 			if occupied_by["unit"].disabled_turns_left > 0:
 				get_parent().disable_action_button()
+			else:
+				get_parent().enable_action_button()
 			get_parent().show_select_menu(global_position,self)
 			get_parent().clear_available_tiles()			
 			get_parent().clear_available_attack_tiles()
@@ -101,6 +108,10 @@ func _on_input_event(viewport, event, shape_idx):
 			#havent aciton yet but want to move
 			if available_tile.visible == true: #move action on available tile
 				occupied_by["unit"] = get_parent().selected_tile.occupied_by["unit"]
+				if is_manor:
+					get_parent().get_node("UI/EndRoundButton").visible = true
+					get_parent().get_node("UI/EndRoundButton").text = Globals.WHOSTURNISIT + ", YOU WIN!!"
+					get_tree().paused = true
 				get_parent().selected_tile.occupied_by["unit"].global_position = global_position
 				Globals.TAKENACTION = get_parent().selected_tile.occupied_by["unit"]
 				get_parent().selected_tile.occupied_by["unit"] = null
@@ -169,6 +180,7 @@ func add_terrain(terrain_type : String):
 		add_child(new_terrain)
 		move_child(new_terrain, 0)		
 		occupied_by["terrain"] = new_terrain
+		is_manor = true
 
 func get_terrain():
 	return occupied_by["terrain"]

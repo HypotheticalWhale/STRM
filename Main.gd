@@ -1,5 +1,5 @@
 extends Node2D
-@onready var turn_timer = $UI/TurnTimerUI/TurnTimer
+@onready var turn_timer = $UI/TurnTimerUI/TimerContainer/TurnTimer
 @export var GRID_SIZE = [20,10]
 
 var tile_path = preload("res://Tile/TileNode.tscn")
@@ -89,8 +89,26 @@ func spawn_units():
 		get_node("UI/Player2/MarginContainer/LabelContainer/"+label_list[label_count]).text = unit.CURRENT_JOB +" "
 		count += 2
 		label_count += 1
-		
 
+func reset_units():
+	var count = 2
+	for unit in PlayerData.player1_units.values():
+		tile_coords = Vector2(2,count)*Globals.TILE_SIZE
+		all_tiles[unit.global_position].occupied_by["unit"] = null # set the previous tile to null 
+		count += 2
+		
+		unit.global_position = tile_coords
+		all_tiles[tile_coords].occupied_by["unit"] = unit # set the new tile to the unit
+		print(unit)	
+	count = 2
+	for unit in PlayerData.player2_units.values():
+		tile_coords = Vector2(GRID_SIZE[0]-1,count)*Globals.TILE_SIZE
+		all_tiles[unit.global_position].occupied_by["unit"] = null
+		unit.global_position = tile_coords
+		all_tiles[tile_coords].occupied_by["unit"] = unit
+		count += 2		
+		print(unit)
+	
 func spawn_tiles():
 	for x_tile in range(2,GRID_SIZE[0]):
 		for y_tile in range(2,GRID_SIZE[1]):
@@ -159,7 +177,9 @@ func disable_move_button():
 	
 func disable_action_button():
 	$SelectOptions/PanelContainer/HBoxContainer/SelectButtons/ActionButton.disabled = true
-	
+
+func enable_action_button():
+	$SelectOptions/PanelContainer/HBoxContainer/SelectButtons/ActionButton.disabled = false
 func highlight_available_tiles(available_tiles_coords):
 	clear_available_tiles()
 	clear_available_attack_tiles()
@@ -271,8 +291,7 @@ func _on_turn_timer_timeout():
 				astar.set_point_solid(tile.global_position/Globals.TILE_SIZE,true)
 			else:
 				astar.set_point_solid(tile.global_position/Globals.TILE_SIZE,false)
-			
-	
+				
 	# show reminder for next players turn
 	get_node("UI/NextPlayerReady").visible = true
 	get_node("UI/NextPlayerReady").text = Globals.WHOSTURNISIT + "'s turn. Click to start."
