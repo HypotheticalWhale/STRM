@@ -84,7 +84,16 @@ var jobs : Dictionary = {
 }
 
 var passives : Dictionary = {
-	"Green Thumbs" : "You deal extra damage on green tiles :-)"
+	"Green Thumbs" : "You deal extra damage on green tiles :-)",
+	"Die Mond":"",
+	"No hooligans alllowed.":"",
+	"Take a ride.":"",
+	"Teethed to the arm.":"",
+	"Fast runner":"",
+	"Kleptomaniac":"",
+	"Pigeon Rider.":"",
+	"Really tough.":"",
+	
 }
 
 # Called when the node enters the scene tree for the first time.
