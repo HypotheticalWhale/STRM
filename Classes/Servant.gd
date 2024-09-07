@@ -10,7 +10,7 @@ func initialize_stats():
 	max_xp = 100
 	CURRENT_JOB = "Servant"
 	ACTIONS = ["Sweep Attack"]
-	QUEST = "fight"
+	QUEST = "Fight"
 	POTENTIAL_JOBS = ["Gardener", "Bell Boy", "Messenger"]
 
 

@@ -29,7 +29,9 @@ func update_selected_job_details():
 	add_child(new_job)
 	%JobDescription.text = new_job.description
 	%SkillInfo.text = new_job.skill
+	
 	%PassiveInfo.text = new_job.passive
+	%PassiveDesc.text = Globals.passives[new_job.passive]
 	remove_child(new_job)
 	
 	$PanelContainer/VBoxContainer/Confirm.set_deferred("disabled", false)
