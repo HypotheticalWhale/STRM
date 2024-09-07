@@ -1,10 +1,15 @@
 extends Node
 
 const TILE_SIZE = 32
+var round = 1
+var score = {
+	"P1" : 0,
+	"P2" : 0
+}
 var WHOSTURNISIT = "P1"
 var TAKENACTION
 var quests : Dictionary = {
-	"fight" : {
+	"Fight" : {
 		"description" : "get hit or hit something",
 		"reward" : 100	#gains 50 xp
 	},
@@ -85,7 +90,16 @@ var jobs : Dictionary = {
 }
 
 var passives : Dictionary = {
-	"Green Thumbs" : "Gives nonsense, please replace this with actual passive"
+	"Green Thumbs" : "You deal extra damage on green tiles :-)",
+	"Die Mond":"",
+	"No hooligans alllowed.":"",
+	"Take a ride.":"",
+	"Teethed to the arm.":"",
+	"Fast runner":"",
+	"Kleptomaniac":"",
+	"Pigeon Rider.":"",
+	"Really tough.":"",
+	
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -139,12 +153,12 @@ func rotate_coords_to_direction(direction: String,skill_shape: Array):
 
 func complete_fight_quest(unit: Object):
 	print(unit, " is completing fight quest")
-	if unit.QUEST != "fight":
+	if unit.QUEST != "Fight":
 		return
 	if unit.is_potential_jobs_empty():
 		return
 		
-	unit.xp = unit.xp + quests["fight"]["reward"]
+	unit.xp = unit.xp + quests["Fight"]["reward"]
 	get_tree().current_scene.get_node(unit.UI_EXP_LINK).get_parent().get_child(1).value = unit.xp
 	if unit.xp >= unit.max_xp:
 		await unit.level_up()
