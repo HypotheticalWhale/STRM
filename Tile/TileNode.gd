@@ -42,7 +42,8 @@ func _on_input_event(viewport, event, shape_idx):
 					# attack_tile_info contains a dictionary with various attack details such as damage
 					get_parent().all_tiles[tile].occupied_by["unit"].get_hit(attack_tile_info)
 			if get_parent().available_attack_tiles[tile_coordinates].has("dash"):
-				get_parent().selected_tile.occupied_by["unit"].warp_to(tile_coordinates)
+				var dash_destination = get_parent().available_attack_tiles[tile_coordinates]["dash"]["destination"]
+				get_parent().selected_tile.occupied_by["unit"].warp_to(dash_destination)
 			get_parent().attacking = false
 			get_parent().clear_available_tiles()			
 			get_parent().clear_available_attack_tiles()
@@ -118,7 +119,8 @@ func _on_input_event(viewport, event, shape_idx):
 						# attack_tile_info contains a dictionary with various attack details such as damage
 						get_parent().all_tiles[tile].occupied_by["unit"].get_hit(attack_tile_info)
 				if get_parent().available_attack_tiles[tile_coordinates].has("dash"):
-					get_parent().selected_tile.occupied_by["unit"].warp_to(tile_coordinates)
+					var dash_destination = get_parent().available_attack_tiles[tile_coordinates]["dash"]["destination"]
+					get_parent().selected_tile.occupied_by["unit"].warp_to(dash_destination)
 				get_parent().clear_available_attack_tiles()
 				get_parent().disable_action_button()
 				get_parent().attacking = false

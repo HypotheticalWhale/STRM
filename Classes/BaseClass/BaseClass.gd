@@ -51,7 +51,6 @@ func is_potential_jobs_empty():
 		
 
 func level_up():
-	print("levelling up")
 	xp = xp - max_xp
 	var lvl_ui = get_tree().current_scene.get_node("UI/LevelUp")
 	lvl_ui.unit_to_level = self
@@ -76,7 +75,6 @@ func get_hit(attack_info: Dictionary):
 	
 	# knockback
 	if attack_info.has("knockback"):
-		print("has knockback: ", attack_info["knockback"])
 		var destination_coords: Vector2 = global_position
 		var direction: String = attack_info["knockback"]["direction"]
 		var distance: int = attack_info["knockback"]["distance"]
