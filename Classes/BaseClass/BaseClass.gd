@@ -51,7 +51,6 @@ func is_potential_jobs_empty():
 		
 
 func level_up():
-	print("levelling up")
 	xp = xp - max_xp
 	var lvl_ui = get_tree().current_scene.get_node("UI/LevelUp")
 	lvl_ui.unit_to_level = self
@@ -76,7 +75,6 @@ func get_hit(attack_info: Dictionary):
 	
 	# knockback
 	if attack_info.has("knockback"):
-		print("has knockback: ", attack_info["knockback"])
 		var destination_coords: Vector2 = global_position
 		var direction: String = attack_info["knockback"]["direction"]
 		var distance: int = attack_info["knockback"]["distance"]
@@ -101,9 +99,7 @@ func get_hit(attack_info: Dictionary):
 				break
 			destination_coords = new_destination_coords
 		
-		get_tree().current_scene.all_tiles[global_position].occupied_by["unit"] = null
-		global_position = destination_coords
-		get_tree().current_scene.all_tiles[global_position].occupied_by["unit"] = self
+		await warp_to(destination_coords)
 
 	# disable
 	if attack_info.has("disable"):
@@ -123,6 +119,10 @@ func add_job(job_name : String):
 	QUEST = job_node.QUEST
 	await update_sprite()
 
+func warp_to(destination_vector: Vector2):
+	get_tree().current_scene.all_tiles[global_position].occupied_by["unit"] = null
+	global_position = destination_vector
+	get_tree().current_scene.all_tiles[global_position].occupied_by["unit"] = self
 
 func update_sprite():
 	if $Jobs.get_child_count() == 0:	# Only has baseclass

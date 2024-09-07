@@ -295,6 +295,29 @@ theme_override_font_sizes/font_size = 16
 [node name="TurnTimer" type="Timer" parent="UI/TurnTimerUI/TimerContainer"]
 wait_time = 20.0
 
+[node name="TurnTimerUI2" type="PanelContainer" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -96.0
+offset_bottom = 96.0
+grow_horizontal = 0
+theme = ExtResource("2_vidso")
+theme_override_styles/panel = SubResource("StyleBoxTexture_37004")
+script = ExtResource("2_wpr50")
+
+[node name="Label" type="Label" parent="UI/TurnTimerUI2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_vidso")
+theme_type_variation = &"HeaderSmall"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 16
+
+[node name="TurnTimer" type="Timer" parent="UI/TurnTimerUI2"]
+wait_time = 20.0
+
 [node name="TileInfo" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 3

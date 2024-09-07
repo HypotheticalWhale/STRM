@@ -12,14 +12,15 @@ var quests : Dictionary = {
 	"Fight" : {
 		"description" : "get hit or hit something",
 		"reward" : 100	#gains 50 xp
-	}
+	},
 }
 var skills = {
 	"Sweep Attack": {
-		"shape": [Vector2(1,0),Vector2(0,1),Vector2(0,-1)],
+		"shape": [Vector2(1,0),Vector2(0,1),Vector2(0,-1),Vector2(2,0)],
 		"damage multiplier": 0.1,
 		"optional effects": {
-			"knockback": 3
+			"dash": null,
+			"sweet spot": Vector2(1,0)
 		}
 	},
 	"Trim Bushes": {

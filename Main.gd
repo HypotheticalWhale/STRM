@@ -208,6 +208,8 @@ func clear_available_attack_tiles():
 	for grid_pos in available_attack_tiles:
 		all_tiles[grid_pos].hide_available_attack_tile()
 		all_tiles[grid_pos].hide_target_tile()
+		# reset any modulates (such as from sweet spot)
+		all_tiles[grid_pos].modulate = Color(1,1,1)
 	available_attack_tiles = {}
 
 
@@ -269,7 +271,7 @@ func _on_turn_timer_timeout():
 	$MovementArrow.clear_points()
 	$SelectOptions/PanelContainer/HBoxContainer/SelectButtons/MoveButton.disabled = false
 	$SelectOptions/PanelContainer/HBoxContainer/SelectButtons/ActionButton.disabled = false
-	Globals.TAKENACTION = ""	
+	Globals.TAKENACTION = null
 	
 	# track status ailment durations
 	var current_turn_units = []
@@ -327,7 +329,11 @@ func on_skill_pressed(button,direction):
 			continue
 			
 		if not all_tiles[grid_pos].occupied_by["unit"]:
-			all_tiles[grid_pos].show_available_attack_tile()
+			# dash skills don't allow you to select empty squares
+			if Globals.skills[button.skill_name]["optional effects"].has("dash"):
+				pass
+			else:
+				all_tiles[grid_pos].show_available_attack_tile()
 			
 		else: 
 			all_tiles[grid_pos].show_target_tile()
@@ -342,6 +348,8 @@ func on_skill_pressed(button,direction):
 		if Globals.skills[button.skill_name]["optional effects"].has("sweet spot"):
 			var sweet_spot_tile = Globals.rotate_coords_to_direction(direction, [Globals.skills[button.skill_name]["optional effects"]["sweet spot"]])[0]
 			if tile == sweet_spot_tile:
+				# modulate tile to show sweet spot
+				all_tiles[button.skill_owner.global_position + tile*Globals.TILE_SIZE].modulate = Color(1,0.6,0.6)
 				sweet_spot_damage_multiplier = 2.0
 		available_attack_tiles[grid_pos]["damage"] = base_damage * skill_damage_multiplier * sweet_spot_damage_multiplier
 		
@@ -354,7 +362,27 @@ func on_skill_pressed(button,direction):
 		# pass in disable duration to tilenode
 		if Globals.skills[button.skill_name]["optional effects"].has("disable"):
 			available_attack_tiles[grid_pos]["disable"] = Globals.skills[button.skill_name]["optional effects"]["disable"]
-			
+		
+		# pass in dash to tilenode
+		if Globals.skills[button.skill_name]["optional effects"].has("dash"):
+			if not all_tiles[grid_pos].occupied_by["unit"]:
+				pass
+			else:
+				available_attack_tiles[grid_pos]["dash"] = {}
+				# get the destination square by finding an adjacent square to the target nearest to skill owner
+				var coords_adjacent_to_target = []
+				for direction_vector in [Vector2(1,0), Vector2(0,-1), Vector2(-1,0), Vector2(0,1)]:
+					coords_adjacent_to_target.append(grid_pos + direction_vector*Globals.TILE_SIZE)
+				# initialize destination with an impossible coordinate.
+				var destination: Vector2 = Vector2(99999, 99999)
+				var min: float = 99999
+				for coord in coords_adjacent_to_target:
+					if coord.distance_squared_to(button.skill_owner.global_position) < min:
+						min = coord.distance_squared_to(button.skill_owner.global_position)
+						destination = coord
+				# assertion error here means that a suitable destination was not found.
+				assert(destination != Vector2(99999, 99999))
+				available_attack_tiles[grid_pos]["dash"]["destination"] = destination
 	hide_action_buttons()
 	hide_select_menu()
 
