@@ -119,9 +119,8 @@ func add_job(job_name : String):
 	CURRENT_HEALTH = MAX_HEALTH
 	MOVEMENT = job_node.MOVEMENT
 	DAMAGE += job_node.DAMAGE
-	print("New QUEST "+ job_node.QUEST)
 	QUEST = job_node.QUEST
-	print("Quest: ", QUEST)
+	CURRENT_JOB = job_name
 	PASSIVES.append(job_node.passive)
 	await update_sprite()
 

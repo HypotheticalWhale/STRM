@@ -10,6 +10,7 @@ func initialize_stats():
 	max_xp = 500
 	CURRENT_JOB = "Entertainer"
 	ACTIONS = ["Backstab"]
+	QUEST = "Traveller"
 	
 func initialize_sprites():
 	$RedSprite.texture = load("res://Assets/Sprites/Units/AssassinRed.png")

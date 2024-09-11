@@ -26,6 +26,7 @@ func _on_mouse_exited():
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		Globals.show_tile_info(self)
+		Globals.show_quest_info(self)
 		if occupied_by["unit"] and Globals.WHOSTURNISIT != occupied_by["unit"].TEAM and not get_parent().attacking:
 			get_parent().attacking = false						
 			get_parent().show_info_menu(global_position,self)			

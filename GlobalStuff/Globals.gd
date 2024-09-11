@@ -11,7 +11,7 @@ var TAKENACTION
 var quests : Dictionary = {
 	"Fight" : {
 		"description" : "get hit or hit something",
-		"reward" : 100	#gains 2 xp
+		"reward" : 100	#gains 5 xp
 	},
 	"Traveller": {
 		"description" : "get hit or hit something",
@@ -160,13 +160,23 @@ func toggle_player_turn():
 
 
 func show_tile_info(tile : Object):
-	if get_tree().current_scene.has_node("UI/TileInfo") == false:
+	if get_tree().current_scene.has_node("UI/BottomRightContainer/TileInfo") == false:
 		printerr("Not allowed to show tile_info in scene other than Main.tscn.")
 		return
-	var tile_info = get_tree().current_scene.get_node("UI/TileInfo")
+	var tile_info = get_tree().current_scene.get_node("UI/BottomRightContainer/TileInfo")
 	tile_info.visible = true
 	tile_info.update_info(tile.get_terrain().type, tile.get_terrain().defense, tile.get_terrain().movement_penalty)
 
+
+func show_quest_info(tile: Object):
+	var quest_ui_node: Object = get_tree().current_scene.get_node("UI/BottomRightContainer/QuestInfo")
+	if tile.occupied_by["unit"] == null:
+		quest_ui_node.visible = false
+	else:
+		var unit: Object = tile.occupied_by["unit"]
+		quest_ui_node.visible = true
+		quest_ui_node.get_node("VBoxContainer/QuestHeader").text = str(unit.CURRENT_JOB) + "'s Quest"
+		quest_ui_node.get_node("VBoxContainer/QuestDescription").text = quests[unit.QUEST]["description"]
 
 
 func rotate_coords_to_direction(direction: String,skill_shape: Array):
