@@ -117,6 +117,7 @@ func add_job(job_name : String):
 	MOVEMENT = job_node.MOVEMENT
 	DAMAGE += job_node.DAMAGE
 	QUEST = job_node.QUEST
+	CURRENT_JOB = job_name
 	await update_sprite()
 
 func warp_to(destination_vector: Vector2):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cpycaudat764"]
+[gd_scene load_steps=18 format=3 uid="uid://cpycaudat764"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_5hkoq"]
 [ext_resource type="Texture2D" uid="uid://bnm0op8tgjbiv" path="res://Assets/UI/Timer/Timer.png" id="2_j0qa6"]
@@ -24,6 +24,8 @@ content_margin_top = 16.0
 content_margin_right = 16.0
 content_margin_bottom = 16.0
 texture = ExtResource("2_j0qa6")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8cp43"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_5hkoq")
@@ -113,9 +115,8 @@ layout_mode = 2
 [node name="TurnLabel" type="Label" parent="UI/Player1/MarginContainer/LabelContainer"]
 layout_mode = 2
 theme = ExtResource("2_vidso")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 6
 text = "P1"
+horizontal_alignment = 1
 
 [node name="FirstExpContainer" type="HBoxContainer" parent="UI/Player1/MarginContainer/LabelContainer"]
 custom_minimum_size = Vector2(400, 2.08165e-12)
@@ -188,9 +189,8 @@ layout_mode = 2
 [node name="TurnLabel" type="Label" parent="UI/Player2/MarginContainer/LabelContainer"]
 layout_mode = 2
 theme = ExtResource("2_vidso")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 6
 text = "P2"
+horizontal_alignment = 1
 
 [node name="FirstExpContainer" type="HBoxContainer" parent="UI/Player2/MarginContainer/LabelContainer"]
 layout_mode = 2
@@ -256,6 +256,7 @@ layout_mode = 2
 layout_mode = 2
 theme = ExtResource("2_vidso")
 text = "hello"
+horizontal_alignment = 1
 script = ExtResource("5_t0qjf")
 
 [node name="ScoreConainer" type="HBoxContainer" parent="UI/TurnTimerUI/RoundContainer"]
@@ -287,65 +288,70 @@ script = ExtResource("2_wpr50")
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("2_vidso")
-theme_type_variation = &"HeaderSmall"
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8cp43")
+horizontal_alignment = 1
 
 [node name="TurnTimer" type="Timer" parent="UI/TurnTimerUI/TimerContainer"]
 wait_time = 20.0
 
-[node name="TileInfo" type="Control" parent="UI"]
-layout_mode = 3
+[node name="BottomRightContainer" type="HBoxContainer" parent="UI"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -40.0
-offset_top = -40.0
+offset_top = -70.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("2_vidso")
+
+[node name="QuestInfo" type="PanelContainer" parent="UI/BottomRightContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/BottomRightContainer/QuestInfo"]
+layout_mode = 2
+
+[node name="QuestHeader" type="Label" parent="UI/BottomRightContainer/QuestInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+horizontal_alignment = 1
+
+[node name="QuestDescription" type="Label" parent="UI/BottomRightContainer/QuestInfo/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+size_flags_stretch_ratio = 4.0
+horizontal_alignment = 1
+
+[node name="TileInfo" type="PanelContainer" parent="UI/BottomRightContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
 script = ExtResource("5_sqfni")
 
-[node name="PanelContainer" type="PanelContainer" parent="UI/TileInfo"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -48.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/TileInfo/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/TileInfo/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/BottomRightContainer/TileInfo"]
 layout_mode = 2
 
-[node name="TerrainLabel" type="Label" parent="UI/TileInfo/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="TerrainLabel" type="Label" parent="UI/BottomRightContainer/TileInfo/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+horizontal_alignment = 1
 
-[node name="TerrainIcon" type="TextureRect" parent="UI/TileInfo/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="TerrainIcon" type="TextureRect" parent="UI/BottomRightContainer/TileInfo/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_vertical = 3
 stretch_mode = 5
 
-[node name="DefenseLabel" type="Label" parent="UI/TileInfo/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="DefenseLabel" type="Label" parent="UI/BottomRightContainer/TileInfo/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+horizontal_alignment = 1
 
 [node name="LevelUp" type="MarginContainer" parent="UI"]
 process_mode = 2

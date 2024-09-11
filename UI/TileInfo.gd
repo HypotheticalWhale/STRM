@@ -1,4 +1,4 @@
-extends Control
+extends PanelContainer
 
 func update_info(terrain_type : String, defense : int, movement_penalty : int):
 	%TerrainLabel.text = terrain_type

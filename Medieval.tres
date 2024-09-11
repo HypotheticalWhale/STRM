@@ -25,10 +25,10 @@ texture_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uqel7"]
 texture = ExtResource("2_sf2lc")
-texture_margin_left = 6.0
-texture_margin_top = 6.0
-texture_margin_right = 6.0
-texture_margin_bottom = 6.0
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iq4wv"]
 texture = ExtResource("1_y8y5v")
@@ -58,11 +58,11 @@ Button/colors/font_color = Color(0, 0, 0, 1)
 Button/fonts/font = ExtResource("1_w0n03")
 Button/styles/hover = SubResource("StyleBoxTexture_0pnb6")
 Button/styles/normal = SubResource("StyleBoxTexture_0e6wo")
-Label/colors/font_color = Color(1, 1, 1, 1)
-Label/colors/font_outline_color = Color(0, 0, 0, 1)
-Label/constants/outline_size = 2
+Label/colors/font_color = Color(0.0313726, 0.0392157, 0.0588235, 1)
+Label/font_sizes/font_size = 10
 Label/fonts/font = ExtResource("1_w0n03")
 Label/styles/normal = SubResource("StyleBoxTexture_uqel7")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_iq4wv")
 ProgressBar/styles/background = SubResource("StyleBoxTexture_gybm3")
 ProgressBar/styles/fill = SubResource("StyleBoxTexture_igi4g")
+VBoxContainer/constants/separation = 0

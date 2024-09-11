@@ -8,6 +8,7 @@ func initialize_stats():
 	MOVEMENT = 2
 	CURRENT_JOB = "Noble"
 	ACTIONS = ["Piercing Ray"]
+	QUEST = "Hands-off Approach"
 	xp = 0
 	max_xp = 500
 func initialize_sprites():
