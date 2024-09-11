@@ -5,7 +5,7 @@ func initialize_stats():
 	MAX_HEALTH = 10
 	CURRENT_HEALTH = 10
 	DAMAGE = 10
-	MOVEMENT = 2
+	MOVEMENT = 10
 	CURRENT_JOB = "Noble"
 	ACTIONS = ["Piercing Ray"]
 	xp = 0
