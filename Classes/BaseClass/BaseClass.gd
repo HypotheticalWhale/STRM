@@ -72,7 +72,14 @@ func get_hit(attack_info: Dictionary, who_is_hitting):
 	if CURRENT_HEALTH <= 0:
 		print("im ded")
 		get_tree().current_scene.all_tiles[global_position].occupied_by["unit"] = null
+		for unit in PlayerData.player1_units:
+			if PlayerData.player1_units[unit] == self:
+				PlayerData.player1_units.erase(unit)
+		for unit in PlayerData.player2_units:
+			if PlayerData.player2_units[unit] == self:
+				PlayerData.player2_units.erase(unit)
 		self.queue_free()
+		
 	print("I get hit for: ", attack_info["damage"])
 	print("Current Health/Max Health: ",CURRENT_HEALTH,"/",MAX_HEALTH)
 	
