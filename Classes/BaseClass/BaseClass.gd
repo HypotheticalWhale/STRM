@@ -8,8 +8,9 @@ var MOVEMENT
 var ACTIONS
 var DAMAGE
 var CURRENT_JOB
+var PASSIVES = []
 var UI_EXP_LINK
-var QUEST : String
+var QUEST 
 var POTENTIAL_JOBS : Array[String]
 
 # quest specific
@@ -63,9 +64,11 @@ func level_up():
 		lvl_ui.update_jobs($Jobs.get_children()[-1].potential_jobs)
 
 
-func get_hit(attack_info: Dictionary):
+func get_hit(attack_info: Dictionary, who_is_hitting):
 	# damage
 	CURRENT_HEALTH -= attack_info["damage"]
+	if who_is_hitting.PASSIVES.has("Green Thumbs") and get_tree().current_scene.all_tiles[global_position].occupied_by["terrain"].type == "Garden": #Gardener Quest
+		Globals.complete_unit_quest(who_is_hitting,"Landscaping")
 	if CURRENT_HEALTH <= 0:
 		print("im ded")
 		get_tree().current_scene.all_tiles[global_position].occupied_by["unit"] = null
@@ -116,7 +119,10 @@ func add_job(job_name : String):
 	CURRENT_HEALTH = MAX_HEALTH
 	MOVEMENT = job_node.MOVEMENT
 	DAMAGE += job_node.DAMAGE
+	print("New QUEST "+ job_node.QUEST)
 	QUEST = job_node.QUEST
+	print("Quest: ", QUEST)
+	PASSIVES.append(job_node.passive)
 	await update_sprite()
 
 func warp_to(destination_vector: Vector2):
