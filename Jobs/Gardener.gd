@@ -11,3 +11,4 @@ func _ready():
 	MAX_HEALTH = 10
 	MOVEMENT = 3
 	DAMAGE = 10
+	QUEST = "Landscaping"

@@ -9,9 +9,21 @@ var score = {
 var WHOSTURNISIT = "P1"
 var TAKENACTION
 var quests : Dictionary = {
-	"Fight": {
-		"description": "get hit or hit something",
-		"reward": 100
+	"Fight" : {
+		"description" : "get hit or hit something",
+		"reward" : 100	#gains 5 xp
+	},
+	"Traveller": {
+		"description" : "get hit or hit something",
+		"reward" : 100	#gains 2 xp
+	},
+	"Hands-off Approach": {
+		"description" : "get hit or hit something",
+		"reward" : 100	#gains 2 xp
+	},
+	"Landscaping": {
+		"description": "dog",
+		"reward": 50
 	}
 }
 var skills = {
@@ -26,7 +38,7 @@ var skills = {
 		"shape": [Vector2(1,-1),Vector2(1,1),Vector2(2,0),Vector2(3,-1),Vector2(3,1),Vector2(4,-2),Vector2(4,2)],
 		"damage multiplier": 1.1,
 		"optional effects": {
-			"sweet spot": Vector2(1,1)	# deals double damage at Vector2(1,1)
+			"sweet spot": Vector2(2,0)	# deals double damage at Vector2(1,1)
 		}
 	},
 	"Backstab": {
@@ -90,15 +102,42 @@ var jobs : Dictionary = {
 }
 
 var passives : Dictionary = {
-	"Green Thumbs" : "You deal extra damage on green tiles :-)",
-	"Die Mond":"",
-	"No hooligans alllowed.":"",
-	"Take a ride.":"",
-	"Teethed to the arm.":"",
-	"Fast runner":"",
-	"Kleptomaniac":"",
-	"Pigeon Rider.":"",
-	"Really tough.":"",
+	"Green Thumbs" : {
+		"description": "You deal extra damage on green tiles :-)",
+		"damage multiplier": 1.5
+	},
+	"Die Mond": {
+		"description": "You deal extra damage on green tiles :-)",
+		"damage multiplier": 1.5
+	},
+	"No hooligans alllowed.": {
+		"description": "You deal extra damage on green tiles :-)",
+		"damage multiplier": 1.5
+	},
+	"Take a ride.": {
+		"description": "You deal extra damage on green tiles :-)",
+		"damage multiplier": 1.5
+	},
+	"Teethed to the arm.": {
+		"description": "You deal extra damage on green tiles :-)",
+		"damage multiplier": 1.5
+	},
+	"Fast runner": {
+		"description": "You deal extra damage on green tiles :-)",
+		"damage multiplier": 1.5
+	},
+	"Kleptomaniac": {
+		"description": "You deal extra damage on green tiles :-)",
+		"damage multiplier": 1.5
+	},
+	"Pigeon Rider.": {
+		"description": "You deal extra damage on green tiles :-)",
+		"damage multiplier": 1.5
+	},
+	"Really tough.": {
+		"description": "You deal extra damage on green tiles :-)",
+		"damage multiplier": 1.5
+	},
 	
 }
 
@@ -140,11 +179,6 @@ func show_quest_info(tile: Object):
 		quest_ui_node.get_node("VBoxContainer/QuestDescription").text = quests[unit.QUEST]["description"]
 
 
-func get_quest_xp(completed_quest : String):
-	return quests[completed_quest]["reward"]
-	
-	
-
 func rotate_coords_to_direction(direction: String,skill_shape: Array):
 	var new_skill_coords = []
 	var coord
@@ -164,14 +198,16 @@ func rotate_coords_to_direction(direction: String,skill_shape: Array):
 		return new_skill_coords
 
 
-func complete_fight_quest(unit: Object):
-	print(unit, " is completing fight quest")
-	if unit.QUEST != "Fight":
+func complete_unit_quest(unit: Object, quest):
+	if unit.QUEST != quest:
 		return
 	if unit.is_potential_jobs_empty():
 		return
+	print(unit, " is completing "+quest+ " quest")
 		
-	unit.xp = unit.xp + quests["Fight"]["reward"]
+	unit.xp = unit.xp + quests[quest]["reward"]
 	get_tree().current_scene.get_node(unit.UI_EXP_LINK).get_parent().get_child(1).value = unit.xp
+	print(unit.xp)
 	if unit.xp >= unit.max_xp:
+		get_tree().current_scene.get_node(unit.UI_EXP_LINK).get_parent().get_child(1).value = 0
 		await unit.level_up()
