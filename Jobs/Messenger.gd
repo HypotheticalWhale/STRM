@@ -1,6 +1,6 @@
 extends Job
 
-
+var enemies_touched = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	job_name = "Messenger"
@@ -11,5 +11,5 @@ func _ready():
 	MAX_HEALTH = 5
 	MOVEMENT = 3
 	DAMAGE = 5
-	QUEST = "Your Parcel"
+	QUEST = "You're it"
 	

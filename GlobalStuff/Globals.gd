@@ -25,7 +25,7 @@ var quests : Dictionary = {
 		"description": "dog",
 		"reward": 50
 	},
-	"Your Parcel": {
+	"You're it": {
 		"description": "dog",
 		"reward": 50
 	}
@@ -67,7 +67,7 @@ var skills = {
 			"disable": 1	# disables unit for 1 turn
 		}
 	},
-	"Fleet-footed Kick": {
+	"Fleet-footed Kick.": {
 		"shape": [Vector2(2,0)],
 		"damage multiplier": 0.0,
 		"optional effects": {

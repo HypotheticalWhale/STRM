@@ -64,6 +64,12 @@ func _on_input_event(viewport, event, shape_idx):
 				Globals.WHOSTURNISIT = "P1"
 				get_tree().paused = true
 			get_parent().selected_tile.occupied_by["unit"].global_position = global_position
+			if get_parent().selected_tile.occupied_by["unit"].QUEST == "You're it":
+				get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"].next_to_messenger(get_parent().selected_tile.occupied_by["unit"])
+				get_parent().all_tiles[global_position+Vector2(0,32)].occupied_by["unit"].next_to_messenger(get_parent().selected_tile.occupied_by["unit"])
+				get_parent().all_tiles[global_position+Vector2(-32,0)].occupied_by["unit"].next_to_messenger(get_parent().selected_tile.occupied_by["unit"])
+				get_parent().all_tiles[global_position+Vector2(0,-32)].occupied_by["unit"].next_to_messenger(get_parent().selected_tile.occupied_by["unit"])
+				
 			get_parent().selected_tile.occupied_by["unit"] = null
 			get_parent().disable_move_button()
 			get_parent().clear_available_tiles()			
@@ -120,6 +126,12 @@ func _on_input_event(viewport, event, shape_idx):
 					Globals.WHOSTURNISIT = "P1"
 					get_tree().paused = true
 				get_parent().selected_tile.occupied_by["unit"].global_position = global_position
+				if get_parent().selected_tile.occupied_by["unit"].QUEST == "You're it":
+					get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"].next_to_messenger(get_parent().selected_tile.occupied_by["unit"])
+					get_parent().all_tiles[global_position+Vector2(0,32)].occupied_by["unit"].next_to_messenger(get_parent().selected_tile.occupied_by["unit"])
+					get_parent().all_tiles[global_position+Vector2(-32,0)].occupied_by["unit"].next_to_messenger(get_parent().selected_tile.occupied_by["unit"])
+					get_parent().all_tiles[global_position+Vector2(0,-32)].occupied_by["unit"].next_to_messenger(get_parent().selected_tile.occupied_by["unit"])
+					
 				Globals.TAKENACTION = get_parent().selected_tile.occupied_by["unit"]
 				get_parent().selected_tile.occupied_by["unit"] = null
 				get_parent().disable_move_button()

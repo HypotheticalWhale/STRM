@@ -29,6 +29,7 @@ var original_color: Color
 func _ready():
 	await initialize_stats()
 	await initialize_sprites()
+	original_color = self.modulate
 
 func initialize_sprites():
 	pass
@@ -68,25 +69,35 @@ func level_up():
 		lvl_ui.update_jobs($Jobs.get_children()[-1].potential_jobs)
 
 
-func take_damage():
+func take_damage(damage):
 	# Change to red to indicate damage
 	change_color(Color.RED)
-
-func heal():
+	CURRENT_HEALTH -= damage
+	
+func heal(heal_amount):
 	# Change to green to indicate healing
 	change_color(Color.GREEN)
+	if CURRENT_HEALTH >= MAX_HEALTH:
+		CURRENT_HEALTH = MAX_HEALTH
+	
 
 func change_color(new_color: Color):
 	# Set the new color and start a timer to reset it
 	self.modulate = new_color
 	await get_tree().create_timer(color_change_duration).timeout
 	self.modulate = original_color
-	
+
+func next_to_messenger(who_is_hitting):
+	if who_is_hitting.QUEST == "You're it": #Messenger Passive
+		if who_is_hitting.TEAM == self.TEAM:
+			heal(10)
+		else:
+			take_damage(10)
 func get_hit(attack_info: Dictionary, who_is_hitting):
 	# damage
-	CURRENT_HEALTH -= attack_info["damage"]
-	if who_is_hitting.QUEST != "Your Parcel":
-		take_damage()
+	if who_is_hitting.QUEST != "You're it":
+		take_damage(attack_info["damage"])
+	print("Current Health/Max Health: ",CURRENT_HEALTH,"/",MAX_HEALTH)
 	if who_is_hitting.PASSIVES.has("Green Thumbs") and get_tree().current_scene.all_tiles[global_position].occupied_by["terrain"].type == "Garden": #Gardener Quest
 		Globals.complete_unit_quest(who_is_hitting,"Landscaping")
 	if CURRENT_HEALTH <= 0:
@@ -99,10 +110,6 @@ func get_hit(attack_info: Dictionary, who_is_hitting):
 			if PlayerData.player2_units[unit] == self:
 				PlayerData.player2_units.erase(unit)
 		self.queue_free()
-		
-	print("I get hit for: ", attack_info["damage"])
-	print("Current Health/Max Health: ",CURRENT_HEALTH,"/",MAX_HEALTH)
-	
 	# knockback
 	if attack_info.has("knockback"):
 		var destination_coords: Vector2 = global_position
