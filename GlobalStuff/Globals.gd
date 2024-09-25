@@ -69,16 +69,16 @@ var skills = {
 		"optional effects": {
 			"dash": null, # just dashes to the target tile. no other variables
 		}
-	}
+	},
 }
 
 var jobs : Dictionary = {
-	"Gardener": "res://Jobs/Gardener.tscn",
-	"Butler": "res://Jobs/Butler.tscn",
+	"Gardener": "res://Jobs/Gardener.tscn", # APQ
+	"Butler": "res://Jobs/Butler.tscn", 
 	"Dog Walker" : "res://Jobs/DogWalker.tscn",
 	"Card Soldier" : "res://Jobs/CardSoldier.tscn",
-	"Bell Boy" : "res://Jobs/BellBoy.tscn",
-	"Messenger": "res://Jobs/Messenger.tscn",
+	"Bell Boy" : "res://Jobs/BellBoy.tscn", # A
+	"Messenger": "res://Jobs/Messenger.tscn", # A
 	"Charioteer": "res://Jobs/Charioteer.tscn",
 	"Pigeon Commander": "res://Jobs/PigeonCommander.tscn",
 	"Vaults Keeper": "res://Jobs/VaultsKeeper.tscn",
