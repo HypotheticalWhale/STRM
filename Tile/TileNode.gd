@@ -59,8 +59,6 @@ func _on_input_event(viewport, event, shape_idx):
 		if Globals.TAKENACTION and available_tile.visible == true:
 			occupied_by["unit"] = get_parent().selected_tile.occupied_by["unit"]
 			if is_manor and occupied_by["terrain"].WHOSTHRONEISIT != Globals.WHOSTURNISIT:
-				print(occupied_by["terrain"].WHOSTHRONEISIT)
-				print(Globals.WHOSTURNISIT)
 				get_parent().get_node("UI/EndRoundButton").visible = true
 				get_parent().get_node("UI/EndRoundButton").text = Globals.WHOSTURNISIT + ", YOU WIN!!"
 				Globals.WHOSTURNISIT = "P1"
@@ -117,8 +115,6 @@ func _on_input_event(viewport, event, shape_idx):
 			if available_tile.visible == true: #move action on available tile
 				occupied_by["unit"] = get_parent().selected_tile.occupied_by["unit"]
 				if is_manor and occupied_by["terrain"].WHOSTHRONEISIT != Globals.WHOSTURNISIT:
-					print(occupied_by["terrain"].WHOSTHRONEISIT)
-					print(Globals.WHOSTURNISIT)
 					get_parent().get_node("UI/EndRoundButton").visible = true
 					get_parent().get_node("UI/EndRoundButton").text = Globals.WHOSTURNISIT + ", YOU WIN!!"
 					Globals.WHOSTURNISIT = "P1"
@@ -143,7 +139,7 @@ func _on_input_event(viewport, event, shape_idx):
 				get_parent().disable_action_button()
 				get_parent().attacking = false
 				await Globals.complete_unit_quest(Globals.TAKENACTION,"Fight")
-				
+			get_parent().attacking = false
 			get_parent().clear_available_tiles()						
 			get_parent().clear_available_attack_tiles()
 			get_parent().hide_select_menu()
