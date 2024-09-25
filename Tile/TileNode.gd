@@ -58,9 +58,12 @@ func _on_input_event(viewport, event, shape_idx):
 		# attack already, now want to move
 		if Globals.TAKENACTION and available_tile.visible == true:
 			occupied_by["unit"] = get_parent().selected_tile.occupied_by["unit"]
-			if is_manor:
+			if is_manor and occupied_by["terrain"].WHOSTHRONEISIT != Globals.WHOSTURNISIT:
+				print(occupied_by["terrain"].WHOSTHRONEISIT)
+				print(Globals.WHOSTURNISIT)
 				get_parent().get_node("UI/EndRoundButton").visible = true
 				get_parent().get_node("UI/EndRoundButton").text = Globals.WHOSTURNISIT + ", YOU WIN!!"
+				Globals.WHOSTURNISIT = "P1"
 				get_tree().paused = true
 			get_parent().selected_tile.occupied_by["unit"].global_position = global_position
 			get_parent().selected_tile.occupied_by["unit"] = null
@@ -113,9 +116,12 @@ func _on_input_event(viewport, event, shape_idx):
 			#havent aciton yet but want to move
 			if available_tile.visible == true: #move action on available tile
 				occupied_by["unit"] = get_parent().selected_tile.occupied_by["unit"]
-				if is_manor:
+				if is_manor and occupied_by["terrain"].WHOSTHRONEISIT != Globals.WHOSTURNISIT:
+					print(occupied_by["terrain"].WHOSTHRONEISIT)
+					print(Globals.WHOSTURNISIT)
 					get_parent().get_node("UI/EndRoundButton").visible = true
 					get_parent().get_node("UI/EndRoundButton").text = Globals.WHOSTURNISIT + ", YOU WIN!!"
+					Globals.WHOSTURNISIT = "P1"
 					get_tree().paused = true
 				get_parent().selected_tile.occupied_by["unit"].global_position = global_position
 				Globals.TAKENACTION = get_parent().selected_tile.occupied_by["unit"]

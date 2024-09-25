@@ -24,6 +24,10 @@ var quests : Dictionary = {
 	"Landscaping": {
 		"description": "dog",
 		"reward": 50
+	},
+	"Your Parcel": {
+		"description": "dog",
+		"reward": 50
 	}
 }
 var skills = {

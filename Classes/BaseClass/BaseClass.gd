@@ -21,6 +21,10 @@ var num_hits_taken_and_dealt : int
 # status ailments
 var disabled_turns_left: int = 0
 
+# Duration for color change
+var color_change_duration: float = 0.5
+var original_color: Color
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	await initialize_stats()
@@ -64,9 +68,25 @@ func level_up():
 		lvl_ui.update_jobs($Jobs.get_children()[-1].potential_jobs)
 
 
+func take_damage():
+	# Change to red to indicate damage
+	change_color(Color.RED)
+
+func heal():
+	# Change to green to indicate healing
+	change_color(Color.GREEN)
+
+func change_color(new_color: Color):
+	# Set the new color and start a timer to reset it
+	self.modulate = new_color
+	await get_tree().create_timer(color_change_duration).timeout
+	self.modulate = original_color
+	
 func get_hit(attack_info: Dictionary, who_is_hitting):
 	# damage
 	CURRENT_HEALTH -= attack_info["damage"]
+	if who_is_hitting.QUEST != "Your Parcel":
+		take_damage()
 	if who_is_hitting.PASSIVES.has("Green Thumbs") and get_tree().current_scene.all_tiles[global_position].occupied_by["terrain"].type == "Garden": #Gardener Quest
 		Globals.complete_unit_quest(who_is_hitting,"Landscaping")
 	if CURRENT_HEALTH <= 0:

@@ -11,3 +11,5 @@ func _ready():
 	MAX_HEALTH = 5
 	MOVEMENT = 3
 	DAMAGE = 5
+	QUEST = "Your Parcel"
+	
