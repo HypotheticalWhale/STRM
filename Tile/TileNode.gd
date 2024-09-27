@@ -10,6 +10,7 @@ var occupied_by = {
 @onready var available_tile = $Available
 @onready var available_attack_tile = $AvailableAttack
 @onready var target_tile = $Target
+@onready var destination_tile = $Destination
 var is_manor = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,10 +38,12 @@ func _on_input_event(viewport, event, shape_idx):
 ###################################### if player has moved with or used an action ######################################
 		# move already, now want to attack
 		if Globals.TAKENACTION and (available_attack_tile.visible == true or target_tile.visible == true):
-			# look for any units on this tilenode, and trigger their get_hit()
 			for tile in get_parent().available_attack_tiles:
 				var attack_tile_info = get_parent().available_attack_tiles[tile]
 				if get_parent().all_tiles[tile].occupied_by["unit"]:
+					# special case for displace attacks: the attack will not hit all target tiles
+					if attack_tile_info.has("displace") and tile not in get_tree().current_scene.displace_target_tiles:
+						continue
 					# attack_tile_info contains a dictionary with various attack details such as damage
 					get_parent().all_tiles[tile].occupied_by["unit"].get_hit(attack_tile_info,get_parent().selected_tile.occupied_by["unit"])
 			if get_parent().available_attack_tiles[tile_coordinates].has("dash"):
@@ -128,7 +131,9 @@ func _on_input_event(viewport, event, shape_idx):
 				for tile in get_parent().available_attack_tiles:
 					if get_parent().all_tiles[tile].occupied_by["unit"]:
 						var attack_tile_info = get_parent().available_attack_tiles[tile]
-						# attack_tile_info contains a dictionary with various attack details such as damage
+						# special case for displace attacks: the attack will not hit all target tiles
+						if attack_tile_info.has("displace") and tile not in get_tree().current_scene.displace_target_tiles:
+							continue
 						get_parent().all_tiles[tile].occupied_by["unit"].get_hit(attack_tile_info,get_parent().selected_tile.occupied_by["unit"])
 				if get_parent().available_attack_tiles[tile_coordinates].has("dash"):
 					var dash_destination = get_parent().available_attack_tiles[tile_coordinates]["dash"]["destination"]
@@ -157,6 +162,12 @@ func show_available_attack_tile():
 	
 func hide_available_attack_tile():
 	available_attack_tile.visible = false
+
+func show_destination_tile():
+	destination_tile.visible = true
+	
+func hide_destination_tile():
+	destination_tile.visible = false
 	
 func show_target_tile():
 	target_tile.visible = true

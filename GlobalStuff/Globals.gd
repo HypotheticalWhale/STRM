@@ -70,6 +70,16 @@ var skills = {
 			"dash": null, # just dashes to the target tile. no other variables
 		}
 	},
+	"Tea Party for Two": {	# displaces two random units to two locations near the butler separated by a tea table
+		"shape": [],	# is attacking everyone bro thats why
+		"damage multiplier": 0.0,
+		"optional effects": {
+			"displace": [Vector2(2, -1), Vector2(2, 1)],
+			"change terrain": [
+				{"Tea Table": [Vector2(2,0)]}
+			]
+		}
+	}
 }
 
 var jobs : Dictionary = {

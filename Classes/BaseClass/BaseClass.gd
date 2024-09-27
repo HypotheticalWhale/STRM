@@ -117,6 +117,12 @@ func get_hit(attack_info: Dictionary, who_is_hitting):
 		# give it a disabled counter for each disable_duration
 		# at the start of owners turn, if disabled counter > 0, disable its attack button
 		# at the end of the owners turn, decrement it.
+	
+	if attack_info.has("displace"):
+		var destination = get_tree().current_scene.displace_destination_coords.pop_front() * Globals.TILE_SIZE
+		await warp_to(destination)
+	
+	
 		
 func add_job(job_name : String):
 	var job_node = load(Globals.jobs[job_name]).instantiate()
