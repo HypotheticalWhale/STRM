@@ -79,6 +79,7 @@ func heal(heal_amount):
 	change_color(Color.GREEN)
 	if CURRENT_HEALTH >= MAX_HEALTH:
 		CURRENT_HEALTH = MAX_HEALTH
+	print("Healing Current Health/Max Health: ",CURRENT_HEALTH,"/",MAX_HEALTH)
 	
 
 func change_color(new_color: Color):
@@ -90,14 +91,17 @@ func change_color(new_color: Color):
 func next_to_messenger(who_is_hitting):
 	if who_is_hitting.QUEST == "You're it": #Messenger Passive
 		if who_is_hitting.TEAM == self.TEAM:
-			heal(10)
+			heal(who_is_hitting.DAMAGE)
 		else:
-			take_damage(10)
+			if self not in who_is_hitting.enemies_touched:
+				who_is_hitting.enemies_touched.append(self)
+			get_hit({"damage":DAMAGE},who_is_hitting)
+			
 func get_hit(attack_info: Dictionary, who_is_hitting):
 	# damage
-	if who_is_hitting.QUEST != "You're it":
-		take_damage(attack_info["damage"])
-	print("Current Health/Max Health: ",CURRENT_HEALTH,"/",MAX_HEALTH)
+	print(attack_info,who_is_hitting)
+	await take_damage(attack_info["damage"])
+	print("Taking Damage Current Health/Max Health: ",CURRENT_HEALTH,"/",MAX_HEALTH)
 	if who_is_hitting.PASSIVES.has("Green Thumbs") and get_tree().current_scene.all_tiles[global_position].occupied_by["terrain"].type == "Garden": #Gardener Quest
 		Globals.complete_unit_quest(who_is_hitting,"Landscaping")
 	if CURRENT_HEALTH <= 0:

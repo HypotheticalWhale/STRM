@@ -45,7 +45,13 @@ func _on_input_event(viewport, event, shape_idx):
 					get_parent().all_tiles[tile].occupied_by["unit"].get_hit(attack_tile_info,get_parent().selected_tile.occupied_by["unit"])
 			if get_parent().available_attack_tiles[tile_coordinates].has("dash"):
 				var dash_destination = get_parent().available_attack_tiles[tile_coordinates]["dash"]["destination"]
-				get_parent().selected_tile.occupied_by["unit"].warp_to(dash_destination)
+				await get_parent().selected_tile.occupied_by["unit"].warp_to(dash_destination)
+				if get_parent().all_tiles[dash_destination].occupied_by["unit"].QUEST == "You're it":
+					if dash_destination+Vector2(32,0) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(32,0)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(32,0)].occupied_by["unit"].next_to_messenger(get_parent().all_tiles[dash_destination].occupied_by["unit"])
+					if dash_destination+Vector2(0,32) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(0,32)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(0,32)].occupied_by["unit"].next_to_messenger(get_parent().all_tiles[dash_destination].occupied_by["unit"])
+					if dash_destination+Vector2(-32,0) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(-32,0)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(-32,0)].occupied_by["unit"].next_to_messenger(get_parent().all_tiles[dash_destination].occupied_by["unit"])
+					if dash_destination+Vector2(0,-32) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(0,-32)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(0,-32)].occupied_by["unit"].next_to_messenger(get_parent().all_tiles[dash_destination].occupied_by["unit"])
+					#messenger passive
 			get_parent().attacking = false
 			get_parent().clear_available_tiles()			
 			get_parent().clear_available_attack_tiles()
@@ -64,13 +70,16 @@ func _on_input_event(viewport, event, shape_idx):
 				Globals.WHOSTURNISIT = "P1"
 				get_tree().paused = true
 			get_parent().selected_tile.occupied_by["unit"].global_position = global_position
-			if get_parent().selected_tile.occupied_by["unit"].QUEST == "You're it":
-				get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"].next_to_messenger(get_parent().selected_tile.occupied_by["unit"])
-				get_parent().all_tiles[global_position+Vector2(0,32)].occupied_by["unit"].next_to_messenger(get_parent().selected_tile.occupied_by["unit"])
-				get_parent().all_tiles[global_position+Vector2(-32,0)].occupied_by["unit"].next_to_messenger(get_parent().selected_tile.occupied_by["unit"])
-				get_parent().all_tiles[global_position+Vector2(0,-32)].occupied_by["unit"].next_to_messenger(get_parent().selected_tile.occupied_by["unit"])
-				
+			var curr_unit = get_parent().selected_tile.occupied_by["unit"]
 			get_parent().selected_tile.occupied_by["unit"] = null
+			
+			if curr_unit.QUEST == "You're it":
+				if global_position+Vector2(32,0) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"].next_to_messenger(curr_unit)
+				if global_position+Vector2(0,32) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(0,32)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(0,32)].occupied_by["unit"].next_to_messenger(curr_unit)
+				if global_position+Vector2(-32,0) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(-32,0)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(-32,0)].occupied_by["unit"].next_to_messenger(curr_unit)
+				if global_position+Vector2(0,-32) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(0,-32)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(0,-32)].occupied_by["unit"].next_to_messenger(curr_unit)
+				#messenger passive
+				
 			get_parent().disable_move_button()
 			get_parent().clear_available_tiles()			
 			get_parent().clear_available_attack_tiles()
@@ -125,17 +134,19 @@ func _on_input_event(viewport, event, shape_idx):
 					get_parent().get_node("UI/EndRoundButton").text = Globals.WHOSTURNISIT + ", YOU WIN!!"
 					Globals.WHOSTURNISIT = "P1"
 					get_tree().paused = true
+				
 				get_parent().selected_tile.occupied_by["unit"].global_position = global_position
-				if get_parent().selected_tile.occupied_by["unit"].QUEST == "You're it":
-					get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"].next_to_messenger(get_parent().selected_tile.occupied_by["unit"])
-					get_parent().all_tiles[global_position+Vector2(0,32)].occupied_by["unit"].next_to_messenger(get_parent().selected_tile.occupied_by["unit"])
-					get_parent().all_tiles[global_position+Vector2(-32,0)].occupied_by["unit"].next_to_messenger(get_parent().selected_tile.occupied_by["unit"])
-					get_parent().all_tiles[global_position+Vector2(0,-32)].occupied_by["unit"].next_to_messenger(get_parent().selected_tile.occupied_by["unit"])
-					
+				var curr_unit = get_parent().selected_tile.occupied_by["unit"]
 				Globals.TAKENACTION = get_parent().selected_tile.occupied_by["unit"]
 				get_parent().selected_tile.occupied_by["unit"] = null
+				if curr_unit.QUEST == "You're it":
+					if global_position+Vector2(32,0) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"].next_to_messenger(curr_unit)
+					if global_position+Vector2(0,32) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(0,32)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(0,32)].occupied_by["unit"].next_to_messenger(curr_unit)
+					if global_position+Vector2(-32,0) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(-32,0)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(-32,0)].occupied_by["unit"].next_to_messenger(curr_unit)
+					if global_position+Vector2(0,-32) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(0,-32)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(0,-32)].occupied_by["unit"].next_to_messenger(curr_unit)
+					#messenger passive
 				get_parent().disable_move_button()
-			# havent move yet but want to attack
+				# havent move yet but want to attack
 			elif available_attack_tile.visible == true or target_tile.visible == true:
 				Globals.TAKENACTION = get_parent().selected_tile.occupied_by["unit"]
 				# look for any units on this tilenode, and trigger their get_hit()
@@ -146,7 +157,13 @@ func _on_input_event(viewport, event, shape_idx):
 						get_parent().all_tiles[tile].occupied_by["unit"].get_hit(attack_tile_info,get_parent().selected_tile.occupied_by["unit"])
 				if get_parent().available_attack_tiles[tile_coordinates].has("dash"):
 					var dash_destination = get_parent().available_attack_tiles[tile_coordinates]["dash"]["destination"]
-					get_parent().selected_tile.occupied_by["unit"].warp_to(dash_destination)
+					await get_parent().selected_tile.occupied_by["unit"].warp_to(dash_destination)
+					if get_parent().all_tiles[dash_destination].occupied_by["unit"].QUEST == "You're it":
+						if dash_destination+Vector2(32,0) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(32,0)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(32,0)].occupied_by["unit"].next_to_messenger(get_parent().all_tiles[dash_destination].occupied_by["unit"])
+						if dash_destination+Vector2(0,32) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(0,32)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(0,32)].occupied_by["unit"].next_to_messenger(get_parent().all_tiles[dash_destination].occupied_by["unit"])
+						if dash_destination+Vector2(-32,0) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(-32,0)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(-32,0)].occupied_by["unit"].next_to_messenger(get_parent().all_tiles[dash_destination].occupied_by["unit"])
+						if dash_destination+Vector2(0,-32) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(0,-32)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(0,-32)].occupied_by["unit"].next_to_messenger(get_parent().all_tiles[dash_destination].occupied_by["unit"])
+					#messenger passive
 				get_parent().clear_available_attack_tiles()
 				get_parent().disable_action_button()
 				get_parent().attacking = false
