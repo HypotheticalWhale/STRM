@@ -64,9 +64,18 @@ func level_up():
 		lvl_ui.update_jobs($Jobs.get_children()[-1].potential_jobs)
 
 
-func get_hit(attack_info: Dictionary, who_is_hitting):
+func get_hit(attack_info: Dictionary):
+	# attack_info example = {
+	#	"who is hitting": Object1234,
+	#	"damage": 10,
+	#	"knockback": {"direction": Vector2(1,0), "distance": 2},
+	#	"disable": 2, (disable duration)
+	# 	"displace": null
+	#}
+	
 	# damage
 	CURRENT_HEALTH -= attack_info["damage"]
+	var who_is_hitting = attack_info["who is hitting"]
 	if who_is_hitting.PASSIVES.has("Green Thumbs") and get_tree().current_scene.all_tiles[global_position].occupied_by["terrain"].type == "Garden": #Gardener Quest
 		Globals.complete_unit_quest(who_is_hitting,"Landscaping")
 	if CURRENT_HEALTH <= 0:

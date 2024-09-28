@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://beftcxptuutu2"]
 
-[node name="Terrain" type="Node2D"]
+[node name="Terrain" type="Node2D" groups=["Terrain"]]
 z_index = -1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
