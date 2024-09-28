@@ -76,7 +76,7 @@ var skills = {
 		"optional effects": {
 			"displace": [Vector2(2, -1), Vector2(2, 1)],
 			"change terrain": [
-				{"Tea Table": [Vector2(2,0)]}
+				["tea table", [Vector2(2,0)]]
 			]
 		}
 	}

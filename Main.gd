@@ -12,6 +12,7 @@ var all_tiles = {}
 var available_tiles = []
 var displace_target_tiles = []	# for the displace active
 var displace_destination_coords = []	# grid pos of displace destinations
+var target_terrain_info = {} 	# e.g. target_terrain_info = { Vector2(32, 64): "tea table", Vector2(64, 64)": "Chair" }
 
 # Structure of available_attack_tiles
 ## key = grid_pos, value = dictionary of skill details. 
@@ -109,6 +110,7 @@ func reset_units():
 		all_tiles[tile_coords].occupied_by["unit"] = unit
 		count += 2		
 	
+	
 func spawn_tiles():
 	for x_tile in range(2,GRID_SIZE[0]):
 		for y_tile in range(2,GRID_SIZE[1]):
@@ -129,6 +131,7 @@ func spawn_tiles():
 					tile_node.add_terrain("marble")
 			else:
 				tile_node.add_terrain("garden")
+
 
 func get_occupied_tiles():
 	var occupied_tiles = []
@@ -208,6 +211,7 @@ func clear_available_attack_tiles():
 	for grid_pos in available_attack_tiles:
 		all_tiles[grid_pos].hide_available_attack_tile()
 		all_tiles[grid_pos].hide_target_tile()
+		all_tiles[grid_pos].hide_target_terrain_tile()
 		all_tiles[grid_pos].hide_destination_tile()
 		# reset any modulates (such as from sweet spot)
 		all_tiles[grid_pos].modulate = Color(1,1,1)
@@ -320,17 +324,43 @@ func _on_action_button_pressed():
 func on_skill_pressed(button,direction):
 	button_pressed = button
 	attacking = true
-	
 	clear_available_tiles()
 	clear_available_attack_tiles()
-	var attack_coords = []
-	displace_destination_coords = []
+	target_terrain_info = {}
+	
+	##################### telegraphing the terrain to be changed ##################
+	if Globals.skills[button.skill_name]["optional effects"].has("change terrain"):
+		# change_terrain_info example = [
+		#	["tea table", [Vector2(1,0)],
+		#	["Chairs", [Vector2(1,1), Vector2(1,-1)]
+		#]
+		var change_terrain_info = Globals.skills[button.skill_name]["optional effects"]["change terrain"]
+		for terrain in change_terrain_info:
+			var terrain_type = terrain[0]
+			var terrain_target_shape = terrain[1]
+			var rotated_coords = Globals.rotate_coords_to_direction(direction, terrain_target_shape)
+			var absolute_coords = []
+			for coord in rotated_coords:
+				absolute_coords.append((coord*Globals.TILE_SIZE + selected_tile.global_position)/Globals.TILE_SIZE)
+			for coord in absolute_coords:
+				var new_position = coord * Globals.TILE_SIZE
+				# invalid tiles cannot have their terrain changed
+				if new_position not in valid_tiles:
+					continue
+				# tiles occupied by units cannot have their terrain changed
+				if all_tiles[new_position].occupied_by["unit"]:
+					continue
+				
+				target_terrain_info[new_position] = terrain_type
+				await all_tiles[new_position].show_target_terrain_tile()
+			
+	##################### telegraphing the displace destination tile ##################
 	# dont judge
 	# for displace skills, we gotta telegraph the displacement destinations to the player
 	# case 1: destinations in invalid tiles: ignore
 	# case 1: destinations on occupied tile: ignore
 	# case 3: destinations on empty tile: show character outline to indicate destination
-	
+	displace_destination_coords = []
 	if Globals.skills[button.skill_name]["optional effects"].has("displace"):
 		var rotated_coords = Globals.rotate_coords_to_direction(direction, Globals.skills[button.skill_name]["optional effects"]["displace"])
 		for coord in rotated_coords:
@@ -351,12 +381,16 @@ func on_skill_pressed(button,direction):
 		for coord in impossible_destinations:
 			displace_destination_coords.erase(coord)
 				
+	################################# telegraphing the attack shape ##############################
+	var attack_coords = []
 	if len(Globals.skills[button.skill_name]["shape"]) == 0:
 		for x in range(GRID_SIZE[0]*2):
 			for y in range(GRID_SIZE[1]*2):
 				attack_coords.append(Vector2(x-GRID_SIZE[0],y-GRID_SIZE[1]))
 	else:
 		attack_coords = Globals.rotate_coords_to_direction(direction,Globals.skills[button.skill_name]["shape"])
+	
+	##################### passing attack_info into each available/targeted tile ##################
 	var grid_pos
 	displace_target_tiles = []
 	for tile in attack_coords:
@@ -377,8 +411,9 @@ func on_skill_pressed(button,direction):
 				displace_target_tiles.append(grid_pos)
 				
 		
-		# pass in damage and effects of a skill to each tile
+		# pass in owner, damage and effects of a skill to each tile
 		available_attack_tiles[grid_pos] = {}
+		available_attack_tiles[grid_pos]["who is hitting"] = button.skill_owner
 		
 		# calculate damage and add it to available_attack_tiles[grid_pos]
 		var base_damage = button.skill_owner.DAMAGE
@@ -388,7 +423,7 @@ func on_skill_pressed(button,direction):
 			var sweet_spot_tile = Globals.rotate_coords_to_direction(direction, [Globals.skills[button.skill_name]["optional effects"]["sweet spot"]])[0]
 			if tile == sweet_spot_tile:
 				# modulate tile to show sweet spot
-				all_tiles[button.skill_owner.global_position + tile*Globals.TILE_SIZE].modulate = Color(1,0.6,0.6)
+				all_tiles[button.skill_owner.gloerrain_targetbal_position + tile*Globals.TILE_SIZE].modulate = Color(1,0.6,0.6)
 				sweet_spot_damage_multiplier = 2.0
 		if len(button.skill_owner.PASSIVES) > 0 and all_tiles[grid_pos].occupied_by["terrain"].type == "Garden": #gardener passive
 			for passive in button.skill_owner.PASSIVES:
@@ -433,8 +468,10 @@ func on_skill_pressed(button,direction):
 		if Globals.skills[button.skill_name]["optional effects"].has("displace"):
 			available_attack_tiles[grid_pos]["displace"] = {}
 			available_attack_tiles[grid_pos]["displace"]["destinations"] = displace_destination_coords
-			
+		
 
+			
+	##################### choosing units to be displaced ##################
 	# remove random units from displace targets (gotta choose only 2 out of 5)
 	if Globals.skills[button.skill_name]["optional effects"].has("displace"):
 		randomize()

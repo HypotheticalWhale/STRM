@@ -11,6 +11,7 @@ var occupied_by = {
 @onready var available_attack_tile = $AvailableAttack
 @onready var target_tile = $Target
 @onready var destination_tile = $Destination
+@onready var target_terrain_tile = $TargetTerrain
 var is_manor = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,15 +38,17 @@ func _on_input_event(viewport, event, shape_idx):
 			
 ###################################### if player has moved with or used an action ######################################
 		# move already, now want to attack
-		if Globals.TAKENACTION and (available_attack_tile.visible == true or target_tile.visible == true):
+		if Globals.TAKENACTION and (available_attack_tile.visible == true or target_tile.visible == true or target_terrain_tile.visible == true):
+			if target_terrain_tile.visible == true:
+				add_terrain(get_tree().current_scene.target_terrain_info[global_position])
 			for tile in get_parent().available_attack_tiles:
 				var attack_tile_info = get_parent().available_attack_tiles[tile]
 				if get_parent().all_tiles[tile].occupied_by["unit"]:
 					# special case for displace attacks: the attack will not hit all target tiles
 					if attack_tile_info.has("displace") and tile not in get_tree().current_scene.displace_target_tiles:
 						continue
-					# attack_tile_info contains a dictionary with various attack details such as damage
-					get_parent().all_tiles[tile].occupied_by["unit"].get_hit(attack_tile_info,get_parent().selected_tile.occupied_by["unit"])
+					# attack_tile_info contains a dictionary with various attack details such as who is hitting and damage
+					get_parent().all_tiles[tile].occupied_by["unit"].get_hit(attack_tile_info)
 			if get_parent().available_attack_tiles[tile_coordinates].has("dash"):
 				var dash_destination = get_parent().available_attack_tiles[tile_coordinates]["dash"]["destination"]
 				get_parent().selected_tile.occupied_by["unit"].warp_to(dash_destination)
@@ -126,6 +129,8 @@ func _on_input_event(viewport, event, shape_idx):
 				get_parent().disable_move_button()
 			# havent move yet but want to attack
 			elif available_attack_tile.visible == true or target_tile.visible == true:
+				if target_terrain_tile.visible == true:
+					add_terrain(get_tree().current_scene.target_terrain_info[global_position])
 				Globals.TAKENACTION = get_parent().selected_tile.occupied_by["unit"]
 				# look for any units on this tilenode, and trigger their get_hit()
 				for tile in get_parent().available_attack_tiles:
@@ -134,7 +139,7 @@ func _on_input_event(viewport, event, shape_idx):
 						# special case for displace attacks: the attack will not hit all target tiles
 						if attack_tile_info.has("displace") and tile not in get_tree().current_scene.displace_target_tiles:
 							continue
-						get_parent().all_tiles[tile].occupied_by["unit"].get_hit(attack_tile_info,get_parent().selected_tile.occupied_by["unit"])
+						get_parent().all_tiles[tile].occupied_by["unit"].get_hit(attack_tile_info)
 				if get_parent().available_attack_tiles[tile_coordinates].has("dash"):
 					var dash_destination = get_parent().available_attack_tiles[tile_coordinates]["dash"]["destination"]
 					get_parent().selected_tile.occupied_by["unit"].warp_to(dash_destination)
@@ -143,7 +148,7 @@ func _on_input_event(viewport, event, shape_idx):
 				get_parent().attacking = false
 				await Globals.complete_unit_quest(Globals.TAKENACTION,"Fight")
 				
-			get_parent().clear_available_tiles()						
+			get_parent().clear_available_tiles()
 			get_parent().clear_available_attack_tiles()
 			get_parent().hide_select_menu()
 			get_parent().hide_info_menu()			
@@ -175,12 +180,25 @@ func show_target_tile():
 func hide_target_tile():
 	target_tile.visible = false
 
+func show_target_terrain_tile():
+	target_terrain_tile.visible = true
+	
+func hide_target_terrain_tile():
+	target_terrain_tile.visible = false
+
 func is_empty_tile():
 	if occupied_by["unit"]:
 		return true
 		
 
 func add_terrain(terrain_type : String):
+	for node in get_children():
+		if node.is_in_group("Terrain"):
+			if node.type == "Throne":
+				print("Can't replace the throne terrain")
+				return
+			node.queue_free()
+			
 	if terrain_type == "marble":
 		var new_terrain = load("res://Terrain/Marble.tscn").instantiate()
 		add_child(new_terrain)
@@ -199,6 +217,13 @@ func add_terrain(terrain_type : String):
 		move_child(new_terrain, 0)		
 		occupied_by["terrain"] = new_terrain
 		is_manor = true
+	
+	if terrain_type == "tea table":
+		var new_terrain = load("res://Terrain/TeaTable.tscn").instantiate()
+		add_child(new_terrain)
+		move_child(new_terrain, 0)		
+		occupied_by["terrain"] = new_terrain
+
 
 func get_terrain():
 	return occupied_by["terrain"]
