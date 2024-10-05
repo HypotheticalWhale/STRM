@@ -174,15 +174,18 @@ func show_action_buttons():
 func hide_action_buttons():
 	$SelectOptions/PanelContainer/HBoxContainer/ActionButtons.visible = false
 	
-
 func disable_move_button():
 	$SelectOptions/PanelContainer/HBoxContainer/SelectButtons/MoveButton.disabled = true
+
+func enable_move_button():
+	$SelectOptions/PanelContainer/HBoxContainer/SelectButtons/MoveButton.disabled = false
 	
 func disable_action_button():
 	$SelectOptions/PanelContainer/HBoxContainer/SelectButtons/ActionButton.disabled = true
 
 func enable_action_button():
 	$SelectOptions/PanelContainer/HBoxContainer/SelectButtons/ActionButton.disabled = false
+	
 func highlight_available_tiles(available_tiles_coords):
 	clear_available_tiles()
 	clear_available_attack_tiles()
@@ -287,6 +290,7 @@ func _on_turn_timer_timeout():
 	# -1 to all the status ailment counters
 	for unit in current_turn_units.values():
 		unit.disabled_turns_left = max(unit.disabled_turns_left - 1, 0)
+		unit.immobilized_turns_left = max(unit.immobilized_turns_left - 1, 0)
 		
 	await Globals.toggle_player_turn()
 	if Globals.WHOSTURNISIT == "P1":
@@ -442,6 +446,10 @@ func on_skill_pressed(button,direction):
 		# pass in disable duration to tilenode
 		if Globals.skills[button.skill_name]["optional effects"].has("disable"):
 			available_attack_tiles[grid_pos]["disable"] = Globals.skills[button.skill_name]["optional effects"]["disable"]
+		
+		# pass in immobilize duration to tilenode
+		if Globals.skills[button.skill_name]["optional effects"].has("immobilize"):
+			available_attack_tiles[grid_pos]["immobilize"] = Globals.skills[button.skill_name]["optional effects"]["immobilize"]
 		
 		# pass in dash to tilenode
 		if Globals.skills[button.skill_name]["optional effects"].has("dash"):

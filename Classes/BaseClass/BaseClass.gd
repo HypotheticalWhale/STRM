@@ -20,6 +20,7 @@ var num_hits_taken_and_dealt : int
 
 # status ailments
 var disabled_turns_left: int = 0
+var immobilized_turns_left: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -111,10 +112,8 @@ func get_hit(attack_info: Dictionary):
 		for i in range(distance):
 			var new_destination_coords: Vector2 = destination_coords + step_vector
 			if new_destination_coords not in get_tree().current_scene.valid_tiles:
-				print("can't knock back to invalid tile")
 				break
 			if get_tree().current_scene.all_tiles[new_destination_coords].occupied_by["unit"] != null:
-				print("can't knockback if theres a dude there")
 				break
 			destination_coords = new_destination_coords
 		
@@ -126,6 +125,11 @@ func get_hit(attack_info: Dictionary):
 		# give it a disabled counter for each disable_duration
 		# at the start of owners turn, if disabled counter > 0, disable its attack button
 		# at the end of the owners turn, decrement it.
+
+	# immobilize
+	if attack_info.has("immobilize"):
+		immobilized_turns_left = attack_info["immobilize"]
+		# same logic as disable
 	
 	if attack_info.has("displace"):
 		var destination = get_tree().current_scene.displace_destination_coords.pop_front() * Globals.TILE_SIZE
