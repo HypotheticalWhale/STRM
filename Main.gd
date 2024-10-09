@@ -312,7 +312,7 @@ func _on_turn_timer_timeout():
 				astar.set_point_solid(tile.global_position/Globals.TILE_SIZE,true)
 			else:
 				astar.set_point_solid(tile.global_position/Globals.TILE_SIZE,false)
-				
+	#Bell Boy QUEST
 	# show reminder for next players turn
 	get_node("UI/NextPlayerReady").visible = true
 	get_node("UI/NextPlayerReady").text = Globals.WHOSTURNISIT + "'s turn. Click to start."
