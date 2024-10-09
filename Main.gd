@@ -112,6 +112,8 @@ func reset_units():
 	
 	
 func spawn_tiles():
+	var throne_count = true
+	
 	for x_tile in range(2,GRID_SIZE[0]):
 		for y_tile in range(2,GRID_SIZE[1]):
 			tile_node = tile_path.instantiate()
@@ -127,6 +129,11 @@ func spawn_tiles():
 			if x_tile <= manor_length or x_tile > (GRID_SIZE[0] - manor_length):
 				if (x_tile == 2 or x_tile == GRID_SIZE[0]-1) and y_tile == round(float(GRID_SIZE[1])/2):
 					tile_node.add_terrain("throne")
+					if throne_count:
+						tile_node.occupied_by["terrain"].WHOSTHRONEISIT = "P1"
+						throne_count = false
+					else:
+						tile_node.occupied_by["terrain"].WHOSTHRONEISIT = "P2"
 				else:
 					tile_node.add_terrain("marble")
 			else:

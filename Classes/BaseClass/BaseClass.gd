@@ -12,6 +12,7 @@ var PASSIVES = []
 var UI_EXP_LINK
 var QUEST 
 var POTENTIAL_JOBS : Array[String]
+var enemies_touched = []
 
 # quest specific
 var xp : int
@@ -22,10 +23,15 @@ var num_hits_taken_and_dealt : int
 var disabled_turns_left: int = 0
 var immobilized_turns_left: int = 0
 
+# Duration for color change
+var color_change_duration: float = 0.5
+var original_color: Color
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	await initialize_stats()
 	await initialize_sprites()
+	original_color = self.modulate
 
 func initialize_sprites():
 	pass
@@ -65,6 +71,36 @@ func level_up():
 		lvl_ui.update_jobs($Jobs.get_children()[-1].potential_jobs)
 
 
+func take_damage(damage):
+	# Change to red to indicate damage
+	change_color(Color.RED)
+	CURRENT_HEALTH -= damage
+	
+func heal(heal_amount):
+	# Change to green to indicate healing
+	change_color(Color.GREEN)
+	if CURRENT_HEALTH >= MAX_HEALTH:
+		CURRENT_HEALTH = MAX_HEALTH
+	print("Healing Current Health/Max Health: ",CURRENT_HEALTH,"/",MAX_HEALTH)
+	
+
+func change_color(new_color: Color):
+	# Set the new color and start a timer to reset it
+	self.modulate = new_color
+	await get_tree().create_timer(color_change_duration).timeout
+	self.modulate = original_color
+
+func next_to_messenger(who_is_hitting):
+	if who_is_hitting.QUEST == "You're it": #Messenger Passive
+		if who_is_hitting.TEAM == self.TEAM:
+			heal(who_is_hitting.DAMAGE)
+		else:
+			if self not in who_is_hitting.enemies_touched:
+				who_is_hitting.enemies_touched.append(self)
+				print("Touched: ",who_is_hitting.enemies_touched)
+				print("Touched length", len(who_is_hitting.enemies_touched))
+			get_hit({"damage":DAMAGE},who_is_hitting)
+			
 func get_hit(attack_info: Dictionary):
 	# attack_info example = {
 	#	"who is hitting": Object1234,
@@ -89,10 +125,6 @@ func get_hit(attack_info: Dictionary):
 			if PlayerData.player2_units[unit] == self:
 				PlayerData.player2_units.erase(unit)
 		self.queue_free()
-		
-	print("I get hit for: ", attack_info["damage"])
-	print("Current Health/Max Health: ",CURRENT_HEALTH,"/",MAX_HEALTH)
-	
 	# knockback
 	if attack_info.has("knockback"):
 		var destination_coords: Vector2 = global_position
