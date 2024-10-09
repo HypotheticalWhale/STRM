@@ -71,6 +71,15 @@ func level_up():
 		lvl_ui.update_jobs($Jobs.get_children()[-1].potential_jobs)
 
 
+func DIDIWIN():
+	var tile_node = get_tile_node()
+	if tile_node.is_manor and tile_node.occupied_by["terrain"].WHOSTHRONEISIT != TEAM:
+		get_tree().current_scene.get_node("UI/EndRoundButton").visible = true
+		get_tree().current_scene.get_node("UI/EndRoundButton").text = TEAM + ", YOU WIN!!"
+		Globals.WHOSTURNISIT = "P1"
+		get_tree().paused = true
+
+
 func take_damage(damage):
 	# Change to red to indicate damage
 	change_color(Color.RED)
@@ -184,10 +193,28 @@ func add_job(job_name : String):
 	PASSIVES.append(job_node.passive)
 	await update_sprite()
 
+
 func warp_to(destination_vector: Vector2):
 	get_tree().current_scene.all_tiles[global_position].occupied_by["unit"] = null
 	global_position = destination_vector
 	get_tree().current_scene.all_tiles[global_position].occupied_by["unit"] = self
+	await DIDIWIN()
+
+
+func get_tile_node():
+	var unit_coord = global_position/Globals.TILE_SIZE
+	var tile_node = null
+	for pos in get_tree().current_scene.all_tiles:
+		var coord = pos / Globals.TILE_SIZE
+		print(coord, unit_coord)
+		if coord == unit_coord:
+			tile_node = get_tree().current_scene.all_tiles[pos]
+			return tile_node
+	
+	# unit should always be able to get its tile node
+	assert(tile_node != null)
+	return tile_node
+
 
 func update_sprite():
 	if $Jobs.get_child_count() == 0:	# Only has baseclass
