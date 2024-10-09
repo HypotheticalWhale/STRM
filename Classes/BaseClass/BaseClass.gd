@@ -21,6 +21,7 @@ var num_hits_taken_and_dealt : int
 
 # status ailments
 var disabled_turns_left: int = 0
+var immobilized_turns_left: int = 0
 
 # Duration for color change
 var color_change_duration: float = 0.5
@@ -100,11 +101,18 @@ func next_to_messenger(who_is_hitting):
 				print("Touched length", len(who_is_hitting.enemies_touched))
 			get_hit({"damage":DAMAGE},who_is_hitting)
 			
-func get_hit(attack_info: Dictionary, who_is_hitting):
+func get_hit(attack_info: Dictionary):
+	# attack_info example = {
+	#	"who is hitting": Object1234,
+	#	"damage": 10,
+	#	"knockback": {"direction": Vector2(1,0), "distance": 2},
+	#	"disable": 2, (disable duration)
+	# 	"displace": null
+	#}
+	
 	# damage
-	print(attack_info,who_is_hitting)
-	await take_damage(attack_info["damage"])
-	print("Taking Damage Current Health/Max Health: ",CURRENT_HEALTH,"/",MAX_HEALTH)
+	CURRENT_HEALTH -= attack_info["damage"]
+	var who_is_hitting = attack_info["who is hitting"]
 	if who_is_hitting.PASSIVES.has("Green Thumbs") and get_tree().current_scene.all_tiles[global_position].occupied_by["terrain"].type == "Garden": #Gardener Quest
 		Globals.complete_unit_quest(who_is_hitting,"Landscaping")
 	if CURRENT_HEALTH <= 0:
@@ -136,10 +144,8 @@ func get_hit(attack_info: Dictionary, who_is_hitting):
 		for i in range(distance):
 			var new_destination_coords: Vector2 = destination_coords + step_vector
 			if new_destination_coords not in get_tree().current_scene.valid_tiles:
-				print("can't knock back to invalid tile")
 				break
 			if get_tree().current_scene.all_tiles[new_destination_coords].occupied_by["unit"] != null:
-				print("can't knockback if theres a dude there")
 				break
 			destination_coords = new_destination_coords
 		
@@ -151,6 +157,17 @@ func get_hit(attack_info: Dictionary, who_is_hitting):
 		# give it a disabled counter for each disable_duration
 		# at the start of owners turn, if disabled counter > 0, disable its attack button
 		# at the end of the owners turn, decrement it.
+
+	# immobilize
+	if attack_info.has("immobilize"):
+		immobilized_turns_left = attack_info["immobilize"]
+		# same logic as disable
+	
+	if attack_info.has("displace"):
+		var destination = get_tree().current_scene.displace_destination_coords.pop_front() * Globals.TILE_SIZE
+		await warp_to(destination)
+	
+	
 		
 func add_job(job_name : String):
 	var job_node = load(Globals.jobs[job_name]).instantiate()

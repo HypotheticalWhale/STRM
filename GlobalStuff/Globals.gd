@@ -73,16 +73,27 @@ var skills = {
 		"optional effects": {
 			"dash": null, # just dashes to the target tile. no other variables
 		}
+	},
+	"Tea Party for Two": {	# displaces two random units to two locations near the butler separated by a tea table
+		"shape": [],	# is attacking everyone bro thats why
+		"damage multiplier": 0.0,
+		"optional effects": {
+			"displace": [Vector2(2, -1), Vector2(2, 1)],
+			"change terrain": [
+				["tea table", [Vector2(2,0)]]
+			],
+			"immobilize": 1
+		}
 	}
 }
 
 var jobs : Dictionary = {
-	"Gardener": "res://Jobs/Gardener.tscn",
-	"Butler": "res://Jobs/Butler.tscn",
+	"Gardener": "res://Jobs/Gardener.tscn", # APQ
+	"Butler": "res://Jobs/Butler.tscn", 
 	"Dog Walker" : "res://Jobs/DogWalker.tscn",
 	"Card Soldier" : "res://Jobs/CardSoldier.tscn",
-	"Bell Boy" : "res://Jobs/BellBoy.tscn",
-	"Messenger": "res://Jobs/Messenger.tscn",
+	"Bell Boy" : "res://Jobs/BellBoy.tscn", # A
+	"Messenger": "res://Jobs/Messenger.tscn", # A
 	"Charioteer": "res://Jobs/Charioteer.tscn",
 	"Pigeon Commander": "res://Jobs/PigeonCommander.tscn",
 	"Vaults Keeper": "res://Jobs/VaultsKeeper.tscn",
@@ -211,7 +222,6 @@ func complete_unit_quest(unit: Object, quest):
 		
 	unit.xp = unit.xp + quests[quest]["reward"]
 	get_tree().current_scene.get_node(unit.UI_EXP_LINK).get_parent().get_child(1).value = unit.xp
-	print(unit.xp)
 	if unit.xp >= unit.max_xp:
 		get_tree().current_scene.get_node(unit.UI_EXP_LINK).get_parent().get_child(1).value = 0
 		await unit.level_up()
