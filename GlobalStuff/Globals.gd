@@ -31,7 +31,7 @@ var quests : Dictionary = {
 	},
 	"Let me show you to your room":{
 		"description": "dog",
-		"reward": 100
+		"reward": 25
 	}
 }
 var skills = {

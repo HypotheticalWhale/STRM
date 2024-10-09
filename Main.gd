@@ -134,10 +134,11 @@ func spawn_tiles():
 					else:
 						tile_node.occupied_by["terrain"].WHOSTHRONEISIT = "P2"
 				else:
-					if (x_tile == 3 or x_tile == GRID_SIZE[0]-2):
+					if (x_tile >= 2 and x_tile < 5) or (x_tile < GRID_SIZE[0] and x_tile >= GRID_SIZE[0]-3):
 						tile_node.add_terrain("marble")
 					else:
-						tile_node.add_terrain("lobby")
+						tile_node.add_terrain("lobby")						
+						
 			else:
 				tile_node.add_terrain("garden")
 
