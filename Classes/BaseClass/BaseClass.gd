@@ -99,6 +99,8 @@ func next_to_messenger(who_is_hitting):
 				who_is_hitting.enemies_touched.append(self)
 				print("Touched: ",who_is_hitting.enemies_touched)
 				print("Touched length", len(who_is_hitting.enemies_touched))
+				if len(who_is_hitting.enemies_touched) == 3:
+					Globals.complete_unit_quest(who_is_hitting,"You're it")
 			get_hit({
 				"damage":DAMAGE,
 				"who is hitting": who_is_hitting})
@@ -113,7 +115,7 @@ func get_hit(attack_info: Dictionary):
 	#}
 	
 	# damage
-	CURRENT_HEALTH -= attack_info["damage"]
+	take_damage(attack_info["damage"])
 	var who_is_hitting = attack_info["who is hitting"]
 	if who_is_hitting.PASSIVES.has("Green Thumbs") and get_tree().current_scene.all_tiles[global_position].occupied_by["terrain"].type == "Garden": #Gardener Quest
 		Globals.complete_unit_quest(who_is_hitting,"Landscaping")
