@@ -99,7 +99,9 @@ func next_to_messenger(who_is_hitting):
 				who_is_hitting.enemies_touched.append(self)
 				print("Touched: ",who_is_hitting.enemies_touched)
 				print("Touched length", len(who_is_hitting.enemies_touched))
-			get_hit({"damage":DAMAGE},who_is_hitting)
+			get_hit({
+				"damage":DAMAGE,
+				"who is hitting": who_is_hitting})
 			
 func get_hit(attack_info: Dictionary):
 	# attack_info example = {

@@ -434,7 +434,7 @@ func on_skill_pressed(button,direction):
 			var sweet_spot_tile = Globals.rotate_coords_to_direction(direction, [Globals.skills[button.skill_name]["optional effects"]["sweet spot"]])[0]
 			if tile == sweet_spot_tile:
 				# modulate tile to show sweet spot
-				all_tiles[button.skill_owner.gloerrain_targetbal_position + tile*Globals.TILE_SIZE].modulate = Color(1,0.6,0.6)
+				all_tiles[button.skill_owner.global_position + tile*Globals.TILE_SIZE].modulate = Color(1,0.6,0.6)
 				sweet_spot_damage_multiplier = 2.0
 		if len(button.skill_owner.PASSIVES) > 0 and all_tiles[grid_pos].occupied_by["terrain"].type == "Garden": #gardener passive
 			for passive in button.skill_owner.PASSIVES:
