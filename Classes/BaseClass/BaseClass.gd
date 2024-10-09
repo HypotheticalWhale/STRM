@@ -12,6 +12,7 @@ var PASSIVES = []
 var UI_EXP_LINK
 var QUEST 
 var POTENTIAL_JOBS : Array[String]
+var enemies_touched = []
 
 # quest specific
 var xp : int
@@ -95,6 +96,8 @@ func next_to_messenger(who_is_hitting):
 		else:
 			if self not in who_is_hitting.enemies_touched:
 				who_is_hitting.enemies_touched.append(self)
+				print("Touched: ",who_is_hitting.enemies_touched)
+				print("Touched length", len(who_is_hitting.enemies_touched))
 			get_hit({"damage":DAMAGE},who_is_hitting)
 			
 func get_hit(attack_info: Dictionary, who_is_hitting):
