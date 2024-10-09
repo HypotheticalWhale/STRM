@@ -27,7 +27,11 @@ var quests : Dictionary = {
 	},
 	"You're it": {
 		"description": "dog",
-		"reward": 50
+		"reward": 100
+	},
+	"Let me show you to your room":{
+		"description": "dog",
+		"reward": 100
 	}
 }
 var skills = {

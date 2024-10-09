@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dr40cfjjjra4r"]
+[gd_scene load_steps=6 format=3 uid="uid://dr40cfjjjra4r"]
 
 [ext_resource type="PackedScene" uid="uid://b5uij24beffcq" path="res://Jobs/Job.tscn" id="1_xghk8"]
 [ext_resource type="Script" path="res://Jobs/DogWalker.gd" id="2_2ugty"]
+[ext_resource type="Texture2D" uid="uid://r2pf5jp8lpqh" path="res://Assets/Sprites/Units/DogWalker.png" id="3_dy5tl"]
+[ext_resource type="Texture2D" uid="uid://7fvtaks6capf" path="res://Assets/Sprites/Units/DogWalkerRed.png" id="4_mna6t"]
+[ext_resource type="Texture2D" uid="uid://doo0shco2kw7b" path="res://Assets/Sprites/Units/DogWalkerBlue.png" id="5_5cqfg"]
 
 [node name="DogWalker" instance=ExtResource("1_xghk8")]
 script = ExtResource("2_2ugty")
+
+[node name="Uncolored" parent="." index="0"]
+texture = ExtResource("3_dy5tl")
+
+[node name="Red" parent="." index="1"]
+texture = ExtResource("4_mna6t")
+
+[node name="Blue" parent="." index="2"]
+texture = ExtResource("5_5cqfg")

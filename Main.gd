@@ -99,7 +99,6 @@ func reset_units():
 		tile_coords = Vector2(2,count)*Globals.TILE_SIZE
 		all_tiles[unit.global_position].occupied_by["unit"] = null # set the previous tile to null 
 		count += 2
-		
 		unit.global_position = tile_coords
 		all_tiles[tile_coords].occupied_by["unit"] = unit # set the new tile to the unit
 	count = 2
@@ -135,7 +134,10 @@ func spawn_tiles():
 					else:
 						tile_node.occupied_by["terrain"].WHOSTHRONEISIT = "P2"
 				else:
-					tile_node.add_terrain("marble")
+					if (x_tile == 3 or x_tile == GRID_SIZE[0]-2):
+						tile_node.add_terrain("marble")
+					else:
+						tile_node.add_terrain("lobby")
 			else:
 				tile_node.add_terrain("garden")
 

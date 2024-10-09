@@ -11,3 +11,4 @@ func _ready():
 	MAX_HEALTH = 5
 	MOVEMENT = 2
 	DAMAGE = 5
+	QUEST = "Let me show you to your room"
