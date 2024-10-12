@@ -38,7 +38,6 @@ func _process(delta):
 	if "Kleptomaniac" in PASSIVES and len(enemies_touched) > 0:
 		var damage_multiplier = 1 + len(enemies_touched)*0.1
 		DAMAGE = BASE_DAMAGE * damage_multiplier
-		print(damage_multiplier, len(enemies_touched))
 			
 func initialize_sprites():
 	pass
