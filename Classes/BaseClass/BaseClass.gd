@@ -7,6 +7,7 @@ var TEAM
 var MOVEMENT
 var ACTIONS
 var DAMAGE
+var BASE_DAMAGE
 var CURRENT_JOB
 var PASSIVES = []
 var UI_EXP_LINK
@@ -33,6 +34,12 @@ func _ready():
 	await initialize_sprites()
 	original_color = self.modulate
 
+func _process(delta):
+	if "Kleptomaniac" in PASSIVES and len(enemies_touched) > 0:
+		var damage_multiplier = 1 + len(enemies_touched)*0.1
+		DAMAGE = BASE_DAMAGE * damage_multiplier
+		print(damage_multiplier, len(enemies_touched))
+			
 func initialize_sprites():
 	pass
 	
@@ -84,6 +91,8 @@ func take_damage(damage):
 	# Change to red to indicate damage
 	change_color(Color.RED)
 	CURRENT_HEALTH -= damage
+	print("Took ", damage, "Damage")
+	print("Taking Damage Current Health/Max Health: ",CURRENT_HEALTH,"/",MAX_HEALTH)
 	
 func heal(heal_amount):
 	# Change to green to indicate healing
@@ -106,8 +115,6 @@ func next_to_messenger(who_is_hitting):
 		else:
 			if self not in who_is_hitting.enemies_touched:
 				who_is_hitting.enemies_touched.append(self)
-				print("Touched: ",who_is_hitting.enemies_touched)
-				print("Touched length", len(who_is_hitting.enemies_touched))
 				if len(who_is_hitting.enemies_touched) == 3:
 					Globals.complete_unit_quest(who_is_hitting,"You're it")
 			get_hit({
@@ -122,10 +129,11 @@ func get_hit(attack_info: Dictionary):
 	#	"disable": 2, (disable duration)
 	# 	"displace": null
 	#}
-	
 	# damage
 	take_damage(attack_info["damage"])
 	var who_is_hitting = attack_info["who is hitting"]
+	if attack_info["skill name"] == "Your weapons, please." and self not in who_is_hitting.enemies_touched:
+		who_is_hitting.enemies_touched.append(self)
 	if who_is_hitting.PASSIVES.has("Green Thumbs") and get_tree().current_scene.all_tiles[global_position].occupied_by["terrain"].type == "Garden": #Gardener Quest
 		Globals.complete_unit_quest(who_is_hitting,"Landscaping")
 	if CURRENT_HEALTH <= 0:
@@ -190,6 +198,7 @@ func add_job(job_name : String):
 	CURRENT_HEALTH = MAX_HEALTH
 	MOVEMENT = job_node.MOVEMENT
 	DAMAGE += job_node.DAMAGE
+	BASE_DAMAGE = DAMAGE
 	QUEST = job_node.QUEST
 	CURRENT_JOB = job_name
 	PASSIVES.append(job_node.passive)
@@ -208,7 +217,6 @@ func get_tile_node():
 	var tile_node = null
 	for pos in get_tree().current_scene.all_tiles:
 		var coord = pos / Globals.TILE_SIZE
-		print(coord, unit_coord)
 		if coord == unit_coord:
 			tile_node = get_tree().current_scene.all_tiles[pos]
 			return tile_node
