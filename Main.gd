@@ -134,10 +134,11 @@ func spawn_tiles():
 					else:
 						tile_node.occupied_by["terrain"].WHOSTHRONEISIT = "P2"
 				else:
-					if (x_tile == 3 or x_tile == GRID_SIZE[0]-2):
+					if (x_tile >= 2 and x_tile < 5) or (x_tile < GRID_SIZE[0] and x_tile >= GRID_SIZE[0]-3):
 						tile_node.add_terrain("marble")
 					else:
-						tile_node.add_terrain("lobby")
+						tile_node.add_terrain("lobby")						
+						
 			else:
 				tile_node.add_terrain("garden")
 
@@ -311,7 +312,9 @@ func _on_turn_timer_timeout():
 				astar.set_point_solid(tile.global_position/Globals.TILE_SIZE,true)
 			else:
 				astar.set_point_solid(tile.global_position/Globals.TILE_SIZE,false)
-				
+	for tile in get_occupied_tiles(): 
+		if tile.occupied_by["unit"].CURRENT_JOB == "Bell Boy" and Globals.WHOSTURNISIT != tile.occupied_by["unit"].TEAM and tile.occupied_by["terrain"].type == "Lobby":
+			Globals.complete_unit_quest(tile.occupied_by["unit"],"Let me show you to your room") #Bell Boy QUEST
 	# show reminder for next players turn
 	get_node("UI/NextPlayerReady").visible = true
 	get_node("UI/NextPlayerReady").text = Globals.WHOSTURNISIT + "'s turn. Click to start."
@@ -340,7 +343,6 @@ func on_skill_pressed(button,direction):
 	clear_available_tiles()
 	clear_available_attack_tiles()
 	target_terrain_info = {}
-	
 	##################### telegraphing the terrain to be changed ##################
 	if Globals.skills[button.skill_name]["optional effects"].has("change terrain"):
 		# change_terrain_info example = [
@@ -432,6 +434,7 @@ func on_skill_pressed(button,direction):
 		var base_damage = button.skill_owner.DAMAGE
 		var skill_damage_multiplier = Globals.skills[button.skill_name]["damage multiplier"]
 		var sweet_spot_damage_multiplier = 1.0
+		available_attack_tiles[grid_pos]["skill name"] = button.skill_name
 		if Globals.skills[button.skill_name]["optional effects"].has("sweet spot"):
 			var sweet_spot_tile = Globals.rotate_coords_to_direction(direction, [Globals.skills[button.skill_name]["optional effects"]["sweet spot"]])[0]
 			if tile == sweet_spot_tile:
