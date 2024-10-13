@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dnlwb8tcd72ah"]
+
+[ext_resource type="Shader" path="res://Shaders/Wet.gdshader" id="1_cgxpt"]
+[ext_resource type="Texture2D" uid="uid://ypltmo7r6r0m" path="res://Assets/Effects/WetShaderTexture.png" id="2_p0xka"]
+
+[resource]
+shader = ExtResource("1_cgxpt")
+shader_parameter/replacement_image = ExtResource("2_p0xka")

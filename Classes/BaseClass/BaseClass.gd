@@ -5,6 +5,7 @@ var MAX_HEALTH
 var CURRENT_HEALTH
 var TEAM
 var MOVEMENT
+var CURRENT_MOVEMENT
 var ACTIONS
 var DAMAGE
 var CURRENT_JOB
@@ -22,6 +23,7 @@ var num_hits_taken_and_dealt : int
 # status ailments
 var disabled_turns_left: int = 0
 var immobilized_turns_left: int = 0
+var wet_turns_left: int = 0
 
 # Duration for color change
 var color_change_duration: float = 0.5
@@ -100,19 +102,24 @@ func change_color(new_color: Color):
 	self.modulate = original_color
 
 func next_to_messenger(who_is_hitting):
-	if who_is_hitting.QUEST == "You're it": #Messenger Passive
-		if who_is_hitting.TEAM == self.TEAM:
-			heal(who_is_hitting.DAMAGE)
-		else:
-			if self not in who_is_hitting.enemies_touched:
-				who_is_hitting.enemies_touched.append(self)
-				print("Touched: ",who_is_hitting.enemies_touched)
-				print("Touched length", len(who_is_hitting.enemies_touched))
-				if len(who_is_hitting.enemies_touched) == 3:
-					Globals.complete_unit_quest(who_is_hitting,"You're it")
-			get_hit({
-				"damage":DAMAGE,
-				"who is hitting": who_is_hitting})
+	# messenger passive
+	if who_is_hitting.TEAM == self.TEAM:
+		heal(who_is_hitting.DAMAGE)
+	else:
+		if self not in who_is_hitting.enemies_touched:
+			who_is_hitting.enemies_touched.append(self)
+			print("Touched: ",who_is_hitting.enemies_touched)
+			print("Touched length", len(who_is_hitting.enemies_touched))
+			if len(who_is_hitting.enemies_touched) == 3:
+				Globals.complete_unit_quest(who_is_hitting,"You're it")
+		get_hit({
+			"damage":DAMAGE,
+			"who is hitting": who_is_hitting})
+
+func next_to_pigeon_commander(who_is_hitting):
+	print("im wet")
+	show_wet_status(true)
+	wet_turns_left = 2
 			
 func get_hit(attack_info: Dictionary):
 	# attack_info example = {
@@ -208,7 +215,6 @@ func get_tile_node():
 	var tile_node = null
 	for pos in get_tree().current_scene.all_tiles:
 		var coord = pos / Globals.TILE_SIZE
-		print(coord, unit_coord)
 		if coord == unit_coord:
 			tile_node = get_tree().current_scene.all_tiles[pos]
 			return tile_node
@@ -233,3 +239,12 @@ func update_sprite():
 			set_sprite_blue()
 		if TEAM == "P2":
 			set_sprite_red()
+
+
+func show_wet_status(should_i_show: bool):
+	if should_i_show == true:
+		$RedSprite.material = load("res://Shaders/WetShaderMaterial.tres")
+		$BlueSprite.material = load("res://Shaders/WetShaderMaterial.tres")
+	else:
+		$RedSprite.material = null
+		$BlueSprite.material = null

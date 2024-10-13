@@ -32,7 +32,11 @@ var quests : Dictionary = {
 	"Let me show you to your room":{
 		"description": "dog",
 		"reward": 100
-	}
+	},
+	"Smelliest guy on earth":{
+		"description": "You're so smelly you no longer need a quest",
+		"reward": 0
+	},
 }
 var skills = {
 	"Sweep Attack": {
@@ -88,6 +92,10 @@ var skills = {
 			],
 			"immobilize": 1
 		}
+	},
+	"I come with great news": {	# attacks a unit one tile away. if unit is wet, create a cone of bird shit terrain behind unit.
+		"shape": [Vector2(1,0)],
+		"damage multiplier": 1.0,
 	}
 }
 
@@ -149,8 +157,8 @@ var passives : Dictionary = {
 		"description": "You deal extra damage on green tiles :-)",
 		"damage multiplier": 1.5
 	},
-	"Pigeon Rider.": {
-		"description": "You deal extra damage on green tiles :-)",
+	"Pigeon Rider": {
+		"description": "When you touch an enemy, they become wet",
 		"damage multiplier": 1.5
 	},
 	"Really tough.": {
