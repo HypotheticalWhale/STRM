@@ -270,7 +270,14 @@ func get_available_coordinates(start_pos: Vector2, movement_range: int):
 	return available_coords
 
 func _on_move_button_pressed():
-	highlight_available_tiles(get_available_coordinates(selected_tile.global_position/Globals.TILE_SIZE,selected_tile.occupied_by["unit"].MOVEMENT)) 
+	var unit_to_move = selected_tile.occupied_by["unit"]
+	# wet status ailment
+	var wet_movement_penalty = 0
+	if unit_to_move.wet_turns_left > 0:
+		wet_movement_penalty = 1
+	unit_to_move.CURRENT_MOVEMENT = max(0, unit_to_move.MOVEMENT - wet_movement_penalty)
+	
+	highlight_available_tiles(get_available_coordinates(selected_tile.global_position/Globals.TILE_SIZE,unit_to_move.CURRENT_MOVEMENT)) 
 	hide_action_buttons()
 	hide_select_menu()
 	
@@ -301,6 +308,11 @@ func _on_turn_timer_timeout():
 	for unit in current_turn_units.values():
 		unit.disabled_turns_left = max(unit.disabled_turns_left - 1, 0)
 		unit.immobilized_turns_left = max(unit.immobilized_turns_left - 1, 0)
+		unit.wet_turns_left = max(unit.wet_turns_left - 1, 0)
+		if unit.wet_turns_left > 0:
+			unit.show_wet_status(true)
+		else:
+			unit.show_wet_status(false)
 		
 	await Globals.toggle_player_turn()
 	if Globals.WHOSTURNISIT == "P1":

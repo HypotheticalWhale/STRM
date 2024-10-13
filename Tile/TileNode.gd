@@ -52,12 +52,19 @@ func _on_input_event(viewport, event, shape_idx):
 			if get_parent().available_attack_tiles[tile_coordinates].has("dash"):
 				var dash_destination = get_parent().available_attack_tiles[tile_coordinates]["dash"]["destination"]
 				await get_parent().selected_tile.occupied_by["unit"].warp_to(dash_destination)
+				#messenger passive
 				if get_parent().all_tiles[dash_destination].occupied_by["unit"].QUEST == "You're it":
 					if dash_destination+Vector2(32,0) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(32,0)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(32,0)].occupied_by["unit"].next_to_messenger(get_parent().all_tiles[dash_destination].occupied_by["unit"])
 					if dash_destination+Vector2(0,32) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(0,32)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(0,32)].occupied_by["unit"].next_to_messenger(get_parent().all_tiles[dash_destination].occupied_by["unit"])
 					if dash_destination+Vector2(-32,0) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(-32,0)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(-32,0)].occupied_by["unit"].next_to_messenger(get_parent().all_tiles[dash_destination].occupied_by["unit"])
 					if dash_destination+Vector2(0,-32) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(0,-32)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(0,-32)].occupied_by["unit"].next_to_messenger(get_parent().all_tiles[dash_destination].occupied_by["unit"])
-					#messenger passive
+				#pigeon commander passive
+				if get_parent().all_tiles[dash_destination].occupied_by["unit"].CURRENT_JOB == "Pigeon Commander":
+					if dash_destination+Vector2(32,0) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(32,0)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(32,0)].occupied_by["unit"].next_to_pigeon_commander(get_parent().all_tiles[dash_destination].occupied_by["unit"])
+					if dash_destination+Vector2(0,32) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(0,32)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(0,32)].occupied_by["unit"].next_to_pigeon_commander(get_parent().all_tiles[dash_destination].occupied_by["unit"])
+					if dash_destination+Vector2(-32,0) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(-32,0)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(-32,0)].occupied_by["unit"].next_to_pigeon_commander(get_parent().all_tiles[dash_destination].occupied_by["unit"])
+					if dash_destination+Vector2(0,-32) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(0,-32)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(0,-32)].occupied_by["unit"].next_to_pigeon_commander(get_parent().all_tiles[dash_destination].occupied_by["unit"])
+					
 			get_parent().attacking = false
 			get_parent().clear_available_tiles()			
 			get_parent().clear_available_attack_tiles()
@@ -79,12 +86,19 @@ func _on_input_event(viewport, event, shape_idx):
 			var curr_unit = get_parent().selected_tile.occupied_by["unit"]
 			get_parent().selected_tile.occupied_by["unit"] = null
 			
+			#messenger passive
 			if curr_unit.QUEST == "You're it":
 				if global_position+Vector2(32,0) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"].next_to_messenger(curr_unit)
 				if global_position+Vector2(0,32) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(0,32)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(0,32)].occupied_by["unit"].next_to_messenger(curr_unit)
 				if global_position+Vector2(-32,0) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(-32,0)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(-32,0)].occupied_by["unit"].next_to_messenger(curr_unit)
 				if global_position+Vector2(0,-32) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(0,-32)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(0,-32)].occupied_by["unit"].next_to_messenger(curr_unit)
-				#messenger passive
+
+			#pigeon commander passive
+			if curr_unit.CURRENT_JOB == "Pigeon Commander":
+				if global_position+Vector2(32,0) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"].next_to_pigeon_commander(curr_unit)
+				if global_position+Vector2(0,32) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(0,32)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(0,32)].occupied_by["unit"].next_to_pigeon_commander(curr_unit)
+				if global_position+Vector2(-32,0) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(-32,0)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(-32,0)].occupied_by["unit"].next_to_pigeon_commander(curr_unit)
+				if global_position+Vector2(0,-32) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(0,-32)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(0,-32)].occupied_by["unit"].next_to_pigeon_commander(curr_unit)
 				
 			get_parent().disable_move_button()
 			get_parent().clear_available_tiles()			
@@ -149,12 +163,20 @@ func _on_input_event(viewport, event, shape_idx):
 				var curr_unit = get_parent().selected_tile.occupied_by["unit"]
 				Globals.TAKENACTION = get_parent().selected_tile.occupied_by["unit"]
 				get_parent().selected_tile.occupied_by["unit"] = null
+				#messenger passive
 				if curr_unit.QUEST == "You're it":
 					if global_position+Vector2(32,0) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"].next_to_messenger(curr_unit)
 					if global_position+Vector2(0,32) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(0,32)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(0,32)].occupied_by["unit"].next_to_messenger(curr_unit)
 					if global_position+Vector2(-32,0) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(-32,0)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(-32,0)].occupied_by["unit"].next_to_messenger(curr_unit)
 					if global_position+Vector2(0,-32) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(0,-32)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(0,-32)].occupied_by["unit"].next_to_messenger(curr_unit)
-					#messenger passive
+
+				#pigeon commander passive
+				if curr_unit.CURRENT_JOB == "Pigeon Commander":
+					if global_position+Vector2(32,0) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"].next_to_pigeon_commander(curr_unit)
+					if global_position+Vector2(0,32) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(0,32)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(0,32)].occupied_by["unit"].next_to_pigeon_commander(curr_unit)
+					if global_position+Vector2(-32,0) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(-32,0)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(-32,0)].occupied_by["unit"].next_to_pigeon_commander(curr_unit)
+					if global_position+Vector2(0,-32) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(0,-32)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(0,-32)].occupied_by["unit"].next_to_pigeon_commander(curr_unit)
+
 				get_parent().disable_move_button()
 				# havent move yet but want to attack
 			elif available_attack_tile.visible == true or target_tile.visible == true:
@@ -172,12 +194,18 @@ func _on_input_event(viewport, event, shape_idx):
 				if get_parent().available_attack_tiles[tile_coordinates].has("dash"):
 					var dash_destination = get_parent().available_attack_tiles[tile_coordinates]["dash"]["destination"]
 					await get_parent().selected_tile.occupied_by["unit"].warp_to(dash_destination)
+					#messenger passive
 					if get_parent().all_tiles[dash_destination].occupied_by["unit"].QUEST == "You're it":
 						if dash_destination+Vector2(32,0) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(32,0)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(32,0)].occupied_by["unit"].next_to_messenger(get_parent().all_tiles[dash_destination].occupied_by["unit"])
 						if dash_destination+Vector2(0,32) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(0,32)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(0,32)].occupied_by["unit"].next_to_messenger(get_parent().all_tiles[dash_destination].occupied_by["unit"])
 						if dash_destination+Vector2(-32,0) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(-32,0)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(-32,0)].occupied_by["unit"].next_to_messenger(get_parent().all_tiles[dash_destination].occupied_by["unit"])
 						if dash_destination+Vector2(0,-32) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(0,-32)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(0,-32)].occupied_by["unit"].next_to_messenger(get_parent().all_tiles[dash_destination].occupied_by["unit"])
-					#messenger passive
+					#pigeon commander passive
+					if get_parent().all_tiles[dash_destination].occupied_by["unit"].CURRENT_JOB == "Pigeon Commander":
+						if dash_destination+Vector2(32,0) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(32,0)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(32,0)].occupied_by["unit"].next_to_pigeon_commander(get_parent().all_tiles[dash_destination].occupied_by["unit"])
+						if dash_destination+Vector2(0,32) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(0,32)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(0,32)].occupied_by["unit"].next_to_pigeon_commander(get_parent().all_tiles[dash_destination].occupied_by["unit"])
+						if dash_destination+Vector2(-32,0) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(-32,0)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(-32,0)].occupied_by["unit"].next_to_pigeon_commander(get_parent().all_tiles[dash_destination].occupied_by["unit"])
+						if dash_destination+Vector2(0,-32) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(0,-32)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(0,-32)].occupied_by["unit"].next_to_pigeon_commander(get_parent().all_tiles[dash_destination].occupied_by["unit"])
 				get_parent().clear_available_attack_tiles()
 				get_parent().disable_action_button()
 				get_parent().attacking = false
