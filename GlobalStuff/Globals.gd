@@ -37,6 +37,10 @@ var quests : Dictionary = {
 		"description": "You're so smelly you no longer need a quest",
 		"reward": 0
 	},
+	"Walking Dogs": {
+		"description": "Walk a dog in real life win the game!",
+		"reward": 0
+	}
 }
 var skills = {
 	"Sweep Attack": {

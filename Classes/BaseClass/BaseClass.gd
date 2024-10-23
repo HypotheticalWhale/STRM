@@ -144,20 +144,18 @@ func get_hit(attack_info: Dictionary):
 	var who_is_hitting = attack_info["who is hitting"]
 	if attack_info["skill name"] == "Your weapons, please." and self not in who_is_hitting.enemies_touched:
 		who_is_hitting.enemies_touched.append(self)
+	print(who_is_hitting.PASSIVES)
 	if who_is_hitting.PASSIVES.has("Teethed to the arm."): #Dog walker passive
+		print("triggered passive")
 		who_is_hitting.leashed_units.append(self)
 	if who_is_hitting.PASSIVES.has("Green Thumbs") and get_tree().current_scene.all_tiles[global_position].occupied_by["terrain"].type == "Garden": #Gardener Quest
 		Globals.complete_unit_quest(who_is_hitting,"Landscaping")
 	if CURRENT_HEALTH <= 0:
 		print("im ded")
+		CURRENT_HEALTH = MAX_HEALTH
 		get_tree().current_scene.all_tiles[global_position].occupied_by["unit"] = null
-		for unit in PlayerData.player1_units:
-			if PlayerData.player1_units[unit] == self:
-				PlayerData.player1_units.erase(unit)
-		for unit in PlayerData.player2_units:
-			if PlayerData.player2_units[unit] == self:
-				PlayerData.player2_units.erase(unit)
-		self.queue_free()
+		self.global_position = Vector2(0,-999999)
+		
 	# knockback
 	if attack_info.has("knockback"):
 		var destination_coords: Vector2 = global_position
