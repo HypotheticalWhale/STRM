@@ -15,7 +15,7 @@ var UI_EXP_LINK
 var QUEST 
 var POTENTIAL_JOBS : Array[String]
 var enemies_touched = []
-
+var leashed_units = []
 # quest specific
 var xp : int
 var max_xp : int
@@ -37,7 +37,7 @@ func _ready():
 	original_color = self.modulate
 
 func _process(delta):
-	if "Kleptomaniac" in PASSIVES and len(enemies_touched) > 0:
+	if "Kleptomaniac" in PASSIVES and len(enemies_touched) > 0: #Bellboy QUEST
 		var damage_multiplier = 1 + len(enemies_touched)*0.1
 		DAMAGE = BASE_DAMAGE * damage_multiplier
 			
@@ -144,6 +144,8 @@ func get_hit(attack_info: Dictionary):
 	var who_is_hitting = attack_info["who is hitting"]
 	if attack_info["skill name"] == "Your weapons, please." and self not in who_is_hitting.enemies_touched:
 		who_is_hitting.enemies_touched.append(self)
+	if who_is_hitting.PASSIVES.has("Teethed to the arm."): #Dog walker passive
+		who_is_hitting.leashed_units.append(self)
 	if who_is_hitting.PASSIVES.has("Green Thumbs") and get_tree().current_scene.all_tiles[global_position].occupied_by["terrain"].type == "Garden": #Gardener Quest
 		Globals.complete_unit_quest(who_is_hitting,"Landscaping")
 	if CURRENT_HEALTH <= 0:

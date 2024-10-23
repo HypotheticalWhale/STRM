@@ -158,9 +158,15 @@ func _on_input_event(viewport, event, shape_idx):
 					get_parent().get_node("UI/EndRoundButton").text = Globals.WHOSTURNISIT + ", YOU WIN!!"
 					Globals.WHOSTURNISIT = "P1"
 					get_tree().paused = true
-				
-				get_parent().selected_tile.occupied_by["unit"].global_position = global_position
+				var tile_distance = global_position - get_parent().selected_tile.occupied_by["unit"].global_position
+				get_parent().selected_tile.occupied_by["unit"].global_position = global_position #move a unit to new tile
 				var curr_unit = get_parent().selected_tile.occupied_by["unit"]
+				if curr_unit.PASSIVES.has("Teethed to the arm."):
+					for unit in curr_unit.leashed_units:
+						print(unit)
+						var tile = unit.get_tile_node()
+						tile.occupied_by["unit"] = null
+						print(tile_distance)
 				Globals.TAKENACTION = get_parent().selected_tile.occupied_by["unit"]
 				get_parent().selected_tile.occupied_by["unit"] = null
 				#messenger passive
