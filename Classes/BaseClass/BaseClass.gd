@@ -155,7 +155,7 @@ func get_hit(attack_info: Dictionary):
 		CURRENT_HEALTH = MAX_HEALTH
 		get_tree().current_scene.all_tiles[global_position].occupied_by["unit"] = null
 		self.global_position = Vector2(0,-999999)
-		
+		return
 	# knockback
 	if attack_info.has("knockback"):
 		var destination_coords: Vector2 = global_position

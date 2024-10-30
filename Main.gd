@@ -386,7 +386,7 @@ func on_skill_pressed(button,direction):
 				await all_tiles[new_position].show_target_terrain_tile()
 			
 	##################### telegraphing the displace destination tile ##################
-	# dont judge
+	# dont judge (i am judging you)
 	# for displace skills, we gotta telegraph the displacement destinations to the player
 	# case 1: destinations in invalid tiles: ignore
 	# case 1: destinations on occupied tile: ignore
