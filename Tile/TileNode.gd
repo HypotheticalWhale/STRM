@@ -82,10 +82,29 @@ func _on_input_event(viewport, event, shape_idx):
 				get_parent().get_node("UI/EndRoundButton").text = Globals.WHOSTURNISIT + ", YOU WIN!!"
 				Globals.WHOSTURNISIT = "P1"
 				get_tree().paused = true
+			var tile_distance = global_position - get_parent().selected_tile.occupied_by["unit"].global_position
 			get_parent().selected_tile.occupied_by["unit"].global_position = global_position
 			var curr_unit = get_parent().selected_tile.occupied_by["unit"]
 			get_parent().selected_tile.occupied_by["unit"] = null
-			
+			if curr_unit.PASSIVES.has("Teethed to the arm."):
+				print("Triggered teethed")
+				print(curr_unit.leashed_units)
+				for unit in curr_unit.leashed_units:
+					print(unit)
+					var tile = unit.get_tile_node()
+					tile.occupied_by["unit"] = null
+					print(get_parent().all_tiles[unit.global_position + tile_distance].occupied_by["unit"])
+					if unit.global_position + tile_distance in get_parent().valid_tiles:
+						unit.global_position += tile_distance
+						unit.get_tile_node().occupied_by["unit"] = unit
+					elif get_parent().all_tiles[unit.global_position + tile_distance].occupied_by["unit"] != null:
+						print("there's a unit there")
+						continue
+					else:
+						var closest = find_closest_vector(unit.global_position + tile_distance,get_parent().valid_tiles)
+						unit.global_position = closest
+						unit.get_tile_node().occupied_by["unit"] = unit
+					print(tile_distance)
 			#messenger passive
 			if curr_unit.QUEST == "You're it":
 				if global_position+Vector2(32,0) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"].next_to_messenger(curr_unit)
@@ -162,10 +181,25 @@ func _on_input_event(viewport, event, shape_idx):
 				get_parent().selected_tile.occupied_by["unit"].global_position = global_position #move a unit to new tile
 				var curr_unit = get_parent().selected_tile.occupied_by["unit"]
 				if curr_unit.PASSIVES.has("Teethed to the arm."):
+					print("Triggered teethed")
+					print(curr_unit.leashed_units)
+				
 					for unit in curr_unit.leashed_units:
 						print(unit)
+						print(get_parent().all_tiles[unit.global_position + tile_distance].occupied_by["unit"])
 						var tile = unit.get_tile_node()
 						tile.occupied_by["unit"] = null
+
+						if get_parent().all_tiles[unit.global_position + tile_distance].occupied_by["unit"] != null:
+							print("there's a unit there")
+							continue
+						elif unit.global_position + tile_distance in get_parent().valid_tiles:
+							unit.global_position += tile_distance
+							unit.get_tile_node().occupied_by["unit"] = unit
+						else:
+							var closest = find_closest_vector(unit.global_position + tile_distance,get_parent().valid_tiles)
+							unit.global_position = closest
+							unit.get_tile_node().occupied_by["unit"] = unit
 						print(tile_distance)
 				Globals.TAKENACTION = get_parent().selected_tile.occupied_by["unit"]
 				get_parent().selected_tile.occupied_by["unit"] = null
@@ -222,9 +256,18 @@ func _on_input_event(viewport, event, shape_idx):
 			get_parent().hide_select_menu()
 			get_parent().hide_info_menu()			
 			
-		print("tile at ",tile_coordinates," is clicked")
-		print("tile at ",tile_coordinates," has ", occupied_by)
+func find_closest_vector(target: Vector2, vectors: Array) -> Vector2:
+	var closest_vector = vectors[0] # Initialize with the first vector
+	var closest_distance = target.distance_to(closest_vector)
 
+	for vector in vectors:
+		var distance = target.distance_to(vector)
+		if distance < closest_distance:
+			closest_distance = distance
+			closest_vector = vector
+
+	return closest_vector
+	
 func toggle_available_tile():
 	available_tile.visible = !available_tile.visible
 

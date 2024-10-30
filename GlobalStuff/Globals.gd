@@ -37,6 +37,10 @@ var quests : Dictionary = {
 		"description": "You're so smelly you no longer need a quest",
 		"reward": 0
 	},
+	"Walking Dogs": {
+		"description": "Walk a dog in real life win the game!",
+		"reward": 0
+	}
 }
 var skills = {
 	"Sweep Attack": {
@@ -99,6 +103,17 @@ var skills = {
 	},
 	"Suit Yourself": {
 		"shape": [Vector2(1,0)],
+	},
+	"Go Fetch!": {
+		"shape": [
+		Vector2(-2, -2), Vector2(-1, -2), Vector2(0, -2), Vector2(1, -2), Vector2(2, -2),
+		Vector2(-2, -1), Vector2(-1, -1), Vector2(0, -1), Vector2(1, -1), Vector2(2, -1),
+		Vector2(-2, 0), Vector2(-1, 0), Vector2(1, 0), Vector2(2, 0),
+		Vector2(-2, 1), Vector2(-1, 1), Vector2(0, 1), Vector2(1, 1), Vector2(2, 1),
+		Vector2(-2, 2), Vector2(-1, 2), Vector2(0, 2), Vector2(1, 2), Vector2(2, 2)
+		],
+	"damage multiplier": 0,
+	"optional effects": {}
 	}
 }
 
