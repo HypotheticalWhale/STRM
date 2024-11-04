@@ -300,6 +300,7 @@ func resolve_droppings_entry_check():
 
 func move():
 	var curr_unit = get_parent().selected_tile.occupied_by["unit"]
+	var tile_distance = global_position - curr_unit.global_position
 	occupied_by["unit"] = curr_unit
 	if is_manor and occupied_by["terrain"].WHOSTHRONEISIT != Globals.WHOSTURNISIT:
 		get_parent().get_node("UI/EndRoundButton").visible = true
@@ -311,26 +312,23 @@ func move():
 	await resolve_droppings_entry_check()
 
 	if curr_unit.PASSIVES.has("Teethed to the arm."):
-		var tile_distance = global_position - curr_unit.global_position
+
 		print("Triggered teethed")
 		print(curr_unit.leashed_units)
 	
 		for unit in curr_unit.leashed_units:
-			print(unit)
-			print(get_parent().all_tiles[unit.global_position + tile_distance].occupied_by["unit"])
 			var tile = unit.get_tile_node()
 			tile.occupied_by["unit"] = null
 
-			if get_parent().all_tiles[unit.global_position + tile_distance].occupied_by["unit"] != null:
+			if unit.global_position + tile_distance in get_parent().valid_tiles and get_parent().all_tiles[unit.global_position + tile_distance].occupied_by["unit"] != null:
 				print("there's a unit there")
 				continue
 			elif unit.global_position + tile_distance in get_parent().valid_tiles:
 				unit.global_position += tile_distance
 				unit.get_tile_node().occupied_by["unit"] = unit
+				await resolve_droppings_entry_check()
 			else:
-				var closest = find_closest_vector(unit.global_position + tile_distance,get_parent().valid_tiles)
-				unit.global_position = closest
-				unit.get_tile_node().occupied_by["unit"] = unit
+				continue
 	
 	if curr_unit.QUEST == "You're it":
 		if global_position+Vector2(32,0) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"].next_to_messenger(curr_unit)
