@@ -5,3 +5,4 @@ var type : String
 var defense : int
 var movement_penalty : int
 var WHOSTHRONEISIT 
+var droppings_exit_terrain: Object = null

@@ -40,6 +40,7 @@ func _on_input_event(viewport, event, shape_idx):
 		# move already, now want to attack
 		if Globals.TAKENACTION and (available_attack_tile.visible == true or target_tile.visible == true or target_terrain_tile.visible == true):
 			if target_terrain_tile.visible == true:
+				print("targeting and adding terrain at ", global_position, " with ", get_tree().current_scene.target_terrain_info[global_position])
 				add_terrain(get_tree().current_scene.target_terrain_info[global_position])
 			for tile in get_parent().available_attack_tiles:
 				var attack_tile_info = get_parent().available_attack_tiles[tile]
@@ -76,29 +77,7 @@ func _on_input_event(viewport, event, shape_idx):
 			
 		# attack already, now want to move
 		if Globals.TAKENACTION and available_tile.visible == true:
-			occupied_by["unit"] = get_parent().selected_tile.occupied_by["unit"]
-			if is_manor and occupied_by["terrain"].WHOSTHRONEISIT != Globals.WHOSTURNISIT:
-				get_parent().get_node("UI/EndRoundButton").visible = true
-				get_parent().get_node("UI/EndRoundButton").text = Globals.WHOSTURNISIT + ", YOU WIN!!"
-				Globals.WHOSTURNISIT = "P1"
-				get_tree().paused = true
-			get_parent().selected_tile.occupied_by["unit"].global_position = global_position
-			var curr_unit = get_parent().selected_tile.occupied_by["unit"]
-			get_parent().selected_tile.occupied_by["unit"] = null
-			
-			#messenger passive
-			if curr_unit.QUEST == "You're it":
-				if global_position+Vector2(32,0) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"].next_to_messenger(curr_unit)
-				if global_position+Vector2(0,32) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(0,32)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(0,32)].occupied_by["unit"].next_to_messenger(curr_unit)
-				if global_position+Vector2(-32,0) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(-32,0)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(-32,0)].occupied_by["unit"].next_to_messenger(curr_unit)
-				if global_position+Vector2(0,-32) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(0,-32)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(0,-32)].occupied_by["unit"].next_to_messenger(curr_unit)
-
-			#pigeon commander passive
-			if curr_unit.CURRENT_JOB == "Pigeon Commander":
-				if global_position+Vector2(32,0) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"].next_to_pigeon_commander(curr_unit)
-				if global_position+Vector2(0,32) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(0,32)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(0,32)].occupied_by["unit"].next_to_pigeon_commander(curr_unit)
-				if global_position+Vector2(-32,0) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(-32,0)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(-32,0)].occupied_by["unit"].next_to_pigeon_commander(curr_unit)
-				if global_position+Vector2(0,-32) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(0,-32)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(0,-32)].occupied_by["unit"].next_to_pigeon_commander(curr_unit)
+			await move()
 				
 			get_parent().disable_move_button()
 			get_parent().clear_available_tiles()			
@@ -150,37 +129,33 @@ func _on_input_event(viewport, event, shape_idx):
 			get_parent().clear_available_attack_tiles()
 		else:
 			#havent aciton yet but want to move
-			if available_tile.visible == true: #move action on available tile
-				occupied_by["unit"] = get_parent().selected_tile.occupied_by["unit"]
-				await occupied_by["unit"].DIDIWIN()
-				if is_manor and occupied_by["terrain"].WHOSTHRONEISIT != Globals.WHOSTURNISIT:
-					get_parent().get_node("UI/EndRoundButton").visible = true
-					get_parent().get_node("UI/EndRoundButton").text = Globals.WHOSTURNISIT + ", YOU WIN!!"
-					Globals.WHOSTURNISIT = "P1"
-					get_tree().paused = true
-				
-				get_parent().selected_tile.occupied_by["unit"].global_position = global_position
-				var curr_unit = get_parent().selected_tile.occupied_by["unit"]
+			if available_tile.visible == true:
 				Globals.TAKENACTION = get_parent().selected_tile.occupied_by["unit"]
-				get_parent().selected_tile.occupied_by["unit"] = null
-				#messenger passive
-				if curr_unit.QUEST == "You're it":
-					if global_position+Vector2(32,0) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"].next_to_messenger(curr_unit)
-					if global_position+Vector2(0,32) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(0,32)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(0,32)].occupied_by["unit"].next_to_messenger(curr_unit)
-					if global_position+Vector2(-32,0) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(-32,0)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(-32,0)].occupied_by["unit"].next_to_messenger(curr_unit)
-					if global_position+Vector2(0,-32) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(0,-32)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(0,-32)].occupied_by["unit"].next_to_messenger(curr_unit)
-
-				#pigeon commander passive
-				if curr_unit.CURRENT_JOB == "Pigeon Commander":
-					if global_position+Vector2(32,0) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"].next_to_pigeon_commander(curr_unit)
-					if global_position+Vector2(0,32) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(0,32)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(0,32)].occupied_by["unit"].next_to_pigeon_commander(curr_unit)
-					if global_position+Vector2(-32,0) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(-32,0)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(-32,0)].occupied_by["unit"].next_to_pigeon_commander(curr_unit)
-					if global_position+Vector2(0,-32) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(0,-32)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(0,-32)].occupied_by["unit"].next_to_pigeon_commander(curr_unit)
-
+				await move()
 				get_parent().disable_move_button()
+				
+				
+			# old version of moving before taking action
+			##havent aciton yet but want to move
+			#if available_tile.visible == true: #move action on available tile
+				#occupied_by["unit"] = get_parent().selected_tile.occupied_by["unit"]
+				#await occupied_by["unit"].DIDIWIN()
+				#if is_manor and occupied_by["terrain"].WHOSTHRONEISIT != Globals.WHOSTURNISIT:
+					#get_parent().get_node("UI/EndRoundButton").visible = true
+					#get_parent().get_node("UI/EndRoundButton").text = Globals.WHOSTURNISIT + ", YOU WIN!!"
+					#Globals.WHOSTURNISIT = "P1"
+					#get_tree().paused = true
+				#
+				#get_parent().selected_tile.occupied_by["unit"].global_position = global_position
+				#var curr_unit = get_parent().selected_tile.occupied_by["unit"]
+				#Globals.TAKENACTION = get_parent().selected_tile.occupied_by["unit"]
+				#get_parent().selected_tile.occupied_by["unit"] = null
+				#messenger passive
+
 				# havent move yet but want to attack
 			elif available_attack_tile.visible == true or target_tile.visible == true:
 				if target_terrain_tile.visible == true:
+					print("targeting and adding terrain at ", global_position, " with ", get_tree().current_scene.target_terrain_info[global_position])
 					add_terrain(get_tree().current_scene.target_terrain_info[global_position])
 				Globals.TAKENACTION = get_parent().selected_tile.occupied_by["unit"]
 				# look for any units on this tilenode, and trigger their get_hit()
@@ -216,8 +191,8 @@ func _on_input_event(viewport, event, shape_idx):
 			get_parent().hide_select_menu()
 			get_parent().hide_info_menu()			
 			
-		print("tile at ",tile_coordinates," is clicked")
-		print("tile at ",tile_coordinates," has ", occupied_by)
+		#print("tile at ",tile_coordinates," is clicked")
+		#print("tile at ",tile_coordinates," has ", occupied_by)
 
 func toggle_available_tile():
 	available_tile.visible = !available_tile.visible
@@ -255,6 +230,7 @@ func is_empty_tile():
 		
 
 func add_terrain(terrain_type : String):
+	print("adding terrain: ", terrain_type)
 	for node in get_children():
 		if node.is_in_group("Terrain"):
 			if node.type == "Throne":
@@ -287,11 +263,71 @@ func add_terrain(terrain_type : String):
 		occupied_by["terrain"] = new_terrain
 		
 	if terrain_type == "tea table":
+		print("seriously adding a tea table.")
 		var new_terrain = load("res://Terrain/TeaTable.tscn").instantiate()
+		add_child(new_terrain)
+		move_child(new_terrain, 0)
+		occupied_by["terrain"] = new_terrain
+
+	if terrain_type == "droppings entry":
+		var new_terrain = load("res://Terrain/DroppingsEntry.tscn").instantiate()
 		add_child(new_terrain)
 		move_child(new_terrain, 0)		
 		occupied_by["terrain"] = new_terrain
-
+		
+	if terrain_type == "droppings path":
+		var new_terrain = load("res://Terrain/DroppingsPath.tscn").instantiate()
+		add_child(new_terrain)
+		move_child(new_terrain, 0)		
+		occupied_by["terrain"] = new_terrain
+		
+	if terrain_type == "droppings exit":
+		var new_terrain = load("res://Terrain/DroppingsExit.tscn").instantiate()
+		add_child(new_terrain)
+		move_child(new_terrain, 0)		
+		occupied_by["terrain"] = new_terrain
+	
 
 func get_terrain():
 	return occupied_by["terrain"]
+
+
+func resolve_droppings_entry_check():
+	var terrain = occupied_by["terrain"]
+	if terrain.type != "Droppings Entry":
+		return
+	# any terrain of "Droppings Entry" type should have a corresponding Object of "droppings_exit" stored
+	# if it doesnt, then just return (the exit could have been replaced by another terrain)
+	if terrain.droppings_exit_terrain == null:
+		return
+	var destination_tile = terrain.droppings_exit_terrain.get_parent()
+	if destination_tile.occupied_by["unit"] != null:	# if the exit is occupied by a unit, do nothing
+		return
+	var unit = occupied_by["unit"]
+	unit.warp_to(destination_tile.tile_coordinates)
+		
+
+func move():
+	var curr_unit = get_parent().selected_tile.occupied_by["unit"]
+	occupied_by["unit"] = curr_unit
+	if is_manor and occupied_by["terrain"].WHOSTHRONEISIT != Globals.WHOSTURNISIT:
+		get_parent().get_node("UI/EndRoundButton").visible = true
+		get_parent().get_node("UI/EndRoundButton").text = Globals.WHOSTURNISIT + ", YOU WIN!!"
+		Globals.WHOSTURNISIT = "P1"
+		get_tree().paused = true
+	get_parent().selected_tile.occupied_by["unit"].global_position = global_position
+	get_parent().selected_tile.occupied_by["unit"] = null
+	await resolve_droppings_entry_check()
+	
+	if curr_unit.QUEST == "You're it":
+		if global_position+Vector2(32,0) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"].next_to_messenger(curr_unit)
+		if global_position+Vector2(0,32) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(0,32)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(0,32)].occupied_by["unit"].next_to_messenger(curr_unit)
+		if global_position+Vector2(-32,0) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(-32,0)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(-32,0)].occupied_by["unit"].next_to_messenger(curr_unit)
+		if global_position+Vector2(0,-32) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(0,-32)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(0,-32)].occupied_by["unit"].next_to_messenger(curr_unit)
+
+	#pigeon commander passive
+	if curr_unit.CURRENT_JOB == "Pigeon Commander":
+		if global_position+Vector2(32,0) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"].next_to_pigeon_commander(curr_unit)
+		if global_position+Vector2(0,32) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(0,32)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(0,32)].occupied_by["unit"].next_to_pigeon_commander(curr_unit)
+		if global_position+Vector2(-32,0) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(-32,0)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(-32,0)].occupied_by["unit"].next_to_pigeon_commander(curr_unit)
+		if global_position+Vector2(0,-32) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(0,-32)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(0,-32)].occupied_by["unit"].next_to_pigeon_commander(curr_unit)
