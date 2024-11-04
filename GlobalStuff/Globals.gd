@@ -23,7 +23,7 @@ var quests : Dictionary = {
 	},
 	"Landscaping": {
 		"description": "dog",
-		"reward": 50
+		"reward": 100
 	},
 	"You're it": {
 		"description": "dog",
@@ -37,6 +37,10 @@ var quests : Dictionary = {
 		"description": "You're so smelly you no longer need a quest",
 		"reward": 0
 	},
+	"Walking Dogs": {
+		"description": "Walk a dog in real life win the game!",
+		"reward": 0
+	}
 }
 var skills = {
 	"Sweep Attack": {
@@ -69,7 +73,7 @@ var skills = {
 			"knockback": 1,
 		}
 	},
-	"Your weapons, please.": {
+	"Your weapons, please.": { 
 		"shape": [Vector2(1,0), Vector2(2,0)],
 		"damage multiplier": 0.1,
 		"optional effects": {
@@ -101,6 +105,20 @@ var skills = {
 		"optional effects": {
 			"splatter droppings": null,
 		}
+	},
+	"Suit Yourself": {
+		"shape": [Vector2(1,0)],
+	},
+	"Go Fetch!": {
+		"shape": [
+		Vector2(-2, -2), Vector2(-1, -2), Vector2(0, -2), Vector2(1, -2), Vector2(2, -2),
+		Vector2(-2, -1), Vector2(-1, -1), Vector2(0, -1), Vector2(1, -1), Vector2(2, -1),
+		Vector2(-2, 0), Vector2(-1, 0), Vector2(1, 0), Vector2(2, 0),
+		Vector2(-2, 1), Vector2(-1, 1), Vector2(0, 1), Vector2(1, 1), Vector2(2, 1),
+		Vector2(-2, 2), Vector2(-1, 2), Vector2(0, 2), Vector2(1, 2), Vector2(2, 2)
+		],
+	"damage multiplier": 0,
+	"optional effects": {}
 	}
 }
 
@@ -138,11 +156,11 @@ var passives : Dictionary = {
 		"description": "You deal extra damage on green tiles :-)",
 		"damage multiplier": 1.5
 	},
-	"Die Mond": {
+	"Die Mond": { #change suit based on tile you are standing on, you neeed more terrain 
 		"description": "You deal extra damage on green tiles :-)",
 		"damage multiplier": 1.5
 	},
-	"No hooligans alllowed.": {
+	"No hooligans alllowed.": { # Disable all enemy units on marble floor 
 		"description": "You deal extra damage on green tiles :-)",
 		"damage multiplier": 1.5
 	},
@@ -162,7 +180,7 @@ var passives : Dictionary = {
 		"description": "You deal extra damage on green tiles :-)",
 		"damage multiplier": 1.5
 	},
-	"Pigeon Rider": {
+	"Pigeon Rider": { # bird shit is a one way portal when you hit a wet enemy
 		"description": "When you touch an enemy, they become wet",
 		"damage multiplier": 1.5
 	},

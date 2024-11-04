@@ -97,14 +97,18 @@ func reset_units():
 	var count = 2
 	for unit in PlayerData.player1_units.values():
 		tile_coords = Vector2(2,count)*Globals.TILE_SIZE
-		all_tiles[unit.global_position].occupied_by["unit"] = null # set the previous tile to null 
+		if unit.global_position in all_tiles:
+			all_tiles[unit.global_position].occupied_by["unit"] = null # set the previous tile to null 
 		count += 2
+		unit.CURRENT_HEALTH = unit.MAX_HEALTH
 		unit.global_position = tile_coords
 		all_tiles[tile_coords].occupied_by["unit"] = unit # set the new tile to the unit
 	count = 2
 	for unit in PlayerData.player2_units.values():
 		tile_coords = Vector2(GRID_SIZE[0]-1,count)*Globals.TILE_SIZE
-		all_tiles[unit.global_position].occupied_by["unit"] = null
+		if unit.global_position in all_tiles:
+			all_tiles[unit.global_position].occupied_by["unit"] = null
+		unit.CURRENT_HEALTH = unit.MAX_HEALTH
 		unit.global_position = tile_coords
 		all_tiles[tile_coords].occupied_by["unit"] = unit
 		count += 2		
@@ -382,7 +386,7 @@ func on_skill_pressed(button,direction):
 				await all_tiles[new_position].show_target_terrain_tile()
 			
 	##################### telegraphing the displace destination tile ##################
-	# dont judge
+	# dont judge (i am judging you)
 	# for displace skills, we gotta telegraph the displacement destinations to the player
 	# case 1: destinations in invalid tiles: ignore
 	# case 1: destinations on occupied tile: ignore
@@ -540,3 +544,15 @@ func get_cursor_direction_relative_to_node(node: Node2D) -> String:
 		else:
 			direction = "N"
 	return direction
+
+func get_rightmost_tiles(section_percentage: float = 0.2) -> Array:
+	var rightmost_tiles = []
+	var start_x = int(GRID_SIZE[0] * (1 - section_percentage))
+
+	for x_tile in range(start_x, GRID_SIZE[0]):
+		for y_tile in range(2, GRID_SIZE[1]):
+			var tile_coords = Vector2(x_tile, y_tile) * Globals.TILE_SIZE
+			if tile_coords in all_tiles:
+				rightmost_tiles.append(all_tiles[tile_coords])
+				
+	return rightmost_tiles

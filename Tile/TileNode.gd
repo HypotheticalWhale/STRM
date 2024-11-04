@@ -134,25 +134,7 @@ func _on_input_event(viewport, event, shape_idx):
 				await move()
 				get_parent().disable_move_button()
 				
-				
-			# old version of moving before taking action
-			##havent aciton yet but want to move
-			#if available_tile.visible == true: #move action on available tile
-				#occupied_by["unit"] = get_parent().selected_tile.occupied_by["unit"]
-				#await occupied_by["unit"].DIDIWIN()
-				#if is_manor and occupied_by["terrain"].WHOSTHRONEISIT != Globals.WHOSTURNISIT:
-					#get_parent().get_node("UI/EndRoundButton").visible = true
-					#get_parent().get_node("UI/EndRoundButton").text = Globals.WHOSTURNISIT + ", YOU WIN!!"
-					#Globals.WHOSTURNISIT = "P1"
-					#get_tree().paused = true
-				#
-				#get_parent().selected_tile.occupied_by["unit"].global_position = global_position
-				#var curr_unit = get_parent().selected_tile.occupied_by["unit"]
-				#Globals.TAKENACTION = get_parent().selected_tile.occupied_by["unit"]
-				#get_parent().selected_tile.occupied_by["unit"] = null
-				#messenger passive
-
-				# havent move yet but want to attack
+			# havent move yet but want to attack
 			elif available_attack_tile.visible == true or target_tile.visible == true:
 				if target_terrain_tile.visible == true:
 					print("targeting and adding terrain at ", global_position, " with ", get_tree().current_scene.target_terrain_info[global_position])
@@ -191,9 +173,18 @@ func _on_input_event(viewport, event, shape_idx):
 			get_parent().hide_select_menu()
 			get_parent().hide_info_menu()			
 			
-		#print("tile at ",tile_coordinates," is clicked")
-		#print("tile at ",tile_coordinates," has ", occupied_by)
+func find_closest_vector(target: Vector2, vectors: Array) -> Vector2:
+	var closest_vector = vectors[0] # Initialize with the first vector
+	var closest_distance = target.distance_to(closest_vector)
 
+	for vector in vectors:
+		var distance = target.distance_to(vector)
+		if distance < closest_distance:
+			closest_distance = distance
+			closest_vector = vector
+
+	return closest_vector
+	
 func toggle_available_tile():
 	available_tile.visible = !available_tile.visible
 
@@ -318,6 +309,28 @@ func move():
 	get_parent().selected_tile.occupied_by["unit"].global_position = global_position
 	get_parent().selected_tile.occupied_by["unit"] = null
 	await resolve_droppings_entry_check()
+
+	if curr_unit.PASSIVES.has("Teethed to the arm."):
+		var tile_distance = global_position - curr_unit.global_position
+		print("Triggered teethed")
+		print(curr_unit.leashed_units)
+	
+		for unit in curr_unit.leashed_units:
+			print(unit)
+			print(get_parent().all_tiles[unit.global_position + tile_distance].occupied_by["unit"])
+			var tile = unit.get_tile_node()
+			tile.occupied_by["unit"] = null
+
+			if get_parent().all_tiles[unit.global_position + tile_distance].occupied_by["unit"] != null:
+				print("there's a unit there")
+				continue
+			elif unit.global_position + tile_distance in get_parent().valid_tiles:
+				unit.global_position += tile_distance
+				unit.get_tile_node().occupied_by["unit"] = unit
+			else:
+				var closest = find_closest_vector(unit.global_position + tile_distance,get_parent().valid_tiles)
+				unit.global_position = closest
+				unit.get_tile_node().occupied_by["unit"] = unit
 	
 	if curr_unit.QUEST == "You're it":
 		if global_position+Vector2(32,0) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"].next_to_messenger(curr_unit)
