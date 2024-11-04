@@ -181,6 +181,7 @@ func get_hit(attack_info: Dictionary):
 			destination_coords = new_destination_coords
 		
 		await warp_to(destination_coords)
+		await get_tile_node().resolve_droppings_entry_check()
 
 	# disable
 	if attack_info.has("disable"):
@@ -197,8 +198,68 @@ func get_hit(attack_info: Dictionary):
 	if attack_info.has("displace"):
 		var destination = get_tree().current_scene.displace_destination_coords.pop_front() * Globals.TILE_SIZE
 		await warp_to(destination)
-	
-	
+		await get_tile_node().resolve_droppings_entry_check()
+		
+	if attack_info.has("splatter droppings"):
+		var direction = (global_position - attack_info["who is hitting"].global_position).normalized()
+		var num_affected_tiles = 5
+		var origin_tile_coord = global_position/Globals.TILE_SIZE
+		var affected_tile_coords = []
+		for step in range(num_affected_tiles):
+			var affected_tile_coord = origin_tile_coord + (direction * (step+1))
+			affected_tile_coords.push_front(affected_tile_coord)	# so that the furthest tile would be at the front of the array
+
+		var has_created_droppings_exit = false
+		var i = 0
+		var final_affected_tile_grid_pos = {
+			"entry": null,
+			"path": [],
+			"exit": null,
+		}
+		for coord in affected_tile_coords:
+			var grid_pos = coord * Globals.TILE_SIZE
+			print(i, num_affected_tiles-1)
+			if i == (num_affected_tiles - 1) and has_created_droppings_exit == false:
+				final_affected_tile_grid_pos = {}
+				# if the entrance has to be the exit
+				break
+			if grid_pos not in get_tree().current_scene.valid_tiles:
+				i += 1
+				continue
+			if has_created_droppings_exit == false and get_tree().current_scene.all_tiles[grid_pos].get_terrain().type == "Throne":
+				# if trying to create exit on throne tile
+				i += 1
+				continue
+			if has_created_droppings_exit == false and get_tree().current_scene.all_tiles[grid_pos].get_terrain().type != "Throne":
+				# valid tile for exit
+				final_affected_tile_grid_pos["exit"] = grid_pos
+				has_created_droppings_exit = true
+				i += 1
+				continue
+			if get_tree().current_scene.all_tiles[grid_pos].get_terrain().type == "Throne":
+				# if any part of the path or entry has the throne on it, the whole path breaks
+				final_affected_tile_grid_pos = {}
+				break
+			if i == (num_affected_tiles - 1) and has_created_droppings_exit == true:
+				final_affected_tile_grid_pos["entry"] = grid_pos
+				i += 1
+				continue
+			if has_created_droppings_exit:
+				final_affected_tile_grid_pos["path"].append(grid_pos)
+				i += 1
+				continue
+		if len(final_affected_tile_grid_pos) != 0:
+			# if the creation of the path was not interrrupted by throne terrain
+			var droppings_exit_tile = get_tree().current_scene.all_tiles[final_affected_tile_grid_pos["exit"]]
+			var droppings_entry_tile = get_tree().current_scene.all_tiles[final_affected_tile_grid_pos["entry"]]
+			droppings_exit_tile.add_terrain("droppings exit")
+			for grid_pos in final_affected_tile_grid_pos["path"]:
+				get_tree().current_scene.all_tiles[grid_pos].add_terrain("droppings path")
+			droppings_entry_tile.add_terrain("droppings entry")
+			# keep a reference to the exit on the entrance
+			droppings_entry_tile.occupied_by["terrain"].droppings_exit_terrain = droppings_exit_tile.occupied_by["terrain"]
+			print("I have an exit terrain of ", droppings_entry_tile.occupied_by["terrain"].droppings_exit_terrain)
+
 		
 func add_job(job_name : String):
 	var job_node = load(Globals.jobs[job_name]).instantiate()
