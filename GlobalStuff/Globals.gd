@@ -40,6 +40,10 @@ var quests : Dictionary = {
 	"Walking Dogs": {
 		"description": "Walk a dog in real life win the game!",
 		"reward": 0
+	},
+	"Chariot Boy": {
+		"description": "Don't speak to my son",
+		"reward": 0
 	}
 }
 var skills = {
@@ -106,14 +110,21 @@ var skills = {
 	},
 	"Go Fetch!": {
 		"shape": [
-		Vector2(-2, -2), Vector2(-1, -2), Vector2(0, -2), Vector2(1, -2), Vector2(2, -2),
-		Vector2(-2, -1), Vector2(-1, -1), Vector2(0, -1), Vector2(1, -1), Vector2(2, -1),
-		Vector2(-2, 0), Vector2(-1, 0), Vector2(1, 0), Vector2(2, 0),
-		Vector2(-2, 1), Vector2(-1, 1), Vector2(0, 1), Vector2(1, 1), Vector2(2, 1),
-		Vector2(-2, 2), Vector2(-1, 2), Vector2(0, 2), Vector2(1, 2), Vector2(2, 2)
-		],
-	"damage multiplier": 0,
-	"optional effects": {}
+			Vector2(-2, -2), Vector2(-1, -2), Vector2(0, -2), Vector2(1, -2), Vector2(2, -2),
+			Vector2(-2, -1), Vector2(-1, -1), Vector2(0, -1), Vector2(1, -1), Vector2(2, -1),
+			Vector2(-2, 0), Vector2(-1, 0), Vector2(1, 0), Vector2(2, 0),
+			Vector2(-2, 1), Vector2(-1, 1), Vector2(0, 1), Vector2(1, 1), Vector2(2, 1),
+			Vector2(-2, 2), Vector2(-1, 2), Vector2(0, 2), Vector2(1, 2), Vector2(2, 2)
+			],
+		"damage multiplier": 0,
+		"optional effects": {}
+	},
+	"I love gates": {
+		"shape": [
+			Vector2(0,0)
+			],
+		"damage multiplier": 0,
+		"optional effects": {}
 	}
 }
 
