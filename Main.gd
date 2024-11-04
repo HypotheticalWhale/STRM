@@ -541,3 +541,15 @@ func get_cursor_direction_relative_to_node(node: Node2D) -> String:
 		else:
 			direction = "N"
 	return direction
+
+func get_rightmost_tiles(section_percentage: float = 0.2) -> Array:
+	var rightmost_tiles = []
+	var start_x = int(GRID_SIZE[0] * (1 - section_percentage))
+
+	for x_tile in range(start_x, GRID_SIZE[0]):
+		for y_tile in range(2, GRID_SIZE[1]):
+			var tile_coords = Vector2(x_tile, y_tile) * Globals.TILE_SIZE
+			if tile_coords in all_tiles:
+				rightmost_tiles.append(all_tiles[tile_coords])
+				
+	return rightmost_tiles
