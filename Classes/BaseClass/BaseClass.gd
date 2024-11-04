@@ -140,8 +140,16 @@ func get_hit(attack_info: Dictionary):
 	# 	"displace": null
 	#}
 	# damage
-	take_damage(attack_info["damage"])
+	if attack_info["damage"] > 0:
+		take_damage(attack_info["damage"])
+	elif attack_info["damage"] < 0:
+		heal(attack_info["damage"])
+	else:
+		pass
 	var who_is_hitting = attack_info["who is hitting"]
+	if who_is_hitting == self and attack_info["skill name"] == "I love gates":
+		print("list of rightmost cels", get_parent().get_rightmost_tiles())
+		
 	if attack_info["skill name"] == "Your weapons, please." and self not in who_is_hitting.enemies_touched:
 		who_is_hitting.enemies_touched.append(self)
 	print(who_is_hitting.PASSIVES)

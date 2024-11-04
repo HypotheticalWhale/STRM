@@ -554,5 +554,12 @@ func get_rightmost_tiles(section_percentage: float = 0.2) -> Array:
 			var tile_coords = Vector2(x_tile, y_tile) * Globals.TILE_SIZE
 			if tile_coords in all_tiles:
 				rightmost_tiles.append(all_tiles[tile_coords])
-				
+
+	rightmost_tiles.shuffle()
+	for i in range(20):
+		var tile = rightmost_tiles[randi() % rightmost_tiles.size()]
+		for j in range(2): 
+			tile.toggle_available_tile()
+	for i in range(3):
+		rightmost_tiles[randi() % rightmost_tiles.size()].toggle_available_tile()
 	return rightmost_tiles
