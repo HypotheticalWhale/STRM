@@ -457,13 +457,13 @@ func on_skill_pressed(button,direction):
 				# modulate tile to show sweet spot
 				all_tiles[button.skill_owner.global_position + tile*Globals.TILE_SIZE].modulate = Color(1,0.6,0.6)
 				sweet_spot_damage_multiplier = 2.0
+		var passive_damage_multiplier = 1.0
 		if len(button.skill_owner.PASSIVES) > 0 and all_tiles[grid_pos].occupied_by["terrain"].type == "Garden": #gardener passive
 			for passive in button.skill_owner.PASSIVES:
 				if passive == "Green Thumbs":
-					var passive_damage_multiplier = Globals.passives[passive]["damage multiplier"]
-					available_attack_tiles[grid_pos]["damage"] = base_damage * skill_damage_multiplier * sweet_spot_damage_multiplier * passive_damage_multiplier
-		else:
-			available_attack_tiles[grid_pos]["damage"] = base_damage * skill_damage_multiplier * sweet_spot_damage_multiplier
+					passive_damage_multiplier *= Globals.passives[passive]["damage multiplier"]
+					
+		available_attack_tiles[grid_pos]["damage"] = base_damage * skill_damage_multiplier * sweet_spot_damage_multiplier * passive_damage_multiplier
 		
 		# account for knockback and add it to available_attack_tiles[grid_pos]
 		if Globals.skills[button.skill_name]["optional effects"].has("knockback"):
@@ -504,6 +504,9 @@ func on_skill_pressed(button,direction):
 		if Globals.skills[button.skill_name]["optional effects"].has("displace"):
 			available_attack_tiles[grid_pos]["displace"] = {}
 			available_attack_tiles[grid_pos]["displace"]["destinations"] = displace_destination_coords
+		
+		if Globals.skills[button.skill_name]["optional effects"].has("splatter droppings"):
+			available_attack_tiles[grid_pos]["splatter droppings"] = null
 		
 
 			

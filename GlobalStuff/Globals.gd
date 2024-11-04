@@ -72,14 +72,16 @@ var skills = {
 	},
 	"Piercing Ray": {
 		"shape": [Vector2(1,0),Vector2(2,0),Vector2(3,0),Vector2(4,0)],
-		"damage multiplier": 1.0,
-		"optional effects": {}
+		"damage multiplier": 0.1,
+		"optional effects": {
+			"knockback": 1,
+		}
 	},
 	"Your weapons, please.": { 
 		"shape": [Vector2(1,0), Vector2(2,0)],
 		"damage multiplier": 0.1,
 		"optional effects": {
-			"knockback": 2,	# knocks back 2 squares
+			"knockback": 1,	# knocks back 2 squares
 			"disable": 1	# disables unit for 1 turn
 		}
 	},
@@ -103,7 +105,10 @@ var skills = {
 	},
 	"I come with great news": {	# attacks a unit one tile away. if unit is wet, create a cone of bird shit terrain behind unit.
 		"shape": [Vector2(1,0)],
-		"damage multiplier": 1.0,
+		"damage multiplier": 0.1,
+		"optional effects": {
+			"splatter droppings": null,
+		}
 	},
 	"Suit Yourself": {
 		"shape": [Vector2(1,0)],
