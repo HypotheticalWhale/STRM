@@ -318,17 +318,15 @@ func move():
 	
 		for unit in curr_unit.leashed_units:
 			var tile = unit.get_tile_node()
+			if unit.global_position + tile_distance not in get_parent().valid_tiles:
+				continue
+			if get_parent().all_tiles[unit.global_position + tile_distance].occupied_by["unit"] != null:
+				continue
 			tile.occupied_by["unit"] = null
+			unit.global_position + tile_distance
+			unit.get_tile_node().occupied_by["unit"] = unit
+			await resolve_droppings_entry_check()
 
-			if unit.global_position + tile_distance in get_parent().valid_tiles and get_parent().all_tiles[unit.global_position + tile_distance].occupied_by["unit"] != null:
-				print("there's a unit there")
-				continue
-			elif unit.global_position + tile_distance in get_parent().valid_tiles:
-				unit.global_position += tile_distance
-				unit.get_tile_node().occupied_by["unit"] = unit
-				await resolve_droppings_entry_check()
-			else:
-				continue
 	
 	if curr_unit.QUEST == "You're it":
 		if global_position+Vector2(32,0) in get_parent().valid_tiles and get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"]: get_parent().all_tiles[global_position+Vector2(32,0)].occupied_by["unit"].next_to_messenger(curr_unit)
