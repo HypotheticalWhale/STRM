@@ -102,7 +102,7 @@ func reset_units():
 		count += 2
 		unit.CURRENT_HEALTH = unit.MAX_HEALTH
 		unit.global_position = tile_coords
-		all_tiles[tile_coords].occupied_by["unit"] = unit # set the new tile to the unit
+		all_tiles[tile_coords].occupied_by["unit"] = unit # setenable_move_button the new tile to the unit
 	count = 2
 	for unit in PlayerData.player2_units.values():
 		tile_coords = Vector2(GRID_SIZE[0]-1,count)*Globals.TILE_SIZE
@@ -508,8 +508,17 @@ func on_skill_pressed(button,direction):
 		if Globals.skills[button.skill_name]["optional effects"].has("splatter droppings"):
 			available_attack_tiles[grid_pos]["splatter droppings"] = null
 		
-
-			
+		if Globals.skills[button.skill_name]["optional effects"].has("random gardens"):
+			available_attack_tiles[grid_pos]["random gardens"] = Globals.skills[button.skill_name]["optional effects"]["random gardens"]
+		
+		if Globals.skills[button.skill_name]["optional effects"].has("gain attack"):
+			available_attack_tiles[grid_pos]["gain attack"] = Globals.skills[button.skill_name]["optional effects"]["gain attack"]
+		
+		if Globals.skills[button.skill_name]["optional effects"].has("gain health"):
+			available_attack_tiles[grid_pos]["gain health"] = Globals.skills[button.skill_name]["optional effects"]["gain health"]
+		
+		if Globals.skills[button.skill_name]["optional effects"].has("gain movement"):
+			available_attack_tiles[grid_pos]["gain movement"] = Globals.skills[button.skill_name]["optional effects"]["gain movement"]
 	##################### choosing units to be displaced ##################
 	# remove random units from displace targets (gotta choose only 2 out of 5)
 	if Globals.skills[button.skill_name]["optional effects"].has("displace"):
@@ -523,7 +532,7 @@ func on_skill_pressed(button,direction):
 	
 	hide_action_buttons()
 	hide_select_menu()
-
+	
 
 func get_cursor_direction_relative_to_node(node: Node2D) -> String:
 	if not highlighted_tile:
