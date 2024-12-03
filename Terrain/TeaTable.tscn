@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cie2kd7hhjuvo"]
+[gd_scene load_steps=4 format=3 uid="uid://be7vn6b1n4xh3"]
 
 [ext_resource type="PackedScene" uid="uid://beftcxptuutu2" path="res://Terrain/Terrain.tscn" id="1_367bc"]
 [ext_resource type="Script" path="res://Terrain/TeaTable.gd" id="2_cvvm3"]
