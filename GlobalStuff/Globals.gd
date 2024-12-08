@@ -114,7 +114,7 @@ var skills = {
 			"splatter droppings": null,
 		}
 	},
-	"I love clubbing": {
+	"Cloister Garth Commoner's Clubs": {
 		"shape": [
 			Vector2(1, 0),
 			Vector2(2, 0),
@@ -126,11 +126,12 @@ var skills = {
 			"random gardens": null
 		}
 	},
-	"I love clubbing and money": {
+	"Vineyard Merchant's Diamonds": {
 		"shape": [
 			Vector2(1, 0),
 			Vector2(2, 1), Vector2(2, 0), Vector2(2, -1),
-			Vector2(3, 0)
+			Vector2(3, 1), Vector2(3, 0), Vector2(3, -1),
+			Vector2(4, 0)
 		],
 		"damage multiplier": 0.1,
 		"optional effects": {
@@ -138,7 +139,7 @@ var skills = {
 			"gain attack": 1,
 		}
 	},
-	"I love clubbing, money and yoga": {
+	"Flowerbed Lover's Hearts": {
 		"shape": [
 			Vector2(1, 0),
 			Vector2(2, 1), Vector2(2, 0), Vector2(2, -1),
@@ -152,7 +153,7 @@ var skills = {
 			"gain health": 1,
 		}
 	},
-	"I love clubbing, money, yoga and violent video games": {
+	"Orchard Elite's Spades": {
 		"shape": [
 			Vector2(1, 0),
 			Vector2(2, 1), Vector2(2, 2), Vector2(2, 0), Vector2(2, -1), Vector2(2, -2),

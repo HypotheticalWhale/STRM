@@ -355,14 +355,14 @@ func suit_up():
 			new_garden_type = "Cloister Garth"
 			terrain_condition_for_suit_up = ""
 		"Diamonds":
-			new_garden_type = "Flowerbed"
+			new_garden_type = "Vineyard"
 			terrain_condition_for_suit_up = "Cloister Garth"
 		"Hearts":
-			new_garden_type = "Vineyard"
-			terrain_condition_for_suit_up = "Flowerbed"
+			new_garden_type = "Flowerbed"
+			terrain_condition_for_suit_up = "Vineyard"
 		"Spades":
 			new_garden_type = "Orchard"
-			terrain_condition_for_suit_up = "Vineyard"
+			terrain_condition_for_suit_up = "Flowerbed"
 
 	if get_tile_node().get_terrain().type != terrain_condition_for_suit_up and terrain_condition_for_suit_up != "":
 		# if the tile the aggressor is standing on does not meet the terrain condition AND
@@ -372,16 +372,16 @@ func suit_up():
 	match suit:
 		"Clubs":
 			suit = "Diamonds"
-			ACTIONS.erase("I love clubbing")
-			ACTIONS.append("I love clubbing and money")
+			ACTIONS.erase("Cloister Garth Commoner's Clubs")
+			ACTIONS.append("Vineyard Merchant's Diamonds")
 		"Diamonds":
 			suit = "Hearts"
-			ACTIONS.erase("I love clubbing and money")
-			ACTIONS.append("I love clubbing, money and yoga")
+			ACTIONS.erase("Vineyard Merchant's Diamonds")
+			ACTIONS.append("Flowerbed Lover's Hearts")
 		"Hearts":
 			suit = "Spades"
-			ACTIONS.erase("I love clubbing, money, and yoga")
-			ACTIONS.append("I love clubbing, money, yoga and violent video games")
+			ACTIONS.erase("Flowerbed Lover's Hearts")
+			ACTIONS.append("Orchard Elite's Spades")
 		"Spades":
 			suit = "Spades"
 		

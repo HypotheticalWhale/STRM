@@ -5,7 +5,7 @@ extends Job
 func _ready():
 	job_name = "Card Soldier"
 	description = "A diamond in the rough, wait is this a crossover?"
-	skill = "I love clubbing"
+	skill = "Cloister Garth Commoner's Clubs"
 	passive = "Die Mond"
 	potential_jobs = []
 	MAX_HEALTH = 10
