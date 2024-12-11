@@ -37,7 +37,6 @@ func _ready():
 	await initialize_stats()
 	await initialize_sprites()
 	original_color = self.modulate
-	add_job("Card Soldier")
 
 func _process(delta):
 	if "Kleptomaniac" in PASSIVES and len(enemies_touched) > 0: #Bellboy QUEST
