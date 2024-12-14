@@ -572,7 +572,7 @@ func get_three_leftmost_tiles(section_percentage: float = 0.5) -> Array:
 	var leftmost_tiles = []
 	var end_x = int(GRID_SIZE[0] * (1-section_percentage))  # We calculate up to a percentage from the left side
 	print(end_x)
-	for x_tile in range(end_x+1):  # Iterating from 0 to the calculated end_x
+	for x_tile in range(end_x+2):  # Iterating from 0 to the calculated end_x
 		for y_tile in range(2, GRID_SIZE[1]):
 			var tile_coords = Vector2(x_tile, y_tile) * Globals.TILE_SIZE
 			if tile_coords in all_tiles:
