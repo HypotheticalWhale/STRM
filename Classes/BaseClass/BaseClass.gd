@@ -149,8 +149,17 @@ func get_hit(attack_info: Dictionary):
 	else:
 		pass
 	var who_is_hitting = attack_info["who is hitting"]
-	if who_is_hitting == self and attack_info["skill name"] == "I love gates":
-		print("list of rightmost cels", get_parent().get_rightmost_tiles())
+	
+	if who_is_hitting == self and who_is_hitting.TEAM == "P1" and attack_info["skill name"] == "I love gates": #Charioteer skill
+		print("list of rightmost cells", get_parent().get_three_rightmost_tiles())
+	elif who_is_hitting == self and who_is_hitting.TEAM == "P2" and attack_info["skill name"] == "I love gates":
+		print("list of leftmost cells", get_parent().get_three_leftmost_tiles())
+	elif who_is_hitting.TEAM == self.TEAM and who_is_hitting.CURRENT_JOB == "Charioteer":
+		var team_gate_locations = get_parent().get_team_gates(who_is_hitting.TEAM )
+		var gate_location = team_gate_locations[randi() % team_gate_locations.size()]
+		self.get_tile_node().occupied_by["unit"] == null
+		self.global_position = gate_location.global_position
+		gate_location.occupied_by["unit"] = self
 		
 	if attack_info["skill name"] == "Your weapons, please." and self not in who_is_hitting.enemies_touched:
 		who_is_hitting.enemies_touched.append(self)

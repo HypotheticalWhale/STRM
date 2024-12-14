@@ -276,12 +276,23 @@ func add_terrain(terrain_type : String):
 		move_child(new_terrain, 0)		
 		occupied_by["terrain"] = new_terrain
 
+	if terrain_type == "gate red":
+		var new_terrain = load("res://Terrain/GateRed.tscn").instantiate()
+    add_child(new_terrain)
+		move_child(new_terrain, 0)		
+		occupied_by["terrain"] = new_terrain
+    
 	if terrain_type == "Cloister Garth":
 		var new_terrain = load("res://Terrain/CloisterGarth.tscn").instantiate()
 		add_child(new_terrain)
 		move_child(new_terrain, 0)		
 		occupied_by["terrain"] = new_terrain
 		
+	if terrain_type == "gate blue":
+		var new_terrain = load("res://Terrain/GateBlue.tscn").instantiate()
+		add_child(new_terrain)
+		move_child(new_terrain, 0)		
+		occupied_by["terrain"] = new_terrain
 	if terrain_type == "Flowerbed":
 		var new_terrain = load("res://Terrain/Flowerbed.tscn").instantiate()
 		add_child(new_terrain)
@@ -300,7 +311,6 @@ func add_terrain(terrain_type : String):
 		move_child(new_terrain, 0)		
 		occupied_by["terrain"] = new_terrain
 	
-
 func get_terrain():
 	return occupied_by["terrain"]
 

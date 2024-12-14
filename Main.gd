@@ -9,6 +9,7 @@ var valid_tiles = []
 var tile_node
 var tile_coords
 var all_tiles = {}
+var throne_tiles = []
 var available_tiles = []
 var displace_target_tiles = []	# for the displace active
 var displace_destination_coords = []	# grid pos of displace destinations
@@ -134,9 +135,12 @@ func spawn_tiles():
 					tile_node.add_terrain("throne")
 					if throne_count:
 						tile_node.occupied_by["terrain"].WHOSTHRONEISIT = "P1"
+						throne_tiles.append(tile_node)
 						throne_count = false
 					else:
 						tile_node.occupied_by["terrain"].WHOSTHRONEISIT = "P2"
+						throne_tiles.append(tile_node)
+						
 				else:
 					if (x_tile >= 2 and x_tile < 5) or (x_tile < GRID_SIZE[0] and x_tile >= GRID_SIZE[0]-3):
 						tile_node.add_terrain("marble")
@@ -554,21 +558,54 @@ func get_cursor_direction_relative_to_node(node: Node2D) -> String:
 			direction = "N"
 	return direction
 
-func get_rightmost_tiles(section_percentage: float = 0.2) -> Array:
+func get_three_rightmost_tiles(section_percentage: float = 0.5) -> Array:
 	var rightmost_tiles = []
 	var start_x = int(GRID_SIZE[0] * (1 - section_percentage))
-
-	for x_tile in range(start_x, GRID_SIZE[0]):
+	print(start_x)
+	for x_tile in range(start_x+1, GRID_SIZE[0]):
 		for y_tile in range(2, GRID_SIZE[1]):
 			var tile_coords = Vector2(x_tile, y_tile) * Globals.TILE_SIZE
 			if tile_coords in all_tiles:
 				rightmost_tiles.append(all_tiles[tile_coords])
-
+	rightmost_tiles = rightmost_tiles.filter(func(tile): return tile != throne_tiles[0] and tile != throne_tiles[1]) #filter out throne tiles
 	rightmost_tiles.shuffle()
 	for i in range(20):
 		var tile = rightmost_tiles[randi() % rightmost_tiles.size()]
 		for j in range(2): 
 			tile.toggle_available_tile()
 	for i in range(3):
-		rightmost_tiles[randi() % rightmost_tiles.size()].toggle_available_tile()
+		rightmost_tiles[randi() % rightmost_tiles.size()].add_terrain("gate blue")
 	return rightmost_tiles
+
+func get_three_leftmost_tiles(section_percentage: float = 0.5) -> Array:
+	var leftmost_tiles = []
+	var end_x = int(GRID_SIZE[0] * (1-section_percentage))  # We calculate up to a percentage from the left side
+	print(end_x)
+	for x_tile in range(end_x+1):  # Iterating from 0 to the calculated end_x
+		for y_tile in range(2, GRID_SIZE[1]):
+			var tile_coords = Vector2(x_tile, y_tile) * Globals.TILE_SIZE
+			if tile_coords in all_tiles:
+				leftmost_tiles.append(all_tiles[tile_coords])
+				
+	leftmost_tiles = leftmost_tiles.filter(func(tile): return tile != throne_tiles[0] and tile != throne_tiles[1]) #filter out throne tiles
+	leftmost_tiles.shuffle()
+	for i in range(20):
+		var tile = leftmost_tiles[randi() % leftmost_tiles.size()]
+		for j in range(2): 
+			tile.toggle_available_tile()
+	for i in range(3):
+		leftmost_tiles[randi() % leftmost_tiles.size()].add_terrain("gate red")
+	return leftmost_tiles
+
+func get_team_gates(team):
+	var team_gates = []
+	if team == "P1":
+		for tile in all_tiles.values():
+			if tile.occupied_by["terrain"].type == "GateBlue" and tile.occupied_by["unit"] == null:
+				team_gates.append(tile)
+	else:
+		for tile in all_tiles.values():
+			if tile.occupied_by["terrain"].type == "GateRed" and tile.occupied_by["unit"] == null:
+				team_gates.append(tile)
+				 
+	return team_gates
