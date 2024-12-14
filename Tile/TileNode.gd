@@ -344,7 +344,7 @@ func move():
 	get_parent().selected_tile.occupied_by["unit"] = null
 	await resolve_droppings_entry_check()
 
-	if curr_unit.PASSIVES.has("Teethed to the arm."):
+	if curr_unit.PASSIVES.has("Teethed to the arm."): #Dog walker passive
 		print(curr_unit.leashed_units)
 		for unit in curr_unit.leashed_units:
 			var tile = unit.get_tile_node()
