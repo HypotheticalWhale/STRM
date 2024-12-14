@@ -165,6 +165,7 @@ func get_hit(attack_info: Dictionary):
 		who_is_hitting.enemies_touched.append(self)
 	if who_is_hitting.PASSIVES.has("Teethed to the arm."): #Dog walker passive
 		who_is_hitting.leashed_units.append(self)
+		
 	if who_is_hitting.PASSIVES.has("Green Thumbs") and get_tree().current_scene.all_tiles[global_position].occupied_by["terrain"].type == "Garden": #Gardener Quest
 		Globals.complete_unit_quest(who_is_hitting,"Landscaping")
 	if CURRENT_HEALTH <= 0:
