@@ -11,7 +11,7 @@ func initialize_stats():
 	CURRENT_JOB = "Servant"
 	ACTIONS = ["Sweep Attack", "Tea Party for Two"]
 	QUEST = "Fight"
-	POTENTIAL_JOBS = ["Charioteer", "Card Soldier", "Dog Walker"]
+	POTENTIAL_JOBS = ["Charioteer", "Vaults Keeper", "Dog Walker"]
 
 
 func initialize_sprites():

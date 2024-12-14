@@ -3,9 +3,9 @@ extends Job
 
 func _ready():
 	job_name = "Vaults Keeper"
-	description = "Protects the inside of the mansion well."
-	skill = "Call the guards!"	# Strong melee area attack
-	passive = "Really tough."	# takes half damage
+	description = "He's a workaholic."
+	skill = "My shift is over"
+	passive = "Don't touch my stuff"
 	potential_jobs = []
 	MAX_HEALTH = 15
 	MOVEMENT = 2
