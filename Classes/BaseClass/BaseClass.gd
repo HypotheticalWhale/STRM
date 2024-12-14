@@ -297,6 +297,13 @@ func add_job(job_name : String):
 	# card solider specific
 	if job_name == "Card Soldier":
 		suit = "Clubs"
+		randomize()
+		var random_coord_x = randi_range(3, get_tree().current_scene.GRID_SIZE[0]-2) * Globals.TILE_SIZE
+		var random_coord_y = randi_range(3, get_tree().current_scene.GRID_SIZE[1]-2) * Globals.TILE_SIZE
+		for step_x in [-1 * Globals.TILE_SIZE, 0 * Globals.TILE_SIZE, 1 * Globals.TILE_SIZE]:
+			for step_y in [-1 * Globals.TILE_SIZE, 0 * Globals.TILE_SIZE, 1 * Globals.TILE_SIZE]:
+				get_tree().current_scene.all_tiles[Vector2(random_coord_x + step_x, random_coord_y + step_y)].add_terrain("Cloister Garth")
+				
 
 
 func warp_to(destination_vector: Vector2):
@@ -352,17 +359,17 @@ func suit_up():
 	var new_garden_type: String
 	match suit:
 		"Clubs":
-			new_garden_type = "Cloister Garth"
-			terrain_condition_for_suit_up = ""
-		"Diamonds":
 			new_garden_type = "Vineyard"
 			terrain_condition_for_suit_up = "Cloister Garth"
-		"Hearts":
+		"Diamonds":
 			new_garden_type = "Flowerbed"
 			terrain_condition_for_suit_up = "Vineyard"
-		"Spades":
+		"Hearts":
 			new_garden_type = "Orchard"
 			terrain_condition_for_suit_up = "Flowerbed"
+		"Spades":
+			new_garden_type = "Orchard"
+			terrain_condition_for_suit_up = "Orchard"
 
 	if get_tile_node().get_terrain().type != terrain_condition_for_suit_up and terrain_condition_for_suit_up != "":
 		# if the tile the aggressor is standing on does not meet the terrain condition AND
