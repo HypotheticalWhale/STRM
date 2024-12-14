@@ -553,7 +553,7 @@ func get_three_rightmost_tiles(section_percentage: float = 0.5) -> Array:
 	var rightmost_tiles = []
 	var start_x = int(GRID_SIZE[0] * (1 - section_percentage))
 	print(start_x)
-	for x_tile in range(start_x, GRID_SIZE[0]):
+	for x_tile in range(start_x+1, GRID_SIZE[0]):
 		for y_tile in range(2, GRID_SIZE[1]):
 			var tile_coords = Vector2(x_tile, y_tile) * Globals.TILE_SIZE
 			if tile_coords in all_tiles:
@@ -572,7 +572,7 @@ func get_three_leftmost_tiles(section_percentage: float = 0.5) -> Array:
 	var leftmost_tiles = []
 	var end_x = int(GRID_SIZE[0] * (1-section_percentage))  # We calculate up to a percentage from the left side
 	print(end_x)
-	for x_tile in range(end_x+2):  # Iterating from 0 to the calculated end_x
+	for x_tile in range(end_x+1):  # Iterating from 0 to the calculated end_x
 		for y_tile in range(2, GRID_SIZE[1]):
 			var tile_coords = Vector2(x_tile, y_tile) * Globals.TILE_SIZE
 			if tile_coords in all_tiles:
@@ -587,3 +587,16 @@ func get_three_leftmost_tiles(section_percentage: float = 0.5) -> Array:
 	for i in range(3):
 		leftmost_tiles[randi() % leftmost_tiles.size()].add_terrain("gate red")
 	return leftmost_tiles
+
+func get_team_gates(team):
+	var team_gates = []
+	if team == "P1":
+		for tile in all_tiles.values():
+			if tile.occupied_by["terrain"].type == "GateBlue" and tile.occupied_by["unit"] == null:
+				team_gates.append(tile)
+	else:
+		for tile in all_tiles.values():
+			if tile.occupied_by["terrain"].type == "GateRed" and tile.occupied_by["unit"] == null:
+				team_gates.append(tile)
+				 
+	return team_gates
