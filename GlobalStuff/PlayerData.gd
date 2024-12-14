@@ -10,8 +10,8 @@ var player2_units = {
 	"unit2" : null,
 	"unit3" : null,	
 }
-var available_units = ["res://Classes/Servant.tscn", "res://Classes/Noble.tscn", "res://Classes/Entertainer.tscn"]
-
+#var available_units = ["res://Classes/Servant.tscn", "res://Classes/Noble.tscn", "res://Classes/Entertainer.tscn"]
+var available_units = ["res://Classes/Servant.tscn"]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass

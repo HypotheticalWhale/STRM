@@ -276,8 +276,20 @@ func add_terrain(terrain_type : String):
 		move_child(new_terrain, 0)		
 		occupied_by["terrain"] = new_terrain
 
+	if terrain_type == "gate red":
+		var new_terrain = load("res://Terrain/GateRed.tscn").instantiate()
+		add_child(new_terrain)
+		move_child(new_terrain, 0)		
+		occupied_by["terrain"] = new_terrain
+	
 	if terrain_type == "Cloister Garth":
 		var new_terrain = load("res://Terrain/CloisterGarth.tscn").instantiate()
+		add_child(new_terrain)
+		move_child(new_terrain, 0)		
+		occupied_by["terrain"] = new_terrain
+		
+	if terrain_type == "gate blue":
+		var new_terrain = load("res://Terrain/GateBlue.tscn").instantiate()
 		add_child(new_terrain)
 		move_child(new_terrain, 0)		
 		occupied_by["terrain"] = new_terrain
@@ -339,16 +351,18 @@ func move():
 	get_parent().selected_tile.occupied_by["unit"] = null
 	await resolve_droppings_entry_check()
 
-	if curr_unit.PASSIVES.has("Teethed to the arm."):
-
+	if curr_unit.PASSIVES.has("Teethed to the arm."): #Dog walker passive
+		print(curr_unit.leashed_units)
 		for unit in curr_unit.leashed_units:
 			var tile = unit.get_tile_node()
 			if unit.global_position + tile_distance not in get_parent().valid_tiles:
+				print('not valid tile and should not move')
 				continue
 			if get_parent().all_tiles[unit.global_position + tile_distance].occupied_by["unit"] != null:
+				print('occupied tile and should not move')
 				continue
 			tile.occupied_by["unit"] = null
-			unit.global_position + tile_distance
+			unit.global_position = unit.global_position + tile_distance
 			unit.get_tile_node().occupied_by["unit"] = unit
 			await resolve_droppings_entry_check()
 
