@@ -293,6 +293,7 @@ func add_terrain(terrain_type : String):
 		add_child(new_terrain)
 		move_child(new_terrain, 0)		
 		occupied_by["terrain"] = new_terrain
+		
 	if terrain_type == "Flowerbed":
 		var new_terrain = load("res://Terrain/Flowerbed.tscn").instantiate()
 		add_child(new_terrain)
@@ -344,15 +345,17 @@ func move():
 	await resolve_droppings_entry_check()
 
 	if curr_unit.PASSIVES.has("Teethed to the arm."):
-
+		print(curr_unit.leashed_units)
 		for unit in curr_unit.leashed_units:
 			var tile = unit.get_tile_node()
 			if unit.global_position + tile_distance not in get_parent().valid_tiles:
+				print('not valid tile and should not move')
 				continue
 			if get_parent().all_tiles[unit.global_position + tile_distance].occupied_by["unit"] != null:
+				print('occupied tile and should not move')
 				continue
 			tile.occupied_by["unit"] = null
-			unit.global_position + tile_distance
+			unit.global_position = unit.global_position + tile_distance
 			unit.get_tile_node().occupied_by["unit"] = unit
 			await resolve_droppings_entry_check()
 
