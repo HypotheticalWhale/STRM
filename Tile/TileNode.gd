@@ -40,7 +40,6 @@ func _on_input_event(viewport, event, shape_idx):
 		# move already, now want to attack
 		if Globals.TAKENACTION and (available_attack_tile.visible == true or target_tile.visible == true or target_terrain_tile.visible == true):
 			if target_terrain_tile.visible == true:
-				print("targeting and adding terrain at ", global_position, " with ", get_tree().current_scene.target_terrain_info[global_position])
 				add_terrain(get_tree().current_scene.target_terrain_info[global_position])
 			for tile in get_parent().available_attack_tiles:
 				var attack_tile_info = get_parent().available_attack_tiles[tile]
@@ -137,8 +136,9 @@ func _on_input_event(viewport, event, shape_idx):
 			# havent move yet but want to attack
 			elif available_attack_tile.visible == true or target_tile.visible == true:
 				if target_terrain_tile.visible == true:
-					print("targeting and adding terrain at ", global_position, " with ", get_tree().current_scene.target_terrain_info[global_position])
 					add_terrain(get_tree().current_scene.target_terrain_info[global_position])
+					
+					print("targeting and adding terrain at ", global_position, " with ", get_tree().current_scene.target_terrain_info[global_position])
 				Globals.TAKENACTION = get_parent().selected_tile.occupied_by["unit"]
 				# look for any units on this tilenode, and trigger their get_hit()
 				for tile in get_parent().available_attack_tiles:
@@ -221,7 +221,6 @@ func is_empty_tile():
 		
 
 func add_terrain(terrain_type : String):
-	print("adding terrain: ", terrain_type)
 	for node in get_children():
 		if node.is_in_group("Terrain"):
 			if node.type == "Throne":
@@ -254,7 +253,6 @@ func add_terrain(terrain_type : String):
 		occupied_by["terrain"] = new_terrain
 		
 	if terrain_type == "tea table":
-		print("seriously adding a tea table.")
 		var new_terrain = load("res://Terrain/TeaTable.tscn").instantiate()
 		add_child(new_terrain)
 		move_child(new_terrain, 0)
@@ -280,6 +278,12 @@ func add_terrain(terrain_type : String):
 
 	if terrain_type == "gate red":
 		var new_terrain = load("res://Terrain/GateRed.tscn").instantiate()
+    add_child(new_terrain)
+		move_child(new_terrain, 0)		
+		occupied_by["terrain"] = new_terrain
+    
+	if terrain_type == "Cloister Garth":
+		var new_terrain = load("res://Terrain/CloisterGarth.tscn").instantiate()
 		add_child(new_terrain)
 		move_child(new_terrain, 0)		
 		occupied_by["terrain"] = new_terrain
@@ -289,7 +293,24 @@ func add_terrain(terrain_type : String):
 		add_child(new_terrain)
 		move_child(new_terrain, 0)		
 		occupied_by["terrain"] = new_terrain
-
+	if terrain_type == "Flowerbed":
+		var new_terrain = load("res://Terrain/Flowerbed.tscn").instantiate()
+		add_child(new_terrain)
+		move_child(new_terrain, 0)		
+		occupied_by["terrain"] = new_terrain
+		
+	if terrain_type == "Vineyard":
+		var new_terrain = load("res://Terrain/Vineyard.tscn").instantiate()
+		add_child(new_terrain)
+		move_child(new_terrain, 0)		
+		occupied_by["terrain"] = new_terrain
+		
+	if terrain_type == "Orchard":
+		var new_terrain = load("res://Terrain/Orchard.tscn").instantiate()
+		add_child(new_terrain)
+		move_child(new_terrain, 0)		
+		occupied_by["terrain"] = new_terrain
+	
 func get_terrain():
 	return occupied_by["terrain"]
 
@@ -324,9 +345,6 @@ func move():
 
 	if curr_unit.PASSIVES.has("Teethed to the arm."):
 
-		print("Triggered teethed")
-		print(curr_unit.leashed_units)
-	
 		for unit in curr_unit.leashed_units:
 			var tile = unit.get_tile_node()
 			if unit.global_position + tile_distance not in get_parent().valid_tiles:

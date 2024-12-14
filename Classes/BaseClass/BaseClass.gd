@@ -16,6 +16,8 @@ var QUEST
 var POTENTIAL_JOBS : Array[String]
 var enemies_touched = []
 var leashed_units = []
+var suit: String = ""
+
 # quest specific
 var xp : int
 var max_xp : int
@@ -233,7 +235,6 @@ func get_hit(attack_info: Dictionary):
 		}
 		for coord in affected_tile_coords:
 			var grid_pos = coord * Globals.TILE_SIZE
-			print(i, num_affected_tiles-1)
 			if i == (num_affected_tiles - 1) and has_created_droppings_exit == false:
 				final_affected_tile_grid_pos = {}
 				# if the entrance has to be the exit
@@ -273,9 +274,21 @@ func get_hit(attack_info: Dictionary):
 			droppings_entry_tile.add_terrain("droppings entry")
 			# keep a reference to the exit on the entrance
 			droppings_entry_tile.occupied_by["terrain"].droppings_exit_terrain = droppings_exit_tile.occupied_by["terrain"]
-			print("I have an exit terrain of ", droppings_entry_tile.occupied_by["terrain"].droppings_exit_terrain)
 
-		
+	if attack_info.has("random gardens"):
+		await who_is_hitting.suit_up()
+
+	if attack_info.has("gain attack"):
+		who_is_hitting.BASE_DAMAGE += attack_info["gain attack"]
+				
+	if attack_info.has("gain health"):
+		who_is_hitting.MAX_HEALTH += attack_info["gain health"]
+		who_is_hitting.CURRENT_HEALTH += attack_info["gain health"]
+
+	if attack_info.has("gain movement"):
+		who_is_hitting.MOVEMENT += attack_info["gain movement"]
+
+
 func add_job(job_name : String):
 	var job_node = load(Globals.jobs[job_name]).instantiate()
 	$Jobs.add_child(job_node)
@@ -289,6 +302,17 @@ func add_job(job_name : String):
 	CURRENT_JOB = job_name
 	PASSIVES.append(job_node.passive)
 	await update_sprite()
+	
+	# card solider specific
+	if job_name == "Card Soldier":
+		suit = "Clubs"
+		randomize()
+		var random_coord_x = randi_range(3, get_tree().current_scene.GRID_SIZE[0]-2) * Globals.TILE_SIZE
+		var random_coord_y = randi_range(3, get_tree().current_scene.GRID_SIZE[1]-2) * Globals.TILE_SIZE
+		for step_x in [-1 * Globals.TILE_SIZE, 0 * Globals.TILE_SIZE, 1 * Globals.TILE_SIZE]:
+			for step_y in [-1 * Globals.TILE_SIZE, 0 * Globals.TILE_SIZE, 1 * Globals.TILE_SIZE]:
+				get_tree().current_scene.all_tiles[Vector2(random_coord_x + step_x, random_coord_y + step_y)].add_terrain("Cloister Garth")
+				
 
 
 func warp_to(destination_vector: Vector2):
@@ -336,3 +360,52 @@ func show_wet_status(should_i_show: bool):
 	else:
 		$RedSprite.material = null
 		$BlueSprite.material = null
+
+
+func suit_up():
+	assert(suit != null)	# only units with a suit can call this function
+	var terrain_condition_for_suit_up: String
+	var new_garden_type: String
+	match suit:
+		"Clubs":
+			new_garden_type = "Vineyard"
+			terrain_condition_for_suit_up = "Cloister Garth"
+		"Diamonds":
+			new_garden_type = "Flowerbed"
+			terrain_condition_for_suit_up = "Vineyard"
+		"Hearts":
+			new_garden_type = "Orchard"
+			terrain_condition_for_suit_up = "Flowerbed"
+		"Spades":
+			new_garden_type = "Orchard"
+			terrain_condition_for_suit_up = "Orchard"
+
+	if get_tile_node().get_terrain().type != terrain_condition_for_suit_up and terrain_condition_for_suit_up != "":
+		# if the tile the aggressor is standing on does not meet the terrain condition AND
+		# if the terrain condition isnt an empty string
+		return
+		
+	match suit:
+		"Clubs":
+			suit = "Diamonds"
+			ACTIONS.erase("Cloister Garth Commoner's Clubs")
+			ACTIONS.append("Vineyard Merchant's Diamonds")
+		"Diamonds":
+			suit = "Hearts"
+			ACTIONS.erase("Vineyard Merchant's Diamonds")
+			ACTIONS.append("Flowerbed Lover's Hearts")
+		"Hearts":
+			suit = "Spades"
+			ACTIONS.erase("Flowerbed Lover's Hearts")
+			ACTIONS.append("Orchard Elite's Spades")
+		"Spades":
+			suit = "Spades"
+		
+	randomize()
+	var x = randi_range(3, get_tree().current_scene.GRID_SIZE[0]-2)
+	randomize()
+	var y = randi_range(3, get_tree().current_scene.GRID_SIZE[1]-2)
+	var garden_origin_coord = Vector2(x, y)
+	for i in range(3):
+		for j in range(3):
+			get_tree().current_scene.all_tiles[Vector2(garden_origin_coord.x+i-1, garden_origin_coord.y+j-1) * Globals.TILE_SIZE].add_terrain(new_garden_type)

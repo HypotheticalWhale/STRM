@@ -44,6 +44,10 @@ var quests : Dictionary = {
 	"Chariot Boy": {
 		"description": "Don't speak to my son",
 		"reward": 0
+	},
+	"I'm a lifelong learner": {
+		"description": "You're already maxed out? Why are you still hustling?",
+		"reward": 0
 	}
 }
 var skills = {
@@ -110,8 +114,60 @@ var skills = {
 			"splatter droppings": null,
 		}
 	},
-	"Suit Yourself": {
-		"shape": [Vector2(1,0)],
+	"Cloister Garth Commoner's Clubs": {
+		"shape": [
+			Vector2(1, 0),
+			Vector2(2, 0),
+			Vector2(3, 0), Vector2(3,-1), Vector2(3, 1),
+			Vector2(4, 0),
+		],
+		"damage multiplier": 0.1,
+		"optional effects": {
+			"random gardens": null
+		}
+	},
+	"Vineyard Merchant's Diamonds": {
+		"shape": [
+			Vector2(1, 0),
+			Vector2(2, 1), Vector2(2, 0), Vector2(2, -1),
+			Vector2(3, 1), Vector2(3, 0), Vector2(3, -1),
+			Vector2(4, 0)
+		],
+		"damage multiplier": 0.1,
+		"optional effects": {
+			"random gardens": null,
+			"gain attack": 1,
+		}
+	},
+	"Flowerbed Lover's Hearts": {
+		"shape": [
+			Vector2(1, 0),
+			Vector2(2, 1), Vector2(2, 0), Vector2(2, -1),
+			Vector2(3, 2), Vector2(3, 1), Vector2(3, 0), Vector2(3, -1), Vector2(3, -2),
+			Vector2(4, 1), Vector2(4, -1),
+		],
+		"damage multiplier": 0.1,
+		"optional effects": {
+			"random gardens": null,
+			"gain attack": 1,
+			"gain health": 1,
+		}
+	},
+	"Orchard Elite's Spades": {
+		"shape": [
+			Vector2(1, 0),
+			Vector2(2, 1), Vector2(2, 2), Vector2(2, 0), Vector2(2, -1), Vector2(2, -2),
+			Vector2(3, 2), Vector2(3, 1), Vector2(3, 0), Vector2(3, -1), Vector2(3, -2),
+			Vector2(4, 1), Vector2(4, 0), Vector2(4, -1),
+			Vector2(5, 0),
+		],
+		"damage multiplier": 0.1,
+		"optional effects": {
+			"random gardens": null,
+			"gain attack": 10,
+			"gain health": 10,
+			"gain movement": 1,
+		}
 	},
 	"Go Fetch!": {
 		"shape": [
@@ -168,8 +224,8 @@ var passives : Dictionary = {
 		"damage multiplier": 1.5
 	},
 	"Die Mond": { #change suit based on tile you are standing on, you neeed more terrain 
-		"description": "You deal extra damage on green tiles :-)",
-		"damage multiplier": 1.5
+		"description": "Change to a stronger suit when you attack on special garden tiles",
+		"damage multiplier": 1.0
 	},
 	"No hooligans alllowed.": { # Disable all enemy units on marble floor 
 		"description": "You deal extra damage on green tiles :-)",
