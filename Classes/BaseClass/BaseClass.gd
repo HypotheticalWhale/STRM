@@ -16,6 +16,8 @@ var QUEST
 var POTENTIAL_JOBS : Array[String]
 var enemies_touched = []
 var leashed_units = []
+var wanted = 0	# for vaultskeeper
+var my_vault: Object = null
 var suit: String = ""
 
 # quest specific
@@ -37,7 +39,11 @@ func _ready():
 	await initialize_stats()
 	await initialize_sprites()
 	original_color = self.modulate
-	
+
+func _process(delta):
+	if "Kleptomaniac" in PASSIVES and len(enemies_touched) > 0: #Bellboy QUEST
+		var damage_multiplier = 1 + len(enemies_touched)*0.1
+		DAMAGE = BASE_DAMAGE * damage_multiplier
 			
 func initialize_sprites():
 	pass
@@ -313,16 +319,28 @@ func add_job(job_name : String):
 	
 	# vaultskeeper specific
 	if job_name == "Vaults Keeper":
+		var potential_destination_coords = []
+		var unit_coord = global_position/Globals.TILE_SIZE
+		var max_distance_from_vault = 3
+		for step_x in range(-max_distance_from_vault, max_distance_from_vault + 1):
+			for step_y in range(-max_distance_from_vault, max_distance_from_vault + 1):
+				var new_pos = Vector2(unit_coord.x + step_x, unit_coord.y + step_y) * Globals.TILE_SIZE
+				if new_pos not in get_tree().current_scene.valid_tiles:
+					continue
+				if get_tree().current_scene.all_tiles[new_pos].occupied_by["terrain"].type == "throne":
+					continue
+				potential_destination_coords.append(new_pos)
+		print(potential_destination_coords, " potentials")
 		randomize()
-		var random_coord_x = randi_range(3, get_tree().current_scene.GRID_SIZE[0]-2) * Globals.TILE_SIZE
-		var random_coord_y = randi_range(3, get_tree().current_scene.GRID_SIZE[1]-2) * Globals.TILE_SIZE
-		print(TEAM)
+		potential_destination_coords.shuffle()
+		var vault_destination_pos = potential_destination_coords[0]	# first pos in the shuffled list
 		if TEAM == "P2":
-			await get_tree().current_scene.all_tiles[Vector2(random_coord_x, random_coord_y)].add_terrain("Vault Red")
-		var new_vault = get_tree().current_scene.all_tiles[Vector2(random_coord_x, random_coord_y)].get_terrain()
+			await get_tree().current_scene.all_tiles[vault_destination_pos].add_terrain("Vault Red")
+		var new_vault = get_tree().current_scene.all_tiles[vault_destination_pos].get_terrain()
 		print(new_vault.type)
 		assert(new_vault.type == "Vault Red" or new_vault.type == "Vault Blue") # the terrain on the vaultskeeper should be a vault at this point
 		new_vault.vault_owner = self
+		my_vault = new_vault
 		return
 
 
