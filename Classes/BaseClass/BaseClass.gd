@@ -309,7 +309,21 @@ func add_job(job_name : String):
 		for step_x in [-1 * Globals.TILE_SIZE, 0 * Globals.TILE_SIZE, 1 * Globals.TILE_SIZE]:
 			for step_y in [-1 * Globals.TILE_SIZE, 0 * Globals.TILE_SIZE, 1 * Globals.TILE_SIZE]:
 				get_tree().current_scene.all_tiles[Vector2(random_coord_x + step_x, random_coord_y + step_y)].add_terrain("Cloister Garth")
-				
+		return
+	
+	# vaultskeeper specific
+	if job_name == "Vaults Keeper":
+		randomize()
+		var random_coord_x = randi_range(3, get_tree().current_scene.GRID_SIZE[0]-2) * Globals.TILE_SIZE
+		var random_coord_y = randi_range(3, get_tree().current_scene.GRID_SIZE[1]-2) * Globals.TILE_SIZE
+		print(TEAM)
+		if TEAM == "P2":
+			await get_tree().current_scene.all_tiles[Vector2(random_coord_x, random_coord_y)].add_terrain("Vault Red")
+		var new_vault = get_tree().current_scene.all_tiles[Vector2(random_coord_x, random_coord_y)].get_terrain()
+		print(new_vault.type)
+		assert(new_vault.type == "Vault Red" or new_vault.type == "Vault Blue") # the terrain on the vaultskeeper should be a vault at this point
+		new_vault.vault_owner = self
+		return
 
 
 func warp_to(destination_vector: Vector2):
@@ -329,7 +343,7 @@ func get_tile_node():
 			return tile_node
 	
 	# unit should always be able to get its tile node
-	assert(tile_node != null)
+	assert(tile_node != null) 
 	return tile_node
 
 
@@ -374,7 +388,7 @@ func suit_up():
 			new_garden_type = "Orchard"
 			terrain_condition_for_suit_up = "Flowerbed"
 		"Spades":
-			new_garden_type = "Orchard"
+			new_garden_type = ""
 			terrain_condition_for_suit_up = "Orchard"
 
 	if get_tile_node().get_terrain().type != terrain_condition_for_suit_up and terrain_condition_for_suit_up != "":

@@ -49,6 +49,9 @@ var quests : Dictionary = {
 		"description": "You're already maxed out? Why are you still hustling?",
 		"reward": 0
 	},
+	"Keeper of the vault in my heart <3": {
+		"description": "Huh? HUH? HUUUHHH? HUUUUUUUUUH????????"
+	}
 	"The Chandelier Canopy Conundrum": {
 		"description": "You spend all day thinking about chandeliers and all its intricacies",
 		"reward": 0
@@ -233,31 +236,31 @@ var passives : Dictionary = {
 	},
 	"No hooligans allowed.": { # Disable all enemy units on marble floor 
 		"description": "You deal extra damage on green tiles :-)",
-		"damage multiplier": 1.5
+		"damage multiplier": 1.0
 	},
 	"Take a ride.": {
 		"description": "You deal extra damage on green tiles :-)",
-		"damage multiplier": 1.5
+		"damage multiplier": 1.0
 	},
 	"Teethed to the arm.": {
 		"description": "You deal extra damage on green tiles :-)",
-		"damage multiplier": 1.5
+		"damage multiplier": 1.0
 	},
 	"Fast runner": {
 		"description": "You deal extra damage on green tiles :-)",
-		"damage multiplier": 1.5
+		"damage multiplier": 1.0
 	},
 	"Kleptomaniac": {
 		"description": "You deal extra damage on green tiles :-)",
-		"damage multiplier": 1.5
+		"damage multiplier": 1.0
 	},
 	"Pigeon Rider": { # bird shit is a one way portal when you hit a wet enemy
 		"description": "When you touch an enemy, they become wet",
-		"damage multiplier": 1.5
+		"damage multiplier": 1.0
 	},
-	"Really tough.": {
-		"description": "You deal extra damage on green tiles :-)",
-		"damage multiplier": 1.5
+	"Don't touch my stuff": {
+		"description": "dont tuch my stf!",
+		"damage multiplier": 1.0
 	},
 	
 }
