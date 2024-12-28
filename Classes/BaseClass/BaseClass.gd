@@ -37,11 +37,7 @@ func _ready():
 	await initialize_stats()
 	await initialize_sprites()
 	original_color = self.modulate
-
-func _process(delta):
-	if "Kleptomaniac" in PASSIVES and len(enemies_touched) > 0: #Bellboy QUEST
-		var damage_multiplier = 1 + len(enemies_touched)*0.1
-		DAMAGE = BASE_DAMAGE * damage_multiplier
+	
 			
 func initialize_sprites():
 	pass
