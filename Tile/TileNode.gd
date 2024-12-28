@@ -221,6 +221,9 @@ func is_empty_tile():
 		
 
 func add_terrain(terrain_type : String):
+	if terrain_type == "":
+		return
+		
 	for node in get_children():
 		if node.is_in_group("Terrain"):
 			if node.type == "Throne":
@@ -232,12 +235,14 @@ func add_terrain(terrain_type : String):
 		add_child(new_terrain)
 		move_child(new_terrain, 0)
 		occupied_by["terrain"] = new_terrain
+		return
 		
 	if terrain_type == "garden":
 		var new_terrain = load("res://Terrain/Garden.tscn").instantiate()
 		add_child(new_terrain)
 		move_child(new_terrain, 0)		
 		occupied_by["terrain"] = new_terrain
+		return
 
 	if terrain_type == "throne":
 		var new_terrain = load("res://Terrain/Throne.tscn").instantiate()
@@ -245,78 +250,91 @@ func add_terrain(terrain_type : String):
 		move_child(new_terrain, 0)		
 		occupied_by["terrain"] = new_terrain
 		is_manor = true
+		return
 		
 	if terrain_type == "lobby":
 		var new_terrain = load("res://Terrain/Lobby.tscn").instantiate()
 		add_child(new_terrain)
 		move_child(new_terrain, 0)		
 		occupied_by["terrain"] = new_terrain
+		return
 		
 	if terrain_type == "tea table":
 		var new_terrain = load("res://Terrain/TeaTable.tscn").instantiate()
 		add_child(new_terrain)
 		move_child(new_terrain, 0)
 		occupied_by["terrain"] = new_terrain
+		return
 
 	if terrain_type == "droppings entry":
 		var new_terrain = load("res://Terrain/DroppingsEntry.tscn").instantiate()
 		add_child(new_terrain)
 		move_child(new_terrain, 0)		
 		occupied_by["terrain"] = new_terrain
+		return
 		
 	if terrain_type == "droppings path":
 		var new_terrain = load("res://Terrain/DroppingsPath.tscn").instantiate()
 		add_child(new_terrain)
 		move_child(new_terrain, 0)		
 		occupied_by["terrain"] = new_terrain
+		return
 		
 	if terrain_type == "droppings exit":
 		var new_terrain = load("res://Terrain/DroppingsExit.tscn").instantiate()
 		add_child(new_terrain)
 		move_child(new_terrain, 0)		
 		occupied_by["terrain"] = new_terrain
+		return
 
 	if terrain_type == "gate red":
 		var new_terrain = load("res://Terrain/GateRed.tscn").instantiate()
 		add_child(new_terrain)
 		move_child(new_terrain, 0)		
 		occupied_by["terrain"] = new_terrain
+		return
 	
 	if terrain_type == "Cloister Garth":
 		var new_terrain = load("res://Terrain/CloisterGarth.tscn").instantiate()
 		add_child(new_terrain)
 		move_child(new_terrain, 0)		
 		occupied_by["terrain"] = new_terrain
+		return
 		
 	if terrain_type == "gate blue":
 		var new_terrain = load("res://Terrain/GateBlue.tscn").instantiate()
 		add_child(new_terrain)
 		move_child(new_terrain, 0)		
 		occupied_by["terrain"] = new_terrain
+		return
 		
 	if terrain_type == "Flowerbed":
 		var new_terrain = load("res://Terrain/Flowerbed.tscn").instantiate()
 		add_child(new_terrain)
 		move_child(new_terrain, 0)		
 		occupied_by["terrain"] = new_terrain
+		return
 		
 	if terrain_type == "Vineyard":
 		var new_terrain = load("res://Terrain/Vineyard.tscn").instantiate()
 		add_child(new_terrain)
 		move_child(new_terrain, 0)		
 		occupied_by["terrain"] = new_terrain
+		return
 		
 	if terrain_type == "Orchard":
 		var new_terrain = load("res://Terrain/Orchard.tscn").instantiate()
 		add_child(new_terrain)
 		move_child(new_terrain, 0)		
 		occupied_by["terrain"] = new_terrain
+		return
 	
 	if terrain_type == "Vault Red":
 		var new_terrain = load("res://Terrain/VaultRed.tscn").instantiate()
 		add_child(new_terrain)
 		move_child(new_terrain, 0)
 		occupied_by["terrain"] = new_terrain
+		return
 	
 
 func get_terrain():

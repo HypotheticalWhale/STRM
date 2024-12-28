@@ -10,4 +10,4 @@ func _ready():
 	MAX_HEALTH = 15
 	MOVEMENT = 2
 	DAMAGE = 10
-	
+	QUEST = "Keeper of the vault in my heart <3"

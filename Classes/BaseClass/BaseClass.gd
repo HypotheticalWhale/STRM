@@ -324,7 +324,7 @@ func add_job(job_name : String):
 		if TEAM == "P2":
 			await get_tree().current_scene.all_tiles[Vector2(random_coord_x, random_coord_y)].add_terrain("Vault Red")
 		var new_vault = get_tree().current_scene.all_tiles[Vector2(random_coord_x, random_coord_y)].get_terrain()
-		print(new_vault)
+		print(new_vault.type)
 		assert(new_vault.type == "Vault Red" or new_vault.type == "Vault Blue") # the terrain on the vaultskeeper should be a vault at this point
 		new_vault.vault_owner = self
 		return
@@ -392,7 +392,7 @@ func suit_up():
 			new_garden_type = "Orchard"
 			terrain_condition_for_suit_up = "Flowerbed"
 		"Spades":
-			new_garden_type = "Orchard"
+			new_garden_type = ""
 			terrain_condition_for_suit_up = "Orchard"
 
 	if get_tile_node().get_terrain().type != terrain_condition_for_suit_up and terrain_condition_for_suit_up != "":

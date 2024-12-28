@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://beftcxptuutu2" path="res://Terrain/Terrain.tscn" id="1_kduv0"]
 [ext_resource type="Script" path="res://Terrain/VaultRed.gd" id="2_xr6rj"]
-[ext_resource type="Texture2D" uid="uid://6try7eb86533" path="res://Assets/Terrain/RedVault.png" id="3_umev6"]
+[ext_resource type="Texture2D" uid="uid://6try7eb86533" path="res://Assets/Terrain/VaultRed.png" id="3_umev6"]
 
 [node name="VaultRed" instance=ExtResource("1_kduv0")]
 script = ExtResource("2_xr6rj")

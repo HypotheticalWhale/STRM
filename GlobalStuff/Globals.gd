@@ -48,6 +48,9 @@ var quests : Dictionary = {
 	"I'm a lifelong learner": {
 		"description": "You're already maxed out? Why are you still hustling?",
 		"reward": 0
+	},
+	"Keeper of the vault in my heart <3": {
+		"description": "Huh? HUH? HUUUHHH? HUUUUUUUUUH????????"
 	}
 }
 var skills = {
