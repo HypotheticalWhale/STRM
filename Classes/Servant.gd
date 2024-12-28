@@ -9,9 +9,9 @@ func initialize_stats():
 	xp = 0
 	max_xp = 100
 	CURRENT_JOB = "Servant"
-	ACTIONS = ["Sweep Attack", "Tea Party for Two"]
+	ACTIONS = ["Sweep Attack"]
 	QUEST = "Fight"
-	POTENTIAL_JOBS = ["Charioteer", "Card Soldier", "Dog Walker"]
+	POTENTIAL_JOBS = ["Charioteer", "Butler", "Dog Walker"]
 
 
 func initialize_sprites():

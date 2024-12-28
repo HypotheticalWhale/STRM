@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b5uij24beffcq" path="res://Jobs/Job.tscn" id="1_swdhl"]
 [ext_resource type="Script" path="res://Jobs/Butler.gd" id="2_f58au"]
-[ext_resource type="Texture2D" uid="uid://itjth5t82ow3" path="res://Assets/Sprites/Units/Gardener.png" id="3_0ayoc"]
+[ext_resource type="Texture2D" uid="uid://bbgd7jxrcj6tg" path="res://Assets/Sprites/Units/Bulter.png" id="3_0w0yd"]
 [ext_resource type="Texture2D" uid="uid://4iy3mwklfita" path="res://Assets/Sprites/Units/BulterRed.png" id="4_b7ro5"]
 [ext_resource type="Texture2D" uid="uid://cjs8adp1rnovn" path="res://Assets/Sprites/Units/BulterBlue.png" id="5_lp7bu"]
 
@@ -10,7 +10,7 @@
 script = ExtResource("2_f58au")
 
 [node name="Uncolored" parent="." index="0"]
-texture = ExtResource("3_0ayoc")
+texture = ExtResource("3_0w0yd")
 
 [node name="Red" parent="." index="1"]
 texture = ExtResource("4_b7ro5")

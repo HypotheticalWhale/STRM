@@ -48,7 +48,11 @@ var quests : Dictionary = {
 	"I'm a lifelong learner": {
 		"description": "You're already maxed out? Why are you still hustling?",
 		"reward": 0
-	}
+	},
+	"The Chandelier Canopy Conundrum": {
+		"description": "You spend all day thinking about chandeliers and all its intricacies",
+		"reward": 0
+	},
 }
 var skills = {
 	"Sweep Attack": {
@@ -227,7 +231,7 @@ var passives : Dictionary = {
 		"description": "Change to a stronger suit when you attack on special garden tiles",
 		"damage multiplier": 1.0
 	},
-	"No hooligans alllowed.": { # Disable all enemy units on marble floor 
+	"No hooligans allowed.": { # Disable all enemy units on marble floor 
 		"description": "You deal extra damage on green tiles :-)",
 		"damage multiplier": 1.5
 	},
