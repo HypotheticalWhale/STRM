@@ -50,12 +50,9 @@ var quests : Dictionary = {
 		"reward": 0
 	},
 	"Keeper of the vault in my heart <3": {
-		"description": "Huh? HUH? HUUUHHH? HUUUUUUUUUH????????"
-	}
-	"The Chandelier Canopy Conundrum": {
-		"description": "You spend all day thinking about chandeliers and all its intricacies",
+		"description": "Huh? HUH? HUUUHHH? HUUUUUUUUUH????????",
 		"reward": 0
-	},
+	}
 }
 var skills = {
 	"Sweep Attack": {
@@ -234,7 +231,7 @@ var passives : Dictionary = {
 		"description": "Change to a stronger suit when you attack on special garden tiles",
 		"damage multiplier": 1.0
 	},
-	"No hooligans allowed.": { # Disable all enemy units on marble floor 
+	"No hooligans alllowed.": { # Disable all enemy units on marble floor 
 		"description": "You deal extra damage on green tiles :-)",
 		"damage multiplier": 1.0
 	},
