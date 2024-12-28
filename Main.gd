@@ -468,7 +468,9 @@ func on_skill_pressed(button,direction):
 					passive_damage_multiplier *= Globals.passives[passive]["damage multiplier"]
 					
 		available_attack_tiles[grid_pos]["damage"] = base_damage * skill_damage_multiplier * sweet_spot_damage_multiplier * passive_damage_multiplier
-		
+		if "Kleptomaniac" in button.skill_owner.PASSIVES and len(button.skill_owner.enemies_touched) > 0: #Bellboy QUEST
+			var kelpto_damage_multiplier = 1 + len(button.skill_owner.enemies_touched)*0.1
+			available_attack_tiles[grid_pos]["damage"] = available_attack_tiles[grid_pos]["damage"] * kelpto_damage_multiplier
 		# account for knockback and add it to available_attack_tiles[grid_pos]
 		if Globals.skills[button.skill_name]["optional effects"].has("knockback"):
 			available_attack_tiles[grid_pos]["knockback"] = {}
