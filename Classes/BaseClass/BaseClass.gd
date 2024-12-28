@@ -17,7 +17,9 @@ var POTENTIAL_JOBS : Array[String]
 var enemies_touched = []
 var leashed_units = []
 var suit: String = ""
-
+var description = "Just the base servant, he lives in the manor"
+var skill = "Sweep attack, you sweep the floor"
+var passive = "Noob"
 # quest specific
 var xp : int
 var max_xp : int

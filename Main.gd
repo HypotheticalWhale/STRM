@@ -340,6 +340,12 @@ func _on_turn_timer_timeout():
 	get_node("UI/NextPlayerReady").text = Globals.WHOSTURNISIT + "'s turn. Click to start."
 	get_tree().paused = true
 	
+func _on_more_info_button_pressed():
+	var info_ui = get_tree().current_scene.get_node("UI/JobInfo")
+	info_ui.update_selected_job_details()
+	get_tree().paused = true
+	info_ui.visible = true
+	
 func _on_action_button_pressed():
 	var button
 	var action_button_container = $SelectOptions/PanelContainer/HBoxContainer/ActionButtons
@@ -611,3 +617,5 @@ func get_team_gates(team):
 				team_gates.append(tile)
 				 
 	return team_gates
+
+
