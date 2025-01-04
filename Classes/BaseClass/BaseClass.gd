@@ -330,14 +330,14 @@ func add_job(job_name : String):
 				if get_tree().current_scene.all_tiles[new_pos].occupied_by["terrain"].type == "throne":
 					continue
 				potential_destination_coords.append(new_pos)
-		print(potential_destination_coords, " potentials")
 		randomize()
 		potential_destination_coords.shuffle()
 		var vault_destination_pos = potential_destination_coords[0]	# first pos in the shuffled list
+		if TEAM == "P1":
+			await get_tree().current_scene.all_tiles[vault_destination_pos].add_terrain("Vault Blue")
 		if TEAM == "P2":
 			await get_tree().current_scene.all_tiles[vault_destination_pos].add_terrain("Vault Red")
 		var new_vault = get_tree().current_scene.all_tiles[vault_destination_pos].get_terrain()
-		print(new_vault.type)
 		assert(new_vault.type == "Vault Red" or new_vault.type == "Vault Blue") # the terrain on the vaultskeeper should be a vault at this point
 		new_vault.vault_owner = self
 		my_vault = new_vault

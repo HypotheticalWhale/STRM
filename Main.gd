@@ -314,6 +314,40 @@ func _on_turn_timer_timeout():
 		current_turn_units = PlayerData.player2_units
 	# -1 to all the status ailment counters
 	for unit in current_turn_units.values():
+		# special check for vaultskeeper's wanted count
+		if unit.CURRENT_JOB == "Vaults Keeper":
+			var vault = get_own_nearby_vault(unit)
+			if vault != null:	# if vaults keepers' vault is nearby
+				unit.wanted = 0
+			else:
+				unit.wanted += 1
+			if unit.wanted >= 2:
+				await imprison_into_vault("self", unit, vault)
+			
+		# special check for imprisoning other units near vault
+		var vault_range = 2		# anyone standing in vault range will be imprisoned
+		var origin_coord = unit.global_position/Globals.TILE_SIZE
+		for step_x in range(-vault_range, vault_range+1):
+			for step_y in range(-vault_range, vault_range+1):
+				if step_x == 0 and step_y == 0:
+					continue	# do not imprison unit if it is directly on the vault.
+				var cur_coord = Vector2(origin_coord.x + step_x, origin_coord.y + step_y)
+				#print("finding vault at cur_coord: ", cur_coord * Globals.TILE_SIZE)
+				if (cur_coord * Globals.TILE_SIZE) not in valid_tiles:
+					continue
+				#print("HELL YEAH ITS valid")
+				if (
+					all_tiles[cur_coord * Globals.TILE_SIZE].occupied_by["terrain"].type != "Vault Red" and
+					all_tiles[cur_coord * Globals.TILE_SIZE].occupied_by["terrain"].type != "Vault Blue"
+				):
+					continue	# move on if theres no vault to be found
+				var cur_vault = all_tiles[cur_coord * Globals.TILE_SIZE].occupied_by["terrain"]
+				if unit.my_vault == cur_vault:
+					continue	# ignore if this unit is the owner of the vault
+				
+				await imprison_into_vault("others", unit, cur_vault)
+				break
+		
 		unit.disabled_turns_left = max(unit.disabled_turns_left - 1, 0)
 		unit.immobilized_turns_left = max(unit.immobilized_turns_left - 1, 0)
 		unit.wet_turns_left = max(unit.wet_turns_left - 1, 0)
@@ -321,18 +355,8 @@ func _on_turn_timer_timeout():
 			unit.show_wet_status(true)
 		else:
 			unit.show_wet_status(false)
-		# special check for vaultskeeper's wanted count
-		if unit.CURRENT_JOB == "Vaults Keeper":
-			var vault = get_own_nearby_vault(unit)
-			print("vault is : ", vault)
-			if vault != null:	# if vaults keepers' vault is nearby
-				unit.wanted = 0
-			else:
-				print("incrementing wanted from: ", unit.wanted)
-				unit.wanted += 1
-			if unit.wanted >= 2:
-				print("gonna imprison")
-				await imprison_into_vault("self", unit, vault)
+			
+		
 		
 	await Globals.toggle_player_turn()
 	if Globals.WHOSTURNISIT == "P1":
@@ -640,7 +664,13 @@ func get_own_nearby_vault(unit: Object):
 
 func imprison_into_vault(self_or_others: String, unit: Object, nearby_vault: Object):
 	if self_or_others == "self":	# imprisons the vaultkeeper to a faraway vault that he owns
-		print("warping in imprisonment")
 		assert(unit.my_vault.get_parent().occupied_by["unit"] == null)	# there shouldn't be anyone in the middle of the vault
 		unit.warp_to(unit.my_vault.global_position)
 		unit.immobilized_turns_left = 3
+		return
+	
+	if self_or_others == "others":
+		if unit.immobilized_turns_left > 0:
+			return
+		unit.immobilized_turns_left = 2
+		return

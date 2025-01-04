@@ -335,6 +335,13 @@ func add_terrain(terrain_type : String):
 		move_child(new_terrain, 0)
 		occupied_by["terrain"] = new_terrain
 		return
+
+	if terrain_type == "Vault Blue":
+		var new_terrain = load("res://Terrain/VaultBlue.tscn").instantiate()
+		add_child(new_terrain)
+		move_child(new_terrain, 0)
+		occupied_by["terrain"] = new_terrain
+		return
 	
 
 func get_terrain():

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cme57mnccnvoj"
-path="res://.godot/imported/BlueVault.png-da69fcdead5119b1fe89f5f28522a8e3.ctex"
+uid="uid://cjob1571jjen4"
+path="res://.godot/imported/VaultBlue.png-ac4eed55d4ed99b0d4cfd7bc32d593a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Terrain/BlueVault.png"
-dest_files=["res://.godot/imported/BlueVault.png-da69fcdead5119b1fe89f5f28522a8e3.ctex"]
+source_file="res://Assets/Terrain/VaultBlue.png"
+dest_files=["res://.godot/imported/VaultBlue.png-ac4eed55d4ed99b0d4cfd7bc32d593a0.ctex"]
 
 [params]
 
