@@ -102,6 +102,7 @@ func reset_units():
 			all_tiles[unit.global_position].occupied_by["unit"] = null # set the previous tile to null 
 		count += 2
 		unit.CURRENT_HEALTH = unit.MAX_HEALTH
+		unit.enemies_touched = []
 		unit.global_position = tile_coords
 		all_tiles[tile_coords].occupied_by["unit"] = unit # setenable_move_button the new tile to the unit
 	count = 2
@@ -110,6 +111,7 @@ func reset_units():
 		if unit.global_position in all_tiles:
 			all_tiles[unit.global_position].occupied_by["unit"] = null
 		unit.CURRENT_HEALTH = unit.MAX_HEALTH
+		unit.enemies_touched = []		
 		unit.global_position = tile_coords
 		all_tiles[tile_coords].occupied_by["unit"] = unit
 		count += 2		

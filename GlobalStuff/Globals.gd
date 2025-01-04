@@ -60,7 +60,8 @@ var skills = {
 		"damage multiplier": 0.1,
 		"optional effects": {
 			"sweet spot": Vector2(1,0)
-		}
+		},
+		"description": "you sweep the floor sweep sweep",
 	},
 	"Trim Bushes": {
 		"shape": [Vector2(1,-1),Vector2(1,1),Vector2(2,0),Vector2(3,-1),Vector2(3,1),Vector2(4,-2),Vector2(4,2)],
