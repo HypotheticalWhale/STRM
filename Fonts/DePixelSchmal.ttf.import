@@ -2,18 +2,18 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://devp8njfjwmgi"
-path="res://.godot/imported/little-pixel.ttf-56f7760ccbc8a5e9540eab336e5f2232.fontdata"
+uid="uid://bvwrandn21m5p"
+path="res://.godot/imported/DePixelSchmal.ttf-44911da1deae60cf3f2b6add7e6c68bb.fontdata"
 
 [deps]
 
-source_file="res://Fonts/little-pixel.ttf"
-dest_files=["res://.godot/imported/little-pixel.ttf-56f7760ccbc8a5e9540eab336e5f2232.fontdata"]
+source_file="res://Fonts/DePixelSchmal.ttf"
+dest_files=["res://.godot/imported/DePixelSchmal.ttf-44911da1deae60cf3f2b6add7e6c68bb.fontdata"]
 
 [params]
 
 Rendering=null
-antialiasing=0
+antialiasing=1
 generate_mipmaps=false
 disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
@@ -28,12 +28,7 @@ Fallbacks=null
 fallbacks=[]
 Compress=null
 compress=true
-preload=[{
-"chars": [],
-"glyphs": [],
-"name": "New Configuration",
-"size": Vector2i(16, 0)
-}]
+preload=[]
 language_support={}
 script_support={}
 opentype_features={}

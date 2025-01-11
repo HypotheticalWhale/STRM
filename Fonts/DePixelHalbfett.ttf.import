@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://devp8njfjwmgi"
-path="res://.godot/imported/little-pixel.ttf-56f7760ccbc8a5e9540eab336e5f2232.fontdata"
+uid="uid://ceqvxokxw0crh"
+path="res://.godot/imported/DePixelHalbfett.ttf-4859ebb5071ab7f15912b7968db90e43.fontdata"
 
 [deps]
 
-source_file="res://Fonts/little-pixel.ttf"
-dest_files=["res://.godot/imported/little-pixel.ttf-56f7760ccbc8a5e9540eab336e5f2232.fontdata"]
+source_file="res://Fonts/DePixelHalbfett.ttf"
+dest_files=["res://.godot/imported/DePixelHalbfett.ttf-4859ebb5071ab7f15912b7968db90e43.fontdata"]
 
 [params]
 

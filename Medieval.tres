@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=15 format=3 uid="uid://bkqipfaxijp3i"]
 
 [ext_resource type="Texture2D" uid="uid://dxsi055t1wcnb" path="res://Assets/UI/ButtonNormal.png" id="1_0keg2"]
-[ext_resource type="FontFile" uid="uid://bh45ir4rss8hs" path="res://Fonts/royal.ttf" id="1_w0n03"]
+[ext_resource type="FontFile" uid="uid://devp8njfjwmgi" path="res://Fonts/little-pixel.ttf" id="1_lk7pt"]
 [ext_resource type="Texture2D" uid="uid://b1wnrp8q0hish" path="res://Assets/UI/MedievalPanel.png" id="1_y8y5v"]
 [ext_resource type="Texture2D" uid="uid://bvuvn0apogs72" path="res://Assets/UI/ButtonHover.png" id="2_2l8tr"]
 [ext_resource type="Texture2D" uid="uid://qupsi3grjt4h" path="res://Assets/UI/LabelBackground.png" id="2_sf2lc"]
@@ -55,14 +55,23 @@ texture_margin_bottom = 8.0
 default_font = ExtResource("3_wx55d")
 default_font_size = 16
 Button/colors/font_color = Color(0, 0, 0, 1)
-Button/fonts/font = ExtResource("1_w0n03")
+Button/font_sizes/font_size = 10
+Button/fonts/font = ExtResource("1_lk7pt")
 Button/styles/hover = SubResource("StyleBoxTexture_0pnb6")
 Button/styles/normal = SubResource("StyleBoxTexture_0e6wo")
+HeaderLarge/font_sizes/font_size = 10
+HeaderLarge/fonts/font = ExtResource("1_lk7pt")
+HeaderMedium/font_sizes/font_size = 10
+HeaderMedium/fonts/font = ExtResource("1_lk7pt")
 Label/colors/font_color = Color(0.0313726, 0.0392157, 0.0588235, 1)
 Label/font_sizes/font_size = 10
-Label/fonts/font = ExtResource("1_w0n03")
+Label/fonts/font = ExtResource("1_lk7pt")
 Label/styles/normal = SubResource("StyleBoxTexture_uqel7")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_iq4wv")
+ProgressBar/font_sizes/font_size = 10
+ProgressBar/fonts/font = ExtResource("1_lk7pt")
 ProgressBar/styles/background = SubResource("StyleBoxTexture_gybm3")
 ProgressBar/styles/fill = SubResource("StyleBoxTexture_igi4g")
+TooltipLabel/font_sizes/font_size = 10
+TooltipLabel/fonts/font = ExtResource("1_lk7pt")
 VBoxContainer/constants/separation = 0

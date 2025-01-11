@@ -2,18 +2,18 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://devp8njfjwmgi"
-path="res://.godot/imported/little-pixel.ttf-56f7760ccbc8a5e9540eab336e5f2232.fontdata"
+uid="uid://bu571gewso515"
+path="res://.godot/imported/dogicapixel.ttf-ab2426b2234b897a5c9650f9fa1cab5c.fontdata"
 
 [deps]
 
-source_file="res://Fonts/little-pixel.ttf"
-dest_files=["res://.godot/imported/little-pixel.ttf-56f7760ccbc8a5e9540eab336e5f2232.fontdata"]
+source_file="res://Fonts/DogicaTTF/dogicapixel.ttf"
+dest_files=["res://.godot/imported/dogicapixel.ttf-ab2426b2234b897a5c9650f9fa1cab5c.fontdata"]
 
 [params]
 
 Rendering=null
-antialiasing=0
+antialiasing=1
 generate_mipmaps=false
 disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
@@ -28,12 +28,7 @@ Fallbacks=null
 fallbacks=[]
 Compress=null
 compress=true
-preload=[{
-"chars": [],
-"glyphs": [],
-"name": "New Configuration",
-"size": Vector2i(16, 0)
-}]
+preload=[]
 language_support={}
 script_support={}
 opentype_features={}

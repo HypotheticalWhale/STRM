@@ -544,6 +544,7 @@ theme = ExtResource("2_vidso")
 theme_type_variation = &"HeaderLarge"
 text = "Class Information"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="InfoSprite" type="TextureRect" parent="UI/JobInfo/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -562,11 +563,12 @@ theme = ExtResource("2_vidso")
 theme_type_variation = &"HeaderMedium"
 text = "Background Label"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Background" type="Label" parent="UI/JobInfo/PanelContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("2_vidso")
+size_flags_vertical = 3
 text = "Background information here"
 horizontal_alignment = 1
 vertical_alignment = 1
