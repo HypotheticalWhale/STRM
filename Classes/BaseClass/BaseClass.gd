@@ -143,13 +143,7 @@ func get_hit(attack_info: Dictionary):
 	#	"disable": 2, (disable duration)
 	# 	"displace": null
 	#}
-	# damage
-	if attack_info["damage"] > 0:
-		take_damage(attack_info["damage"])
-	elif attack_info["damage"] < 0:
-		heal(attack_info["damage"])
-	else:
-		pass
+
 	var who_is_hitting = attack_info["who is hitting"]
 	
 	if who_is_hitting == self and who_is_hitting.TEAM == "P1" and attack_info["skill name"] == "I love gates": #Charioteer skill
@@ -290,7 +284,18 @@ func get_hit(attack_info: Dictionary):
 
 	if attack_info.has("gain movement"):
 		who_is_hitting.MOVEMENT += attack_info["gain movement"]
+		
+	print("attack_info: ", attack_info)
+	if attack_info.has("yeet self"):
+		who_is_hitting.yeet_self(attack_info["yeet self"])		# if the attack hits a unit, the owner yeets himself to a random tile {yeet self} units away
 
+	# damage
+	if attack_info["damage"] > 0:
+		take_damage(attack_info["damage"])
+	elif attack_info["damage"] < 0:
+		heal(attack_info["damage"])
+	else:
+		pass
 
 func add_job(job_name : String):
 	var job_node = load(Globals.jobs[job_name]).instantiate()
@@ -438,3 +443,24 @@ func suit_up():
 	for i in range(3):
 		for j in range(3):
 			get_tree().current_scene.all_tiles[Vector2(garden_origin_coord.x+i-1, garden_origin_coord.y+j-1) * Globals.TILE_SIZE].add_terrain(new_garden_type)
+
+
+func yeet_self(distance: int):
+	# get all tiles {distance} tiles away:
+	var main_astar = get_tree().current_scene.astar
+	var main_all_tiles = get_tree().current_scene.all_tiles
+	var potential_tiles = []
+	for tile_coords in get_tree().current_scene.valid_tiles:
+		if main_all_tiles[tile_coords].occupied_by["terrain"].type == "Throne":
+			continue
+		if main_all_tiles[tile_coords].occupied_by["unit"] != null:
+			continue
+		
+		if len(main_astar.get_id_path(global_position/Globals.TILE_SIZE,tile_coords/Globals.TILE_SIZE)) == distance:
+			potential_tiles.append(tile_coords)
+	
+	randomize()
+	potential_tiles.shuffle()
+	await warp_to(potential_tiles[0])
+	await get_tile_node().resolve_droppings_entry_check()
+	

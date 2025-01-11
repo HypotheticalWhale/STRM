@@ -137,8 +137,8 @@ func _on_input_event(viewport, event, shape_idx):
 			elif available_attack_tile.visible == true or target_tile.visible == true:
 				if target_terrain_tile.visible == true:
 					add_terrain(get_tree().current_scene.target_terrain_info[global_position])
-					
 					print("targeting and adding terrain at ", global_position, " with ", get_tree().current_scene.target_terrain_info[global_position])
+					
 				Globals.TAKENACTION = get_parent().selected_tile.occupied_by["unit"]
 				# look for any units on this tilenode, and trigger their get_hit()
 				for tile in get_parent().available_attack_tiles:
@@ -335,14 +335,13 @@ func add_terrain(terrain_type : String):
 		move_child(new_terrain, 0)
 		occupied_by["terrain"] = new_terrain
 		return
-
+	
 	if terrain_type == "Vault Blue":
 		var new_terrain = load("res://Terrain/VaultBlue.tscn").instantiate()
 		add_child(new_terrain)
 		move_child(new_terrain, 0)
 		occupied_by["terrain"] = new_terrain
 		return
-	
 
 func get_terrain():
 	return occupied_by["terrain"]
