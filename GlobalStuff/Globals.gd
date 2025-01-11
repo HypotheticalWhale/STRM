@@ -49,10 +49,10 @@ var quests : Dictionary = {
 		"description": "You're already maxed out? Why are you still hustling?",
 		"reward": 0
 	},
-	"The Chandelier Canopy Conundrum": {
-		"description": "You spend all day thinking about chandeliers and all its intricacies",
+	"Keeper of the vault in my heart <3": {
+		"description": "Huh? HUH? HUUUHHH? HUUUUUUUUUH????????",
 		"reward": 0
-	},
+	}
 }
 var skills = {
 	"Sweep Attack": {
@@ -192,6 +192,15 @@ var skills = {
 			],
 		"damage multiplier": 0,
 		"optional effects": {}
+	},
+	"My shift is over": {
+		"shape": [
+			Vector2(1, 0)
+		],
+		"damage multiplier": 10,
+		"optional effects": {
+			"yeet self": 7,		# yeets himself into a random tile 7 tiles away
+		}
 	}
 }
 
@@ -233,33 +242,33 @@ var passives : Dictionary = {
 		"description": "Change to a stronger suit when you attack on special garden tiles",
 		"damage multiplier": 1.0
 	},
-	"No hooligans allowed.": { # Disable all enemy units on marble floor 
+	"No hooligans alllowed.": { # Disable all enemy units on marble floor 
 		"description": "You deal extra damage on green tiles :-)",
-		"damage multiplier": 1.5
+		"damage multiplier": 1.0
 	},
 	"Take a ride.": {
 		"description": "You deal extra damage on green tiles :-)",
-		"damage multiplier": 1.5
+		"damage multiplier": 1.0
 	},
 	"Teethed to the arm.": {
 		"description": "You deal extra damage on green tiles :-)",
-		"damage multiplier": 1.5
+		"damage multiplier": 1.0
 	},
 	"Fast runner": {
 		"description": "You deal extra damage on green tiles :-)",
-		"damage multiplier": 1.5
+		"damage multiplier": 1.0
 	},
 	"Kleptomaniac": {
 		"description": "You deal extra damage on green tiles :-)",
-		"damage multiplier": 1.5
+		"damage multiplier": 1.0
 	},
 	"Pigeon Rider": { # bird shit is a one way portal when you hit a wet enemy
 		"description": "When you touch an enemy, they become wet",
-		"damage multiplier": 1.5
+		"damage multiplier": 1.0
 	},
-	"Really tough.": {
-		"description": "You deal extra damage on green tiles :-)",
-		"damage multiplier": 1.5
+	"Don't touch my stuff": {
+		"description": "dont tuch my stf!",
+		"damage multiplier": 1.0
 	},
 	
 }

@@ -5,10 +5,10 @@ extends Node2D
 var tile_path = preload("res://Tile/TileNode.tscn")
 var action_button = preload("res://UI/ActionButton.tscn")
 var selected_tile
-var valid_tiles = []
+var valid_tiles = []	# list of global_position (Vector2)
 var tile_node
 var tile_coords
-var all_tiles = {}
+var all_tiles = {}	# key is global_position
 var throne_tiles = []
 var available_tiles = []
 var displace_target_tiles = []	# for the displace active
@@ -323,6 +323,18 @@ func _on_turn_timer_timeout():
 			unit.show_wet_status(true)
 		else:
 			unit.show_wet_status(false)
+		# special check for vaultskeeper's wanted count
+		if unit.CURRENT_JOB == "Vaults Keeper":
+			var vault = get_own_nearby_vault(unit)
+			print("vault is : ", vault)
+			if vault != null:	# if vaults keepers' vault is nearby
+				unit.wanted = 0
+			else:
+				print("incrementing wanted from: ", unit.wanted)
+				unit.wanted += 1
+			if unit.wanted >= 2:
+				print("gonna imprison")
+				await imprison_into_vault("self", unit, vault)
 		
 	await Globals.toggle_player_turn()
 	if Globals.WHOSTURNISIT == "P1":
@@ -476,9 +488,7 @@ func on_skill_pressed(button,direction):
 					passive_damage_multiplier *= Globals.passives[passive]["damage multiplier"]
 					
 		available_attack_tiles[grid_pos]["damage"] = base_damage * skill_damage_multiplier * sweet_spot_damage_multiplier * passive_damage_multiplier
-		if "Kleptomaniac" in button.skill_owner.PASSIVES and len(button.skill_owner.enemies_touched) > 0: #Bellboy QUEST
-			var kelpto_damage_multiplier = 1 + len(button.skill_owner.enemies_touched)*0.1
-			available_attack_tiles[grid_pos]["damage"] = available_attack_tiles[grid_pos]["damage"] * kelpto_damage_multiplier
+		
 		# account for knockback and add it to available_attack_tiles[grid_pos]
 		if Globals.skills[button.skill_name]["optional effects"].has("knockback"):
 			available_attack_tiles[grid_pos]["knockback"] = {}
@@ -533,6 +543,10 @@ func on_skill_pressed(button,direction):
 		
 		if Globals.skills[button.skill_name]["optional effects"].has("gain movement"):
 			available_attack_tiles[grid_pos]["gain movement"] = Globals.skills[button.skill_name]["optional effects"]["gain movement"]
+		
+		if Globals.skills[button.skill_name]["optional effects"].has("yeet self"):
+			available_attack_tiles[grid_pos]["yeet self"] = Globals.skills[button.skill_name]["optional effects"]["yeet self"]
+			
 	##################### choosing units to be displaced ##################
 	# remove random units from displace targets (gotta choose only 2 out of 5)
 	if Globals.skills[button.skill_name]["optional effects"].has("displace"):
@@ -621,3 +635,25 @@ func get_team_gates(team):
 	return team_gates
 
 
+
+func get_own_nearby_vault(unit: Object):
+	var vault_detection_radius = 2	# vaultskeeper looks for a vault x tiles around himself, where x is vault detection radius
+	var origin = unit.global_position / Globals.TILE_SIZE
+	for step_x in range(-vault_detection_radius, vault_detection_radius+1):
+		for step_y in range(-vault_detection_radius, vault_detection_radius+1):
+			var cur_pos = Vector2(origin.x + step_x, origin.y + step_y) * Globals.TILE_SIZE
+			if all_tiles.has(cur_pos) == false:
+				continue
+			var cur_terrain: Object = all_tiles[cur_pos].occupied_by["terrain"]
+			if cur_terrain.type == "Vault Red" or cur_terrain.type == "Vault Blue":
+				if cur_terrain.vault_owner == unit:
+					return cur_terrain
+	return null
+
+
+func imprison_into_vault(self_or_others: String, unit: Object, nearby_vault: Object):
+	if self_or_others == "self":	# imprisons the vaultkeeper to a faraway vault that he owns
+		print("warping in imprisonment")
+		assert(unit.my_vault.get_parent().occupied_by["unit"] == null)	# there shouldn't be anyone in the middle of the vault
+		unit.warp_to(unit.my_vault.global_position)
+		unit.immobilized_turns_left = 3

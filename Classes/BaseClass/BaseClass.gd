@@ -16,6 +16,8 @@ var QUEST
 var POTENTIAL_JOBS : Array[String]
 var enemies_touched = []
 var leashed_units = []
+var wanted = 0	# for vaultskeeper
+var my_vault: Object = null
 var suit: String = ""
 var description = "Just the base servant, he lives in the manor"
 var skill = "Sweep Attack"
@@ -39,7 +41,11 @@ func _ready():
 	await initialize_stats()
 	await initialize_sprites()
 	original_color = self.modulate
-	
+
+func _process(delta):
+	if "Kleptomaniac" in PASSIVES and len(enemies_touched) > 0: #Bellboy QUEST
+		var damage_multiplier = 1 + len(enemies_touched)*0.1
+		DAMAGE = BASE_DAMAGE * damage_multiplier
 			
 func initialize_sprites():
 	pass
@@ -139,13 +145,7 @@ func get_hit(attack_info: Dictionary):
 	#	"disable": 2, (disable duration)
 	# 	"displace": null
 	#}
-	# damage
-	if attack_info["damage"] > 0:
-		take_damage(attack_info["damage"])
-	elif attack_info["damage"] < 0:
-		heal(attack_info["damage"])
-	else:
-		pass
+
 	var who_is_hitting = attack_info["who is hitting"]
 	
 	if who_is_hitting == self and who_is_hitting.TEAM == "P1" and attack_info["skill name"] == "I love gates": #Charioteer skill
@@ -286,7 +286,18 @@ func get_hit(attack_info: Dictionary):
 
 	if attack_info.has("gain movement"):
 		who_is_hitting.MOVEMENT += attack_info["gain movement"]
+		
+	print("attack_info: ", attack_info)
+	if attack_info.has("yeet self"):
+		who_is_hitting.yeet_self(attack_info["yeet self"])		# if the attack hits a unit, the owner yeets himself to a random tile {yeet self} units away
 
+	# damage
+	if attack_info["damage"] > 0:
+		take_damage(attack_info["damage"])
+	elif attack_info["damage"] < 0:
+		heal(attack_info["damage"])
+	else:
+		pass
 
 func add_job(job_name : String):
 	var job_node = load(Globals.jobs[job_name]).instantiate()
@@ -311,7 +322,33 @@ func add_job(job_name : String):
 		for step_x in [-1 * Globals.TILE_SIZE, 0 * Globals.TILE_SIZE, 1 * Globals.TILE_SIZE]:
 			for step_y in [-1 * Globals.TILE_SIZE, 0 * Globals.TILE_SIZE, 1 * Globals.TILE_SIZE]:
 				get_tree().current_scene.all_tiles[Vector2(random_coord_x + step_x, random_coord_y + step_y)].add_terrain("Cloister Garth")
-				
+		return
+	
+	# vaultskeeper specific
+	if job_name == "Vaults Keeper":
+		var potential_destination_coords = []
+		var unit_coord = global_position/Globals.TILE_SIZE
+		var max_distance_from_vault = 3
+		for step_x in range(-max_distance_from_vault, max_distance_from_vault + 1):
+			for step_y in range(-max_distance_from_vault, max_distance_from_vault + 1):
+				var new_pos = Vector2(unit_coord.x + step_x, unit_coord.y + step_y) * Globals.TILE_SIZE
+				if new_pos not in get_tree().current_scene.valid_tiles:
+					continue
+				if get_tree().current_scene.all_tiles[new_pos].occupied_by["terrain"].type == "throne":
+					continue
+				potential_destination_coords.append(new_pos)
+		randomize()
+		potential_destination_coords.shuffle()
+		var vault_destination_pos = potential_destination_coords[0]	# first pos in the shuffled list
+		if TEAM == "P1":
+			await get_tree().current_scene.all_tiles[vault_destination_pos].add_terrain("Vault Blue")
+		if TEAM == "P2":
+			await get_tree().current_scene.all_tiles[vault_destination_pos].add_terrain("Vault Red")
+		var new_vault = get_tree().current_scene.all_tiles[vault_destination_pos].get_terrain()
+		assert(new_vault.type == "Vault Red" or new_vault.type == "Vault Blue") # the terrain on the vaultskeeper should be a vault at this point
+		new_vault.vault_owner = self
+		my_vault = new_vault
+		return
 
 
 func warp_to(destination_vector: Vector2):
@@ -331,7 +368,7 @@ func get_tile_node():
 			return tile_node
 	
 	# unit should always be able to get its tile node
-	assert(tile_node != null)
+	assert(tile_node != null) 
 	return tile_node
 
 
@@ -376,7 +413,7 @@ func suit_up():
 			new_garden_type = "Orchard"
 			terrain_condition_for_suit_up = "Flowerbed"
 		"Spades":
-			new_garden_type = "Orchard"
+			new_garden_type = ""
 			terrain_condition_for_suit_up = "Orchard"
 
 	if get_tile_node().get_terrain().type != terrain_condition_for_suit_up and terrain_condition_for_suit_up != "":
@@ -408,3 +445,24 @@ func suit_up():
 	for i in range(3):
 		for j in range(3):
 			get_tree().current_scene.all_tiles[Vector2(garden_origin_coord.x+i-1, garden_origin_coord.y+j-1) * Globals.TILE_SIZE].add_terrain(new_garden_type)
+
+
+func yeet_self(distance: int):
+	# get all tiles {distance} tiles away:
+	var main_astar = get_tree().current_scene.astar
+	var main_all_tiles = get_tree().current_scene.all_tiles
+	var potential_tiles = []
+	for tile_coords in get_tree().current_scene.valid_tiles:
+		if main_all_tiles[tile_coords].occupied_by["terrain"].type == "Throne":
+			continue
+		if main_all_tiles[tile_coords].occupied_by["unit"] != null:
+			continue
+		
+		if len(main_astar.get_id_path(global_position/Globals.TILE_SIZE,tile_coords/Globals.TILE_SIZE)) == distance:
+			potential_tiles.append(tile_coords)
+	
+	randomize()
+	potential_tiles.shuffle()
+	await warp_to(potential_tiles[0])
+	await get_tile_node().resolve_droppings_entry_check()
+	
