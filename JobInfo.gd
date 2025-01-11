@@ -13,6 +13,8 @@ func update_selected_job_details():
 		%InfoSprite.texture = new_job.get_node("BlueSprite").texture		
 	var passives_container = $PanelContainer/VBoxContainer/HBoxContainer2/PassiveContainer/Passives
 	var skills_container = $PanelContainer/VBoxContainer/HBoxContainer2/SkillContainer/Skills
+	for child in skills_container.get_children():
+		child.queue_free()
 	for skill in new_job.ACTIONS:
 		skill_cont = skill_container_scene.instantiate()
 		skill_cont.text = skill

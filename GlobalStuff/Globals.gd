@@ -183,7 +183,8 @@ var skills = {
 			Vector2(-2, 2), Vector2(-1, 2), Vector2(0, 2), Vector2(1, 2), Vector2(2, 2)
 			],
 		"damage multiplier": 0,
-		"optional effects": {}
+		"optional effects": {},
+		"description": "bite anyone and keep them on a tight leash"
 	},
 	"I love gates": {
 		"shape": [
