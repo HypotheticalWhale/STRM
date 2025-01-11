@@ -190,6 +190,15 @@ var skills = {
 			],
 		"damage multiplier": 0,
 		"optional effects": {}
+	},
+	"My shift is over": {
+		"shape": [
+			Vector2(1, 0)
+		],
+		"damage multiplier": 10,
+		"optional effects": {
+			"yeet self": 7,		# yeets himself into a random tile 7 tiles away
+		}
 	}
 }
 

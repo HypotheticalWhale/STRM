@@ -535,6 +535,10 @@ func on_skill_pressed(button,direction):
 		
 		if Globals.skills[button.skill_name]["optional effects"].has("gain movement"):
 			available_attack_tiles[grid_pos]["gain movement"] = Globals.skills[button.skill_name]["optional effects"]["gain movement"]
+		
+		if Globals.skills[button.skill_name]["optional effects"].has("yeet self"):
+			available_attack_tiles[grid_pos]["yeet self"] = Globals.skills[button.skill_name]["optional effects"]["yeet self"]
+			
 	##################### choosing units to be displaced ##################
 	# remove random units from displace targets (gotta choose only 2 out of 5)
 	if Globals.skills[button.skill_name]["optional effects"].has("displace"):
