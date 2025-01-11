@@ -102,6 +102,7 @@ func reset_units():
 			all_tiles[unit.global_position].occupied_by["unit"] = null # set the previous tile to null 
 		count += 2
 		unit.CURRENT_HEALTH = unit.MAX_HEALTH
+		unit.enemies_touched = []
 		unit.global_position = tile_coords
 		all_tiles[tile_coords].occupied_by["unit"] = unit # setenable_move_button the new tile to the unit
 	count = 2
@@ -110,6 +111,7 @@ func reset_units():
 		if unit.global_position in all_tiles:
 			all_tiles[unit.global_position].occupied_by["unit"] = null
 		unit.CURRENT_HEALTH = unit.MAX_HEALTH
+		unit.enemies_touched = []		
 		unit.global_position = tile_coords
 		all_tiles[tile_coords].occupied_by["unit"] = unit
 		count += 2		
@@ -351,6 +353,12 @@ func _on_turn_timer_timeout():
 	get_node("UI/NextPlayerReady").visible = true
 	get_node("UI/NextPlayerReady").text = Globals.WHOSTURNISIT + "'s turn. Click to start."
 	get_tree().paused = true
+	
+func _on_more_info_button_pressed():
+	var info_ui = get_tree().current_scene.get_node("UI/JobInfo")
+	info_ui.update_selected_job_details()
+	get_tree().paused = true
+	info_ui.visible = true
 	
 func _on_action_button_pressed():
 	var button
@@ -625,6 +633,7 @@ func get_team_gates(team):
 				team_gates.append(tile)
 				 
 	return team_gates
+
 
 
 func get_own_nearby_vault(unit: Object):

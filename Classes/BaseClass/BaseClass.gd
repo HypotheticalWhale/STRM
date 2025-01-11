@@ -19,7 +19,9 @@ var leashed_units = []
 var wanted = 0	# for vaultskeeper
 var my_vault: Object = null
 var suit: String = ""
-
+var description = "Just the base servant, he lives in the manor"
+var skill = "Sweep Attack"
+var passive = "Noob"
 # quest specific
 var xp : int
 var max_xp : int

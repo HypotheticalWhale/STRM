@@ -369,7 +369,7 @@ func move():
 	if is_manor and occupied_by["terrain"].WHOSTHRONEISIT != Globals.WHOSTURNISIT:
 		get_parent().get_node("UI/EndRoundButton").visible = true
 		get_parent().get_node("UI/EndRoundButton").text = Globals.WHOSTURNISIT + ", YOU WIN!!"
-		Globals.WHOSTURNISIT = "P1"
+		Globals.WHOSTURNISIT = "P1"  #reset turn on round end
 		get_tree().paused = true
 	get_parent().selected_tile.occupied_by["unit"].global_position = global_position
 	get_parent().selected_tile.occupied_by["unit"] = null
@@ -388,6 +388,11 @@ func move():
 			tile.occupied_by["unit"] = null
 			unit.global_position = unit.global_position + tile_distance
 			unit.get_tile_node().occupied_by["unit"] = unit
+			if is_manor and occupied_by["terrain"].WHOSTHRONEISIT != Globals.WHOSTURNISIT:
+				get_parent().get_node("UI/EndRoundButton").visible = true
+				get_parent().get_node("UI/EndRoundButton").text = Globals.WHOSTURNISIT + ", YOU WIN!!"
+				Globals.WHOSTURNISIT = "P1" #reset turn on round end
+				get_tree().paused = true
 			await resolve_droppings_entry_check()
 
 	
