@@ -154,7 +154,7 @@ func get_hit(attack_info: Dictionary):
 		print("list of leftmost cells", get_parent().get_three_leftmost_tiles())
 	elif who_is_hitting.TEAM == self.TEAM and who_is_hitting.CURRENT_JOB == "Charioteer":
 		var team_gate_locations = get_parent().get_team_gates(who_is_hitting.TEAM )
-		var gate_location = team_gate_locations[randi() % team_gate_locations.size()]
+		var gate_location = team_gate_locations[randi() % len(team_gate_locations)]
 		self.get_tile_node().occupied_by["unit"] == null
 		self.global_position = gate_location.global_position
 		gate_location.occupied_by["unit"] = self
@@ -166,12 +166,6 @@ func get_hit(attack_info: Dictionary):
 		
 	if who_is_hitting.PASSIVES.has("Green Thumbs") and get_tree().current_scene.all_tiles[global_position].occupied_by["terrain"].type == "Garden": #Gardener Quest
 		Globals.complete_unit_quest(who_is_hitting,"Landscaping")
-	if CURRENT_HEALTH <= 0:
-		print("im ded")
-		CURRENT_HEALTH = MAX_HEALTH
-		get_tree().current_scene.all_tiles[global_position].occupied_by["unit"] = null
-		self.global_position = Vector2(0,-999999)
-		return
 	# knockback
 	if attack_info.has("knockback"):
 		var destination_coords: Vector2 = global_position
@@ -298,6 +292,12 @@ func get_hit(attack_info: Dictionary):
 		heal(attack_info["damage"])
 	else:
 		pass
+	if CURRENT_HEALTH <= 0:
+		print("im ded")
+		CURRENT_HEALTH = MAX_HEALTH
+		get_tree().current_scene.all_tiles[global_position].occupied_by["unit"] = null
+		self.global_position = Vector2(0,-999999)
+		return
 
 func add_job(job_name : String):
 	var job_node = load(Globals.jobs[job_name]).instantiate()
