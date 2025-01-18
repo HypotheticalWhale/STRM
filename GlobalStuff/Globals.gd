@@ -31,7 +31,7 @@ var quests : Dictionary = {
 	},
 	"Let me show you to your room":{
 		"description": "dog",
-		"reward": 100
+		"reward": 25
 	},
 	"Smelliest guy on earth":{
 		"description": "You're so smelly you no longer need a quest",
