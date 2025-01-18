@@ -68,7 +68,8 @@ var skills = {
 		"damage multiplier": 1.1,
 		"optional effects": {
 			"sweet spot": Vector2(2,0)	# deals double damage at Vector2(1,1)
-		}
+		},
+		"description": "Large scissors for cutting large objects"
 	},
 	"Backstab": {
 		"shape": [Vector2(2,0)],
@@ -77,14 +78,16 @@ var skills = {
 			#"backstab": 1.5	# backstab modifies damage by 1.5X
 			"disable": 1,
 			"dash": null,
-		}
+		},
+		"description": "Doesn't actually do more damage from behind",
 	},
 	"Piercing Ray": {
 		"shape": [Vector2(1,0),Vector2(2,0),Vector2(3,0),Vector2(4,0)],
 		"damage multiplier": 0.1,
 		"optional effects": {
 			"knockback": 1,
-		}
+		},
+		"description": "Bad breath travels a long distance sometimes",
 	},
 	"Your weapons, please.": { 
 		"shape": [Vector2(1,0), Vector2(2,0)],
@@ -92,14 +95,16 @@ var skills = {
 		"optional effects": {
 			"knockback": 1,	# knocks back 2 squares
 			"disable": 1	# disables unit for 1 turn
-		}
+		},
+		"description": "The bell boy's cart is the second most dangerous thing in this mansion",
 	},
 	"Fleet-footed Kick.": {
 		"shape": [Vector2(2,0)],
 		"damage multiplier": 0.0,
 		"optional effects": {
 			"dash": null, # just dashes to the target tile. no other variables
-		}
+		},
+		"description": "Mastered the flying kick by binge-watching Jackie Chan films",
 	},
 	"Tea Party for Two": {	# displaces two random units to two locations near the butler separated by a tea table
 		"shape": [],	# is attacking everyone bro thats why
@@ -110,14 +115,16 @@ var skills = {
 				["tea table", [Vector2(2,0)]]
 			],
 			"immobilize": 1
-		}
+		},
+		"description": "No fighting while having tea"
 	},
 	"I come with great news": {	# attacks a unit one tile away. if unit is wet, create a cone of bird shit terrain behind unit.
 		"shape": [Vector2(1,0)],
 		"damage multiplier": 0.1,
 		"optional effects": {
 			"splatter droppings": null,
-		}
+		},
+		
 	},
 	"Cloister Garth Commoner's Clubs": {
 		"shape": [

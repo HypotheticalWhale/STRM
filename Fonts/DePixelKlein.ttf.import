@@ -15,6 +15,7 @@ dest_files=["res://.godot/imported/DePixelKlein.ttf-b06de177247c105b7746e8b81c98
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
+disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48

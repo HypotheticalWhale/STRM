@@ -127,6 +127,7 @@ func next_to_messenger(who_is_hitting):
 			if len(who_is_hitting.enemies_touched) == 3:
 				Globals.complete_unit_quest(who_is_hitting,"You're it")
 		get_hit({
+			"skill name": "Here's a gift",
 			"damage":DAMAGE,
 			"who is hitting": who_is_hitting})
 
