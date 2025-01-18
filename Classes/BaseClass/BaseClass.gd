@@ -86,11 +86,21 @@ func level_up():
 
 
 func DIDIWIN():
-	var tile_node = get_tile_node()
-	if tile_node.is_manor and tile_node.occupied_by["terrain"].WHOSTHRONEISIT != TEAM:
+	if Globals.score.P1 >= 2:
 		get_tree().current_scene.get_node("UI/EndRoundButton").visible = true
-		get_tree().current_scene.get_node("UI/EndRoundButton").text = TEAM + ", YOU WIN!!"
-		Globals.WHOSTURNISIT = "P1"
+		get_tree().current_scene.get_node("UI/EndRoundButton").text = "Player 1 Wins!! New Game?"
+		Globals.reset_global()
+		await get_tree().reload_current_scene()
+		
+	elif Globals.score.P2 >= 2:
+		get_tree().current_scene.get_node("UI/EndRoundButton").visible = true
+		get_tree().current_scene.get_node("UI/EndRoundButton").text = Globals.WHOSTURNISIT + "Player 2 Wins!! New Game?"
+		Globals.reset_global()		
+		await get_tree().reload_current_scene()
+		
+	else:
+		get_tree().current_scene.get_node("UI/EndRoundButton").visible = true
+		get_tree().current_scene.get_node("UI/EndRoundButton").text = TEAM + ", You win this round!"
 		get_tree().paused = true
 
 

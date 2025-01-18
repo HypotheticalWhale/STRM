@@ -366,14 +366,11 @@ func move():
 	var curr_unit = get_parent().selected_tile.occupied_by["unit"]
 	var tile_distance = global_position - curr_unit.global_position
 	occupied_by["unit"] = curr_unit
-	if is_manor and occupied_by["terrain"].WHOSTHRONEISIT != Globals.WHOSTURNISIT:
-		get_parent().get_node("UI/EndRoundButton").visible = true
-		get_parent().get_node("UI/EndRoundButton").text = Globals.WHOSTURNISIT + ", YOU WIN!!"
-		Globals.WHOSTURNISIT = "P1"  #reset turn on round end
-		get_tree().paused = true
 	get_parent().selected_tile.occupied_by["unit"].global_position = global_position
 	get_parent().selected_tile.occupied_by["unit"] = null
 	await resolve_droppings_entry_check()
+	if is_manor and occupied_by["terrain"].WHOSTHRONEISIT != Globals.WHOSTURNISIT:
+		curr_unit.DIDIWIN()
 
 	if curr_unit.PASSIVES.has("Teethed to the arm."): #Dog walker passive
 		print(curr_unit.leashed_units)
