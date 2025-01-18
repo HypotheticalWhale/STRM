@@ -11,17 +11,17 @@
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0pnb6"]
 texture = ExtResource("2_2l8tr")
-texture_margin_left = 4.0
-texture_margin_top = 4.0
-texture_margin_right = 4.0
-texture_margin_bottom = 4.0
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0e6wo"]
 texture = ExtResource("1_0keg2")
-texture_margin_left = 4.0
-texture_margin_top = 4.0
-texture_margin_right = 4.0
-texture_margin_bottom = 4.0
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uqel7"]
 texture = ExtResource("2_sf2lc")
@@ -55,23 +55,23 @@ texture_margin_bottom = 8.0
 default_font = ExtResource("3_wx55d")
 default_font_size = 16
 Button/colors/font_color = Color(0, 0, 0, 1)
-Button/font_sizes/font_size = 10
+Button/font_sizes/font_size = 5
 Button/fonts/font = ExtResource("1_lk7pt")
 Button/styles/hover = SubResource("StyleBoxTexture_0pnb6")
 Button/styles/normal = SubResource("StyleBoxTexture_0e6wo")
-HeaderLarge/font_sizes/font_size = 10
+HeaderLarge/font_sizes/font_size = 5
 HeaderLarge/fonts/font = ExtResource("1_lk7pt")
-HeaderMedium/font_sizes/font_size = 10
+HeaderMedium/font_sizes/font_size = 5
 HeaderMedium/fonts/font = ExtResource("1_lk7pt")
 Label/colors/font_color = Color(0.0313726, 0.0392157, 0.0588235, 1)
-Label/font_sizes/font_size = 10
+Label/font_sizes/font_size = 5
 Label/fonts/font = ExtResource("1_lk7pt")
 Label/styles/normal = SubResource("StyleBoxTexture_uqel7")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_iq4wv")
-ProgressBar/font_sizes/font_size = 10
+ProgressBar/font_sizes/font_size = 5
 ProgressBar/fonts/font = ExtResource("1_lk7pt")
 ProgressBar/styles/background = SubResource("StyleBoxTexture_gybm3")
 ProgressBar/styles/fill = SubResource("StyleBoxTexture_igi4g")
-TooltipLabel/font_sizes/font_size = 10
+TooltipLabel/font_sizes/font_size = 5
 TooltipLabel/fonts/font = ExtResource("1_lk7pt")
 VBoxContainer/constants/separation = 0

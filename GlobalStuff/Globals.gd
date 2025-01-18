@@ -116,7 +116,7 @@ var skills = {
 			],
 			"immobilize": 1
 		},
-		"description": "No fighting while having tea"
+		"description": "Have some tea, and don't get up from your seat for awhile"
 	},
 	"I come with great news": {	# attacks a unit one tile away. if unit is wet, create a cone of bird shit terrain behind unit.
 		"shape": [Vector2(1,0)],
@@ -124,7 +124,7 @@ var skills = {
 		"optional effects": {
 			"splatter droppings": null,
 		},
-		
+		"description": "Pigeon droppings make the floor very slippery",
 	},
 	"Cloister Garth Commoner's Clubs": {
 		"shape": [
@@ -136,7 +136,8 @@ var skills = {
 		"damage multiplier": 0.1,
 		"optional effects": {
 			"random gardens": null
-		}
+		},
+		"description": "The first of the 4 card attacks."
 	},
 	"Vineyard Merchant's Diamonds": {
 		"shape": [
@@ -149,7 +150,8 @@ var skills = {
 		"optional effects": {
 			"random gardens": null,
 			"gain attack": 1,
-		}
+		},
+		"description": "Become stronger. Attack evolves if done on a Vineyard"
 	},
 	"Flowerbed Lover's Hearts": {
 		"shape": [
@@ -163,7 +165,8 @@ var skills = {
 			"random gardens": null,
 			"gain attack": 1,
 			"gain health": 1,
-		}
+		},
+		"description": "Become healthier. Attack evolves if done on a Flowerbed"
 	},
 	"Orchard Elite's Spades": {
 		"shape": [
@@ -179,7 +182,8 @@ var skills = {
 			"gain attack": 10,
 			"gain health": 10,
 			"gain movement": 1,
-		}
+		},
+		"description": "Become more agile. The last of the 4 card attacks."
 	},
 	"Go Fetch!": {
 		"shape": [
@@ -191,14 +195,15 @@ var skills = {
 			],
 		"damage multiplier": 0,
 		"optional effects": {},
-		"description": "bite anyone and keep them on a tight leash"
+		"description": "Bite anyone and keep them on a tight leash"
 	},
 	"I love gates": {
 		"shape": [
 			Vector2(0,0)
 			],
 		"damage multiplier": 0,
-		"optional effects": {}
+		"optional effects": {},
+		"description": "Create some gates"
 	},
 	"My shift is over": {
 		"shape": [
@@ -207,7 +212,8 @@ var skills = {
 		"damage multiplier": 10,
 		"optional effects": {
 			"yeet self": 7,		# yeets himself into a random tile 7 tiles away
-		}
+		},
+		"description": "Use as a last resort",
 	}
 }
 
