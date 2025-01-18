@@ -626,10 +626,12 @@ func get_team_gates(team):
 	if team == "P1":
 		for tile in all_tiles.values():
 			if tile.occupied_by["terrain"].type == "GateBlue" and tile.occupied_by["unit"] == null:
+				print("found ", tile)
 				team_gates.append(tile)
 	else:
 		for tile in all_tiles.values():
 			if tile.occupied_by["terrain"].type == "GateRed" and tile.occupied_by["unit"] == null:
+				print("found ", tile)				
 				team_gates.append(tile)
 				 
 	return team_gates
