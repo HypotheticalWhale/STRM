@@ -8,7 +8,7 @@ func _ready():
 	passive = "Fast runner"		# at the end any movement/active, deal damage to all adjacent units
 	potential_jobs = ["Charioteer", "Pigeon Commander", "Dog Walker"]
 	MAX_HEALTH = 5
-	MOVEMENT = 10
+	MOVEMENT = 5
 	DAMAGE = 5
 	QUEST = "You're it"
 

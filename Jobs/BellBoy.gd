@@ -9,6 +9,6 @@ func _ready():
 	passive = "Kleptomaniac"	# anytime he does damage, he gains attack
 	potential_jobs = ["Butler", "Vaults Keeper", "Charioteer"]
 	MAX_HEALTH = 5
-	MOVEMENT = 20
+	MOVEMENT = 3
 	DAMAGE = 5
 	QUEST = "Let me show you to your room"

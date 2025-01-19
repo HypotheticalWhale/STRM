@@ -71,7 +71,6 @@ func _on_input_event(viewport, event, shape_idx):
 			get_parent().hide_select_menu()
 			get_parent().hide_info_menu()
 			get_parent().disable_action_button()
-			await Globals.complete_unit_quest(Globals.TAKENACTION,"Fight")
 			return
 			
 		# attack already, now want to move
