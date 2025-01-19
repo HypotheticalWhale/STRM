@@ -7,7 +7,7 @@ func _ready():
 	description = "Specializes in pruning trees and hooligans."
 	skill = "Trim Bushes"	# big area attack with a sweet spot at the intersection of scissors
 	passive = "Green Thumbs"	# deals more damage in garden
-	potential_jobs = ["Vaults Keeper", "Dog Walker", "Card Soldier"]
+	POTENTIAL_JOBS = ["Vaults Keeper", "Dog Walker", "Card Soldier"]
 	MAX_HEALTH = 10
 	MOVEMENT = 3
 	DAMAGE = 10

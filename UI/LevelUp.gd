@@ -28,9 +28,10 @@ func update_selected_job_details():
 	var new_job = load(Globals.jobs[selected_job]).instantiate()
 	add_child(new_job)
 	%JobDescription.text = new_job.description
-	%SkillInfo.text = new_job.skill
+	%SkillInfo.text = "Skill: " + new_job.skill
+	%SkillDescription.text = Globals.skills[new_job.skill]["description"]
 	
-	%PassiveInfo.text = new_job.passive
+	%PassiveInfo.text = "Passive: " + new_job.passive
 	%PassiveDesc.text = Globals.passives[new_job.passive].description
 	remove_child(new_job)
 	

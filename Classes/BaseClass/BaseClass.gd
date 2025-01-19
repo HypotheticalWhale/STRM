@@ -67,13 +67,13 @@ func set_sprite_red():
 
 
 func is_potential_jobs_empty():
-	if len($Jobs.get_children()) > 0 and len($Jobs.get_children()[-1].potential_jobs) == 0:	# if unit is at max job tier, do nothing
+	if len($Jobs.get_children()) > 0 and len($Jobs.get_children()[-1].POTENTIAL_JOBS) == 0:	# if unit is at max job tier, do nothing
 		return true
 	return false
 		
 
 func level_up():
-	xp = xp - max_xp
+	print("i am ", CURRENT_JOB, " and my jobs are: ", POTENTIAL_JOBS)
 	var lvl_ui = get_tree().current_scene.get_node("UI/LevelUp")
 	lvl_ui.unit_to_level = self
 	get_tree().paused = true
@@ -82,7 +82,7 @@ func level_up():
 	if len($Jobs.get_children()) == 0:	# if unit has no jobs yet
 		lvl_ui.update_jobs(POTENTIAL_JOBS)
 	else:	# if unit has a job, take the most recent one
-		lvl_ui.update_jobs($Jobs.get_children()[-1].potential_jobs)
+		lvl_ui.update_jobs($Jobs.get_children()[-1].POTENTIAL_JOBS)
 
 
 func DIDIWIN():
@@ -295,9 +295,12 @@ func get_hit(attack_info: Dictionary):
 	if attack_info.has("gain movement"):
 		who_is_hitting.MOVEMENT += attack_info["gain movement"]
 		
-	print("attack_info: ", attack_info)
 	if attack_info.has("yeet self"):
 		who_is_hitting.yeet_self(attack_info["yeet self"])		# if the attack hits a unit, the owner yeets himself to a random tile {yeet self} units away
+
+	# check fight quest
+	if who_is_hitting.QUEST == "Fight":
+		await Globals.complete_unit_quest(who_is_hitting, "Fight")
 
 	# damage
 	if attack_info["damage"] > 0:

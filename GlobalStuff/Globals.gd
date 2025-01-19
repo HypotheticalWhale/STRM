@@ -354,6 +354,7 @@ func complete_unit_quest(unit: Object, quest):
 	get_tree().current_scene.get_node(unit.UI_EXP_LINK).get_parent().get_child(1).value = unit.xp
 	if unit.xp >= unit.max_xp:
 		get_tree().current_scene.get_node(unit.UI_EXP_LINK).get_parent().get_child(1).value = 0
+		unit.xp = 0
 		await unit.level_up()
 
 func reset_global():

@@ -4,7 +4,8 @@ extends BaseClass
 func initialize_stats():
 	MAX_HEALTH = 60
 	CURRENT_HEALTH = 60
-	MOVEMENT = 3
+	#MOVEMENT = 3
+	MOVEMENT = 20
 	DAMAGE = 20
 	xp = 0
 	max_xp = 100

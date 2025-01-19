@@ -116,7 +116,7 @@ layout_mode = 2
 
 [node name="TurnLabel" type="Label" parent="UI/Player1/MarginContainer/LabelContainer"]
 layout_mode = 2
-theme = ExtResource("2_vidso")
+theme_type_variation = &"HeaderLarge"
 text = "P1"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -401,11 +401,10 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ChooseSkill" type="Label" parent="UI/LevelUp/PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
-size_flags_vertical = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
 theme_type_variation = &"HeaderLarge"
-theme_override_font_sizes/font_size = 48
 text = "Choose Skill"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -415,55 +414,40 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Container" type="Container" parent="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons"]
-layout_mode = 2
-size_flags_horizontal = 3
-
 [node name="JobButton0" type="TextureButton" parent="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons" groups=["JobButtons"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-stretch_mode = 0
-script = ExtResource("9_7relu")
-
-[node name="Container2" type="Container" parent="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons"]
-layout_mode = 2
 size_flags_horizontal = 3
+stretch_mode = 5
+script = ExtResource("9_7relu")
 
 [node name="JobButton1" type="TextureButton" parent="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons" groups=["JobButtons"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-stretch_mode = 0
-script = ExtResource("9_7relu")
-
-[node name="Container3" type="Container" parent="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons"]
-layout_mode = 2
 size_flags_horizontal = 3
+stretch_mode = 5
+script = ExtResource("9_7relu")
 
 [node name="JobButton2" type="TextureButton" parent="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons" groups=["JobButtons"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-stretch_mode = 0
-script = ExtResource("9_7relu")
-
-[node name="Container4" type="Container" parent="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons"]
-layout_mode = 2
 size_flags_horizontal = 3
+stretch_mode = 5
+script = ExtResource("9_7relu")
 
 [node name="JobDescription" type="Label" parent="UI/LevelUp/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 20
+size_flags_stretch_ratio = 0.6
 text = "Description here"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/LevelUp/PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -471,21 +455,21 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SkillLabel" type="Label" parent="UI/LevelUp/PanelContainer/VBoxContainer/HBoxContainer/Skill"]
-layout_mode = 2
-size_flags_vertical = 6
-size_flags_stretch_ratio = 0.5
-theme_type_variation = &"HeaderMedium"
-text = "Skill"
-horizontal_alignment = 1
-
 [node name="SkillInfo" type="Label" parent="UI/LevelUp/PanelContainer/VBoxContainer/HBoxContainer/Skill"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 2.08165e-12)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_type_variation = &"HeaderMedium"
 text = "Skill information here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkillDescription" type="Label" parent="UI/LevelUp/PanelContainer/VBoxContainer/HBoxContainer/Skill"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 2.08165e-12)
+layout_mode = 2
+text = "Skill Description"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -494,24 +478,15 @@ autowrap_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PassiveLabel" type="Label" parent="UI/LevelUp/PanelContainer/VBoxContainer/HBoxContainer/Passive"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
-theme_type_variation = &"HeaderMedium"
-text = "Passive"
-horizontal_alignment = 1
-
 [node name="PassiveInfo" type="Label" parent="UI/LevelUp/PanelContainer/VBoxContainer/HBoxContainer/Passive"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 2.08165e-12)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_type_variation = &"HeaderMedium"
 text = "Passive Information"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 2
 
 [node name="PassiveDesc" type="Label" parent="UI/LevelUp/PanelContainer/VBoxContainer/HBoxContainer/Passive"]
 unique_name_in_owner = true
@@ -523,9 +498,9 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Confirm" type="Button" parent="UI/LevelUp/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 64
 disabled = true
 text = "Confirm
 "
@@ -559,7 +534,6 @@ alignment = 1
 
 [node name="Label" type="Label" parent="UI/JobInfo/PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_vidso")
 theme_type_variation = &"HeaderLarge"
 text = "Class Information"
 horizontal_alignment = 1
@@ -579,7 +553,6 @@ layout_mode = 2
 [node name="BackgroundLabel" type="Label" parent="UI/JobInfo/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_vidso")
-theme_type_variation = &"HeaderMedium"
 text = "Background Label"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -7,7 +7,7 @@ func _ready():
 	description = "Charming, disarming lad."
 	skill = "Your weapons, please."	# displaces target unit by 2 squares and disables them
 	passive = "Kleptomaniac"	# anytime he does damage, he gains attack
-	potential_jobs = ["Butler", "Vaults Keeper", "Charioteer"]
+	POTENTIAL_JOBS = ["Butler", "Vaults Keeper", "Charioteer"]
 	MAX_HEALTH = 5
 	MOVEMENT = 3
 	DAMAGE = 5
