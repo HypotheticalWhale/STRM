@@ -7,7 +7,7 @@ func _ready():
 	description = "A diamond in the rough, wait is this a crossover?"
 	skill = "Cloister Garth Commoner's Clubs"
 	passive = "Die Mond"
-	potential_jobs = []
+	POTENTIAL_JOBS = []
 	MAX_HEALTH = 10
 	MOVEMENT = 10
 	DAMAGE = 10

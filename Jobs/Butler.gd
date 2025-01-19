@@ -7,7 +7,7 @@ func _ready():
 	skill = "Tea Party for Two"	# displaces enemies into a tea party
 	passive = "No hooligans allowed."	# 
 	QUEST = "The Chandelier Canopy Conundrum"
-	potential_jobs = []
+	POTENTIAL_JOBS = []
 	MAX_HEALTH = 39
 	MOVEMENT = 5
 	DAMAGE = 5

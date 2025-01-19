@@ -6,7 +6,7 @@ func _ready():
 	description = "He's a workaholic."
 	skill = "My shift is over"
 	passive = "Don't touch my stuff"
-	potential_jobs = []
+	POTENTIAL_JOBS = []
 	MAX_HEALTH = 15
 	MOVEMENT = 2
 	DAMAGE = 10
