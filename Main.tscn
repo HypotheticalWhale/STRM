@@ -553,6 +553,7 @@ layout_mode = 2
 [node name="BackgroundLabel" type="Label" parent="UI/JobInfo/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_vidso")
+theme_type_variation = &"HeaderMedium"
 text = "Background Label"
 horizontal_alignment = 1
 vertical_alignment = 1
