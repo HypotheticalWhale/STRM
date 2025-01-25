@@ -95,7 +95,7 @@ func DIDIWIN():
 	elif Globals.score.P2 >= 2:
 		get_tree().current_scene.get_node("UI/EndRoundButton").visible = true
 		get_tree().current_scene.get_node("UI/EndRoundButton").text = Globals.WHOSTURNISIT + "Player 2 Wins!! New Game?"
-		Globals.reset_global()		
+		Globals.reset_global()
 		await get_tree().reload_current_scene()
 		
 	else:
