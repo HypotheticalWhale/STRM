@@ -10,7 +10,8 @@ func update_selected_job_details():
 	if new_job.get_node("RedSprite").visible:
 		%InfoSprite.texture = new_job.get_node("RedSprite").texture
 	else:
-		%InfoSprite.texture = new_job.get_node("BlueSprite").texture		
+		%InfoSprite.texture = new_job.get_node("BlueSprite").texture
+	%ClassInformation.text = new_job.NAME
 	var passives_container = $PanelContainer/VBoxContainer/HBoxContainer2/PassiveContainer/Passives
 	var skills_container = $PanelContainer/VBoxContainer/HBoxContainer2/SkillContainer/Skills
 	for child in skills_container.get_children():
@@ -34,7 +35,7 @@ func update_selected_job_details():
 		passive_cont.get_node("PassiveDescription").text = "You have no talents"
 		passives_container.add_child(passive_cont)
 	remove_child(new_job)
-	
+
 func _on_button_pressed():
 	get_tree().paused = false
 	visible = false

@@ -1,6 +1,7 @@
 extends Node2D
 class_name BaseClass
 
+var NAME
 var MAX_HEALTH
 var CURRENT_HEALTH
 var TEAM

@@ -69,35 +69,35 @@ func _process(delta):
 func spawn_units():
 	var label_list = ["FirstExpContainer/FirstExp", "SecondExpContainer/SecondExp", "ThirdExpContainer/ThirdExp"]
 	var label_count = 0
-	var count = 2
+	var count = 3
 	for unit in PlayerData.player1_units.values():
 		add_child(unit)
 		unit.set_sprite_blue()
-		tile_coords = Vector2(2,count)*Globals.TILE_SIZE
+		tile_coords = Vector2(4,count)*Globals.TILE_SIZE
 		unit.global_position = tile_coords
 		all_tiles[tile_coords].occupied_by["unit"] = unit
 		unit.UI_EXP_LINK = "UI/Player1/MarginContainer/LabelContainer/"+label_list[label_count]		
-		get_node("UI/Player1/MarginContainer/LabelContainer/"+label_list[label_count]).text = unit.CURRENT_JOB+" "
+		get_node("UI/Player1/MarginContainer/LabelContainer/"+label_list[label_count]).text = unit.NAME+" "
 		count += 2
 		label_count += 1
 		
 	label_count = 0
-	count = 2
+	count = 3
 	for unit in PlayerData.player2_units.values():
 		add_child(unit)
 		unit.set_sprite_red()		
-		tile_coords = Vector2(GRID_SIZE[0]-1,count)*Globals.TILE_SIZE
+		tile_coords = Vector2(GRID_SIZE[0]-3,count)*Globals.TILE_SIZE
 		unit.global_position = tile_coords
 		all_tiles[tile_coords].occupied_by["unit"] = unit
 		unit.UI_EXP_LINK = "UI/Player2/MarginContainer/LabelContainer/"+label_list[label_count]
-		get_node("UI/Player2/MarginContainer/LabelContainer/"+label_list[label_count]).text = unit.CURRENT_JOB +" "
+		get_node("UI/Player2/MarginContainer/LabelContainer/"+label_list[label_count]).text = unit.NAME +" "
 		count += 2
 		label_count += 1
 
 func reset_units():
-	var count = 2
+	var count = 3
 	for unit in PlayerData.player1_units.values():
-		tile_coords = Vector2(2,count)*Globals.TILE_SIZE
+		tile_coords = Vector2(4,count)*Globals.TILE_SIZE
 		if unit.global_position in all_tiles:
 			all_tiles[unit.global_position].occupied_by["unit"] = null # set the previous tile to null 
 		count += 2
@@ -105,9 +105,9 @@ func reset_units():
 		unit.enemies_touched = []
 		unit.global_position = tile_coords
 		all_tiles[tile_coords].occupied_by["unit"] = unit # setenable_move_button the new tile to the unit
-	count = 2
+	count = 3
 	for unit in PlayerData.player2_units.values():
-		tile_coords = Vector2(GRID_SIZE[0]-1,count)*Globals.TILE_SIZE
+		tile_coords = Vector2(GRID_SIZE[0]-3,count)*Globals.TILE_SIZE
 		if unit.global_position in all_tiles:
 			all_tiles[unit.global_position].occupied_by["unit"] = null
 		unit.CURRENT_HEALTH = unit.MAX_HEALTH
@@ -297,6 +297,7 @@ func _on_end_button_pressed():
 	turn_timer.start()
 	
 func _on_turn_timer_timeout():
+	astar.update()	
 	hide_info_menu()
 	hide_select_menu()	
 	clear_available_attack_tiles()
@@ -335,6 +336,9 @@ func _on_turn_timer_timeout():
 			if unit.wanted >= 2:
 				print("gonna imprison")
 				await imprison_into_vault("self", unit, vault)
+	for tile in get_occupied_tiles(): 
+		if tile.occupied_by["unit"].CURRENT_JOB == "Bell Boy" and Globals.WHOSTURNISIT != tile.occupied_by["unit"].TEAM and tile.occupied_by["terrain"].type == "Lobby":
+			Globals.complete_unit_quest(tile.occupied_by["unit"],"Let me show you to your room") #Bell Boy QUEST
 		
 	await Globals.toggle_player_turn()
 	if Globals.WHOSTURNISIT == "P1":
@@ -342,13 +346,10 @@ func _on_turn_timer_timeout():
 	if Globals.WHOSTURNISIT == "P2":		
 		turn_on_p2_ui()
 	for tile in get_occupied_tiles():
-			if tile.occupied_by["unit"].TEAM != Globals.WHOSTURNISIT:
-				astar.set_point_solid(tile.global_position/Globals.TILE_SIZE,true)
-			else:
-				astar.set_point_solid(tile.global_position/Globals.TILE_SIZE,false)
-	for tile in get_occupied_tiles(): 
-		if tile.occupied_by["unit"].CURRENT_JOB == "Bell Boy" and Globals.WHOSTURNISIT != tile.occupied_by["unit"].TEAM and tile.occupied_by["terrain"].type == "Lobby":
-			Globals.complete_unit_quest(tile.occupied_by["unit"],"Let me show you to your room") #Bell Boy QUEST
+		if tile.occupied_by["unit"].TEAM != Globals.WHOSTURNISIT:
+			astar.set_point_solid(tile.global_position/Globals.TILE_SIZE,true)
+		else:
+			astar.set_point_solid(tile.global_position/Globals.TILE_SIZE,false)
 	# show reminder for next players turn
 	get_node("UI/NextPlayerReady").visible = true
 	get_node("UI/NextPlayerReady").text = Globals.WHOSTURNISIT + "'s turn. Click to start."
