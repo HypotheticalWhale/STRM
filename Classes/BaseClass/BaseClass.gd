@@ -1,6 +1,7 @@
 extends Node2D
 class_name BaseClass
 
+var NAME
 var MAX_HEALTH
 var CURRENT_HEALTH
 var TEAM
@@ -178,7 +179,7 @@ func get_hit(attack_info: Dictionary):
 	if who_is_hitting.PASSIVES.has("Teethed to the arm."): #Dog walker passive
 		who_is_hitting.leashed_units.append(self)
 		
-	if who_is_hitting.PASSIVES.has("Green Thumbs") and get_tree().current_scene.all_tiles[global_position].occupied_by["terrain"].type == "Garden": #Gardener Quest
+	if who_is_hitting.PASSIVES.has("Green Thumbs") and get_tree().current_scene.all_tiles[global_position].occupied_by["terrain"].type == "Garden" and who_is_hitting.TEAM != TEAM: #Gardener Quest
 		Globals.complete_unit_quest(who_is_hitting,"Landscaping")
 	# knockback
 	if attack_info.has("knockback"):
@@ -299,7 +300,7 @@ func get_hit(attack_info: Dictionary):
 		who_is_hitting.yeet_self(attack_info["yeet self"])		# if the attack hits a unit, the owner yeets himself to a random tile {yeet self} units away
 
 	# check fight quest
-	if who_is_hitting.QUEST == "Fight":
+	if who_is_hitting.QUEST == "Fight" and who_is_hitting.TEAM != TEAM:
 		await Globals.complete_unit_quest(who_is_hitting, "Fight")
 
 	# damage

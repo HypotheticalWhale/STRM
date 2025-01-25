@@ -198,6 +198,7 @@ layout_mode = 2
 [node name="TurnLabel" type="Label" parent="UI/Player2/MarginContainer/LabelContainer"]
 layout_mode = 2
 theme = ExtResource("2_vidso")
+theme_type_variation = &"HeaderLarge"
 text = "P2"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -507,6 +508,7 @@ text = "Confirm
 
 [node name="JobInfo" type="MarginContainer" parent="UI"]
 process_mode = 3
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -532,7 +534,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Label" type="Label" parent="UI/JobInfo/PanelContainer/VBoxContainer"]
+[node name="ClassInformation" type="Label" parent="UI/JobInfo/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "Class Information"

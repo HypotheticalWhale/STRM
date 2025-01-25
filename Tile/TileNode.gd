@@ -21,6 +21,8 @@ func _on_mouse_entered():
 	if not (occupied_by["unit"] and get_parent().attacking):
 		highlighted_tile.visible = true
 	get_parent().highlighted_tile = self
+	#if occupied_by["unit"] != null:
+		#$Label.tooltip_text = occupied_by["unit"].NAME
 
 func _on_mouse_exited():
 	highlighted_tile.visible = false

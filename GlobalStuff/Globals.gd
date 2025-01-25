@@ -57,9 +57,9 @@ var quests : Dictionary = {
 var skills = {
 	"Sweep Attack": {
 		"shape": [Vector2(1,0),Vector2(0,1),Vector2(0,-1),Vector2(2,0)],
-		"damage multiplier": 0.1,
+		"damage multiplier": 1,
 		"optional effects": {
-			"sweet spot": Vector2(1,0)
+			"sweet spot": Vector2(2,0)
 		},
 		"description": "you sweep the floor sweep sweep",
 	},
@@ -71,36 +71,36 @@ var skills = {
 		},
 		"description": "Large scissors for cutting large objects"
 	},
-	"Backstab": {
-		"shape": [Vector2(2,0)],
-		"damage multiplier": 0.1,
-		"optional effects": {
-			#"backstab": 1.5	# backstab modifies damage by 1.5X
-			"disable": 1,
-			"dash": null,
-		},
-		"description": "Doesn't actually do more damage from behind",
-	},
-	"Piercing Ray": {
-		"shape": [Vector2(1,0),Vector2(2,0),Vector2(3,0),Vector2(4,0)],
-		"damage multiplier": 0.1,
-		"optional effects": {
-			"knockback": 1,
-		},
-		"description": "Bad breath travels a long distance sometimes",
-	},
+	# legacy code bro
+	#"Backstab": {
+		#"shape": [Vector2(2,0)],
+		#"damage multiplier": 0.1,
+		#"optional effects": {
+			##"backstab": 1.5	# backstab modifies damage by 1.5X
+			#"disable": 1,
+			#"dash": null,
+		#},
+		#"description": "Doesn't actually do more damage from behind",
+	#},
+	#"Piercing Ray": {
+		#"shape": [Vector2(1,0),Vector2(2,0),Vector2(3,0),Vector2(4,0)],
+		#"damage multiplier": 0.1,
+		#"optional effects": {
+			#"knockback": 1,
+		#},
+		#"description": "Bad breath travels a long distance sometimes",
+	#},
 	"Your weapons, please.": { 
 		"shape": [Vector2(1,0), Vector2(2,0)],
-		"damage multiplier": 0.1,
+		"damage multiplier": 0.0,
 		"optional effects": {
-			"knockback": 1,	# knocks back 2 squares
-			"disable": 1	# disables unit for 1 turn
+			"disable": 5	# disables unit for 1 turn
 		},
 		"description": "The bell boy's cart is the second most dangerous thing in this mansion",
 	},
 	"Fleet-footed Kick.": {
-		"shape": [Vector2(2,0)],
-		"damage multiplier": 0.0,
+		"shape": [Vector2(2,0),Vector2(2,1),Vector2(2,-1),Vector2(3,0),Vector2(3,1),Vector2(3,-1)],
+		"damage multiplier": 1.5,
 		"optional effects": {
 			"dash": null, # just dashes to the target tile. no other variables
 		},
@@ -120,7 +120,7 @@ var skills = {
 	},
 	"I come with great news": {	# attacks a unit one tile away. if unit is wet, create a cone of bird shit terrain behind unit.
 		"shape": [Vector2(1,0)],
-		"damage multiplier": 0.1,
+		"damage multiplier": 1,
 		"optional effects": {
 			"splatter droppings": null,
 		},
@@ -133,7 +133,7 @@ var skills = {
 			Vector2(3, 0), Vector2(3,-1), Vector2(3, 1),
 			Vector2(4, 0),
 		],
-		"damage multiplier": 0.1,
+		"damage multiplier": 1,
 		"optional effects": {
 			"random gardens": null
 		},
@@ -146,7 +146,7 @@ var skills = {
 			Vector2(3, 1), Vector2(3, 0), Vector2(3, -1),
 			Vector2(4, 0)
 		],
-		"damage multiplier": 0.1,
+		"damage multiplier": 1,
 		"optional effects": {
 			"random gardens": null,
 			"gain attack": 1,
@@ -160,7 +160,7 @@ var skills = {
 			Vector2(3, 2), Vector2(3, 1), Vector2(3, 0), Vector2(3, -1), Vector2(3, -2),
 			Vector2(4, 1), Vector2(4, -1),
 		],
-		"damage multiplier": 0.1,
+		"damage multiplier": 1,
 		"optional effects": {
 			"random gardens": null,
 			"gain attack": 1,
@@ -176,7 +176,7 @@ var skills = {
 			Vector2(4, 1), Vector2(4, 0), Vector2(4, -1),
 			Vector2(5, 0),
 		],
-		"damage multiplier": 0.1,
+		"damage multiplier": 1,
 		"optional effects": {
 			"random gardens": null,
 			"gain attack": 10,

@@ -4,15 +4,15 @@ extends BaseClass
 func initialize_stats():
 	MAX_HEALTH = 60
 	CURRENT_HEALTH = 60
-	#MOVEMENT = 3
-	MOVEMENT = 20
-	DAMAGE = 20
+	MOVEMENT = 3
+	#MOVEMENT = 20
+	DAMAGE = 10
 	xp = 0
 	max_xp = 100
 	CURRENT_JOB = "Servant"
 	ACTIONS = ["Sweep Attack"]
 	QUEST = "Fight"
-	POTENTIAL_JOBS = ["Messenger", "Bell Boy", "Charioteer"]
+	POTENTIAL_JOBS = ["Messenger", "Bell Boy", "Gardener"]
 
 
 func initialize_sprites():
