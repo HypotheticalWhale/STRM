@@ -370,6 +370,7 @@ func _on_action_button_pressed():
 		button.text = action
 		button.skill_owner = selected_tile.occupied_by["unit"]
 		button.skill_name = action
+		button.tooltip_text = Globals.skills[action]["description"]
 		action_button_container.add_child(button)
 		if Globals.WHOSTURNISIT == "P2":
 			button.pressed.connect(on_skill_pressed.bind(button,"W"))
