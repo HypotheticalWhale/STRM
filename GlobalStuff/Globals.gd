@@ -23,7 +23,7 @@ var quests : Dictionary = {
 	},
 	"Landscaping": {
 		"description": "dog",
-		"reward": 100
+		"reward": 34
 	},
 	"You're it": {
 		"description": "dog",

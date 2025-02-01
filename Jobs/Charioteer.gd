@@ -8,6 +8,6 @@ func _ready():
 	passive = "Take a ride."	#move whole team forward?
 	QUEST = "Chariot Boy"
 	POTENTIAL_JOBS = []
-	MAX_HEALTH = 10
-	MOVEMENT = 4
+	MAX_HEALTH = 15
+	MOVEMENT = 6
 	DAMAGE = 10

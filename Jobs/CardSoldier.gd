@@ -8,7 +8,7 @@ func _ready():
 	skill = "Cloister Garth Commoner's Clubs"
 	passive = "Die Mond"
 	POTENTIAL_JOBS = []
-	MAX_HEALTH = 10
-	MOVEMENT = 10
+	MAX_HEALTH = 25
+	MOVEMENT = 4
 	DAMAGE = 10
 	QUEST = "I'm a lifelong learner"

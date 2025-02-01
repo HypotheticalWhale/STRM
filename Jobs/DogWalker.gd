@@ -8,6 +8,6 @@ func _ready():
 	passive = "Teethed to the arm."	# has dogs as arms. attacks do double damage
 	QUEST = "Walking Dogs"
 	POTENTIAL_JOBS = []
-	MAX_HEALTH = 5
-	MOVEMENT = 10
+	MAX_HEALTH = 25
+	MOVEMENT = 5
 	DAMAGE = 10

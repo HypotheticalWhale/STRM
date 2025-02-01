@@ -8,7 +8,7 @@ func _ready():
 	skill = "I come with great news"
 	passive = "Pigeon Rider"
 	POTENTIAL_JOBS = []
-	MAX_HEALTH = 10
-	MOVEMENT = 4
-	DAMAGE = 8
+	MAX_HEALTH = 25
+	MOVEMENT = 5
+	DAMAGE = 10
 	QUEST = "Smelliest guy on earth"

@@ -179,7 +179,7 @@ func get_hit(attack_info: Dictionary):
 	if who_is_hitting.PASSIVES.has("Teethed to the arm."): #Dog walker passive
 		who_is_hitting.leashed_units.append(self)
 		
-	if who_is_hitting.PASSIVES.has("Green Thumbs") and get_tree().current_scene.all_tiles[global_position].occupied_by["terrain"].type == "Garden" and who_is_hitting.TEAM != TEAM: #Gardener Quest
+	if who_is_hitting.PASSIVES.has("Green Thumbs") and get_tree().current_scene.all_tiles[who_is_hitting.global_position].occupied_by["terrain"].type == "Garden" and who_is_hitting.TEAM != TEAM: #Gardener Quest
 		Globals.complete_unit_quest(who_is_hitting,"Landscaping")
 	# knockback
 	if attack_info.has("knockback"):
