@@ -11,7 +11,7 @@ var TAKENACTION
 var quests : Dictionary = {
 	"Fight" : {
 		"description" : "get hit or hit something",
-		"reward" : 100	#gains 5 xp
+		"reward" : 50	#gains 5 xp
 	},
 	"Traveller": {
 		"description" : "get hit or hit something",

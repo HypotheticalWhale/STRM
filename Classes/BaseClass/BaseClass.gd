@@ -314,6 +314,7 @@ func get_hit(attack_info: Dictionary):
 		print("im ded")
 		CURRENT_HEALTH = MAX_HEALTH
 		get_tree().current_scene.all_tiles[global_position].occupied_by["unit"] = null
+		get_tree().current_scene.astar.update()
 		self.global_position = Vector2(0,-999999)
 		return
 
@@ -322,7 +323,7 @@ func add_job(job_name : String):
 	$Jobs.add_child(job_node)
 	ACTIONS.append(job_node.skill)
 	MAX_HEALTH += job_node.MAX_HEALTH
-	CURRENT_HEALTH = MAX_HEALTH
+	CURRENT_HEALTH += job_node.MAX_HEALTH
 	MOVEMENT = job_node.MOVEMENT
 	DAMAGE += job_node.DAMAGE
 	BASE_DAMAGE = DAMAGE
