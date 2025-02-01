@@ -255,7 +255,7 @@ var passives : Dictionary = {
 		"description": "Change to a stronger suit when you attack on special garden tiles",
 		"damage multiplier": 1.0
 	},
-	"No hooligans alllowed.": { # Disable all enemy units on marble floor 
+	"No hooligans allowed.": { # Disable all enemy units on marble floor 
 		"description": "You deal extra damage on green tiles :-)",
 		"damage multiplier": 1.0
 	},
