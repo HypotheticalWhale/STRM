@@ -211,7 +211,7 @@ func highlight_available_tiles(available_tiles_coords):
 	clear_available_attack_tiles()
 	moving = true
 	var grid_pos
-	
+	astar.update()
 	for tile_coords in available_tiles_coords:
 		grid_pos = tile_coords*Globals.TILE_SIZE
 		if grid_pos not in valid_tiles:
