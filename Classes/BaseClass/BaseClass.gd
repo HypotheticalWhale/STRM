@@ -315,7 +315,7 @@ func get_hit(attack_info: Dictionary):
 		CURRENT_HEALTH = MAX_HEALTH
 		get_tree().current_scene.all_tiles[global_position].occupied_by["unit"] = null
 		get_tree().current_scene.astar.update()
-		self.global_position = Vector2(0,-999999)
+		self.global_position = Vector2(99999999,-9999999)
 		return
 
 func add_job(job_name : String):

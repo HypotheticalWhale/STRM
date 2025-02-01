@@ -54,6 +54,9 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if astar.is_dirty():
+		print("astar is dirt")
+		astar.update()
 	if attacking and selected_tile:
 		calc_direction = get_cursor_direction_relative_to_node(selected_tile)
 		if calc_direction != mouse_relative_direction:
@@ -211,7 +214,6 @@ func highlight_available_tiles(available_tiles_coords):
 	clear_available_attack_tiles()
 	moving = true
 	var grid_pos
-	astar.update()
 	for tile_coords in available_tiles_coords:
 		grid_pos = tile_coords*Globals.TILE_SIZE
 		if grid_pos not in valid_tiles:
@@ -297,7 +299,6 @@ func _on_end_button_pressed():
 	turn_timer.start()
 	
 func _on_turn_timer_timeout():
-	astar.update()	
 	hide_info_menu()
 	hide_select_menu()	
 	clear_available_attack_tiles()
@@ -353,7 +354,9 @@ func _on_turn_timer_timeout():
 	# show reminder for next players turn
 	get_node("UI/NextPlayerReady").visible = true
 	get_node("UI/NextPlayerReady").text = Globals.WHOSTURNISIT + "'s turn. Click to start."
+	await astar.update()		
 	get_tree().paused = true
+	
 	
 func _on_more_info_button_pressed():
 	var info_ui = get_tree().current_scene.get_node("UI/JobInfo")
