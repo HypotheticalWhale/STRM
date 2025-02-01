@@ -195,16 +195,16 @@ func hide_action_buttons():
 	$SelectOptions/PanelContainer/HBoxContainer/ActionButtons.visible = false
 	
 func disable_move_button():
-	$SelectOptions/PanelContainer/HBoxContainer/SelectButtons/MoveButton.disabled = true
+	$SelectOptions/PanelContainer/HBoxContainer/SelectButtons/MoveButton.set_deferred("disabled", true)
 
 func enable_move_button():
-	$SelectOptions/PanelContainer/HBoxContainer/SelectButtons/MoveButton.disabled = false
+	$SelectOptions/PanelContainer/HBoxContainer/SelectButtons/MoveButton.set_deferred("disabled", false)
 	
 func disable_action_button():
-	$SelectOptions/PanelContainer/HBoxContainer/SelectButtons/ActionButton.disabled = true
+	$SelectOptions/PanelContainer/HBoxContainer/SelectButtons/ActionButton.set_deferred("disabled", true)
 
 func enable_action_button():
-	$SelectOptions/PanelContainer/HBoxContainer/SelectButtons/ActionButton.disabled = false
+	$SelectOptions/PanelContainer/HBoxContainer/SelectButtons/ActionButton.set_deferred("disabled", false)
 	
 func highlight_available_tiles(available_tiles_coords):
 	clear_available_tiles()
@@ -305,8 +305,8 @@ func _on_turn_timer_timeout():
 	attacking = false
 	moving = false
 	$MovementArrow.clear_points()
-	$SelectOptions/PanelContainer/HBoxContainer/SelectButtons/MoveButton.disabled = false
-	$SelectOptions/PanelContainer/HBoxContainer/SelectButtons/ActionButton.disabled = false
+	$SelectOptions/PanelContainer/HBoxContainer/SelectButtons/MoveButton.set_deferred("disabled", false)
+	$SelectOptions/PanelContainer/HBoxContainer/SelectButtons/ActionButton.set_deferred("disabled", false)
 	Globals.TAKENACTION = null
 	
 	# track status ailment durations

@@ -117,6 +117,7 @@ func _on_input_event(viewport, event, shape_idx):
 		#if the plyaer is not attacking and he presses a square with a unit on it, that should be the trigger for the menu
 		if occupied_by["unit"] and not get_parent().attacking:
 			# disable the action button if unit is disabled
+			#print(occupied_by["unit"], " has ", occupied_by["unit"].disabled_turns_left, " disabled turns left")
 			if occupied_by["unit"].disabled_turns_left > 0:
 				get_parent().disable_action_button()
 			else:
