@@ -8,6 +8,6 @@ func _ready():
 	passive = "No hooligans allowed."	# 
 	QUEST = "The Chandelier Canopy Conundrum"
 	POTENTIAL_JOBS = []
-	MAX_HEALTH = 39
+	MAX_HEALTH = 40
 	MOVEMENT = 5
-	DAMAGE = 5
+	DAMAGE = 0

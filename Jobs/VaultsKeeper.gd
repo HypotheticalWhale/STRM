@@ -7,7 +7,7 @@ func _ready():
 	skill = "My shift is over"
 	passive = "Don't touch my stuff"
 	POTENTIAL_JOBS = []
-	MAX_HEALTH = 15
+	MAX_HEALTH = 40
 	MOVEMENT = 2
-	DAMAGE = 10
+	DAMAGE = 15
 	QUEST = "Keeper of the vault in my heart <3"
