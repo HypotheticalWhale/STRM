@@ -211,6 +211,7 @@ var poshMedievalNames = [
   "Wilhelmina Hatherleigh",
   "Winston Pembroke"
 ]
+
 #var available_units = ["res://Classes/Servant.tscn", "res://Classes/Noble.tscn", "res://Classes/Entertainer.tscn"]
 var available_units = ["res://Classes/Servant.tscn"]
 # Called when the node enters the scene tree for the first time.
@@ -253,4 +254,5 @@ func get_random_unit():
 	var rand_index = randi_range(0,len(available_units)-1)
 	var unit = load(available_units[rand_index])
 	var unit_instance = unit.instantiate()
+
 	return unit_instance

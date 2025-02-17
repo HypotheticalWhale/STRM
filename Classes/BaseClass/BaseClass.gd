@@ -21,7 +21,7 @@ var wanted = 0	# for vaultskeeper
 var my_vault: Object = null
 var suit: String = ""
 var description = "Just the base servant, he lives in the manor"
-var skill = "Sweep Attack"
+var skill = ""
 var passive = "Noob"
 # quest specific
 var xp : int
@@ -150,6 +150,20 @@ func next_to_pigeon_commander(who_is_hitting):
 	show_wet_status(true)
 	wet_turns_left = 2
 
+
+func embrace_bigness(bigness: String):
+	print("embraicng ", bigness)
+	if bigness == "Big Biceps":
+		skill = "Sweep Attack"
+		return
+		
+	if bigness == "Big Glasses":
+		skill = "Piercing Ray"
+		return
+		
+	if bigness == "Big Hunchback":
+		skill = "Backstab"
+		return
 			
 func get_hit(attack_info: Dictionary):
 	# attack_info example = {
