@@ -54,9 +54,6 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if astar.is_dirty():
-		print("astar is dirt")
-		astar.update()
 	if attacking and selected_tile:
 		calc_direction = get_cursor_direction_relative_to_node(selected_tile)
 		if calc_direction != mouse_relative_direction:
@@ -354,7 +351,6 @@ func _on_turn_timer_timeout():
 	# show reminder for next players turn
 	get_node("UI/NextPlayerReady").visible = true
 	get_node("UI/NextPlayerReady").text = Globals.WHOSTURNISIT + "'s turn. Click to start."
-	await astar.update()		
 	get_tree().paused = true
 	
 	
