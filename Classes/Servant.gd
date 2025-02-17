@@ -10,7 +10,12 @@ func initialize_stats():
 	xp = 0
 	max_xp = 100
 	CURRENT_JOB = "Servant"
-	ACTIONS = ["Sweep Attack"]
+	
+	randomize()
+	var bigness_list = Globals.bigness_data.keys()
+	bigness_list.shuffle()
+	var new_bigness = bigness_list[0]
+	ACTIONS = [Globals.bigness_data[new_bigness]["skill"]]
 	QUEST = "Fight"
 	POTENTIAL_JOBS = ["Messenger", "Bell Boy", "Gardener"]
 
