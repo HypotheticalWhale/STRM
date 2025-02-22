@@ -219,7 +219,7 @@ func hide_target_terrain_tile():
 	target_terrain_tile.visible = false
 
 func is_empty_tile():
-	if occupied_by["unit"]:
+	if occupied_by["unit"] != null:
 		return true
 		
 

@@ -115,7 +115,7 @@ func reset_units():
 		unit.global_position = tile_coords
 		all_tiles[tile_coords].occupied_by["unit"] = unit
 		count += 2		
-	
+	astar.update()
 	
 func spawn_tiles():
 	var throne_count = true
@@ -285,7 +285,6 @@ func _on_move_button_pressed():
 	if unit_to_move.wet_turns_left > 0:
 		wet_movement_penalty = 1
 	unit_to_move.CURRENT_MOVEMENT = max(0, unit_to_move.MOVEMENT - wet_movement_penalty)
-	
 	highlight_available_tiles(get_available_coordinates(selected_tile.global_position/Globals.TILE_SIZE,unit_to_move.CURRENT_MOVEMENT)) 
 	hide_action_buttons()
 	hide_select_menu()
