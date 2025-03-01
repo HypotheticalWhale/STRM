@@ -15,6 +15,7 @@ var PASSIVES = []
 var UI_EXP_LINK
 var QUEST 
 var POTENTIAL_JOBS : Array[String]
+var BIGNESS
 var enemies_touched = []
 var leashed_units = []
 var wanted = 0	# for vaultskeeper

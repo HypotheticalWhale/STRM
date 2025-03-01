@@ -294,7 +294,7 @@ var bigness_data = {
 		"skill": "Piercing Ray",
 	},
 	
-	"Big Hunchback": {
+	"Big Hood": {
 		"skill": "Backstab",
 	},
 
