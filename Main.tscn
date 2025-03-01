@@ -315,7 +315,7 @@ horizontal_alignment = 1
 [node name="TurnTimer" type="Timer" parent="UI/TurnTimerUI/TimerContainer"]
 wait_time = 20.0
 
-[node name="BottomRightContainer" type="HBoxContainer" parent="UI"]
+[node name="BottomRightContainer" type="VBoxContainer" parent="UI"]
 z_index = -1
 z_as_relative = false
 anchors_preset = 3
@@ -330,30 +330,11 @@ grow_vertical = 0
 mouse_filter = 2
 theme = ExtResource("2_vidso")
 
-[node name="QuestInfo" type="PanelContainer" parent="UI/BottomRightContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 8
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/BottomRightContainer/QuestInfo"]
-layout_mode = 2
-
-[node name="QuestHeader" type="Label" parent="UI/BottomRightContainer/QuestInfo/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 10
-horizontal_alignment = 1
-
-[node name="QuestDescription" type="Label" parent="UI/BottomRightContainer/QuestInfo/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 10
-size_flags_stretch_ratio = 4.0
-horizontal_alignment = 1
-
 [node name="TileInfo" type="PanelContainer" parent="UI/BottomRightContainer"]
 visible = false
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 4
+size_flags_vertical = 3
 script = ExtResource("5_sqfni")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/BottomRightContainer/TileInfo"]
@@ -361,9 +342,12 @@ layout_mode = 2
 
 [node name="TerrainLabel" type="Label" parent="UI/BottomRightContainer/TileInfo/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="TerrainIcon" type="TextureRect" parent="UI/BottomRightContainer/TileInfo/VBoxContainer"]
 unique_name_in_owner = true
@@ -374,9 +358,38 @@ stretch_mode = 5
 
 [node name="DefenseLabel" type="Label" parent="UI/BottomRightContainer/TileInfo/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="QuestInfo" type="PanelContainer" parent="UI/BottomRightContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/BottomRightContainer/QuestInfo"]
+layout_mode = 2
+
+[node name="QuestHeader" type="Label" parent="UI/BottomRightContainer/QuestInfo/VBoxContainer"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+size_flags_vertical = 10
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="QuestDescription" type="Label" parent="UI/BottomRightContainer/QuestInfo/VBoxContainer"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+size_flags_vertical = 10
+size_flags_stretch_ratio = 4.0
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="LevelUp" type="MarginContainer" parent="UI"]
 process_mode = 3
@@ -702,7 +715,7 @@ grow_vertical = 2
 script = ExtResource("11_iwsbh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(361, 132)
+position = Vector2(400, 140)
 
 [node name="MovementArrow" type="Line2D" parent="."]
 z_index = 1
