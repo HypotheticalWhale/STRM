@@ -23,6 +23,8 @@ var suit: String = ""
 var description = "Just the base servant, he lives in the manor"
 var skill = ""
 var passive = "Noob"
+var damage_dealt: float = 0.0
+
 # quest specific
 var xp : int
 var max_xp : int
@@ -89,21 +91,24 @@ func level_up():
 func DIDIWIN():
 	var tile_node = get_tile_node()
 	if tile_node.is_manor and tile_node.occupied_by["terrain"].WHOSTHRONEISIT != Globals.WHOSTURNISIT:
-		if Globals.score.P1 >= 1:
-			get_tree().current_scene.get_node("UI/EndRoundButton").visible = true
-			get_tree().current_scene.get_node("UI/EndRoundButton").text = "Player 1 Wins!! New Game?"
+		if Globals.score.P1 >= 1 and TEAM == "P1":
+			print("p1 won, end")
+			get_tree().current_scene.get_node("UI/EndRoundScreen").visible = true
+			get_tree().current_scene.get_node("UI/EndRoundScreen").initialize("P1", "end")
 			Globals.reset_global()
 			await get_tree().reload_current_scene()
 			
-		elif Globals.score.P2 >= 1:
-			get_tree().current_scene.get_node("UI/EndRoundButton").visible = true
-			get_tree().current_scene.get_node("UI/EndRoundButton").text = Globals.WHOSTURNISIT + "Player 2 Wins!! New Game?"
+		elif Globals.score.P2 >= 1 and TEAM == "P2":
+			print("p2 won, end")
+			get_tree().current_scene.get_node("UI/EndRoundScreen").visible = true
+			get_tree().current_scene.get_node("UI/EndRoundScreen").initialize("P2", "end")
 			Globals.reset_global()		
 			await get_tree().reload_current_scene()
 			
 		else:
-			get_tree().current_scene.get_node("UI/EndRoundButton").visible = true
-			get_tree().current_scene.get_node("UI/EndRoundButton").text = TEAM + ", You win this round!"
+			print(TEAM, " won, continue")
+			get_tree().current_scene.get_node("UI/EndRoundScreen").visible = true
+			get_tree().current_scene.get_node("UI/EndRoundScreen").initialize(TEAM, "continue")
 			get_tree().paused = true
 
 
@@ -320,6 +325,7 @@ func get_hit(attack_info: Dictionary):
 	# damage
 	if attack_info["damage"] > 0:
 		take_damage(attack_info["damage"])
+		who_is_hitting.damage_dealt += attack_info["damage"]
 	elif attack_info["damage"] < 0:
 		heal(attack_info["damage"])
 	else:
