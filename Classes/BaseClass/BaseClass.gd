@@ -89,13 +89,13 @@ func level_up():
 func DIDIWIN():
 	var tile_node = get_tile_node()
 	if tile_node.is_manor and tile_node.occupied_by["terrain"].WHOSTHRONEISIT != Globals.WHOSTURNISIT:
-		if Globals.score.P1 >= 2:
+		if Globals.score.P1 >= 1:
 			get_tree().current_scene.get_node("UI/EndRoundButton").visible = true
 			get_tree().current_scene.get_node("UI/EndRoundButton").text = "Player 1 Wins!! New Game?"
 			Globals.reset_global()
 			await get_tree().reload_current_scene()
 			
-		elif Globals.score.P2 >= 2:
+		elif Globals.score.P2 >= 1:
 			get_tree().current_scene.get_node("UI/EndRoundButton").visible = true
 			get_tree().current_scene.get_node("UI/EndRoundButton").text = Globals.WHOSTURNISIT + "Player 2 Wins!! New Game?"
 			Globals.reset_global()		
@@ -401,7 +401,6 @@ func get_tile_node():
 			return tile_node
 	
 	# unit should always be able to get its tile node
-	assert(tile_node != null) 
 	return tile_node
 
 

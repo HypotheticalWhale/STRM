@@ -49,6 +49,10 @@ var quests : Dictionary = {
 		"description": "You're already maxed out? Why are you still hustling?",
 		"reward": 0
 	},
+	"The Chandelier Canopy Conundrum": {
+		"description": "You're already maxed out? Why are you still hustling?",
+		"reward": 0
+	},
 	"Keeper of the vault in my heart <3": {
 		"description": "Huh? HUH? HUUUHHH? HUUUUUUUUUH????????",
 		"reward": 0
@@ -74,16 +78,16 @@ var skills = {
 	# not legacy code bro
 	"Backstab": {
 		"shape": [Vector2(2,0)],
-		"damage multiplier": 0.1,
+		"damage multiplier": 0.5,
 		"optional effects": {
 			#"backstab": 1.5	# backstab modifies damage by 1.5X
-			"disable": 2,
+			"disable": 1,
 		},
 		"description": "Doesn't actually do more damage from behind",
 	},
 	"Piercing Ray": {
 		"shape": [Vector2(1,0),Vector2(2,0),Vector2(3,0),Vector2(4,0)],
-		"damage multiplier": 0.1,
+		"damage multiplier": 0.75,
 		"optional effects": {
 			"sweet spot": Vector2(4,0),
 		},
@@ -93,7 +97,7 @@ var skills = {
 		"shape": [Vector2(1,0), Vector2(2,0)],
 		"damage multiplier": 0.0,
 		"optional effects": {
-			"disable": 5	# disables unit for 1 turn
+			"disable": 2	# disables unit for 1 turn
 		},
 		"description": "The bell boy's cart is the second most dangerous thing in this mansion",
 	},

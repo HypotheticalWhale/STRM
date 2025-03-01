@@ -177,6 +177,8 @@ func show_select_menu(menu_position,tile_node):
 	hide_info_menu()
 	
 func show_info_menu(menu_position,tile_node):
+	if tile_node.occupied_by["unit"] == null:
+		return
 	selected_tile = tile_node	
 	$NotYourOptions.visible = true
 	$NotYourOptions.global_position = menu_position
