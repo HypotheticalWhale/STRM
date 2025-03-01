@@ -96,15 +96,13 @@ func DIDIWIN():
 			print("p1 won, end")
 			get_tree().current_scene.get_node("UI/EndRoundScreen").visible = true
 			get_tree().current_scene.get_node("UI/EndRoundScreen").initialize("P1", "end")
-			Globals.reset_global()
-			await get_tree().reload_current_scene()
+			#await get_tree().reload_current_scene()
 			
 		elif Globals.score.P2 >= 1 and TEAM == "P2":
 			print("p2 won, end")
 			get_tree().current_scene.get_node("UI/EndRoundScreen").visible = true
 			get_tree().current_scene.get_node("UI/EndRoundScreen").initialize("P2", "end")
-			Globals.reset_global()		
-			await get_tree().reload_current_scene()
+			#await get_tree().reload_current_scene()
 			
 		else:
 			print(TEAM, " won, continue")

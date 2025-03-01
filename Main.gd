@@ -36,11 +36,12 @@ var calc_direction
 var button_pressed
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Globals.reset_global()
 	PlayerData.create_units()
 	spawn_tiles()
 	spawn_units()
 	turn_timer.start()
-	if starting_player == "P1":
+	if Globals.WHOSTURNISIT == "P1":
 		turn_on_p1_ui()
 	else:
 		turn_on_p2_ui()
@@ -51,7 +52,8 @@ func _ready():
 	for tile in get_occupied_tiles():
 		if tile.occupied_by["unit"].TEAM != Globals.WHOSTURNISIT:
 			astar.set_point_solid(tile.global_position/Globals.TILE_SIZE,true)
-	
+	_on_turn_timer_timeout()
+	_on_turn_timer_timeout()	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if attacking and selected_tile:
