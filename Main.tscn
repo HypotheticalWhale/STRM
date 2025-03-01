@@ -13,9 +13,9 @@
 [ext_resource type="Script" path="res://UI/LevelUp.gd" id="8_x7oqh"]
 [ext_resource type="Script" path="res://UI/LevelUpUI/JobButton.gd" id="9_7relu"]
 [ext_resource type="Script" path="res://UI/NextPlayerReady.gd" id="10_sy41c"]
-[ext_resource type="Script" path="res://UI/EndRoundButton.gd" id="11_iwsbh"]
 [ext_resource type="Texture2D" uid="uid://cpoj385d4qv08" path="res://Assets/Sprites/Units/BellBoy.png" id="13_1o1jg"]
 [ext_resource type="Script" path="res://JobInfo.gd" id="13_w40fn"]
+[ext_resource type="Script" path="res://EndRoundScreen.gd" id="16_r8hkc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lawlm"]
 shader = ExtResource("6_a0eb8")
@@ -704,15 +704,34 @@ grow_vertical = 2
 theme = ExtResource("2_vidso")
 script = ExtResource("10_sy41c")
 
-[node name="EndRoundButton" type="Button" parent="UI"]
-process_mode = 3
+[node name="EndRoundScreen" type="PanelContainer" parent="UI"]
+unique_name_in_owner = true
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("11_iwsbh")
+theme = ExtResource("2_vidso")
+script = ExtResource("16_r8hkc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/EndRoundScreen"]
+layout_mode = 2
+
+[node name="PlayerWon" type="Label" parent="UI/EndRoundScreen/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/EndRoundScreen/VBoxContainer/PlayerWon"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="EndRoundButton" type="Button" parent="UI/EndRoundScreen/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(400, 140)
@@ -738,4 +757,4 @@ end_cap_mode = 2
 [connection signal="pressed" from="UI/MarginContainer/PanelContainer/VBoxContainer/JobButtons/JobButton0" to="UI/MarginContainer/PanelContainer/VBoxContainer/JobButtons/JobButton0" method="_on_pressed"]
 [connection signal="pressed" from="UI/MarginContainer/PanelContainer/VBoxContainer/Confirm" to="UI/LevelUp" method="_on_confirm_pressed"]
 [connection signal="pressed" from="UI/NextPlayerReady" to="UI/NextPlayerReady" method="_on_pressed"]
-[connection signal="pressed" from="UI/EndRoundButton" to="UI/EndRoundButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/EndRoundScreen/VBoxContainer/EndRoundButton" to="UI/EndRoundScreen" method="_on_end_round_button_pressed"]
