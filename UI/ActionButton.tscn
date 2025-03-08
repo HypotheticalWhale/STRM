@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bxityqd6vhop8"]
 
-[ext_resource type="Script" path="res://UI/ActionButton.gd" id="1_ds6se"]
+[ext_resource type="Script" uid="uid://bypiblftghq8" path="res://UI/ActionButton.gd" id="1_ds6se"]
 
 [node name="ActionButton" type="Button"]
 anchors_preset = 15

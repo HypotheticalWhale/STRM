@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b7akml1uq66ue"]
 
 [ext_resource type="PackedScene" uid="uid://beftcxptuutu2" path="res://Terrain/Terrain.tscn" id="1_5utmf"]
-[ext_resource type="Script" path="res://Terrain/Orchard.gd" id="2_o8qxy"]
+[ext_resource type="Script" uid="uid://kxcsljvctec" path="res://Terrain/Orchard.gd" id="2_o8qxy"]
 [ext_resource type="Texture2D" uid="uid://ci4t4os3c705b" path="res://Assets/Terrain/Orchard.png" id="3_d4l77"]
 
 [node name="Orchard" instance=ExtResource("1_5utmf")]
