@@ -18,3 +18,4 @@ func _on_end_round_button_pressed() -> void:
 	await get_tree().current_scene._on_turn_timer_timeout()
 	get_tree().current_scene.turn_timer.start()
 	visible = false
+	print(Globals.score)
