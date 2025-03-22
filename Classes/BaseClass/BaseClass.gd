@@ -1,6 +1,5 @@
 extends Node2D
 class_name BaseClass
-
 var NAME
 var MAX_HEALTH
 var CURRENT_HEALTH
@@ -40,6 +39,7 @@ var wet_turns_left: int = 0
 var color_change_duration: float = 0.5
 var original_color: Color
 
+@onready var shakercomponent: ShakerComponent2D = get_tree().current_scene.get_node("Camera2D/ShakerComponent2D")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	await initialize_stats()
@@ -115,8 +115,11 @@ func take_damage(damage):
 	# Change to red to indicate damage
 	change_color(Color.RED)
 	CURRENT_HEALTH -= damage
+	await shakercomponent.play_shake_small()
+	await get_tree().create_timer(0.3).timeout
 	print("Took ", damage, "Damage")
 	print("Taking Damage Current Health/Max Health: ",CURRENT_HEALTH,"/",MAX_HEALTH)
+	return
 	
 func heal(heal_amount):
 	# Change to green to indicate healing
@@ -197,8 +200,6 @@ func get_hit(attack_info: Dictionary):
 	if who_is_hitting.PASSIVES.has("Teethed to the arm."): #Dog walker passive
 		who_is_hitting.leashed_units.append(self)
 		
-	if who_is_hitting.PASSIVES.has("Green Thumbs") and get_tree().current_scene.all_tiles[who_is_hitting.global_position].occupied_by["terrain"].type == "Garden" and who_is_hitting.TEAM != TEAM: #Gardener Quest
-		Globals.complete_unit_quest(who_is_hitting,"Landscaping")
 	# knockback
 	if attack_info.has("knockback"):
 		var destination_coords: Vector2 = global_position
@@ -317,18 +318,23 @@ func get_hit(attack_info: Dictionary):
 	if attack_info.has("yeet self"):
 		who_is_hitting.yeet_self(attack_info["yeet self"])		# if the attack hits a unit, the owner yeets himself to a random tile {yeet self} units away
 
-	# check fight quest
-	if who_is_hitting.QUEST == "Fight" and who_is_hitting.TEAM != TEAM:
-		await Globals.complete_unit_quest(who_is_hitting, "Fight")
 
 	# damage
 	if attack_info["damage"] > 0:
-		take_damage(attack_info["damage"])
+		await take_damage(attack_info["damage"])
 		who_is_hitting.damage_dealt += attack_info["damage"]
 	elif attack_info["damage"] < 0:
-		heal(attack_info["damage"])
+		await heal(attack_info["damage"])
 	else:
 		pass
+		
+	# check fight quest
+	if who_is_hitting.QUEST == "Fight" and who_is_hitting.TEAM != TEAM:
+		await Globals.complete_unit_quest(who_is_hitting, "Fight")
+	if who_is_hitting.PASSIVES.has("Green Thumbs") and get_tree().current_scene.all_tiles[who_is_hitting.global_position].occupied_by["terrain"].type == "Garden" and who_is_hitting.TEAM != TEAM: #Gardener Quest
+		await Globals.complete_unit_quest(who_is_hitting,"Landscaping")
+	
+	#check if die
 	if CURRENT_HEALTH <= 0:
 		print("im ded")
 		CURRENT_HEALTH = MAX_HEALTH

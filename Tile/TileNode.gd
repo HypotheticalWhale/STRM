@@ -12,7 +12,11 @@ var occupied_by = {
 @onready var target_tile = $Target
 @onready var destination_tile = $Destination
 @onready var target_terrain_tile = $TargetTerrain
+@onready var button_press = get_tree().current_scene.get_node("ButtonPressSound")
+@onready var character_select = get_tree().current_scene.get_node("SelectCharacterSound")
 var is_manor = false
+var attack_sound
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -45,6 +49,7 @@ func _on_input_event(viewport, event, shape_idx):
 				add_terrain(get_tree().current_scene.target_terrain_info[global_position])
 			for tile in get_parent().available_attack_tiles:
 				var attack_tile_info = get_parent().available_attack_tiles[tile]
+				attack_sound = attack_tile_info["skill name"]
 				if get_parent().all_tiles[tile].occupied_by["unit"]:
 					# special case for displace attacks: the attack will not hit all target tiles
 					if attack_tile_info.has("displace") and tile not in get_tree().current_scene.displace_target_tiles:
@@ -68,6 +73,9 @@ func _on_input_event(viewport, event, shape_idx):
 					if dash_destination+Vector2(0,-32) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(0,-32)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(0,-32)].occupied_by["unit"].next_to_pigeon_commander(get_parent().all_tiles[dash_destination].occupied_by["unit"])
 			
 			#await Globals.complete_unit_quest(Globals.TAKENACTION,"Fight")	# for debugging only
+			var sound_scene = get_tree().current_scene.get_node("AttackSounds/"+attack_sound)
+			print("AttackSounds/"+attack_sound)
+			sound_scene.play()
 			get_parent().attacking = false
 			get_parent().clear_available_tiles()			
 			get_parent().clear_available_attack_tiles()
@@ -107,6 +115,7 @@ func _on_input_event(viewport, event, shape_idx):
 		
 		#move or attack already but im clicking myself
 		if Globals.TAKENACTION and Globals.TAKENACTION == occupied_by["unit"]:
+			character_select.play()
 			get_parent().attacking = false			
 			get_parent().show_select_menu(global_position,self)
 			get_parent().clear_available_tiles()
@@ -126,6 +135,7 @@ func _on_input_event(viewport, event, shape_idx):
 				get_parent().disable_move_button()
 			else:
 				get_parent().enable_move_button()
+			character_select.play()				
 			get_parent().show_select_menu(global_position,self)
 			get_parent().clear_available_tiles()			
 			get_parent().clear_available_attack_tiles()
@@ -145,8 +155,9 @@ func _on_input_event(viewport, event, shape_idx):
 				Globals.TAKENACTION = get_parent().selected_tile.occupied_by["unit"]
 				# look for any units on this tilenode, and trigger their get_hit()
 				for tile in get_parent().available_attack_tiles:
+					var attack_tile_info = get_parent().available_attack_tiles[tile]
+					attack_sound = attack_tile_info["skill name"]
 					if get_parent().all_tiles[tile].occupied_by["unit"]:
-						var attack_tile_info = get_parent().available_attack_tiles[tile]
 						# special case for displace attacks: the attack will not hit all target tiles
 						if attack_tile_info.has("displace") and tile not in get_tree().current_scene.displace_target_tiles:
 							continue
@@ -166,10 +177,13 @@ func _on_input_event(viewport, event, shape_idx):
 						if dash_destination+Vector2(0,32) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(0,32)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(0,32)].occupied_by["unit"].next_to_pigeon_commander(get_parent().all_tiles[dash_destination].occupied_by["unit"])
 						if dash_destination+Vector2(-32,0) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(-32,0)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(-32,0)].occupied_by["unit"].next_to_pigeon_commander(get_parent().all_tiles[dash_destination].occupied_by["unit"])
 						if dash_destination+Vector2(0,-32) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(0,-32)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(0,-32)].occupied_by["unit"].next_to_pigeon_commander(get_parent().all_tiles[dash_destination].occupied_by["unit"])
+				var sound_scene = get_tree().current_scene.get_node("AttackSounds/"+attack_sound)
+				sound_scene.play()
 				get_parent().clear_available_attack_tiles()
 				get_parent().disable_action_button()
 				get_parent().attacking = false
 				#await Globals.complete_unit_quest(Globals.TAKENACTION,"Fight")	# for debugging only
+		
 			get_parent().attacking = false
 			get_parent().clear_available_tiles()						
 			get_parent().clear_available_attack_tiles()

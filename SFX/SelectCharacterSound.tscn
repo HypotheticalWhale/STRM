@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp0662vg2voyl"]
+
+[ext_resource type="AudioStream" uid="uid://co4y801e2oep" path="res://SFX/minecraft-villager-289282_E2MQSVcQ.mp3" id="1_pcyd1"]
+
+[node name="SelectCharacterSound" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_pcyd1")

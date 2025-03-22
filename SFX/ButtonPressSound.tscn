@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://g8sxq75m7oih"]
+
+[ext_resource type="AudioStream" uid="uid://c7dw31qusxsa7" path="res://SFX/mouse_click.mp3" id="1_02iey"]
+
+[node name="ButtonPressSound" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_02iey")

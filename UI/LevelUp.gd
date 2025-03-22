@@ -2,8 +2,10 @@ extends MarginContainer
 
 var selected_job : String
 var unit_to_level : Object
+@onready var button_press = %ButtonPressSound
 
 func _on_confirm_pressed():
+	button_press.play()
 	await unit_to_level.add_job(selected_job)
 	get_tree().paused = false
 	visible = false

@@ -1,8 +1,10 @@
 extends PanelContainer
 
 var player_won = false
+@onready var button_press = %ButtonPressSound
 
 func initialize(team: String, next_action: String):
+	button_press.play()	
 	if next_action == "continue":
 		%PlayerWon.text = team + " wins this round. Go next."
 		player_won = false

@@ -4,6 +4,7 @@ var passive_container_scene = preload("res://UI/PassiveModal.tscn")
 var skill_container_scene = preload("res://UI/SkillModal.tscn")
 var passive_cont
 var skill_cont
+@onready var button_press = %ButtonPressSound
 func update_selected_job_details():
 	var new_job = get_parent().get_parent().selected_tile.occupied_by["unit"]
 	%Background.text = new_job.description
@@ -37,5 +38,6 @@ func update_selected_job_details():
 	remove_child(new_job)
 
 func _on_button_pressed():
+	button_press.play()
 	get_tree().paused = false
 	visible = false

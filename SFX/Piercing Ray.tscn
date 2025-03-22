@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1k71wsu8t1ev"]
+
+[ext_resource type="AudioStream" uid="uid://cv4aqa5wirqcm" path="res://SFX/laser-gun-174976_8I124XJf.mp3" id="1_tpeto"]
+
+[node name="PiercingRay" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_tpeto")
+volume_db = 10.0

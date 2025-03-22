@@ -77,8 +77,8 @@ var skills = {
 	},
 	# not legacy code bro
 	"Backstab": {
-		"shape": [Vector2(2,0)],
-		"damage multiplier": 0.5,
+		"shape": [Vector2(1,0)],
+		"damage multiplier": 2,
 		"optional effects": {
 			#"backstab": 1.5	# backstab modifies damage by 1.5X
 			"disable": 1,
@@ -88,7 +88,7 @@ var skills = {
 	"Piercing Ray": {
 		"shape": [Vector2(1,0),Vector2(2,0),Vector2(3,0),Vector2(4,0)],
 		"damage multiplier": 0.75,
-		"optional effects": {
+		"optional effects": { 
 			"sweet spot": Vector2(4,0),
 		},
 		"description": "Bad breath travels a long distance sometimes",

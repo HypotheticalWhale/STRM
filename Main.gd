@@ -1,5 +1,6 @@
 extends Node2D
 @onready var turn_timer = $UI/TurnTimerUI/TimerContainer/TurnTimer
+@onready var button_press = $ButtonPressSound
 @export var GRID_SIZE = [20,10]
 
 var tile_path = preload("res://Tile/TileNode.tscn")
@@ -283,6 +284,7 @@ func get_available_coordinates(start_pos: Vector2, movement_range: int):
 	return available_coords
 
 func _on_move_button_pressed():
+	button_press.play()
 	var unit_to_move = selected_tile.occupied_by["unit"]
 	# wet status ailment
 	var wet_movement_penalty = 0
@@ -294,7 +296,9 @@ func _on_move_button_pressed():
 	hide_select_menu()
 	
 func _on_end_button_pressed():
-	turn_timer.stop()	
+	button_press.play()
+	await button_press.finished
+	turn_timer.stop()
 	_on_turn_timer_timeout()
 	turn_timer.start()
 	
@@ -358,12 +362,15 @@ func _on_turn_timer_timeout():
 	
 	
 func _on_more_info_button_pressed():
+	button_press.play()		
+	await button_press.finished
 	var info_ui = get_tree().current_scene.get_node("UI/JobInfo")
 	info_ui.update_selected_job_details()
 	get_tree().paused = true
 	info_ui.visible = true
 	
 func _on_action_button_pressed():
+	button_press.play()
 	var button
 	var action_button_container = $SelectOptions/PanelContainer/HBoxContainer/ActionButtons
 	for child in action_button_container.get_children():
@@ -382,6 +389,7 @@ func _on_action_button_pressed():
 	show_action_buttons()
 
 func on_skill_pressed(button,direction):
+	button_press.play()	
 	button_pressed = button
 	attacking = true
 	clear_available_tiles()

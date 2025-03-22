@@ -12,7 +12,7 @@ config_version=5
 
 config/name="StormTheRoyalManor"
 run/main_scene="res://Main.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 PlayerData="*res://GlobalStuff/PlayerData.gd"
 Globals="*res://GlobalStuff/Globals.gd"
 ClassData="*res://GlobalStuff/ClassData.gd"
+Shaker="*res://addons/shaker/src/Shaker.gd"
 
 [display]
 
@@ -29,6 +30,10 @@ window/size/mode=3
 window/stretch/scale=2.0
 window/dpi/allow_hidpi=false
 window/vsync/vsync_mode=0
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/shaker/plugin.cfg")
 
 [gui]
 

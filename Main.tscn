@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cpycaudat764"]
+[gd_scene load_steps=26 format=3 uid="uid://cpycaudat764"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_5hkoq"]
 [ext_resource type="Texture2D" uid="uid://bnm0op8tgjbiv" path="res://Assets/UI/Timer/Timer.png" id="2_j0qa6"]
@@ -16,6 +16,12 @@
 [ext_resource type="Texture2D" uid="uid://cpoj385d4qv08" path="res://Assets/Sprites/Units/BellBoy.png" id="13_1o1jg"]
 [ext_resource type="Script" path="res://JobInfo.gd" id="13_w40fn"]
 [ext_resource type="Script" path="res://EndRoundScreen.gd" id="16_r8hkc"]
+[ext_resource type="Script" path="res://addons/shaker/src/Vector2/shaker_component2D.gd" id="17_7qtl1"]
+[ext_resource type="Resource" uid="uid://bc4l7ybch2maa" path="res://ScreenShake.tres" id="18_a2wx3"]
+[ext_resource type="PackedScene" uid="uid://g8sxq75m7oih" path="res://SFX/ButtonPressSound.tscn" id="19_ucaej"]
+[ext_resource type="AudioStream" uid="uid://dcw0kdhmobjav" path="res://SFX/stone-effect-254998_N0J7su7X.mp3" id="20_shusx"]
+[ext_resource type="PackedScene" uid="uid://dp0662vg2voyl" path="res://SFX/SelectCharacterSound.tscn" id="21_76sm0"]
+[ext_resource type="PackedScene" uid="uid://b1k71wsu8t1ev" path="res://SFX/Piercing Ray.tscn" id="22_6nl2v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lawlm"]
 shader = ExtResource("6_a0eb8")
@@ -734,7 +740,15 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(400, 140)
+position = Vector2(399.676, 139.676)
+
+[node name="ShakerComponent2D" type="Node2D" parent="Camera2D"]
+script = ExtResource("17_7qtl1")
+intensity = 0.5
+duration = 0.3
+fade_in = 0.00138108
+fade_out = 1.0
+shakerPreset = ExtResource("18_a2wx3")
 
 [node name="MovementArrow" type="Line2D" parent="."]
 z_index = 1
@@ -743,6 +757,20 @@ default_color = Color(0, 0, 0, 0.458824)
 texture_mode = 1
 begin_cap_mode = 2
 end_cap_mode = 2
+
+[node name="ButtonPressSound" parent="." instance=ExtResource("19_ucaej")]
+unique_name_in_owner = true
+stream = ExtResource("20_shusx")
+volume_db = 10.0
+
+[node name="SelectCharacterSound" parent="." instance=ExtResource("21_76sm0")]
+unique_name_in_owner = true
+volume_db = 10.0
+
+[node name="AttackSounds" type="Node2D" parent="."]
+
+[node name="Piercing Ray" parent="AttackSounds" instance=ExtResource("22_6nl2v")]
+unique_name_in_owner = true
 
 [connection signal="pressed" from="SelectOptions/PanelContainer/HBoxContainer/SelectButtons/MoveButton" to="." method="_on_move_button_pressed"]
 [connection signal="pressed" from="SelectOptions/PanelContainer/HBoxContainer/SelectButtons/ActionButton" to="." method="_on_action_button_pressed"]
