@@ -761,15 +761,35 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("17_sc1dx")
 
-[node name="UnitTexture" type="TextureRect" parent="UI/EndRoundScreen/EndRoundVBox/WinnerPanelContainer/WinnerHBox/WinnerUnit1VBox"]
+[node name="UnitTextureMarginContainer" type="MarginContainer" parent="UI/EndRoundScreen/EndRoundVBox/WinnerPanelContainer/WinnerHBox/WinnerUnit1VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="UnitTexture" type="TextureRect" parent="UI/EndRoundScreen/EndRoundVBox/WinnerPanelContainer/WinnerHBox/WinnerUnit1VBox/UnitTextureMarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
-stretch_mode = 3
+stretch_mode = 5
+
+[node name="UnitName" type="Label" parent="UI/EndRoundScreen/EndRoundVBox/WinnerPanelContainer/WinnerHBox/WinnerUnit1VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="UnitStats" type="Label" parent="UI/EndRoundScreen/EndRoundVBox/WinnerPanelContainer/WinnerHBox/WinnerUnit1VBox"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 8
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -779,15 +799,35 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("17_sc1dx")
 
-[node name="UnitTexture" type="TextureRect" parent="UI/EndRoundScreen/EndRoundVBox/WinnerPanelContainer/WinnerHBox/WinnerUnit2VBox"]
+[node name="UnitTextureMarginContainer" type="MarginContainer" parent="UI/EndRoundScreen/EndRoundVBox/WinnerPanelContainer/WinnerHBox/WinnerUnit2VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="UnitTexture" type="TextureRect" parent="UI/EndRoundScreen/EndRoundVBox/WinnerPanelContainer/WinnerHBox/WinnerUnit2VBox/UnitTextureMarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
-stretch_mode = 3
+stretch_mode = 5
+
+[node name="UnitName" type="Label" parent="UI/EndRoundScreen/EndRoundVBox/WinnerPanelContainer/WinnerHBox/WinnerUnit2VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="UnitStats" type="Label" parent="UI/EndRoundScreen/EndRoundVBox/WinnerPanelContainer/WinnerHBox/WinnerUnit2VBox"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 8
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -797,15 +837,35 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("17_sc1dx")
 
-[node name="UnitTexture" type="TextureRect" parent="UI/EndRoundScreen/EndRoundVBox/WinnerPanelContainer/WinnerHBox/WinnerUnit3VBox"]
+[node name="UnitTextureMarginContainer" type="MarginContainer" parent="UI/EndRoundScreen/EndRoundVBox/WinnerPanelContainer/WinnerHBox/WinnerUnit3VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="UnitTexture" type="TextureRect" parent="UI/EndRoundScreen/EndRoundVBox/WinnerPanelContainer/WinnerHBox/WinnerUnit3VBox/UnitTextureMarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
-stretch_mode = 3
+stretch_mode = 5
+
+[node name="UnitName" type="Label" parent="UI/EndRoundScreen/EndRoundVBox/WinnerPanelContainer/WinnerHBox/WinnerUnit3VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="UnitStats" type="Label" parent="UI/EndRoundScreen/EndRoundVBox/WinnerPanelContainer/WinnerHBox/WinnerUnit3VBox"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 8
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -834,15 +894,35 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("17_sc1dx")
 
-[node name="UnitTexture" type="TextureRect" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox/LoserUnit1VBox"]
+[node name="UnitTextureMarginContainer" type="MarginContainer" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox/LoserUnit1VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 6.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="UnitTexture" type="TextureRect" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox/LoserUnit1VBox/UnitTextureMarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
-stretch_mode = 3
+stretch_mode = 5
+
+[node name="UnitName" type="Label" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox/LoserUnit1VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="UnitStats" type="Label" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox/LoserUnit1VBox"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 6
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -852,15 +932,35 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("17_sc1dx")
 
-[node name="UnitTexture" type="TextureRect" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox/LoserUnit2VBox"]
+[node name="UnitTextureMarginContainer" type="MarginContainer" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox/LoserUnit2VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 6.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="UnitTexture" type="TextureRect" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox/LoserUnit2VBox/UnitTextureMarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
-stretch_mode = 3
+stretch_mode = 5
+
+[node name="UnitName" type="Label" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox/LoserUnit2VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="UnitStats" type="Label" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox/LoserUnit2VBox"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 6
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -870,15 +970,35 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("17_sc1dx")
 
-[node name="UnitTexture" type="TextureRect" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox/LoserUnit3VBox"]
+[node name="UnitTextureMarginContainer" type="MarginContainer" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox/LoserUnit3VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 6.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="UnitTexture" type="TextureRect" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox/LoserUnit3VBox/UnitTextureMarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
-stretch_mode = 3
+stretch_mode = 5
+
+[node name="UnitName" type="Label" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox/LoserUnit3VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="UnitStats" type="Label" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox/LoserUnit3VBox"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 6
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -886,6 +1006,8 @@ vertical_alignment = 1
 process_mode = 3
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 10
+text = "TO THE NEXT!"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(400, 140)
