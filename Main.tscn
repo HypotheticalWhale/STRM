@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-[gd_scene load_steps=26 format=3 uid="uid://cpycaudat764"]
-=======
 [gd_scene load_steps=25 format=3 uid="uid://cpycaudat764"]
->>>>>>> refs/remotes/origin/main
 
 [ext_resource type="Script" uid="uid://canrdcgx2mxng" path="res://Main.gd" id="1_5hkoq"]
 [ext_resource type="Texture2D" uid="uid://bnm0op8tgjbiv" path="res://Assets/UI/Timer/Timer.png" id="2_j0qa6"]
@@ -18,7 +14,6 @@
 [ext_resource type="Script" uid="uid://buu2041faqtuq" path="res://UI/LevelUpUI/JobButton.gd" id="9_7relu"]
 [ext_resource type="Script" uid="uid://bulphifsiynq0" path="res://UI/NextPlayerReady.gd" id="10_sy41c"]
 [ext_resource type="Texture2D" uid="uid://cpoj385d4qv08" path="res://Assets/Sprites/Units/BellBoy.png" id="13_1o1jg"]
-<<<<<<< HEAD
 [ext_resource type="Script" path="res://JobInfo.gd" id="13_w40fn"]
 [ext_resource type="Script" path="res://EndRoundScreen.gd" id="16_r8hkc"]
 [ext_resource type="Script" path="res://addons/shaker/src/Vector2/shaker_component2D.gd" id="17_7qtl1"]
@@ -27,13 +22,11 @@
 [ext_resource type="AudioStream" uid="uid://dcw0kdhmobjav" path="res://SFX/stone-effect-254998_N0J7su7X.mp3" id="20_shusx"]
 [ext_resource type="PackedScene" uid="uid://dp0662vg2voyl" path="res://SFX/SelectCharacterSound.tscn" id="21_76sm0"]
 [ext_resource type="PackedScene" uid="uid://b1k71wsu8t1ev" path="res://SFX/Piercing Ray.tscn" id="22_6nl2v"]
-=======
 [ext_resource type="Script" uid="uid://fwa50jltmaqc" path="res://JobInfo.gd" id="13_w40fn"]
 [ext_resource type="Script" uid="uid://ikin04bi74nx" path="res://EndRoundScreen.gd" id="16_r8hkc"]
 [ext_resource type="Texture2D" uid="uid://d1gdhrabuveo1" path="res://Assets/UI/RoyalPanel.png" id="17_kjvhd"]
 [ext_resource type="Script" uid="uid://dw3rskbwbyttr" path="res://UnitEndRoundInfo.gd" id="17_sc1dx"]
 [ext_resource type="Texture2D" uid="uid://dy4ln0tts1dxw" path="res://Assets/UI/MoldyPanel.png" id="19_5tuhn"]
->>>>>>> refs/remotes/origin/main
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lawlm"]
 shader = ExtResource("6_a0eb8")

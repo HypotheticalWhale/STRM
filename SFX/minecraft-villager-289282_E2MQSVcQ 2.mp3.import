@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://txr1r1b6n1xg"
+path="res://.godot/imported/minecraft-villager-289282_E2MQSVcQ 2.mp3-c4a8f389034f28e48797dc671b7877da.mp3str"
+
+[deps]
+
+source_file="res://SFX/minecraft-villager-289282_E2MQSVcQ 2.mp3"
+dest_files=["res://.godot/imported/minecraft-villager-289282_E2MQSVcQ 2.mp3-c4a8f389034f28e48797dc671b7877da.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
