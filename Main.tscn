@@ -1,19 +1,24 @@
+<<<<<<< HEAD
 [gd_scene load_steps=26 format=3 uid="uid://cpycaudat764"]
+=======
+[gd_scene load_steps=25 format=3 uid="uid://cpycaudat764"]
+>>>>>>> refs/remotes/origin/main
 
-[ext_resource type="Script" path="res://Main.gd" id="1_5hkoq"]
+[ext_resource type="Script" uid="uid://canrdcgx2mxng" path="res://Main.gd" id="1_5hkoq"]
 [ext_resource type="Texture2D" uid="uid://bnm0op8tgjbiv" path="res://Assets/UI/Timer/Timer.png" id="2_j0qa6"]
 [ext_resource type="Theme" uid="uid://bkqipfaxijp3i" path="res://Medieval.tres" id="2_vidso"]
-[ext_resource type="Script" path="res://UI/TurnTimerUI.gd" id="2_wpr50"]
-[ext_resource type="Script" path="res://UI/TileInfo.gd" id="5_sqfni"]
-[ext_resource type="Script" path="res://UI/RoundLabel.gd" id="5_t0qjf"]
-[ext_resource type="Shader" path="res://Scrolling.gdshader" id="6_a0eb8"]
-[ext_resource type="Script" path="res://UI/Player1Score.gd" id="6_a3mfb"]
-[ext_resource type="Script" path="res://UI/Player2Score.gd" id="7_3h74x"]
+[ext_resource type="Script" uid="uid://c3b1rbo1tduih" path="res://UI/TurnTimerUI.gd" id="2_wpr50"]
+[ext_resource type="Script" uid="uid://bbe3p0koqxrjx" path="res://UI/TileInfo.gd" id="5_sqfni"]
+[ext_resource type="Script" uid="uid://b0njvbvyu85an" path="res://UI/RoundLabel.gd" id="5_t0qjf"]
+[ext_resource type="Shader" uid="uid://cqdmjy84774dw" path="res://Scrolling.gdshader" id="6_a0eb8"]
+[ext_resource type="Script" uid="uid://bnervhjolun25" path="res://UI/Player1Score.gd" id="6_a3mfb"]
+[ext_resource type="Script" uid="uid://dl6u365fo728y" path="res://UI/Player2Score.gd" id="7_3h74x"]
 [ext_resource type="Texture2D" uid="uid://cbo8lyb5v4uib" path="res://Assets/UI/BG.png" id="7_hwd5n"]
-[ext_resource type="Script" path="res://UI/LevelUp.gd" id="8_x7oqh"]
-[ext_resource type="Script" path="res://UI/LevelUpUI/JobButton.gd" id="9_7relu"]
-[ext_resource type="Script" path="res://UI/NextPlayerReady.gd" id="10_sy41c"]
+[ext_resource type="Script" uid="uid://cpi3fc22am8yj" path="res://UI/LevelUp.gd" id="8_x7oqh"]
+[ext_resource type="Script" uid="uid://buu2041faqtuq" path="res://UI/LevelUpUI/JobButton.gd" id="9_7relu"]
+[ext_resource type="Script" uid="uid://bulphifsiynq0" path="res://UI/NextPlayerReady.gd" id="10_sy41c"]
 [ext_resource type="Texture2D" uid="uid://cpoj385d4qv08" path="res://Assets/Sprites/Units/BellBoy.png" id="13_1o1jg"]
+<<<<<<< HEAD
 [ext_resource type="Script" path="res://JobInfo.gd" id="13_w40fn"]
 [ext_resource type="Script" path="res://EndRoundScreen.gd" id="16_r8hkc"]
 [ext_resource type="Script" path="res://addons/shaker/src/Vector2/shaker_component2D.gd" id="17_7qtl1"]
@@ -22,6 +27,13 @@
 [ext_resource type="AudioStream" uid="uid://dcw0kdhmobjav" path="res://SFX/stone-effect-254998_N0J7su7X.mp3" id="20_shusx"]
 [ext_resource type="PackedScene" uid="uid://dp0662vg2voyl" path="res://SFX/SelectCharacterSound.tscn" id="21_76sm0"]
 [ext_resource type="PackedScene" uid="uid://b1k71wsu8t1ev" path="res://SFX/Piercing Ray.tscn" id="22_6nl2v"]
+=======
+[ext_resource type="Script" uid="uid://fwa50jltmaqc" path="res://JobInfo.gd" id="13_w40fn"]
+[ext_resource type="Script" uid="uid://ikin04bi74nx" path="res://EndRoundScreen.gd" id="16_r8hkc"]
+[ext_resource type="Texture2D" uid="uid://d1gdhrabuveo1" path="res://Assets/UI/RoyalPanel.png" id="17_kjvhd"]
+[ext_resource type="Script" uid="uid://dw3rskbwbyttr" path="res://UnitEndRoundInfo.gd" id="17_sc1dx"]
+[ext_resource type="Texture2D" uid="uid://dy4ln0tts1dxw" path="res://Assets/UI/MoldyPanel.png" id="19_5tuhn"]
+>>>>>>> refs/remotes/origin/main
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lawlm"]
 shader = ExtResource("6_a0eb8")
@@ -34,6 +46,20 @@ content_margin_bottom = 16.0
 texture = ExtResource("2_j0qa6")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8cp43"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5tuhn"]
+texture = ExtResource("17_kjvhd")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2gh4u"]
+texture = ExtResource("19_5tuhn")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_5hkoq")
@@ -721,20 +747,157 @@ grow_vertical = 2
 theme = ExtResource("2_vidso")
 script = ExtResource("16_r8hkc")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/EndRoundScreen"]
+[node name="EndRoundVBox" type="VBoxContainer" parent="UI/EndRoundScreen"]
 layout_mode = 2
 
-[node name="PlayerWon" type="Label" parent="UI/EndRoundScreen/VBoxContainer"]
-unique_name_in_owner = true
+[node name="WinnerPanelContainer" type="PanelContainer" parent="UI/EndRoundScreen/EndRoundVBox"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5tuhn")
+
+[node name="WinnerHBox" type="HBoxContainer" parent="UI/EndRoundScreen/EndRoundVBox/WinnerPanelContainer"]
+custom_minimum_size = Vector2(0, 240)
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 6.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/EndRoundScreen/VBoxContainer/PlayerWon"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="PlayerWon" type="Label" parent="UI/EndRoundScreen/EndRoundVBox/WinnerPanelContainer/WinnerHBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="EndRoundButton" type="Button" parent="UI/EndRoundScreen/VBoxContainer"]
+[node name="WinnerUnit1VBox" type="VBoxContainer" parent="UI/EndRoundScreen/EndRoundVBox/WinnerPanelContainer/WinnerHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("17_sc1dx")
+
+[node name="UnitTexture" type="TextureRect" parent="UI/EndRoundScreen/EndRoundVBox/WinnerPanelContainer/WinnerHBox/WinnerUnit1VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+stretch_mode = 3
+
+[node name="UnitStats" type="Label" parent="UI/EndRoundScreen/EndRoundVBox/WinnerPanelContainer/WinnerHBox/WinnerUnit1VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WinnerUnit2VBox" type="VBoxContainer" parent="UI/EndRoundScreen/EndRoundVBox/WinnerPanelContainer/WinnerHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("17_sc1dx")
+
+[node name="UnitTexture" type="TextureRect" parent="UI/EndRoundScreen/EndRoundVBox/WinnerPanelContainer/WinnerHBox/WinnerUnit2VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+stretch_mode = 3
+
+[node name="UnitStats" type="Label" parent="UI/EndRoundScreen/EndRoundVBox/WinnerPanelContainer/WinnerHBox/WinnerUnit2VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WinnerUnit3VBox" type="VBoxContainer" parent="UI/EndRoundScreen/EndRoundVBox/WinnerPanelContainer/WinnerHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("17_sc1dx")
+
+[node name="UnitTexture" type="TextureRect" parent="UI/EndRoundScreen/EndRoundVBox/WinnerPanelContainer/WinnerHBox/WinnerUnit3VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+stretch_mode = 3
+
+[node name="UnitStats" type="Label" parent="UI/EndRoundScreen/EndRoundVBox/WinnerPanelContainer/WinnerHBox/WinnerUnit3VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoserPanelContainer" type="PanelContainer" parent="UI/EndRoundScreen/EndRoundVBox"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_2gh4u")
+
+[node name="LoserHBox" type="HBoxContainer" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer"]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="PlayerLost" type="Label" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HeaderLarge"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoserUnit1VBox" type="VBoxContainer" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("17_sc1dx")
+
+[node name="UnitTexture" type="TextureRect" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox/LoserUnit1VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+stretch_mode = 3
+
+[node name="UnitStats" type="Label" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox/LoserUnit1VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoserUnit2VBox" type="VBoxContainer" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("17_sc1dx")
+
+[node name="UnitTexture" type="TextureRect" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox/LoserUnit2VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+stretch_mode = 3
+
+[node name="UnitStats" type="Label" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox/LoserUnit2VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoserUnit3VBox" type="VBoxContainer" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("17_sc1dx")
+
+[node name="UnitTexture" type="TextureRect" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox/LoserUnit3VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+stretch_mode = 3
+
+[node name="UnitStats" type="Label" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox/LoserUnit3VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EndRoundButton" type="Button" parent="UI/EndRoundScreen/EndRoundVBox"]
 process_mode = 3
 layout_mode = 2
 size_flags_vertical = 3
@@ -785,4 +948,4 @@ unique_name_in_owner = true
 [connection signal="pressed" from="UI/MarginContainer/PanelContainer/VBoxContainer/JobButtons/JobButton0" to="UI/MarginContainer/PanelContainer/VBoxContainer/JobButtons/JobButton0" method="_on_pressed"]
 [connection signal="pressed" from="UI/MarginContainer/PanelContainer/VBoxContainer/Confirm" to="UI/LevelUp" method="_on_confirm_pressed"]
 [connection signal="pressed" from="UI/NextPlayerReady" to="UI/NextPlayerReady" method="_on_pressed"]
-[connection signal="pressed" from="UI/EndRoundScreen/VBoxContainer/EndRoundButton" to="UI/EndRoundScreen" method="_on_end_round_button_pressed"]
+[connection signal="pressed" from="UI/EndRoundScreen/EndRoundVBox/EndRoundButton" to="UI/EndRoundScreen" method="_on_end_round_button_pressed"]

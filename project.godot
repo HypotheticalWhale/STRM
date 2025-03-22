@@ -12,7 +12,11 @@ config_version=5
 
 config/name="StormTheRoyalManor"
 run/main_scene="res://Main.tscn"
+<<<<<<< HEAD
 config/features=PackedStringArray("4.2", "GL Compatibility")
+=======
+config/features=PackedStringArray("4.4", "GL Compatibility")
+>>>>>>> refs/remotes/origin/main
 config/icon="res://icon.svg"
 
 [autoload]
@@ -26,7 +30,6 @@ Shaker="*res://addons/shaker/src/Shaker.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=3
 window/stretch/scale=2.0
 window/dpi/allow_hidpi=false
 window/vsync/vsync_mode=0

@@ -23,7 +23,10 @@ var suit: String = ""
 var description = "Just the base servant, he lives in the manor"
 var skill = ""
 var passive = "Noob"
+
+# stat tracking
 var damage_dealt: float = 0.0
+var damage_taken: float = 0.0
 
 # quest specific
 var xp : int
@@ -117,6 +120,7 @@ func take_damage(damage):
 	CURRENT_HEALTH -= damage
 	await shakercomponent.play_shake_small()
 	await get_tree().create_timer(0.3).timeout
+	damage_taken += damage
 	print("Took ", damage, "Damage")
 	print("Taking Damage Current Health/Max Health: ",CURRENT_HEALTH,"/",MAX_HEALTH)
 	return
