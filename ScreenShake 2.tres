@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="ShakerPreset2D" load_steps=4 format=3 uid="uid://bc4l7ybch2maa"]
+[gd_resource type="Resource" script_class="ShakerPreset2D" load_steps=6 format=3 uid="uid://bc4l7ybch2maa"]
 
-[ext_resource type="Script" path="res://addons/shaker/data/Vector2/ShakerTypeSquareWave2D.gd" id="1_jp2e2"]
-[ext_resource type="Script" path="res://addons/shaker/data/Vector2/ShakerPreset2D.gd" id="2_6clr2"]
+[ext_resource type="Script" uid="uid://hnyuohgc03es" path="res://addons/shaker/data/Vector2/BaseShakerType2D.gd" id="1_110vl"]
+[ext_resource type="Script" uid="uid://duxgnqb81kcy2" path="res://addons/shaker/data/Vector2/ShakerTypeSquareWave2D.gd" id="1_jp2e2"]
+[ext_resource type="Script" uid="uid://ng20k5txmtcw" path="res://addons/shaker/data/Vector2/ShakerPreset2D.gd" id="2_6clr2"]
+[ext_resource type="Script" uid="uid://bvujux7k3cinj" path="res://addons/shaker/data/Single/BaseShakerType1D.gd" id="3_muq7v"]
 
 [sub_resource type="Resource" id="Resource_8jqbn"]
 script = ExtResource("1_jp2e2")
@@ -19,8 +21,8 @@ bake_internal = 64
 
 [resource]
 script = ExtResource("2_6clr2")
-PositionShake = Array[Resource("res://addons/shaker/data/Vector2/BaseShakerType2D.gd")]([SubResource("Resource_8jqbn")])
-RotationShake = Array[Resource("res://addons/shaker/data/Single/BaseShakerType1D.gd")]([])
-ScaleShake = Array[Resource("res://addons/shaker/data/Vector2/BaseShakerType2D.gd")]([])
+PositionShake = Array[ExtResource("1_110vl")]([SubResource("Resource_8jqbn")])
+RotationShake = Array[ExtResource("3_muq7v")]([])
+ScaleShake = Array[ExtResource("1_110vl")]([])
 bake_internal = 64
 __follow_timeline = false

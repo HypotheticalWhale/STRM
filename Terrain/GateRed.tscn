@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://4rrrxqpghp4d"]
 
 [ext_resource type="PackedScene" uid="uid://beftcxptuutu2" path="res://Terrain/Terrain.tscn" id="1_7tef4"]
-[ext_resource type="Script" path="res://Terrain/GateRed.gd" id="2_uek2w"]
+[ext_resource type="Script" uid="uid://dlrsdhyjc2oqa" path="res://Terrain/GateRed.gd" id="2_uek2w"]
 [ext_resource type="Texture2D" uid="uid://bdyud2h0i8v52" path="res://Assets/Terrain/portal_sprite.png" id="3_xprns"]
 
 [node name="Terrain" instance=ExtResource("1_7tef4")]

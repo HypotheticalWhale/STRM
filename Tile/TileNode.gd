@@ -115,6 +115,9 @@ func _on_input_event(viewport, event, shape_idx):
 		
 		#move or attack already but im clicking myself
 		if Globals.TAKENACTION and Globals.TAKENACTION == occupied_by["unit"]:
+			print("modulate here ", occupied_by["unit"].UI_EXP_LINK_CONTAINER)
+			var container_to_highlight = get_tree().current_scene.get_node(occupied_by["unit"].UI_EXP_LINK_CONTAINER)
+			container_to_highlight.modulate = Color(1,1,0.62,1)
 			character_select.play()
 			get_parent().attacking = false			
 			get_parent().show_select_menu(global_position,self)
@@ -136,6 +139,10 @@ func _on_input_event(viewport, event, shape_idx):
 			else:
 				get_parent().enable_move_button()
 			character_select.play()				
+			print("modulate here ", occupied_by["unit"].UI_EXP_LINK_CONTAINER)
+			var container_to_highlight = get_tree().current_scene.get_node(occupied_by["unit"].UI_EXP_LINK_CONTAINER)
+			print(container_to_highlight)
+			container_to_highlight.modulate = Color(1,1,0.62,1)
 			get_parent().show_select_menu(global_position,self)
 			get_parent().clear_available_tiles()			
 			get_parent().clear_available_attack_tiles()

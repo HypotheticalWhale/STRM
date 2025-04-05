@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://chskjn7l4kr0r"]
 
 [ext_resource type="PackedScene" uid="uid://b5uij24beffcq" path="res://Jobs/Job.tscn" id="1_vhj7n"]
-[ext_resource type="Script" path="res://Jobs/PigeonCommander.gd" id="2_xinmv"]
+[ext_resource type="Script" uid="uid://cou6qxaxw0wuk" path="res://Jobs/PigeonCommander.gd" id="2_xinmv"]
 [ext_resource type="Texture2D" uid="uid://ccdymfk7ksjts" path="res://Assets/Sprites/Units/PigeonCommander.png" id="3_onk4n"]
 [ext_resource type="Texture2D" uid="uid://dgdcaknyfd0yx" path="res://Assets/Sprites/Units/PigeonCommanderRed.png" id="4_smykg"]
 [ext_resource type="Texture2D" uid="uid://esj84bxptpuw" path="res://Assets/Sprites/Units/PigeonCommanderBlue.png" id="5_04ppk"]

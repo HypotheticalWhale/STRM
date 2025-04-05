@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://qsehrl8slnr6"]
 
 [ext_resource type="PackedScene" uid="uid://5mdcoqkmfhua" path="res://Classes/BaseClass/BaseClass.tscn" id="1_7r7x2"]
-[ext_resource type="Script" path="res://Classes/Noble.gd" id="2_cef56"]
+[ext_resource type="Script" uid="uid://cvse1v6es7qe2" path="res://Classes/Noble.gd" id="2_cef56"]
 
 [node name="Noble" instance=ExtResource("1_7r7x2")]
 script = ExtResource("2_cef56")

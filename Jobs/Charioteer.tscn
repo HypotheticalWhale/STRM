@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cejf44rnjn4fd"]
 
 [ext_resource type="PackedScene" uid="uid://b5uij24beffcq" path="res://Jobs/Job.tscn" id="1_udm05"]
-[ext_resource type="Script" path="res://Jobs/Charioteer.gd" id="2_4gxtq"]
+[ext_resource type="Script" uid="uid://bc6yg8xfo4p78" path="res://Jobs/Charioteer.gd" id="2_4gxtq"]
 [ext_resource type="Texture2D" uid="uid://cog4j1hc8fdqh" path="res://Assets/Sprites/Units/Charioteer.png" id="3_o0vwi"]
 [ext_resource type="Texture2D" uid="uid://dsp7w8n5rouhf" path="res://Assets/Sprites/Units/CharioteerRed.png" id="4_sck07"]
 [ext_resource type="Texture2D" uid="uid://bjd8jesp6riwp" path="res://Assets/Sprites/Units/CharioteerBlue.png" id="5_2plnl"]

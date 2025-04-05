@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dhvpr6731kajt"]
 
 [ext_resource type="PackedScene" uid="uid://b5uij24beffcq" path="res://Jobs/Job.tscn" id="1_wst2j"]
-[ext_resource type="Script" path="res://Jobs/VaultsKeeper.gd" id="2_dcvim"]
+[ext_resource type="Script" uid="uid://d3iy6xe0dp05p" path="res://Jobs/VaultsKeeper.gd" id="2_dcvim"]
 [ext_resource type="Texture2D" uid="uid://bxctdvlofco8q" path="res://Assets/Sprites/Units/LawnsGuard.png" id="3_ymhiy"]
 [ext_resource type="Texture2D" uid="uid://08c068hjjbvg" path="res://Assets/Sprites/Units/LawnsGuardRed.png" id="4_t3dqg"]
 [ext_resource type="Texture2D" uid="uid://blp1gt12cg11x" path="res://Assets/Sprites/Units/LawnsGuardBlue.png" id="5_wobeb"]

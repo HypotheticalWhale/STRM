@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bcnkcm1tcj0kq"]
 
 [ext_resource type="PackedScene" uid="uid://b5uij24beffcq" path="res://Jobs/Job.tscn" id="1_suo0s"]
-[ext_resource type="Script" path="res://Jobs/BellBoy.gd" id="2_wvsl0"]
+[ext_resource type="Script" uid="uid://sc1icbmstptj" path="res://Jobs/BellBoy.gd" id="2_wvsl0"]
 [ext_resource type="Texture2D" uid="uid://cpoj385d4qv08" path="res://Assets/Sprites/Units/BellBoy.png" id="3_n30da"]
 [ext_resource type="Texture2D" uid="uid://1vgavchntwe1" path="res://Assets/Sprites/Units/BellBoyRed.png" id="4_ydq3y"]
 [ext_resource type="Texture2D" uid="uid://heff1uxtg4c0" path="res://Assets/Sprites/Units/BellBoyBlue.png" id="5_rs3nq"]
