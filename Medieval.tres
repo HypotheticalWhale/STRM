@@ -1,11 +1,10 @@
-[gd_resource type="Theme" load_steps=20 format=3 uid="uid://bkqipfaxijp3i"]
+[gd_resource type="Theme" load_steps=19 format=3 uid="uid://bkqipfaxijp3i"]
 
 [ext_resource type="Texture2D" uid="uid://dxsi055t1wcnb" path="res://Assets/UI/ButtonNormal.png" id="1_0keg2"]
-[ext_resource type="FontFile" uid="uid://devp8njfjwmgi" path="res://Fonts/little-pixel.ttf" id="1_lk7pt"]
+[ext_resource type="FontFile" uid="uid://cxmt4ausb3r8r" path="res://Fonts/NormalTextFont.ttf" id="1_81l1y"]
 [ext_resource type="Texture2D" uid="uid://b1wnrp8q0hish" path="res://Assets/UI/MedievalPanel.png" id="1_y8y5v"]
 [ext_resource type="Texture2D" uid="uid://bvuvn0apogs72" path="res://Assets/UI/ButtonHover.png" id="2_2l8tr"]
 [ext_resource type="Texture2D" uid="uid://qupsi3grjt4h" path="res://Assets/UI/LabelBackground.png" id="2_sf2lc"]
-[ext_resource type="FontFile" uid="uid://blxvfg2chyfy7" path="res://Fonts/Pixeled English Font.ttf" id="3_wx55d"]
 [ext_resource type="Texture2D" uid="uid://buy4kclhbgl03" path="res://Assets/UI/HeaderLargeBackground.png" id="4_ssdtr"]
 [ext_resource type="Texture2D" uid="uid://b8oxbjse0pbuk" path="res://Assets/UI/HeaderMediumBackground.png" id="5_a0mqm"]
 [ext_resource type="Texture2D" uid="uid://c5gm7un8vpxtr" path="res://Assets/UI/BarBackground.png" id="6_tu5vj"]
@@ -30,8 +29,8 @@ texture_margin_bottom = 12.0
 texture = ExtResource("1_0keg2")
 texture_margin_left = 10.0
 texture_margin_top = 8.0
-texture_margin_right = 10.0
-texture_margin_bottom = 12.0
+texture_margin_right = 9.0
+texture_margin_bottom = 11.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ciur0"]
 texture = ExtResource("4_ssdtr")
@@ -76,31 +75,30 @@ texture_margin_right = 8.0
 texture_margin_bottom = 8.0
 
 [resource]
-default_font = ExtResource("3_wx55d")
 default_font_size = 16
 Button/colors/font_color = Color(1, 1, 1, 1)
-Button/font_sizes/font_size = 5
-Button/fonts/font = ExtResource("1_lk7pt")
+Button/font_sizes/font_size = 8
+Button/fonts/font = ExtResource("1_81l1y")
 Button/styles/disabled = SubResource("StyleBoxTexture_vpk4g")
 Button/styles/hover = SubResource("StyleBoxTexture_0pnb6")
 Button/styles/normal = SubResource("StyleBoxTexture_0e6wo")
 HeaderLarge/colors/font_color = Color(1, 1, 1, 1)
-HeaderLarge/font_sizes/font_size = 5
-HeaderLarge/fonts/font = ExtResource("1_lk7pt")
+HeaderLarge/font_sizes/font_size = 10
+HeaderLarge/fonts/font = ExtResource("1_81l1y")
 HeaderLarge/styles/normal = SubResource("StyleBoxTexture_ciur0")
 HeaderMedium/colors/font_color = Color(0, 0, 0, 1)
-HeaderMedium/font_sizes/font_size = 5
-HeaderMedium/fonts/font = ExtResource("1_lk7pt")
+HeaderMedium/font_sizes/font_size = 8
+HeaderMedium/fonts/font = ExtResource("1_81l1y")
 HeaderMedium/styles/normal = SubResource("StyleBoxTexture_ruh48")
-Label/colors/font_color = Color(0.3, 0.3, 0.3, 1)
-Label/font_sizes/font_size = 5
-Label/fonts/font = ExtResource("1_lk7pt")
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 8
+Label/fonts/font = ExtResource("1_81l1y")
 Label/styles/normal = SubResource("StyleBoxTexture_uqel7")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_iq4wv")
 ProgressBar/font_sizes/font_size = 5
-ProgressBar/fonts/font = ExtResource("1_lk7pt")
+ProgressBar/fonts/font = ExtResource("1_81l1y")
 ProgressBar/styles/background = SubResource("StyleBoxTexture_gybm3")
 ProgressBar/styles/fill = SubResource("StyleBoxTexture_igi4g")
-TooltipLabel/font_sizes/font_size = 5
-TooltipLabel/fonts/font = ExtResource("1_lk7pt")
+TooltipLabel/font_sizes/font_size = 12
+TooltipLabel/fonts/font = ExtResource("1_81l1y")
 VBoxContainer/constants/separation = 0
