@@ -219,7 +219,8 @@ func disable_action_button():
 
 func enable_action_button():
 	$SelectOptions/PanelContainer/HBoxContainer/SelectButtons/ActionButton.set_deferred("disabled", false)
-	
+
+#myass
 func highlight_available_tiles(available_tiles_coords):
 	clear_available_tiles()
 	clear_available_attack_tiles()
