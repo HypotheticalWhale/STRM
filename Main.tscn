@@ -83,15 +83,15 @@ theme = ExtResource("2_vidso")
 
 [node name="MoveButton" type="Button" parent="SelectOptions/PanelContainer/HBoxContainer/SelectButtons"]
 layout_mode = 2
-text = "Move"
+text = "MOVE"
 
 [node name="ActionButton" type="Button" parent="SelectOptions/PanelContainer/HBoxContainer/SelectButtons"]
 layout_mode = 2
-text = "Action"
+text = "ACTION"
 
 [node name="EndButton" type="Button" parent="SelectOptions/PanelContainer/HBoxContainer/SelectButtons"]
 layout_mode = 2
-text = "End Turn"
+text = "END TURN"
 
 [node name="ActionButtons" type="VBoxContainer" parent="SelectOptions/PanelContainer/HBoxContainer"]
 visible = false
@@ -109,8 +109,7 @@ theme = ExtResource("2_vidso")
 
 [node name="MoreInfoButton" type="Button" parent="NotYourOptions/NotYourButtons"]
 layout_mode = 2
-text = "Info
-"
+text = "INFO"
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -151,6 +150,7 @@ size_flags_stretch_ratio = 0.4
 text = "ligma"
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="ProgressBar" type="ProgressBar" parent="UI/Player1/MarginContainer/LabelContainer/FirstExpContainer"]
 layout_mode = 2
@@ -169,6 +169,7 @@ size_flags_vertical = 5
 size_flags_stretch_ratio = 0.4
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="ProgressBar" type="ProgressBar" parent="UI/Player1/MarginContainer/LabelContainer/SecondExpContainer"]
 layout_mode = 2
@@ -187,6 +188,7 @@ size_flags_vertical = 5
 size_flags_stretch_ratio = 0.4
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="ProgressBar" type="ProgressBar" parent="UI/Player1/MarginContainer/LabelContainer/ThirdExpContainer"]
 layout_mode = 2
@@ -292,6 +294,7 @@ theme = ExtResource("2_vidso")
 text = "hello"
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 script = ExtResource("5_t0qjf")
 
 [node name="ScoreConainer" type="HBoxContainer" parent="UI/TurnTimerUI/RoundContainer"]
@@ -301,6 +304,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Score:"
 vertical_alignment = 1
+uppercase = true
 
 [node name="PlayerScoreContainer" type="VBoxContainer" parent="UI/TurnTimerUI/RoundContainer/ScoreConainer"]
 layout_mode = 2
@@ -365,6 +369,7 @@ size_flags_vertical = 3
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+uppercase = true
 
 [node name="TerrainIcon" type="TextureRect" parent="UI/BottomRightContainer/TileInfo/VBoxContainer"]
 unique_name_in_owner = true
@@ -381,6 +386,7 @@ size_flags_vertical = 3
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+uppercase = true
 
 [node name="QuestInfo" type="PanelContainer" parent="UI/BottomRightContainer"]
 visible = false
@@ -398,6 +404,7 @@ size_flags_vertical = 10
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+uppercase = true
 
 [node name="QuestDescription" type="Label" parent="UI/BottomRightContainer/QuestInfo/VBoxContainer"]
 custom_minimum_size = Vector2(96, 32)
@@ -407,6 +414,7 @@ size_flags_stretch_ratio = 4.0
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+uppercase = true
 
 [node name="LevelUp" type="MarginContainer" parent="UI"]
 process_mode = 3
@@ -492,7 +500,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_type_variation = &"HeaderMedium"
-text = "Skill information here"
+text = "SKILL INFORMATION"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -515,7 +523,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_type_variation = &"HeaderMedium"
-text = "Passive Information"
+text = "PASSIVE INFORMATION"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -568,9 +576,10 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
-text = "Class Information"
+text = "CLASS INFORMATION"
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="InfoSprite" type="TextureRect" parent="UI/JobInfo/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -590,6 +599,7 @@ theme_type_variation = &"HeaderMedium"
 text = "Background Label"
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="Background" type="Label" parent="UI/JobInfo/PanelContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -598,6 +608,7 @@ size_flags_vertical = 3
 text = "Background information here"
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="UI/JobInfo/PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -616,6 +627,7 @@ size_flags_stretch_ratio = 0.5
 theme_type_variation = &"HeaderMedium"
 text = "Passives"
 horizontal_alignment = 1
+uppercase = true
 
 [node name="Passives" type="VBoxContainer" parent="UI/JobInfo/PanelContainer/VBoxContainer/HBoxContainer2/PassiveContainer"]
 layout_mode = 2
@@ -636,6 +648,7 @@ theme_type_variation = &"HeaderMedium"
 text = "Sklls
 "
 horizontal_alignment = 1
+uppercase = true
 
 [node name="Skills" type="VBoxContainer" parent="UI/JobInfo/PanelContainer/VBoxContainer/HBoxContainer2/SkillContainer"]
 layout_mode = 2
@@ -643,7 +656,7 @@ layout_mode = 2
 [node name="Button" type="Button" parent="UI/JobInfo/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_vidso")
-text = "I'm done reading, back to gaming"
+text = "I'M DONE READING, BACK TO GAMING"
 
 [node name="MarginContainer" type="MarginContainer" parent="UI"]
 visible = false
@@ -897,7 +910,7 @@ script = ExtResource("17_sc1dx")
 [node name="UnitTextureMarginContainer" type="MarginContainer" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox/LoserUnit1VBox"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 6.0
+size_flags_stretch_ratio = 4.0
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
@@ -921,8 +934,8 @@ vertical_alignment = 1
 [node name="UnitStats" type="Label" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox/LoserUnit1VBox"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
-theme_override_font_sizes/font_size = 6
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 8
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -935,7 +948,7 @@ script = ExtResource("17_sc1dx")
 [node name="UnitTextureMarginContainer" type="MarginContainer" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox/LoserUnit2VBox"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 6.0
+size_flags_stretch_ratio = 4.0
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
@@ -959,8 +972,8 @@ vertical_alignment = 1
 [node name="UnitStats" type="Label" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox/LoserUnit2VBox"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
-theme_override_font_sizes/font_size = 6
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 8
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -973,7 +986,7 @@ script = ExtResource("17_sc1dx")
 [node name="UnitTextureMarginContainer" type="MarginContainer" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox/LoserUnit3VBox"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 6.0
+size_flags_stretch_ratio = 4.0
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
@@ -997,8 +1010,8 @@ vertical_alignment = 1
 [node name="UnitStats" type="Label" parent="UI/EndRoundScreen/EndRoundVBox/LoserPanelContainer/LoserHBox/LoserUnit3VBox"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
-theme_override_font_sizes/font_size = 6
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 8
 horizontal_alignment = 1
 vertical_alignment = 1
 
