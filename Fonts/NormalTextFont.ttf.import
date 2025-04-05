@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://c7y1vkuew0rab"
-path="res://.godot/imported/oldies cartoon.ttf-04c4533d502244f1b5defb586ec33e88.fontdata"
+uid="uid://cxmt4ausb3r8r"
+path="res://.godot/imported/NormalTextFont.ttf-a30b832a52d88c7e4ec25819aef2fcea.fontdata"
 
 [deps]
 
-source_file="res://Fonts/oldies cartoon.ttf"
-dest_files=["res://.godot/imported/oldies cartoon.ttf-04c4533d502244f1b5defb586ec33e88.fontdata"]
+source_file="res://Fonts/NormalTextFont.ttf"
+dest_files=["res://.godot/imported/NormalTextFont.ttf-a30b832a52d88c7e4ec25819aef2fcea.fontdata"]
 
 [params]
 
@@ -22,7 +22,7 @@ msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
 hinting=1
-subpixel_positioning=1
+subpixel_positioning=4
 keep_rounding_remainders=true
 oversampling=0.0
 Fallbacks=null

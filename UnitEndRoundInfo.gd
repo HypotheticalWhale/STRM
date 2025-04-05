@@ -1,6 +1,7 @@
 extends VBoxContainer
 
-@onready var texture_node = get_node("UnitTexture")
+@onready var texture_node = get_node("UnitTextureMarginContainer/UnitTexture")
+@onready var name_label = get_node("UnitName")
 @onready var stats_label = get_node("UnitStats")
 
 func show_unit_info(unit: Object):
@@ -16,9 +17,8 @@ func show_unit_info(unit: Object):
 	if blue_sprite.visible:
 		texture_node.texture = blue_sprite.texture
 
-	stats_label.text += unit.NAME
-	stats_label.text += "\n"
-	stats_label.text += "DMG DEALT: " + str(unit.damage_dealt)
+	name_label.text = unit.NAME
+	stats_label.text = "DMG DEALT: " + str(unit.damage_dealt)
 	stats_label.text += "\n"
 	stats_label.text += "DMG TAKEN: " + str(unit.damage_taken)
 	

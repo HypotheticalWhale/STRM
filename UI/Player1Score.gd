@@ -8,4 +8,4 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	text = "Player 1: "+ str(Globals.score["P1"])
+	text = "PLAYER 1: "+ str(Globals.score["P1"])

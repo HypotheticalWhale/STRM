@@ -366,7 +366,7 @@ func _on_turn_timer_timeout():
 			astar.set_point_solid(tile.global_position/Globals.TILE_SIZE,false)
 	# show reminder for next players turn
 	get_node("UI/NextPlayerReady").visible = true
-	get_node("UI/NextPlayerReady").text = Globals.WHOSTURNISIT + "'s turn. Click to start."
+	get_node("UI/NextPlayerReady").text = Globals.WHOSTURNISIT + "'S TURN. CLICK TO START"
 	get_tree().paused = true
 	
 	
