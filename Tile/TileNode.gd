@@ -52,6 +52,9 @@ func _on_input_event(viewport, event, shape_idx):
 				attack_sound = attack_tile_info["skill name"]
 				if get_parent().all_tiles[tile].occupied_by["unit"]:
 					# special case for displace attacks: the attack will not hit all target tiles
+					var attack_direction = get_tree().current_scene.calc_direction
+					assert(attack_direction == "N" or attack_direction == "S" or attack_direction == "E" or attack_direction == "W")
+					attack_tile_info["who is hitting"].play_jerk_animation(attack_direction)
 					if attack_tile_info.has("displace") and tile not in get_tree().current_scene.displace_target_tiles:
 						continue
 					# attack_tile_info contains a dictionary with various attack details such as who is hitting and damage
@@ -73,6 +76,7 @@ func _on_input_event(viewport, event, shape_idx):
 					if dash_destination+Vector2(0,-32) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(0,-32)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(0,-32)].occupied_by["unit"].next_to_pigeon_commander(get_parent().all_tiles[dash_destination].occupied_by["unit"])
 			
 			#await Globals.complete_unit_quest(Globals.TAKENACTION,"Fight")	# for debugging only
+			
 			var sound_scene = get_tree().current_scene.get_node("AttackSounds/"+attack_sound)
 			print("AttackSounds/"+attack_sound)
 			sound_scene.play()
@@ -165,6 +169,9 @@ func _on_input_event(viewport, event, shape_idx):
 					var attack_tile_info = get_parent().available_attack_tiles[tile]
 					attack_sound = attack_tile_info["skill name"]
 					if get_parent().all_tiles[tile].occupied_by["unit"]:
+						var attack_direction = get_tree().current_scene.calc_direction
+						assert(attack_direction == "N" or attack_direction == "S" or attack_direction == "E" or attack_direction == "W")
+						attack_tile_info["who is hitting"].play_jerk_animation(attack_direction)
 						# special case for displace attacks: the attack will not hit all target tiles
 						if attack_tile_info.has("displace") and tile not in get_tree().current_scene.displace_target_tiles:
 							continue
