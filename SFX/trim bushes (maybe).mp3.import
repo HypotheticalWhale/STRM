@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cqoc0egnhj2pi"
+path="res://.godot/imported/trim bushes (maybe).mp3-57bcdd4697e880d5f69e405f41f4446f.mp3str"
+
+[deps]
+
+source_file="res://SFX/trim bushes (maybe).mp3"
+dest_files=["res://.godot/imported/trim bushes (maybe).mp3-57bcdd4697e880d5f69e405f41f4446f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cfhfvw1ke2woe"
+path="res://.godot/imported/tea party cups.mp3-411509c2e2e86d1a73291766253a6735.mp3str"
+
+[deps]
+
+source_file="res://SFX/tea party cups.mp3"
+dest_files=["res://.godot/imported/tea party cups.mp3-411509c2e2e86d1a73291766253a6735.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -200,7 +200,7 @@ func get_hit(attack_info: Dictionary):
 			self.global_position = gate_location.global_position
 			gate_location.occupied_by["unit"] = self
 		
-	if attack_info["skill name"] == "Your weapons, please." and self not in who_is_hitting.enemies_touched:
+	if attack_info["skill name"] == "Your weapons please" and self not in who_is_hitting.enemies_touched:
 		who_is_hitting.enemies_touched.append(self)
 	if who_is_hitting.PASSIVES.has("Teethed to the arm."): #Dog walker passive
 		who_is_hitting.leashed_units.append(self)

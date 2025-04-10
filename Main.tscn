@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cpycaudat764"]
+[gd_scene load_steps=39 format=3 uid="uid://cpycaudat764"]
 
 [ext_resource type="Script" uid="uid://canrdcgx2mxng" path="res://Main.gd" id="1_5hkoq"]
 [ext_resource type="Texture2D" uid="uid://bnm0op8tgjbiv" path="res://Assets/UI/Timer/Timer.png" id="2_j0qa6"]
@@ -25,6 +25,14 @@
 [ext_resource type="AudioStream" uid="uid://dcw0kdhmobjav" path="res://SFX/stone-effect-254998_N0J7su7X.mp3" id="20_shusx"]
 [ext_resource type="PackedScene" uid="uid://dp0662vg2voyl" path="res://SFX/SelectCharacterSound.tscn" id="21_76sm0"]
 [ext_resource type="PackedScene" uid="uid://b1k71wsu8t1ev" path="res://SFX/Piercing Ray.tscn" id="22_6nl2v"]
+[ext_resource type="AudioStream" uid="uid://bif2aga20n7fa" path="res://SFX/sweep attack.mp3" id="26_xrxkg"]
+[ext_resource type="AudioStream" uid="uid://dsn5qk1lciac3" path="res://SFX/trim bushes.mp3" id="27_sqvbp"]
+[ext_resource type="AudioStream" uid="uid://da86fh5qxrcxi" path="res://SFX/backstab (maybe).mp3" id="28_gb15f"]
+[ext_resource type="AudioStream" uid="uid://cu1hprdfvy1a1" path="res://SFX/flying kick.mp3" id="29_sph85"]
+[ext_resource type="AudioStream" uid="uid://cfhfvw1ke2woe" path="res://SFX/tea party cups.mp3" id="30_o7g6l"]
+[ext_resource type="AudioStream" uid="uid://d04cm34ufb6oh" path="res://SFX/i come with great news oh shit.mp3" id="31_vi5kq"]
+[ext_resource type="AudioStream" uid="uid://dop17mr6q37cj" path="res://SFX/clubs.mp3" id="32_5mkgo"]
+[ext_resource type="AudioStream" uid="uid://7uoniaqq1lw0" path="res://SFX/my_shift_is_over.mp3" id="33_3ccbu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lawlm"]
 shader = ExtResource("6_a0eb8")
@@ -1060,6 +1068,65 @@ volume_db = 10.0
 
 [node name="Piercing Ray" parent="AttackSounds" instance=ExtResource("22_6nl2v")]
 unique_name_in_owner = true
+pitch_scale = 0.83
+
+[node name="Sweep Attack" type="AudioStreamPlayer2D" parent="AttackSounds"]
+unique_name_in_owner = true
+stream = ExtResource("26_xrxkg")
+
+[node name="Trim Bushes" type="AudioStreamPlayer2D" parent="AttackSounds"]
+unique_name_in_owner = true
+stream = ExtResource("27_sqvbp")
+
+[node name="Backstab" type="AudioStreamPlayer2D" parent="AttackSounds"]
+unique_name_in_owner = true
+stream = ExtResource("28_gb15f")
+
+[node name="Your weapons please" type="AudioStreamPlayer2D" parent="AttackSounds"]
+unique_name_in_owner = true
+
+[node name="Fleet footed kick" type="AudioStreamPlayer2D" parent="AttackSounds"]
+unique_name_in_owner = true
+stream = ExtResource("29_sph85")
+
+[node name="Tea Party for Two" type="AudioStreamPlayer2D" parent="AttackSounds"]
+unique_name_in_owner = true
+stream = ExtResource("30_o7g6l")
+
+[node name="I come with great news" type="AudioStreamPlayer2D" parent="AttackSounds"]
+unique_name_in_owner = true
+stream = ExtResource("31_vi5kq")
+
+[node name="Cloister Garth Commoner\'s Clubs" type="AudioStreamPlayer2D" parent="AttackSounds"]
+unique_name_in_owner = true
+stream = ExtResource("32_5mkgo")
+
+[node name="Vineyard Merchant\'s Diamonds" type="AudioStreamPlayer2D" parent="AttackSounds"]
+unique_name_in_owner = true
+stream = ExtResource("32_5mkgo")
+pitch_scale = 1.2
+
+[node name="Flowerbed Lover\'s Hearts" type="AudioStreamPlayer2D" parent="AttackSounds"]
+unique_name_in_owner = true
+stream = ExtResource("32_5mkgo")
+pitch_scale = 1.4
+
+[node name="Orchard Elite\'s Spades" type="AudioStreamPlayer2D" parent="AttackSounds"]
+unique_name_in_owner = true
+stream = ExtResource("32_5mkgo")
+pitch_scale = 1.6
+
+[node name="Go Fetch!" type="AudioStreamPlayer2D" parent="AttackSounds"]
+unique_name_in_owner = true
+stream = ExtResource("32_5mkgo")
+
+[node name="I love gates" type="AudioStreamPlayer2D" parent="AttackSounds"]
+unique_name_in_owner = true
+stream = ExtResource("32_5mkgo")
+
+[node name="My shift is over" type="AudioStreamPlayer2D" parent="AttackSounds"]
+unique_name_in_owner = true
+stream = ExtResource("33_3ccbu")
 
 [connection signal="pressed" from="SelectOptions/PanelContainer/HBoxContainer/SelectButtons/MoveButton" to="." method="_on_move_button_pressed"]
 [connection signal="pressed" from="SelectOptions/PanelContainer/HBoxContainer/SelectButtons/ActionButton" to="." method="_on_action_button_pressed"]

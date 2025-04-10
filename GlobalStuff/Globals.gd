@@ -79,10 +79,10 @@ var skills = {
 	"Backstab": {
 		"shape": [Vector2(1,0)],
 		"damage multiplier": 2,
-		"optional effects": {
-			#"backstab": 1.5	# backstab modifies damage by 1.5X
-			"disable": 1,
-		},
+		#"optional effects": {
+			##"backstab": 1.5	# backstab modifies damage by 1.5X
+			#"disable": 1,
+		#},
 		"description": "Doesn't actually do more damage from behind",
 	},
 	"Piercing Ray": {
@@ -93,7 +93,7 @@ var skills = {
 		},
 		"description": "Bad breath travels a long distance sometimes",
 	},
-	"Your weapons, please.": { 
+	"Your weapons please": { 
 		"shape": [Vector2(1,0), Vector2(2,0)],
 		"damage multiplier": 0.0,
 		"optional effects": {
@@ -101,7 +101,7 @@ var skills = {
 		},
 		"description": "The bell boy's cart is the second most dangerous thing in this mansion",
 	},
-	"Fleet-footed Kick.": {
+	"Fleet footed kick": {
 		"shape": [Vector2(2,0),Vector2(2,1),Vector2(2,-1),Vector2(3,0),Vector2(3,1),Vector2(3,-1)],
 		"damage multiplier": 1.5,
 		"optional effects": {

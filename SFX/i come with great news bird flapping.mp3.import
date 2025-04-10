@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bsbojmpddhhbk"
+path="res://.godot/imported/i come with great news bird flapping.mp3-57043506c00d17791e20840184db5a21.mp3str"
+
+[deps]
+
+source_file="res://SFX/i come with great news bird flapping.mp3"
+dest_files=["res://.godot/imported/i come with great news bird flapping.mp3-57043506c00d17791e20840184db5a21.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

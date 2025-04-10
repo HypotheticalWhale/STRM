@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://sdgxlt78oidc"
+path="res://.godot/imported/card soldier level.mp3-037f6d0aeb0c6f897ee4ccb0d6698142.mp3str"
+
+[deps]
+
+source_file="res://SFX/card soldier level.mp3"
+dest_files=["res://.godot/imported/card soldier level.mp3-037f6d0aeb0c6f897ee4ccb0d6698142.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

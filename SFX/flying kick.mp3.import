@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cu1hprdfvy1a1"
+path="res://.godot/imported/flying kick.mp3-7affdf888390a34b711108bcc19ea1fa.mp3str"
+
+[deps]
+
+source_file="res://SFX/flying kick.mp3"
+dest_files=["res://.godot/imported/flying kick.mp3-7affdf888390a34b711108bcc19ea1fa.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

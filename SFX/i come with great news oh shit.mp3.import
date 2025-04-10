@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d04cm34ufb6oh"
+path="res://.godot/imported/i come with great news oh shit.mp3-9090dd94c9c89f9e8d34e08362baf1d6.mp3str"
+
+[deps]
+
+source_file="res://SFX/i come with great news oh shit.mp3"
+dest_files=["res://.godot/imported/i come with great news oh shit.mp3-9090dd94c9c89f9e8d34e08362baf1d6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
