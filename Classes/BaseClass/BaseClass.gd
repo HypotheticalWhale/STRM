@@ -399,6 +399,37 @@ func add_job(job_name : String):
 		my_vault = new_vault
 		return
 
+func play_jerk_animation(jerk_direction):
+	var direction_vector: Vector2
+	match jerk_direction:
+		"N":
+			direction_vector = Vector2(0,-1)
+		"S":
+			direction_vector = Vector2(0,1)
+		"E":
+			direction_vector = Vector2(1,0)
+		"W":
+			direction_vector = Vector2(-1,0)
+
+	var magnitude = 5 
+	var jerk_duration = 0.2 
+	var sprite
+	if $RedSprite.visible:
+		sprite = get_node("RedSprite")
+	else:
+		sprite = get_node("BlueSprite")
+		
+	var old_position = sprite.global_position
+	var tween = get_tree().create_tween()
+	tween.tween_property(sprite, "global_position", sprite.global_position+(direction_vector*magnitude), jerk_duration/2)
+	await tween.finished
+	tween.kill()
+	print("rebound")
+	tween = get_tree().create_tween()
+	tween.tween_property(sprite, "global_position", old_position, jerk_duration/2)
+	await tween.finished
+	print("end rebound")
+
 
 func warp_to(destination_vector: Vector2):
 	get_tree().current_scene.all_tiles[global_position].occupied_by["unit"] = null

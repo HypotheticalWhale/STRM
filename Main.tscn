@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cpoj385d4qv08" path="res://Assets/Sprites/Units/BellBoy.png" id="13_1o1jg"]
 [ext_resource type="Script" uid="uid://fwa50jltmaqc" path="res://JobInfo.gd" id="13_w40fn"]
 [ext_resource type="Script" uid="uid://ikin04bi74nx" path="res://EndRoundScreen.gd" id="16_r8hkc"]
-[ext_resource type="Script" uid="uid://bkoahtuvrdn7c" path="res://addons/shaker/src/Vector2/shaker_component2D.gd" id="17_7qtl1"]
+[ext_resource type="Script" uid="uid://djhb6ylqu2qmv" path="res://addons/shaker/src/Vector2/shaker_component2D.gd" id="17_7qtl1"]
 [ext_resource type="Texture2D" uid="uid://d1gdhrabuveo1" path="res://Assets/UI/RoyalPanel.png" id="17_kjvhd"]
 [ext_resource type="Script" uid="uid://dw3rskbwbyttr" path="res://UnitEndRoundInfo.gd" id="17_sc1dx"]
 [ext_resource type="Resource" uid="uid://bc4l7ybch2maa" path="res://ScreenShake.tres" id="18_a2wx3"]
@@ -97,7 +97,7 @@ theme = ExtResource("2_vidso")
 
 [node name="MoveButton" type="Button" parent="SelectOptions/PanelContainer/HBoxContainer/SelectButtons"]
 layout_mode = 2
-text = "MOVE"
+text = "MOOOOOOVE"
 
 [node name="ActionButton" type="Button" parent="SelectOptions/PanelContainer/HBoxContainer/SelectButtons"]
 layout_mode = 2
