@@ -921,6 +921,7 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="LoserPanelContainer" type="PanelContainer" parent="UI/EndRoundScreen/EndRoundVBox"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_2gh4u")
 
@@ -1061,6 +1062,7 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="EndRoundButton" type="Button" parent="UI/EndRoundScreen/EndRoundVBox"]
+unique_name_in_owner = true
 process_mode = 3
 layout_mode = 2
 size_flags_vertical = 3

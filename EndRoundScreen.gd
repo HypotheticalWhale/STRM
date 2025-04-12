@@ -6,7 +6,9 @@ var player_won = false
 func initialize(team: String, next_action: String):
 	button_press.play()	
 	if next_action == "continue":
-		%PlayerWon.text = team + " WINS"
+		%LoserPanelContainer.visible = true
+		%PlayerWon.text = team + " WINS THE ROUND"
+		%EndRoundButton.text = "TO THE NEXT!"
 		%PlayerLost.text = "LOSERS"
 
 		if team == "P1":
@@ -32,14 +34,16 @@ func initialize(team: String, next_action: String):
 		return
 	
 	if next_action == "end":
-		%PlayerWon.text = team + " WINS"
+		%LoserPanelContainer.visible = false
+		%PlayerWon.text = team + " WINS THE GAME"
+		%EndRoundButton.text = "START NEW GAME"
 		player_won = true
 		return		
 	
 
 func _on_end_round_button_pressed() -> void:
 	if player_won == true:
-		var _reload = await get_tree().reload_current_scene()
+		get_tree().change_scene_to_file("res://StartScreen.tscn")
 		return
 	Globals.round += 1
 	Globals.score[Globals.WHOSTURNISIT] += 1

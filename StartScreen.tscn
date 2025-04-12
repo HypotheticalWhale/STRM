@@ -18,48 +18,54 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_left = -235.0
+offset_top = -74.0
+offset_right = 1685.0
+offset_bottom = 1006.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_mqr7l")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
-offset_left = 883.0
+offset_left = 889.0
 offset_top = 506.0
-offset_right = 983.0
+offset_right = 989.0
 offset_bottom = 572.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme = ExtResource("1_s4vtk")
-text = "Start Game
-"
+text = "START GAME"
 
 [node name="Options" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme = ExtResource("1_s4vtk")
-text = "Options"
+text = "OPTIONS"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(960, 540)
+position = Vector2(938, 472)
+zoom = Vector2(1.8, 1.8)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 802.0
+offset_top = 432.0
+offset_right = 942.0
+offset_bottom = 464.0
+scale = Vector2(2, 2)
 alignment = 1
 
 [node name="Servant" type="TextureRect" parent="HBoxContainer"]
-modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 texture = ExtResource("4_vno1p")
 
 [node name="BigCloakServant" type="TextureRect" parent="HBoxContainer"]
-modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 texture = ExtResource("5_vuion")
 
