@@ -323,16 +323,16 @@ func toggle_player_turn():
 
 
 func show_tile_info(tile : Object):
-	if get_tree().current_scene.has_node("UI/BottomRightContainer/TileInfo") == false:
+	if get_tree().current_scene.has_node("UI/HBoxContainer/TileInfo") == false:
 		printerr("Not allowed to show tile_info in scene other than Main.tscn.")
 		return
-	var tile_info = get_tree().current_scene.get_node("UI/BottomRightContainer/TileInfo")
+	var tile_info = get_tree().current_scene.get_node("UI/HBoxContainer/TileInfo")
 	tile_info.visible = true
 	tile_info.update_info(tile.get_terrain().type, tile.get_terrain().defense, tile.get_terrain().movement_penalty)
 
 
 func show_quest_info(tile: Object):
-	var quest_ui_node: Object = get_tree().current_scene.get_node("UI/BottomRightContainer/QuestInfo")
+	var quest_ui_node: Object = get_tree().current_scene.get_node("UI/HBoxContainer/QuestInfo")
 	if tile.occupied_by["unit"] == null:
 		quest_ui_node.visible = false
 	else:

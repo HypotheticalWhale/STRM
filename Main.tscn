@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cpycaudat764"]
+[gd_scene load_steps=41 format=3 uid="uid://cpycaudat764"]
 
 [ext_resource type="Script" uid="uid://canrdcgx2mxng" path="res://Main.gd" id="1_5hkoq"]
 [ext_resource type="Texture2D" uid="uid://bnm0op8tgjbiv" path="res://Assets/UI/Timer/Timer.png" id="2_j0qa6"]
@@ -37,6 +37,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lawlm"]
 shader = ExtResource("6_a0eb8")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sph85"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_37004"]
 content_margin_left = 18.0
@@ -128,24 +130,24 @@ text = "INFO"
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Player1" type="Control" parent="UI"]
-layout_mode = 3
-anchors_preset = 0
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
 offset_right = 40.0
 offset_bottom = 40.0
 theme = ExtResource("2_vidso")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/Player1"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Player1MarginContainer" type="MarginContainer" parent="UI/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
 theme_override_constants/margin_left = 5
 
-[node name="LabelContainer" type="VBoxContainer" parent="UI/Player1/MarginContainer"]
-custom_minimum_size = Vector2(400, 2.08165e-12)
+[node name="LabelContainer" type="VBoxContainer" parent="UI/HBoxContainer/Player1MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 4
 
-[node name="TurnLabel" type="Label" parent="UI/Player1/MarginContainer/LabelContainer"]
+[node name="TurnLabel" type="Label" parent="UI/HBoxContainer/Player1MarginContainer/LabelContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "P1"
@@ -153,148 +155,213 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="FirstExpContainer" type="HBoxContainer" parent="UI/Player1/MarginContainer/LabelContainer"]
-custom_minimum_size = Vector2(400, 2.08165e-12)
+[node name="FirstExpContainer" type="VBoxContainer" parent="UI/HBoxContainer/Player1MarginContainer/LabelContainer"]
 layout_mode = 2
-theme_override_constants/separation = 10
+size_flags_vertical = 3
 
-[node name="FirstExp" type="Label" parent="UI/Player1/MarginContainer/LabelContainer/FirstExpContainer"]
+[node name="FirstExp" type="Label" parent="UI/HBoxContainer/Player1MarginContainer/LabelContainer/FirstExpContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 5
-size_flags_stretch_ratio = 0.4
+size_flags_vertical = 3
 text = "ligma"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="ProgressBar" type="ProgressBar" parent="UI/Player1/MarginContainer/LabelContainer/FirstExpContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="UI/HBoxContainer/Player1MarginContainer/LabelContainer/FirstExpContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 1
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
 show_percentage = false
 
-[node name="SecondExpContainer" type="HBoxContainer" parent="UI/Player1/MarginContainer/LabelContainer"]
+[node name="SecondExpContainer" type="VBoxContainer" parent="UI/HBoxContainer/Player1MarginContainer/LabelContainer"]
 layout_mode = 2
-theme_override_constants/separation = 10
+size_flags_vertical = 3
 
-[node name="SecondExp" type="Label" parent="UI/Player1/MarginContainer/LabelContainer/SecondExpContainer"]
+[node name="SecondExp" type="Label" parent="UI/HBoxContainer/Player1MarginContainer/LabelContainer/SecondExpContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 5
-size_flags_stretch_ratio = 0.4
+size_flags_vertical = 3
+text = "ligma"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="ProgressBar" type="ProgressBar" parent="UI/Player1/MarginContainer/LabelContainer/SecondExpContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="UI/HBoxContainer/Player1MarginContainer/LabelContainer/SecondExpContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 1
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
 show_percentage = false
 
-[node name="ThirdExpContainer" type="HBoxContainer" parent="UI/Player1/MarginContainer/LabelContainer"]
+[node name="ThirdExpContainer" type="VBoxContainer" parent="UI/HBoxContainer/Player1MarginContainer/LabelContainer"]
 layout_mode = 2
-theme_override_constants/separation = 10
+size_flags_vertical = 3
 
-[node name="ThirdExp" type="Label" parent="UI/Player1/MarginContainer/LabelContainer/ThirdExpContainer"]
+[node name="ThirdExp" type="Label" parent="UI/HBoxContainer/Player1MarginContainer/LabelContainer/ThirdExpContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 5
-size_flags_stretch_ratio = 0.4
+size_flags_vertical = 3
+text = "ligma"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="ProgressBar" type="ProgressBar" parent="UI/Player1/MarginContainer/LabelContainer/ThirdExpContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="UI/HBoxContainer/Player1MarginContainer/LabelContainer/ThirdExpContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 1
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
 show_percentage = false
 
-[node name="Player2" type="Control" parent="UI"]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme = ExtResource("2_vidso")
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/Player2"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Player2MarginContainer" type="MarginContainer" parent="UI/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
 theme_override_constants/margin_left = 5
 
-[node name="LabelContainer" type="VBoxContainer" parent="UI/Player2/MarginContainer"]
-custom_minimum_size = Vector2(400, 2.08165e-12)
+[node name="LabelContainer" type="VBoxContainer" parent="UI/HBoxContainer/Player2MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 4
 
-[node name="TurnLabel" type="Label" parent="UI/Player2/MarginContainer/LabelContainer"]
+[node name="TurnLabel" type="Label" parent="UI/HBoxContainer/Player2MarginContainer/LabelContainer"]
 layout_mode = 2
-theme = ExtResource("2_vidso")
 theme_type_variation = &"HeaderLarge"
-text = "P2"
+text = "P1"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="FirstExpContainer" type="HBoxContainer" parent="UI/Player2/MarginContainer/LabelContainer"]
+[node name="FirstExpContainer" type="VBoxContainer" parent="UI/HBoxContainer/Player2MarginContainer/LabelContainer"]
 layout_mode = 2
-theme_override_constants/separation = 10
+size_flags_vertical = 3
 
-[node name="FirstExp" type="Label" parent="UI/Player2/MarginContainer/LabelContainer/FirstExpContainer"]
+[node name="FirstExp" type="Label" parent="UI/HBoxContainer/Player2MarginContainer/LabelContainer/FirstExpContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 5
-size_flags_stretch_ratio = 0.4
+size_flags_vertical = 3
+text = "ligma"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="ProgressBar" type="ProgressBar" parent="UI/Player2/MarginContainer/LabelContainer/FirstExpContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="UI/HBoxContainer/Player2MarginContainer/LabelContainer/FirstExpContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 1
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
 show_percentage = false
 
-[node name="SecondExpContainer" type="HBoxContainer" parent="UI/Player2/MarginContainer/LabelContainer"]
+[node name="SecondExpContainer" type="VBoxContainer" parent="UI/HBoxContainer/Player2MarginContainer/LabelContainer"]
 layout_mode = 2
-theme_override_constants/separation = 10
+size_flags_vertical = 3
 
-[node name="SecondExp" type="Label" parent="UI/Player2/MarginContainer/LabelContainer/SecondExpContainer"]
+[node name="SecondExp" type="Label" parent="UI/HBoxContainer/Player2MarginContainer/LabelContainer/SecondExpContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 5
-size_flags_stretch_ratio = 0.4
+size_flags_vertical = 3
+text = "ligma"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="ProgressBar" type="ProgressBar" parent="UI/Player2/MarginContainer/LabelContainer/SecondExpContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="UI/HBoxContainer/Player2MarginContainer/LabelContainer/SecondExpContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 1
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
 show_percentage = false
 
-[node name="ThirdExpContainer" type="HBoxContainer" parent="UI/Player2/MarginContainer/LabelContainer"]
+[node name="ThirdExpContainer" type="VBoxContainer" parent="UI/HBoxContainer/Player2MarginContainer/LabelContainer"]
 layout_mode = 2
-theme_override_constants/separation = 10
+size_flags_vertical = 3
 
-[node name="ThirdExp" type="Label" parent="UI/Player2/MarginContainer/LabelContainer/ThirdExpContainer"]
+[node name="ThirdExp" type="Label" parent="UI/HBoxContainer/Player2MarginContainer/LabelContainer/ThirdExpContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 5
-size_flags_stretch_ratio = 0.4
+size_flags_vertical = 3
+text = "ligma"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="ProgressBar" type="ProgressBar" parent="UI/Player2/MarginContainer/LabelContainer/ThirdExpContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="UI/HBoxContainer/Player2MarginContainer/LabelContainer/ThirdExpContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 1
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
 show_percentage = false
+
+[node name="TileInfo" type="PanelContainer" parent="UI/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_sph85")
+script = ExtResource("5_sqfni")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/HBoxContainer/TileInfo"]
+layout_mode = 2
+
+[node name="TerrainLabel" type="Label" parent="UI/HBoxContainer/TileInfo/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="TerrainIcon" type="TextureRect" parent="UI/HBoxContainer/TileInfo/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 3
+stretch_mode = 5
+
+[node name="DefenseLabel" type="Label" parent="UI/HBoxContainer/TileInfo/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="QuestInfo" type="PanelContainer" parent="UI/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_sph85")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/HBoxContainer/QuestInfo"]
+layout_mode = 2
+
+[node name="QuestHeader" type="Label" parent="UI/HBoxContainer/QuestInfo/VBoxContainer"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+size_flags_vertical = 10
+theme_type_variation = &"HeaderLarge"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="QuestDescription" type="Label" parent="UI/HBoxContainer/QuestInfo/VBoxContainer"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+size_flags_vertical = 10
+size_flags_stretch_ratio = 4.0
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
 
 [node name="TurnTimerUI" type="HBoxContainer" parent="UI"]
 anchors_preset = 1
@@ -358,86 +425,6 @@ uppercase = true
 
 [node name="TurnTimer" type="Timer" parent="UI/TurnTimerUI/TimerContainer"]
 wait_time = 20.0
-
-[node name="BottomRightContainer" type="VBoxContainer" parent="UI"]
-z_index = -1
-z_as_relative = false
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -70.0
-grow_horizontal = 0
-grow_vertical = 0
-mouse_filter = 2
-theme = ExtResource("2_vidso")
-
-[node name="TileInfo" type="PanelContainer" parent="UI/BottomRightContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-script = ExtResource("5_sqfni")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/BottomRightContainer/TileInfo"]
-layout_mode = 2
-
-[node name="TerrainLabel" type="Label" parent="UI/BottomRightContainer/TileInfo/VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(96, 32)
-layout_mode = 2
-size_flags_vertical = 3
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-uppercase = true
-
-[node name="TerrainIcon" type="TextureRect" parent="UI/BottomRightContainer/TileInfo/VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-size_flags_vertical = 3
-stretch_mode = 5
-
-[node name="DefenseLabel" type="Label" parent="UI/BottomRightContainer/TileInfo/VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(96, 32)
-layout_mode = 2
-size_flags_vertical = 3
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-uppercase = true
-
-[node name="QuestInfo" type="PanelContainer" parent="UI/BottomRightContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/BottomRightContainer/QuestInfo"]
-layout_mode = 2
-
-[node name="QuestHeader" type="Label" parent="UI/BottomRightContainer/QuestInfo/VBoxContainer"]
-custom_minimum_size = Vector2(96, 32)
-layout_mode = 2
-size_flags_vertical = 10
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-uppercase = true
-
-[node name="QuestDescription" type="Label" parent="UI/BottomRightContainer/QuestInfo/VBoxContainer"]
-custom_minimum_size = Vector2(96, 32)
-layout_mode = 2
-size_flags_vertical = 10
-size_flags_stretch_ratio = 4.0
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-uppercase = true
 
 [node name="LevelUp" type="MarginContainer" parent="UI"]
 process_mode = 3
@@ -1070,7 +1057,7 @@ theme_override_font_sizes/font_size = 10
 text = "TO THE NEXT!"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(399.676, 139.676)
+position = Vector2(343, 110)
 
 [node name="ShakerComponent2D" type="Node2D" parent="Camera2D"]
 script = ExtResource("17_7qtl1")
