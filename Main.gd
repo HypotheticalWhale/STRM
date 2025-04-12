@@ -182,7 +182,7 @@ func show_select_menu(menu_position,tile_node):
 	hide_action_buttons()	
 	selected_tile = tile_node
 	$SelectOptions.visible = true
-	$SelectOptions.global_position = menu_position
+	$SelectOptions.global_position = menu_position + Vector2(20, -30)
 	hide_info_menu()
 	
 func show_info_menu(menu_position,tile_node):
@@ -190,7 +190,7 @@ func show_info_menu(menu_position,tile_node):
 		return
 	selected_tile = tile_node	
 	$NotYourOptions.visible = true
-	$NotYourOptions.global_position = menu_position
+	$NotYourOptions.global_position = menu_position + Vector2(20, -15)
 	hide_select_menu()
 	
 func hide_select_menu():
