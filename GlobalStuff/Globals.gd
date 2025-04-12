@@ -69,7 +69,7 @@ var skills = {
 	},
 	"Trim Bushes": {
 		"shape": [Vector2(1,-1),Vector2(1,1),Vector2(2,0),Vector2(3,-1),Vector2(3,1),Vector2(4,-2),Vector2(4,2)],
-		"damage multiplier": 1.1,
+		"damage multiplier": 2,
 		"optional effects": {
 			"sweet spot": Vector2(2,0)	# deals double damage at Vector2(1,1)
 		},
