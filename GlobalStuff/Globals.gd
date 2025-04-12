@@ -79,10 +79,10 @@ var skills = {
 	"Backstab": {
 		"shape": [Vector2(1,0)],
 		"damage multiplier": 2,
-		"optional effects": {
-			#"backstab": 1.5	# backstab modifies damage by 1.5X
+		#"optional effects": {
+			##"backstab": 1.5	# backstab modifies damage by 1.5X
 			#"disable": 1,
-		},
+		#},
 		"description": "Doesn't actually do more damage from behind",
 	},
 	"Piercing Ray": {

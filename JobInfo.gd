@@ -20,7 +20,7 @@ func update_selected_job_details():
 	for skill in new_job.ACTIONS:
 		skill_cont = skill_container_scene.instantiate()
 		skill_cont.text = skill
-		skill_cont.tooltip_text = Globals.skills[skill]["description"]
+		skill_cont.tooltip_text = Globals.skills[skill]["description"].to_upper()
 		skills_container.add_child(skill_cont)
 	for child in passives_container.get_children():
 		child.queue_free()

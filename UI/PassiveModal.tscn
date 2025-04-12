@@ -12,9 +12,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "test name"
 horizontal_alignment = 1
+uppercase = true
 
 [node name="PassiveDescription" type="Label" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "test description"
 horizontal_alignment = 1
+uppercase = true
