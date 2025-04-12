@@ -32,8 +32,8 @@
 [ext_resource type="AudioStream" uid="uid://cfhfvw1ke2woe" path="res://SFX/tea party cups.mp3" id="30_o7g6l"]
 [ext_resource type="AudioStream" uid="uid://d04cm34ufb6oh" path="res://SFX/i come with great news oh shit.mp3" id="31_vi5kq"]
 [ext_resource type="AudioStream" uid="uid://dop17mr6q37cj" path="res://SFX/clubs.mp3" id="32_5mkgo"]
-[ext_resource type="AudioStream" uid="uid://7uoniaqq1lw0" path="res://SFX/my_shift_is_over.mp3" id="33_3ccbu"]
 [ext_resource type="AudioStream" uid="uid://dbj1s7lyu2e54" path="res://SFX/i love gates.mp3" id="33_sph85"]
+[ext_resource type="AudioStream" uid="uid://63isp608sc0e" path="res://SFX/my shift is over.mp3" id="34_sph85"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lawlm"]
 shader = ExtResource("6_a0eb8")
@@ -1157,7 +1157,7 @@ stream = ExtResource("33_sph85")
 
 [node name="My shift is over" type="AudioStreamPlayer2D" parent="AttackSounds"]
 unique_name_in_owner = true
-stream = ExtResource("33_3ccbu")
+stream = ExtResource("34_sph85")
 
 [connection signal="pressed" from="SelectOptions/PanelContainer/HBoxContainer/SelectButtons/MoveButton" to="." method="_on_move_button_pressed"]
 [connection signal="pressed" from="SelectOptions/PanelContainer/HBoxContainer/SelectButtons/ActionButton" to="." method="_on_action_button_pressed"]

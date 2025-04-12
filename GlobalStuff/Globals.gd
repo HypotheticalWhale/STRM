@@ -95,7 +95,7 @@ var skills = {
 	},
 	"Your weapons please": { 
 		"shape": [Vector2(1,0), Vector2(2,0)],
-		"damage multiplier": 0.0,
+		"damage multiplier": 0.001,
 		"optional effects": {
 			"disable": 2	# disables unit for 1 turn
 		},
@@ -295,7 +295,7 @@ var bigness_data = {
 	},
 	
 	"Big Hood": {
-		"skill": "Backstab",
+		"skill": "My shift is over",
 	},
 
 	"Big Biceps": {
