@@ -67,9 +67,6 @@ func _process(delta):
 		if previous_highlighted_tile != highlighted_tile and highlighted_tile.available_tile.visible:
 			previous_highlighted_tile = highlighted_tile
 			$MovementArrow.clear_points()
-			print("finding path from: ",selected_tile.global_position/Globals.TILE_SIZE ," to ",highlighted_tile.global_position/Globals.TILE_SIZE)
-			print(all_tiles[highlighted_tile.global_position].occupied_by)
-			print(astar.get_id_path(selected_tile.global_position/Globals.TILE_SIZE,highlighted_tile.global_position/Globals.TILE_SIZE))
 			for point in astar.get_id_path(selected_tile.global_position/Globals.TILE_SIZE,highlighted_tile.global_position/Globals.TILE_SIZE):
 				$MovementArrow.add_point(point*Globals.TILE_SIZE)
 	
@@ -348,14 +345,11 @@ func _on_turn_timer_timeout():
 		# special check for vaultskeeper's wanted count
 		if unit.CURRENT_JOB == "Vaults Keeper":
 			var vault = get_own_nearby_vault(unit)
-			print("vault is : ", vault)
 			if vault != null:	# if vaults keepers' vault is nearby
 				unit.wanted = 0
 			else:
-				print("incrementing wanted from: ", unit.wanted)
 				unit.wanted += 1
 			if unit.wanted >= 2:
-				print("gonna imprison")
 				await imprison_into_vault("self", unit, vault)
 	for tile in get_occupied_tiles(): 
 		if tile.occupied_by["unit"].CURRENT_JOB == "Bell Boy" and Globals.WHOSTURNISIT != tile.occupied_by["unit"].TEAM and tile.occupied_by["terrain"].type == "Lobby":
@@ -369,7 +363,6 @@ func _on_turn_timer_timeout():
 	for tile in all_tiles.values():
 		astar.set_point_solid(tile.global_position/Globals.TILE_SIZE,false)
 	for tile in get_occupied_tiles():
-		print(get_occupied_tiles())
 		if tile.occupied_by["unit"].TEAM != Globals.WHOSTURNISIT:
 			astar.set_point_solid(tile.global_position/Globals.TILE_SIZE,true)
 	# show reminder for next players turn
@@ -614,7 +607,6 @@ func get_cursor_direction_relative_to_node(node: Node2D) -> String:
 func get_three_rightmost_tiles(section_percentage: float = 0.5) -> Array:
 	var rightmost_tiles = []
 	var start_x = int(GRID_SIZE[0] * (1 - section_percentage))
-	print(start_x)
 	for x_tile in range(start_x+1, GRID_SIZE[0]):
 		for y_tile in range(2, GRID_SIZE[1]):
 			var tile_coords = Vector2(x_tile, y_tile) * Globals.TILE_SIZE
@@ -633,7 +625,6 @@ func get_three_rightmost_tiles(section_percentage: float = 0.5) -> Array:
 func get_three_leftmost_tiles(section_percentage: float = 0.5) -> Array:
 	var leftmost_tiles = []
 	var end_x = int(GRID_SIZE[0] * (1-section_percentage))  # We calculate up to a percentage from the left side
-	print(end_x)
 	for x_tile in range(end_x+1):  # Iterating from 0 to the calculated end_x
 		for y_tile in range(2, GRID_SIZE[1]):
 			var tile_coords = Vector2(x_tile, y_tile) * Globals.TILE_SIZE
@@ -655,12 +646,10 @@ func get_team_gates(team):
 	if team == "P1":
 		for tile in all_tiles.values():
 			if tile.occupied_by["terrain"].type == "GateBlue" and tile.occupied_by["unit"] == null:
-				print("found ", tile)
 				team_gates.append(tile)
 	else:
 		for tile in all_tiles.values():
 			if tile.occupied_by["terrain"].type == "GateRed" and tile.occupied_by["unit"] == null:
-				print("found ", tile)				
 				team_gates.append(tile)
 				 
 	return team_gates
@@ -684,7 +673,6 @@ func get_own_nearby_vault(unit: Object):
 
 func imprison_into_vault(self_or_others: String, unit: Object, nearby_vault: Object):
 	if self_or_others == "self":	# imprisons the vaultkeeper to a faraway vault that he owns
-		print("warping in imprisonment")
 		assert(unit.my_vault.get_parent().occupied_by["unit"] == null)	# there shouldn't be anyone in the middle of the vault
 		unit.warp_to(unit.my_vault.global_position)
 		unit.immobilized_turns_left = 3
