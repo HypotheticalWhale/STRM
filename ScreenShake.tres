@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="ShakerPreset2D" load_steps=6 format=3 uid="uid://bc4l7ybch2maa"]
 
-[ext_resource type="Script" uid="uid://nwiyidpfqbwe" path="res://addons/shaker/data/Vector2/BaseShakerType2D.gd" id="1_2tybp"]
-[ext_resource type="Script" uid="uid://do2x4gfm06cpj" path="res://addons/shaker/data/Vector2/ShakerTypeSquareWave2D.gd" id="1_jp2e2"]
-[ext_resource type="Script" uid="uid://b0fykh1nkp08p" path="res://addons/shaker/data/Vector2/ShakerPreset2D.gd" id="2_6clr2"]
-[ext_resource type="Script" uid="uid://jpceswg46kbn" path="res://addons/shaker/data/Single/BaseShakerType1D.gd" id="3_v3a2f"]
+[ext_resource type="Script" uid="uid://hnyuohgc03es" path="res://addons/shaker/data/Vector2/BaseShakerType2D.gd" id="1_2tybp"]
+[ext_resource type="Script" uid="uid://duxgnqb81kcy2" path="res://addons/shaker/data/Vector2/ShakerTypeSquareWave2D.gd" id="1_jp2e2"]
+[ext_resource type="Script" uid="uid://ng20k5txmtcw" path="res://addons/shaker/data/Vector2/ShakerPreset2D.gd" id="2_6clr2"]
+[ext_resource type="Script" uid="uid://bvujux7k3cinj" path="res://addons/shaker/data/Single/BaseShakerType1D.gd" id="3_v3a2f"]
 
 [sub_resource type="Resource" id="Resource_8jqbn"]
 script = ExtResource("1_jp2e2")
