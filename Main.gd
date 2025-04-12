@@ -25,8 +25,7 @@ var target_terrain_info = {} 	# e.g. target_terrain_info = { Vector2(32, 64): "t
 ##}
 var available_attack_tiles: Dictionary
 #
-var astar = AStarGrid2D.new()
-
+var astar
 var starting_player = "P1"
 var attacking = false
 var moving  = false
@@ -46,6 +45,7 @@ func _ready():
 		turn_on_p1_ui()
 	else:
 		turn_on_p2_ui()
+	astar = AStarGrid2D.new()
 	astar.cell_size = Vector2i(Globals.TILE_SIZE,Globals.TILE_SIZE)
 	astar.region = Rect2(Vector2(2,2),Vector2(GRID_SIZE[0],GRID_SIZE[1]))
 	astar.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
@@ -54,7 +54,7 @@ func _ready():
 		if tile.occupied_by["unit"].TEAM != Globals.WHOSTURNISIT:
 			astar.set_point_solid(tile.global_position/Globals.TILE_SIZE,true)
 	_on_turn_timer_timeout()
-	_on_turn_timer_timeout()	
+	_on_turn_timer_timeout()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if attacking and selected_tile:
@@ -63,9 +63,13 @@ func _process(delta):
 			mouse_relative_direction = calc_direction
 			on_skill_pressed(button_pressed,calc_direction)
 	if moving:
+		astar.update()
 		if previous_highlighted_tile != highlighted_tile and highlighted_tile.available_tile.visible:
 			previous_highlighted_tile = highlighted_tile
 			$MovementArrow.clear_points()
+			print("finding path from: ",selected_tile.global_position/Globals.TILE_SIZE ," to ",highlighted_tile.global_position/Globals.TILE_SIZE)
+			print(all_tiles[highlighted_tile.global_position].occupied_by)
+			print(astar.get_id_path(selected_tile.global_position/Globals.TILE_SIZE,highlighted_tile.global_position/Globals.TILE_SIZE))
 			for point in astar.get_id_path(selected_tile.global_position/Globals.TILE_SIZE,highlighted_tile.global_position/Globals.TILE_SIZE):
 				$MovementArrow.add_point(point*Globals.TILE_SIZE)
 	
@@ -122,6 +126,8 @@ func reset_units():
 		all_tiles[tile_coords].occupied_by["unit"] = unit
 		count += 2		
 	astar.update()
+
+	_on_turn_timer_timeout()
 	
 func spawn_tiles():
 	var throne_count = true
@@ -360,11 +366,12 @@ func _on_turn_timer_timeout():
 		turn_on_p1_ui()
 	if Globals.WHOSTURNISIT == "P2":		
 		turn_on_p2_ui()
+	for tile in all_tiles.values():
+		astar.set_point_solid(tile.global_position/Globals.TILE_SIZE,false)
 	for tile in get_occupied_tiles():
+		print(get_occupied_tiles())
 		if tile.occupied_by["unit"].TEAM != Globals.WHOSTURNISIT:
 			astar.set_point_solid(tile.global_position/Globals.TILE_SIZE,true)
-		else:
-			astar.set_point_solid(tile.global_position/Globals.TILE_SIZE,false)
 	# show reminder for next players turn
 	get_node("UI/NextPlayerReady").visible = true
 	get_node("UI/NextPlayerReady").text = Globals.WHOSTURNISIT + "'S TURN. CLICK TO START"

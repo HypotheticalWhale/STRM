@@ -45,6 +45,5 @@ func _on_end_round_button_pressed() -> void:
 	Globals.score[Globals.WHOSTURNISIT] += 1
 	await get_tree().current_scene.reset_units()
 	get_tree().current_scene.turn_timer.stop()
-	await get_tree().current_scene._on_turn_timer_timeout()
 	get_tree().current_scene.turn_timer.start()
 	visible = false
