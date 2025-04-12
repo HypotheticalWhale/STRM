@@ -75,7 +75,7 @@ func _on_input_event(viewport, event, shape_idx):
 			#await Globals.complete_unit_quest(Globals.TAKENACTION,"Fight")	# for debugging only
 			var sound_scene = get_tree().current_scene.get_node("AttackSounds/"+attack_sound)
 			print("AttackSounds/"+attack_sound)
-			sound_scene.play()
+			await sound_scene.play()
 			get_parent().attacking = false
 			get_parent().clear_available_tiles()			
 			get_parent().clear_available_attack_tiles()
@@ -183,7 +183,7 @@ func _on_input_event(viewport, event, shape_idx):
 						if dash_destination+Vector2(-32,0) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(-32,0)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(-32,0)].occupied_by["unit"].next_to_pigeon_commander(get_parent().all_tiles[dash_destination].occupied_by["unit"])
 						if dash_destination+Vector2(0,-32) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(0,-32)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(0,-32)].occupied_by["unit"].next_to_pigeon_commander(get_parent().all_tiles[dash_destination].occupied_by["unit"])
 				var sound_scene = get_tree().current_scene.get_node("AttackSounds/"+attack_sound)
-				sound_scene.play()
+				await sound_scene.play()
 				get_parent().clear_available_attack_tiles()
 				get_parent().disable_action_button()
 				get_parent().attacking = false
