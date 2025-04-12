@@ -10,3 +10,4 @@ size_flags_horizontal = 3
 tooltip_text = "test test"
 mouse_filter = 0
 text = "test text"
+uppercase = true

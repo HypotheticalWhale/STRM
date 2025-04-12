@@ -12,5 +12,5 @@ func _on_pressed():
 	button_press.play()
 	await LevelUpUI.set_selected_job(job)
 	await LevelUpUI.update_selected_job_details()
-	LevelUpUI.get_node("PanelContainer/VBoxContainer/ChooseSkill").text = job
+	LevelUpUI.get_node("PanelContainer/VBoxContainer/ChooseSkill").text = job.to_upper()
 	

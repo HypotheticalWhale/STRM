@@ -387,10 +387,10 @@ func _on_action_button_pressed():
 		child.queue_free()
 	for action in selected_tile.occupied_by["unit"].ACTIONS:
 		button = action_button.instantiate()
-		button.text = action
+		button.text = action.to_upper()
 		button.skill_owner = selected_tile.occupied_by["unit"]
 		button.skill_name = action
-		button.tooltip_text = Globals.skills[action]["description"]
+		button.tooltip_text = Globals.skills[action]["description"].to_upper()
 		action_button_container.add_child(button)
 		if Globals.WHOSTURNISIT == "P2":
 			button.pressed.connect(on_skill_pressed.bind(button,"W"))

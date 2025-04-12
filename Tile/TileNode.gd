@@ -78,8 +78,7 @@ func _on_input_event(viewport, event, shape_idx):
 			#await Globals.complete_unit_quest(Globals.TAKENACTION,"Fight")	# for debugging only
 			
 			var sound_scene = get_tree().current_scene.get_node("AttackSounds/"+attack_sound)
-			print("AttackSounds/"+attack_sound)
-			await sound_scene.play()
+			await play_sound_with_endlag(sound_scene, 0.0)
 			get_parent().attacking = false
 			get_parent().clear_available_tiles()			
 			get_parent().clear_available_attack_tiles()
@@ -190,7 +189,7 @@ func _on_input_event(viewport, event, shape_idx):
 						if dash_destination+Vector2(-32,0) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(-32,0)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(-32,0)].occupied_by["unit"].next_to_pigeon_commander(get_parent().all_tiles[dash_destination].occupied_by["unit"])
 						if dash_destination+Vector2(0,-32) in get_parent().valid_tiles and get_parent().all_tiles[dash_destination+Vector2(0,-32)].occupied_by["unit"]: get_parent().all_tiles[dash_destination+Vector2(0,-32)].occupied_by["unit"].next_to_pigeon_commander(get_parent().all_tiles[dash_destination].occupied_by["unit"])
 				var sound_scene = get_tree().current_scene.get_node("AttackSounds/"+attack_sound)
-				await sound_scene.play()
+				await play_sound_with_endlag(sound_scene, 0.0)
 				get_parent().clear_available_attack_tiles()
 				get_parent().disable_action_button()
 				get_parent().attacking = false
@@ -201,7 +200,14 @@ func _on_input_event(viewport, event, shape_idx):
 			get_parent().clear_available_attack_tiles()
 			get_parent().hide_select_menu()
 			get_parent().hide_info_menu()			
-			
+
+
+func play_sound_with_endlag(audiostream_player_node: Object, endlag_duration: float):
+	audiostream_player_node.play()
+	if endlag_duration > 0:
+		await get_tree().create_timer(endlag_duration).timeout
+	return self
+
 func find_closest_vector(target: Vector2, vectors: Array) -> Vector2:
 	var closest_vector = vectors[0] # Initialize with the first vector
 	var closest_distance = target.distance_to(closest_vector)
