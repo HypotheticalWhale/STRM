@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://3clkbc5bh0q5"]
+
+[sub_resource type="Gradient" id="Gradient_vuion"]
+offsets = PackedFloat32Array(0.315789, 0.473684)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+amount = 500
+lifetime = 10.0
+preprocess = 30.0
+emission_shape = 3
+emission_rect_extents = Vector2(500, 1)
+gravity = Vector2(45, 980)
+initial_velocity_min = 300.0
+initial_velocity_max = 500.0
+scale_amount_max = 4.0
+color_initial_ramp = SubResource("Gradient_vuion")

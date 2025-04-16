@@ -1,53 +1,172 @@
-[gd_scene load_steps=41 format=3 uid="uid://cpycaudat764"]
+[gd_scene load_steps=71 format=3 uid="uid://cpycaudat764"]
 
 [ext_resource type="Script" uid="uid://canrdcgx2mxng" path="res://Main.gd" id="1_5hkoq"]
-[ext_resource type="Texture2D" uid="uid://bnm0op8tgjbiv" path="res://Assets/UI/Timer/Timer.png" id="2_j0qa6"]
+[ext_resource type="PackedScene" uid="uid://3clkbc5bh0q5" path="res://SnowParticles.tscn" id="2_4bst2"]
 [ext_resource type="Theme" uid="uid://bkqipfaxijp3i" path="res://Medieval.tres" id="2_vidso"]
-[ext_resource type="Script" uid="uid://c3b1rbo1tduih" path="res://UI/TurnTimerUI.gd" id="2_wpr50"]
+[ext_resource type="Texture2D" uid="uid://cibvdsu610u6t" path="res://UI/Background.png" id="3_oaklg"]
 [ext_resource type="Script" uid="uid://bbe3p0koqxrjx" path="res://UI/TileInfo.gd" id="5_sqfni"]
 [ext_resource type="Script" uid="uid://b0njvbvyu85an" path="res://UI/RoundLabel.gd" id="5_t0qjf"]
 [ext_resource type="Shader" uid="uid://cqdmjy84774dw" path="res://Scrolling.gdshader" id="6_a0eb8"]
 [ext_resource type="Script" uid="uid://bnervhjolun25" path="res://UI/Player1Score.gd" id="6_a3mfb"]
 [ext_resource type="Script" uid="uid://dl6u365fo728y" path="res://UI/Player2Score.gd" id="7_3h74x"]
-[ext_resource type="Texture2D" uid="uid://cbo8lyb5v4uib" path="res://Assets/UI/BG.png" id="7_hwd5n"]
 [ext_resource type="Script" uid="uid://cpi3fc22am8yj" path="res://UI/LevelUp.gd" id="8_x7oqh"]
 [ext_resource type="Script" uid="uid://buu2041faqtuq" path="res://UI/LevelUpUI/JobButton.gd" id="9_7relu"]
+[ext_resource type="Script" uid="uid://vuc7lt01aly1" path="res://Timer.gd" id="9_gb15f"]
+[ext_resource type="Texture2D" uid="uid://cbqkjhomoic0y" path="res://Assets/inverted hourglass(aseprite)1.png" id="9_oaklg"]
+[ext_resource type="Texture2D" uid="uid://pc6trybhsf86" path="res://Assets/inverted hourglass(aseprite)2.png" id="10_4bst2"]
 [ext_resource type="Script" uid="uid://bulphifsiynq0" path="res://UI/NextPlayerReady.gd" id="10_sy41c"]
+[ext_resource type="Texture2D" uid="uid://buy4kclhbgl03" path="res://Assets/UI/HeaderLargeBackground.png" id="10_uy3go"]
+[ext_resource type="Texture2D" uid="uid://b1t3kgidfftvu" path="res://Assets/inverted hourglass(aseprite)3.png" id="11_uy3go"]
+[ext_resource type="Texture2D" uid="uid://b56x1i7ibpe3x" path="res://Assets/inverted hourglass(aseprite)4.png" id="12_yf3a2"]
 [ext_resource type="Texture2D" uid="uid://cpoj385d4qv08" path="res://Assets/Sprites/Units/BellBoy.png" id="13_1o1jg"]
+[ext_resource type="Texture2D" uid="uid://cyugm8v0sy0li" path="res://Assets/inverted hourglass(aseprite)5.png" id="13_gdb40"]
 [ext_resource type="Script" uid="uid://fwa50jltmaqc" path="res://JobInfo.gd" id="13_w40fn"]
+[ext_resource type="Texture2D" uid="uid://w4oevv8aptgq" path="res://Assets/inverted hourglass(aseprite)6.png" id="14_8h1yq"]
+[ext_resource type="Texture2D" uid="uid://c525wrllis5ke" path="res://Assets/inverted hourglass(aseprite)7.png" id="15_fykug"]
 [ext_resource type="Script" uid="uid://ikin04bi74nx" path="res://EndRoundScreen.gd" id="16_r8hkc"]
+[ext_resource type="Texture2D" uid="uid://cv30paqii6xco" path="res://Assets/inverted hourglass(aseprite)8.png" id="16_wrbn1"]
 [ext_resource type="Script" uid="uid://bkoahtuvrdn7c" path="res://addons/shaker/src/Vector2/shaker_component2D.gd" id="17_7qtl1"]
+[ext_resource type="Texture2D" uid="uid://c3gcplavif270" path="res://Assets/inverted hourglass(aseprite)9.png" id="17_cfjnh"]
 [ext_resource type="Texture2D" uid="uid://d1gdhrabuveo1" path="res://Assets/UI/RoyalPanel.png" id="17_kjvhd"]
 [ext_resource type="Script" uid="uid://dw3rskbwbyttr" path="res://UnitEndRoundInfo.gd" id="17_sc1dx"]
 [ext_resource type="Resource" uid="uid://bc4l7ybch2maa" path="res://ScreenShake.tres" id="18_a2wx3"]
+[ext_resource type="Texture2D" uid="uid://ia2lbdrewnfr" path="res://Assets/inverted hourglass(aseprite)10.png" id="18_mplfx"]
 [ext_resource type="Texture2D" uid="uid://dy4ln0tts1dxw" path="res://Assets/UI/MoldyPanel.png" id="19_5tuhn"]
+[ext_resource type="Texture2D" uid="uid://xqa0kdbikdvy" path="res://Assets/inverted hourglass(aseprite)11.png" id="19_gyych"]
 [ext_resource type="PackedScene" uid="uid://g8sxq75m7oih" path="res://SFX/ButtonPressSound.tscn" id="19_ucaej"]
 [ext_resource type="AudioStream" uid="uid://dcw0kdhmobjav" path="res://SFX/stone-effect-254998_N0J7su7X.mp3" id="20_shusx"]
+[ext_resource type="Texture2D" uid="uid://s88trnycwfal" path="res://Assets/inverted hourglass(aseprite)12.png" id="20_xncey"]
 [ext_resource type="PackedScene" uid="uid://dp0662vg2voyl" path="res://SFX/SelectCharacterSound.tscn" id="21_76sm0"]
+[ext_resource type="Texture2D" uid="uid://byfay6yhmjsa4" path="res://Assets/inverted hourglass(aseprite)13.png" id="21_skfvt"]
 [ext_resource type="PackedScene" uid="uid://b1k71wsu8t1ev" path="res://SFX/Piercing Ray.tscn" id="22_6nl2v"]
+[ext_resource type="Texture2D" uid="uid://beadx2dvl3prq" path="res://Assets/inverted hourglass(aseprite)14.png" id="22_nn00d"]
+[ext_resource type="Texture2D" uid="uid://bo37qagobxqsf" path="res://Assets/inverted hourglass(aseprite)15.png" id="23_oy6xi"]
+[ext_resource type="Texture2D" uid="uid://dqd0ulncbo7cb" path="res://Assets/inverted hourglass(aseprite)16.png" id="24_a43ws"]
+[ext_resource type="Texture2D" uid="uid://u2c64ynjl61b" path="res://Assets/inverted hourglass(aseprite)17.png" id="25_aoymy"]
 [ext_resource type="AudioStream" uid="uid://bif2aga20n7fa" path="res://SFX/sweep attack.mp3" id="26_xrxkg"]
+[ext_resource type="Texture2D" uid="uid://dn4158ng2k81i" path="res://Assets/inverted hourglass(aseprite)18.png" id="26_ytdkf"]
+[ext_resource type="Texture2D" uid="uid://lmal0rwjtws5" path="res://Assets/inverted hourglass(aseprite)19.png" id="27_0a21m"]
 [ext_resource type="AudioStream" uid="uid://dsn5qk1lciac3" path="res://SFX/trim bushes.mp3" id="27_sqvbp"]
 [ext_resource type="AudioStream" uid="uid://da86fh5qxrcxi" path="res://SFX/backstab (maybe).mp3" id="28_gb15f"]
+[ext_resource type="Texture2D" uid="uid://bfrm8i3xkn2qm" path="res://Assets/inverted hourglass(aseprite)20.png" id="28_wnkxs"]
+[ext_resource type="Texture2D" uid="uid://87i0qljrtk73" path="res://Assets/inverted hourglass(aseprite)21.png" id="29_8qby0"]
 [ext_resource type="AudioStream" uid="uid://cu1hprdfvy1a1" path="res://SFX/flying kick.mp3" id="29_sph85"]
+[ext_resource type="Texture2D" uid="uid://bwp4hflqopqsl" path="res://Assets/inverted hourglass(aseprite)22.png" id="30_lo0ny"]
 [ext_resource type="AudioStream" uid="uid://cfhfvw1ke2woe" path="res://SFX/tea party cups.mp3" id="30_o7g6l"]
+[ext_resource type="Texture2D" uid="uid://c4o6pxk1cf8" path="res://Assets/inverted hourglass(aseprite)23.png" id="31_mitij"]
 [ext_resource type="AudioStream" uid="uid://d04cm34ufb6oh" path="res://SFX/i come with great news oh shit.mp3" id="31_vi5kq"]
 [ext_resource type="AudioStream" uid="uid://dop17mr6q37cj" path="res://SFX/clubs.mp3" id="32_5mkgo"]
+[ext_resource type="Texture2D" uid="uid://d1tkloslmrlmg" path="res://Assets/inverted hourglass(aseprite)24.png" id="32_nmx32"]
+[ext_resource type="Texture2D" uid="uid://bxvac3ueyvp4y" path="res://Assets/inverted hourglass(aseprite)25.png" id="33_d646h"]
 [ext_resource type="AudioStream" uid="uid://dbj1s7lyu2e54" path="res://SFX/i love gates.mp3" id="33_sph85"]
+[ext_resource type="Texture2D" uid="uid://hw882wgd1d4e" path="res://Assets/inverted hourglass(aseprite)26.png" id="34_5y3io"]
 [ext_resource type="AudioStream" uid="uid://63isp608sc0e" path="res://SFX/my shift is over.mp3" id="34_sph85"]
+[ext_resource type="Texture2D" uid="uid://bqomk8xnwgfre" path="res://Assets/inverted hourglass(aseprite)27.png" id="35_1nwvn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lawlm"]
 shader = ExtResource("6_a0eb8")
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uy3go"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sph85"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_37004"]
-content_margin_left = 18.0
-content_margin_top = 16.0
-content_margin_right = 16.0
-content_margin_bottom = 16.0
-texture = ExtResource("2_j0qa6")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yf3a2"]
+texture = ExtResource("10_uy3go")
+texture_margin_left = 12.0
+texture_margin_top = 8.0
+texture_margin_right = 6.0
+texture_margin_bottom = 12.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8cp43"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dfq0k"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("9_oaklg")
+}, {
+"duration": 0.5,
+"texture": ExtResource("10_4bst2")
+}, {
+"duration": 0.5,
+"texture": ExtResource("11_uy3go")
+}, {
+"duration": 0.5,
+"texture": ExtResource("12_yf3a2")
+}, {
+"duration": 0.5,
+"texture": ExtResource("13_gdb40")
+}, {
+"duration": 0.5,
+"texture": ExtResource("14_8h1yq")
+}, {
+"duration": 0.5,
+"texture": ExtResource("15_fykug")
+}, {
+"duration": 0.5,
+"texture": ExtResource("16_wrbn1")
+}, {
+"duration": 0.5,
+"texture": ExtResource("17_cfjnh")
+}, {
+"duration": 0.5,
+"texture": ExtResource("18_mplfx")
+}, {
+"duration": 0.5,
+"texture": ExtResource("19_gyych")
+}, {
+"duration": 0.5,
+"texture": ExtResource("20_xncey")
+}, {
+"duration": 0.5,
+"texture": ExtResource("21_skfvt")
+}, {
+"duration": 0.5,
+"texture": ExtResource("22_nn00d")
+}, {
+"duration": 0.5,
+"texture": ExtResource("23_oy6xi")
+}, {
+"duration": 0.5,
+"texture": ExtResource("24_a43ws")
+}, {
+"duration": 0.5,
+"texture": ExtResource("25_aoymy")
+}, {
+"duration": 0.5,
+"texture": ExtResource("26_ytdkf")
+}, {
+"duration": 0.5,
+"texture": ExtResource("27_0a21m")
+}, {
+"duration": 0.5,
+"texture": ExtResource("28_wnkxs")
+}, {
+"duration": 0.5,
+"texture": ExtResource("29_8qby0")
+}, {
+"duration": 0.5,
+"texture": ExtResource("30_lo0ny")
+}, {
+"duration": 0.5,
+"texture": ExtResource("31_mitij")
+}, {
+"duration": 0.5,
+"texture": ExtResource("32_nmx32")
+}, {
+"duration": 0.5,
+"texture": ExtResource("33_d646h")
+}, {
+"duration": 0.5,
+"texture": ExtResource("34_5y3io")
+}, {
+"duration": 0.5,
+"texture": ExtResource("35_1nwvn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5tuhn"]
 texture = ExtResource("17_kjvhd")
@@ -66,6 +185,11 @@ texture_margin_bottom = 4.0
 [node name="Main" type="Node2D"]
 script = ExtResource("1_5hkoq")
 
+[node name="CPUParticles2D" parent="." instance=ExtResource("2_4bst2")]
+position = Vector2(680, -284)
+amount = 900
+emission_rect_extents = Vector2(1000, 1)
+
 [node name="ScrollingBG" type="TextureRect" parent="."]
 z_index = -1
 texture_repeat = 2
@@ -79,7 +203,7 @@ offset_right = 906.0
 offset_bottom = 480.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_hwd5n")
+texture = ExtResource("3_oaklg")
 
 [node name="SelectOptions" type="Node2D" parent="."]
 visible = false
@@ -90,6 +214,7 @@ metadata/_edit_use_anchors_ = true
 offset_right = 40.0
 offset_bottom = 40.0
 theme = ExtResource("2_vidso")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_uy3go")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SelectOptions/PanelContainer"]
 layout_mode = 2
@@ -131,15 +256,14 @@ text = "INFO"
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 484.0
+offset_bottom = 146.0
 theme = ExtResource("2_vidso")
 
 [node name="Player1MarginContainer" type="MarginContainer" parent="UI/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 theme_override_constants/margin_left = 5
 
@@ -219,7 +343,6 @@ show_percentage = false
 unique_name_in_owner = true
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 theme_override_constants/margin_left = 5
 
@@ -298,7 +421,7 @@ show_percentage = false
 [node name="TileInfo" type="PanelContainer" parent="UI/HBoxContainer"]
 visible = false
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_sph85")
 script = ExtResource("5_sqfni")
@@ -367,8 +490,9 @@ uppercase = true
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -98.0
-offset_bottom = 60.0
+offset_left = -144.0
+offset_right = -2.0
+offset_bottom = 110.0
 grow_horizontal = 0
 theme = ExtResource("2_vidso")
 
@@ -408,23 +532,44 @@ vertical_alignment = 1
 uppercase = true
 script = ExtResource("7_3h74x")
 
-[node name="TimerContainer" type="PanelContainer" parent="UI/TurnTimerUI"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme = ExtResource("2_vidso")
-theme_override_styles/panel = SubResource("StyleBoxTexture_37004")
-script = ExtResource("2_wpr50")
+[node name="TurnTimer" type="Timer" parent="UI/TurnTimerUI"]
+unique_name_in_owner = true
+wait_time = 20.0
 
-[node name="Label" type="Label" parent="UI/TurnTimerUI/TimerContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/TurnTimerUI"]
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="UI/TurnTimerUI/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/TurnTimerUI/VBoxContainer"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_vertical = 10
+theme = ExtResource("2_vidso")
+theme_override_styles/panel = SubResource("StyleBoxTexture_yf3a2")
+
+[node name="Timer" type="Label" parent="UI/TurnTimerUI/VBoxContainer/PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("2_vidso")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxEmpty_8cp43")
+text = "20"
 horizontal_alignment = 1
 uppercase = true
+script = ExtResource("9_gb15f")
 
-[node name="TurnTimer" type="Timer" parent="UI/TurnTimerUI/TimerContainer"]
-wait_time = 20.0
+[node name="TimerSprite" type="AnimatedSprite2D" parent="UI/TurnTimerUI/VBoxContainer"]
+unique_name_in_owner = true
+position = Vector2(36, 28)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_dfq0k")
+frame_progress = 0.530529
 
 [node name="LevelUp" type="MarginContainer" parent="UI"]
 process_mode = 3
@@ -1152,7 +1297,7 @@ stream = ExtResource("34_sph85")
 [connection signal="pressed" from="SelectOptions/PanelContainer/HBoxContainer/SelectButtons/ActionButton" to="." method="_on_action_button_pressed"]
 [connection signal="pressed" from="SelectOptions/PanelContainer/HBoxContainer/SelectButtons/EndButton" to="." method="_on_end_button_pressed"]
 [connection signal="pressed" from="NotYourOptions/NotYourButtons/MoreInfoButton" to="." method="_on_more_info_button_pressed"]
-[connection signal="timeout" from="UI/TurnTimerUI/TimerContainer/TurnTimer" to="." method="_on_turn_timer_timeout"]
+[connection signal="timeout" from="UI/TurnTimerUI/TurnTimer" to="." method="_on_turn_timer_timeout"]
 [connection signal="pressed" from="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons/JobButton0" to="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons/JobButton0" method="_on_pressed"]
 [connection signal="pressed" from="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons/JobButton1" to="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons/JobButton1" method="_on_pressed"]
 [connection signal="pressed" from="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons/JobButton2" to="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons/JobButton2" method="_on_pressed"]

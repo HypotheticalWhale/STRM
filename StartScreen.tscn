@@ -7,10 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c4nprai3dpex8" path="res://Assets/Sprites/Units/BigCloakServant.png" id="5_vuion"]
 [ext_resource type="Texture2D" uid="uid://bgqa65351tuiq" path="res://Assets/Sprites/Units/BigGlassesServant.png" id="6_06rl2"]
 [ext_resource type="Texture2D" uid="uid://bbgd7jxrcj6tg" path="res://Assets/Sprites/Units/Bulter.png" id="7_bhimr"]
-
-[sub_resource type="Gradient" id="Gradient_vuion"]
-offsets = PackedFloat32Array(0.315789, 0.473684)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+[ext_resource type="PackedScene" uid="uid://3clkbc5bh0q5" path="res://SnowParticles.tscn" id="8_06rl2"]
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -81,18 +78,8 @@ texture = ExtResource("6_06rl2")
 layout_mode = 2
 texture = ExtResource("7_bhimr")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="CPUParticles2D" parent="." instance=ExtResource("8_06rl2")]
 position = Vector2(839, 289)
-amount = 500
-lifetime = 10.0
-preprocess = 30.0
-emission_shape = 3
-emission_rect_extents = Vector2(500, 1)
-gravity = Vector2(45, 980)
-initial_velocity_min = 300.0
-initial_velocity_max = 500.0
-scale_amount_max = 4.0
-color_initial_ramp = SubResource("Gradient_vuion")
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_start_button_pressed"]

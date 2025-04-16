@@ -1,5 +1,5 @@
 extends Node2D
-@onready var turn_timer = $UI/TurnTimerUI/TimerContainer/TurnTimer
+@onready var turn_timer = %TurnTimer
 @onready var button_press = $ButtonPressSound
 @export var GRID_SIZE = [20,10]
 
@@ -676,3 +676,7 @@ func imprison_into_vault(self_or_others: String, unit: Object, nearby_vault: Obj
 		assert(unit.my_vault.get_parent().occupied_by["unit"] == null)	# there shouldn't be anyone in the middle of the vault
 		unit.warp_to(unit.my_vault.global_position)
 		unit.immobilized_turns_left = 3
+
+
+func _on_end_turn_hud_pressed() -> void:
+	pass # Replace with function body.

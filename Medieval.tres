@@ -1,8 +1,7 @@
-[gd_resource type="Theme" load_steps=19 format=3 uid="uid://bkqipfaxijp3i"]
+[gd_resource type="Theme" load_steps=17 format=3 uid="uid://bkqipfaxijp3i"]
 
 [ext_resource type="Texture2D" uid="uid://dxsi055t1wcnb" path="res://Assets/UI/ButtonNormal.png" id="1_0keg2"]
 [ext_resource type="FontFile" uid="uid://cxmt4ausb3r8r" path="res://Fonts/NormalTextFont.ttf" id="1_81l1y"]
-[ext_resource type="Texture2D" uid="uid://b1wnrp8q0hish" path="res://Assets/UI/MedievalPanel.png" id="1_y8y5v"]
 [ext_resource type="Texture2D" uid="uid://bvuvn0apogs72" path="res://Assets/UI/ButtonHover.png" id="2_2l8tr"]
 [ext_resource type="Texture2D" uid="uid://qupsi3grjt4h" path="res://Assets/UI/LabelBackground.png" id="2_sf2lc"]
 [ext_resource type="Texture2D" uid="uid://buy4kclhbgl03" path="res://Assets/UI/HeaderLargeBackground.png" id="4_ssdtr"]
@@ -53,13 +52,6 @@ texture_margin_top = 10.0
 texture_margin_right = 10.0
 texture_margin_bottom = 10.0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iq4wv"]
-texture = ExtResource("1_y8y5v")
-texture_margin_left = 4.0
-texture_margin_top = 4.0
-texture_margin_right = 4.0
-texture_margin_bottom = 4.0
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gybm3"]
 texture = ExtResource("6_tu5vj")
 texture_margin_left = 6.0
@@ -94,7 +86,7 @@ Label/colors/font_color = Color(0, 0, 0, 1)
 Label/font_sizes/font_size = 8
 Label/fonts/font = ExtResource("1_81l1y")
 Label/styles/normal = SubResource("StyleBoxTexture_uqel7")
-PanelContainer/styles/panel = SubResource("StyleBoxTexture_iq4wv")
+PanelContainer/styles/panel = null
 ProgressBar/font_sizes/font_size = 5
 ProgressBar/fonts/font = ExtResource("1_81l1y")
 ProgressBar/styles/background = SubResource("StyleBoxTexture_gybm3")
