@@ -1,7 +1,9 @@
-[gd_resource type="Theme" load_steps=19 format=3 uid="uid://bkqipfaxijp3i"]
+[gd_resource type="Theme" load_steps=23 format=3 uid="uid://bkqipfaxijp3i"]
 
 [ext_resource type="Texture2D" uid="uid://dxsi055t1wcnb" path="res://Assets/UI/ButtonNormal.png" id="1_0keg2"]
 [ext_resource type="FontFile" uid="uid://cxmt4ausb3r8r" path="res://Fonts/NormalTextFont.ttf" id="1_81l1y"]
+[ext_resource type="Texture2D" uid="uid://d04xsfpndlist" path="res://Assets/UI/BlackButtonNormal.png" id="1_mb14p"]
+[ext_resource type="Texture2D" uid="uid://cjhdssyiqxje6" path="res://Assets/UI/BlackButtonHover.png" id="1_ufdjj"]
 [ext_resource type="Texture2D" uid="uid://b1wnrp8q0hish" path="res://Assets/UI/MedievalPanel.png" id="1_y8y5v"]
 [ext_resource type="Texture2D" uid="uid://bvuvn0apogs72" path="res://Assets/UI/ButtonHover.png" id="2_2l8tr"]
 [ext_resource type="Texture2D" uid="uid://qupsi3grjt4h" path="res://Assets/UI/LabelBackground.png" id="2_sf2lc"]
@@ -9,6 +11,20 @@
 [ext_resource type="Texture2D" uid="uid://b8oxbjse0pbuk" path="res://Assets/UI/HeaderMediumBackground.png" id="5_a0mqm"]
 [ext_resource type="Texture2D" uid="uid://c5gm7un8vpxtr" path="res://Assets/UI/BarBackground.png" id="6_tu5vj"]
 [ext_resource type="Texture2D" uid="uid://7k6kxxwto16t" path="res://Assets/UI/BarFill.png" id="7_q2xqm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4japd"]
+texture = ExtResource("1_ufdjj")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oa361"]
+texture = ExtResource("1_mb14p")
+texture_margin_left = 14.0
+texture_margin_top = 8.0
+texture_margin_right = 12.0
+texture_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vpk4g"]
 texture = ExtResource("1_0keg2")
@@ -76,6 +92,11 @@ texture_margin_bottom = 3.0
 
 [resource]
 default_font_size = 16
+BlackButton/base_type = &"Button"
+BlackButton/colors/font_color = Color(1, 1, 1, 1)
+BlackButton/fonts/font = ExtResource("1_81l1y")
+BlackButton/styles/hover = SubResource("StyleBoxTexture_4japd")
+BlackButton/styles/normal = SubResource("StyleBoxTexture_oa361")
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/font_sizes/font_size = 8
 Button/fonts/font = ExtResource("1_81l1y")
