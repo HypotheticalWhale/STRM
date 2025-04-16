@@ -81,9 +81,9 @@ func spawn_units():
 		tile_coords = Vector2(4,count)*Globals.TILE_SIZE
 		unit.global_position = tile_coords
 		all_tiles[tile_coords].occupied_by["unit"] = unit
-		unit.UI_EXP_LINK = "UI/Player1/MarginContainer/LabelContainer/"+label_list[label_count]		
-		unit.UI_EXP_LINK_CONTAINER = "UI/Player1/MarginContainer/LabelContainer/"+container_list[label_count]		
-		get_node("UI/Player1/MarginContainer/LabelContainer/"+label_list[label_count]).text = unit.NAME+" "
+		unit.UI_EXP_LINK = "UI/HBoxContainer/Player1MarginContainer/LabelContainer/"+label_list[label_count]		
+		unit.UI_EXP_LINK_CONTAINER = "UI/HBoxContainer/Player1MarginContainer/LabelContainer/"+container_list[label_count]		
+		get_node("UI/HBoxContainer/Player1MarginContainer/LabelContainer/"+label_list[label_count]).text = unit.NAME+" "
 		count += 2
 		label_count += 1
 		
@@ -95,9 +95,9 @@ func spawn_units():
 		tile_coords = Vector2(GRID_SIZE[0]-3,count)*Globals.TILE_SIZE
 		unit.global_position = tile_coords
 		all_tiles[tile_coords].occupied_by["unit"] = unit
-		unit.UI_EXP_LINK = "UI/Player2/MarginContainer/LabelContainer/"+label_list[label_count]
-		unit.UI_EXP_LINK_CONTAINER = "UI/Player2/MarginContainer/LabelContainer/"+container_list[label_count]
-		get_node("UI/Player2/MarginContainer/LabelContainer/"+label_list[label_count]).text = unit.NAME +" "
+		unit.UI_EXP_LINK = "UI/HBoxContainer/Player1MarginContainer/LabelContainer/"+label_list[label_count]
+		unit.UI_EXP_LINK_CONTAINER = "UI/HBoxContainer/Player1MarginContainer/LabelContainer/"+container_list[label_count]
+		get_node("UI/HBoxContainer/Player2MarginContainer/LabelContainer/"+label_list[label_count]).text = unit.NAME +" "
 		count += 2
 		label_count += 1
 
@@ -171,12 +171,12 @@ func get_occupied_tiles():
 
 		
 func turn_on_p1_ui():
-	$UI/Player1.visible = true
-	$UI/Player2.visible = false
+	%Player1MarginContainer.visible = true
+	%Player2MarginContainer.visible = false
 
 func turn_on_p2_ui():
-	$UI/Player1.visible = false
-	$UI/Player2.visible = true
+	%Player1MarginContainer.visible = false
+	%Player2MarginContainer.visible = true
 
 func show_select_menu(menu_position,tile_node):
 	hide_action_buttons()	
@@ -195,12 +195,12 @@ func show_info_menu(menu_position,tile_node):
 	
 func hide_select_menu():
 	$SelectOptions.visible = false
-	$UI/Player1/MarginContainer/LabelContainer/FirstExpContainer.modulate = Color(1,1,1,1)
-	$UI/Player1/MarginContainer/LabelContainer/SecondExpContainer.modulate = Color(1,1,1,1)
-	$UI/Player1/MarginContainer/LabelContainer/ThirdExpContainer.modulate = Color(1,1,1,1)
-	$UI/Player2/MarginContainer/LabelContainer/FirstExpContainer.modulate = Color(1,1,1,1)
-	$UI/Player2/MarginContainer/LabelContainer/SecondExpContainer.modulate = Color(1,1,1,1)
-	$UI/Player2/MarginContainer/LabelContainer/ThirdExpContainer.modulate = Color(1,1,1,1)
+	%Player1MarginContainer.get_node("LabelContainer/FirstExpContainer").modulate = Color(1,1,1,1)
+	%Player1MarginContainer.get_node("LabelContainer/SecondExpContainer").modulate = Color(1,1,1,1)
+	%Player1MarginContainer.get_node("LabelContainer/ThirdExpContainer").modulate = Color(1,1,1,1)
+	%Player2MarginContainer.get_node("LabelContainer/FirstExpContainer").modulate = Color(1,1,1,1)
+	%Player2MarginContainer.get_node("LabelContainer/SecondExpContainer").modulate = Color(1,1,1,1)
+	%Player2MarginContainer.get_node("LabelContainer/ThirdExpContainer").modulate = Color(1,1,1,1)
 
 func hide_info_menu():
 	$NotYourOptions.visible = false
