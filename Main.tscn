@@ -363,6 +363,13 @@ vertical_alignment = 1
 autowrap_mode = 2
 uppercase = true
 
+[node name="EndTurnHUD" type="Button" parent="UI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "END TURN"
+
 [node name="TurnTimerUI" type="HBoxContainer" parent="UI"]
 anchors_preset = 1
 anchor_left = 1.0
@@ -1152,6 +1159,7 @@ stream = ExtResource("34_sph85")
 [connection signal="pressed" from="SelectOptions/PanelContainer/HBoxContainer/SelectButtons/ActionButton" to="." method="_on_action_button_pressed"]
 [connection signal="pressed" from="SelectOptions/PanelContainer/HBoxContainer/SelectButtons/EndButton" to="." method="_on_end_button_pressed"]
 [connection signal="pressed" from="NotYourOptions/NotYourButtons/MoreInfoButton" to="." method="_on_more_info_button_pressed"]
+[connection signal="pressed" from="UI/HBoxContainer/EndTurnHUD" to="." method="_on_end_button_pressed"]
 [connection signal="timeout" from="UI/TurnTimerUI/TimerContainer/TurnTimer" to="." method="_on_turn_timer_timeout"]
 [connection signal="pressed" from="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons/JobButton0" to="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons/JobButton0" method="_on_pressed"]
 [connection signal="pressed" from="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons/JobButton1" to="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons/JobButton1" method="_on_pressed"]
