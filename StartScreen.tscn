@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dp7m17rkwt7ir"]
 
-[ext_resource type="Script" uid="uid://hbk8pux35tl1" path="res://StartScreen.gd" id="1_d4clo"]
+[ext_resource type="Script" path="res://StartScreen.gd" id="1_d4clo"]
 [ext_resource type="Theme" uid="uid://bkqipfaxijp3i" path="res://Medieval.tres" id="1_s4vtk"]
 [ext_resource type="Texture2D" uid="uid://w4iyrr3402ub" path="res://UI/TitleScreen.png" id="2_mqr7l"]
 [ext_resource type="Texture2D" uid="uid://dva8hbivpt42a" path="res://Assets/Sprites/Units/Servant.png" id="4_vno1p"]
@@ -41,12 +41,14 @@ grow_vertical = 2
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme = ExtResource("1_s4vtk")
+theme_type_variation = &"BlackButton"
 text = "START GAME"
 
 [node name="Options" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme = ExtResource("1_s4vtk")
+theme_type_variation = &"BlackButton"
 text = "OPTIONS"
 
 [node name="Camera2D" type="Camera2D" parent="."]
