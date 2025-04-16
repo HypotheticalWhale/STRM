@@ -365,9 +365,9 @@ uppercase = true
 
 [node name="EndTurnHUD" type="Button" parent="UI/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 2
 size_flags_vertical = 0
-theme_override_font_sizes/font_size = 20
+theme_type_variation = &"BlackButton"
 text = "END TURN"
 
 [node name="TurnTimerUI" type="HBoxContainer" parent="UI"]
@@ -757,6 +757,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_vidso")
+theme_type_variation = &"BlackButton"
 script = ExtResource("10_sy41c")
 
 [node name="EndRoundScreen" type="PanelContainer" parent="UI"]
