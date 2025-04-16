@@ -87,7 +87,7 @@ var skills = {
 	},
 	"Piercing Ray": {
 		"shape": [Vector2(1,0),Vector2(2,0),Vector2(3,0),Vector2(4,0)],
-		"damage multiplier": 0.75,
+		"damage multiplier": 1,
 		"optional effects": { 
 			"sweet spot": Vector2(4,0),
 		},
