@@ -235,6 +235,8 @@ func get_hit(attack_info: Dictionary):
 	# disable
 	if attack_info.has("disable"):
 		disabled_turns_left = attack_info["disable"]
+		if who_is_hitting.PASSIVES.has("No hooligans allowed"):
+			disabled_turns_left += 1
 		# give it a disabled counter for each disable_duration
 		# at the start of owners turn, if disabled counter > 0, disable its attack button
 		# at the end of the owners turn, decrement it.
@@ -242,6 +244,8 @@ func get_hit(attack_info: Dictionary):
 	# immobilize
 	if attack_info.has("immobilize"):
 		immobilized_turns_left = attack_info["immobilize"]
+		if who_is_hitting.PASSIVES.has("No hooligans allowed"):
+			disabled_turns_left += 1
 		# same logic as disable
 	
 	if attack_info.has("displace"):
