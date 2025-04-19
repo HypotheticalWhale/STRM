@@ -405,6 +405,9 @@ func on_skill_pressed(button,direction):
 	clear_available_tiles()
 	clear_available_attack_tiles()
 	target_terrain_info = {}
+	%SkillHUDInfo.visible = true
+	await %SkillHUDInfo.update_info(button.skill_name)
+	
 	##################### telegraphing the terrain to be changed ##################
 	if Globals.skills[button.skill_name]["optional effects"].has("change terrain"):
 		# change_terrain_info example = [
