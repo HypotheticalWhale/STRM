@@ -68,10 +68,10 @@ var skills = {
 		"description": "you sweep the floor sweep sweep",
 	},
 	"Trim Bushes": {
-		"shape": [Vector2(1,-1),Vector2(1,1),Vector2(2,0),Vector2(3,-1),Vector2(3,1),Vector2(4,-2),Vector2(4,2)],
+		"shape": [Vector2(1,-1),Vector2(1,1),Vector2(2,0),Vector2(3,-1),Vector2(3,1),Vector2(4,-2),Vector2(4,2),Vector2(5,3)],
 		"damage multiplier": 2,
 		"optional effects": {
-			"sweet spot": Vector2(2,0)	# deals double damage at Vector2(1,1)
+			"sweet spot": Vector2(5,3)	# deals double damage at Vector2(1,1)
 		},
 		"description": "Large scissors for cutting large objects"
 	},
