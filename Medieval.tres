@@ -1,10 +1,9 @@
-[gd_resource type="Theme" load_steps=23 format=3 uid="uid://bkqipfaxijp3i"]
+[gd_resource type="Theme" load_steps=21 format=3 uid="uid://bkqipfaxijp3i"]
 
 [ext_resource type="Texture2D" uid="uid://dxsi055t1wcnb" path="res://Assets/UI/ButtonNormal.png" id="1_0keg2"]
 [ext_resource type="FontFile" uid="uid://cxmt4ausb3r8r" path="res://Fonts/NormalTextFont.ttf" id="1_81l1y"]
 [ext_resource type="Texture2D" uid="uid://d04xsfpndlist" path="res://Assets/UI/BlackButtonNormal.png" id="1_mb14p"]
 [ext_resource type="Texture2D" uid="uid://cjhdssyiqxje6" path="res://Assets/UI/BlackButtonHover.png" id="1_ufdjj"]
-[ext_resource type="Texture2D" uid="uid://b1wnrp8q0hish" path="res://Assets/UI/MedievalPanel.png" id="1_y8y5v"]
 [ext_resource type="Texture2D" uid="uid://bvuvn0apogs72" path="res://Assets/UI/ButtonHover.png" id="2_2l8tr"]
 [ext_resource type="Texture2D" uid="uid://qupsi3grjt4h" path="res://Assets/UI/LabelBackground.png" id="2_sf2lc"]
 [ext_resource type="Texture2D" uid="uid://buy4kclhbgl03" path="res://Assets/UI/HeaderLargeBackground.png" id="4_ssdtr"]

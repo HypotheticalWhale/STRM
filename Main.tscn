@@ -1306,7 +1306,6 @@ stream = ExtResource("34_sph85")
 [connection signal="pressed" from="SelectOptions/PanelContainer/HBoxContainer/SelectButtons/EndButton" to="." method="_on_end_button_pressed"]
 [connection signal="pressed" from="NotYourOptions/NotYourButtons/MoreInfoButton" to="." method="_on_more_info_button_pressed"]
 [connection signal="pressed" from="UI/HBoxContainer/EndTurnHUD" to="." method="_on_end_button_pressed"]
-[connection signal="timeout" from="UI/TurnTimerUI/TimerContainer/TurnTimer" to="." method="_on_turn_timer_timeout"]
 [connection signal="pressed" from="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons/JobButton0" to="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons/JobButton0" method="_on_pressed"]
 [connection signal="pressed" from="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons/JobButton1" to="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons/JobButton1" method="_on_pressed"]
 [connection signal="pressed" from="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons/JobButton2" to="UI/LevelUp/PanelContainer/VBoxContainer/JobButtons/JobButton2" method="_on_pressed"]
