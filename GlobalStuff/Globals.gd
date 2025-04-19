@@ -10,27 +10,27 @@ var WHOSTURNISIT = "P1"
 var TAKENACTION
 var quests : Dictionary = {
 	"Fight" : {
-		"description" : "get hit or hit something",
-		"reward" : 50	#gains 5 xp
+		"description" : "Hit something",
+		"reward" : 34	#gains 5 xp
 	},
 	"Traveller": {
-		"description" : "get hit or hit something",
+		"description" : "entertainers quest",
 		"reward" : 100	#gains 2 xp
 	},
 	"Hands-off Approach": {
-		"description" : "get hit or hit something",
+		"description" : "nobles quest",
 		"reward" : 100	#gains 2 xp
 	},
 	"Landscaping": {
-		"description": "dog",
-		"reward": 34
+		"description": "Stand on a garden tile and hit something",
+		"reward": 50 
 	},
 	"You're it": {
-		"description": "dog",
+		"description": "Stand adjacent to each enemy unit",
 		"reward": 100
 	},
 	"Let me show you to your room":{
-		"description": "dog",
+		"description": "Stand on a lobby tile",
 		"reward": 25
 	},
 	"Smelliest guy on earth":{
@@ -46,15 +46,15 @@ var quests : Dictionary = {
 		"reward": 0
 	},
 	"I'm a lifelong learner": {
-		"description": "You're already maxed out? Why are you still hustling?",
+		"description": "Win a game of UNO in real life to win a car",
 		"reward": 0
 	},
 	"The Chandelier Canopy Conundrum": {
-		"description": "You're already maxed out? Why are you still hustling?",
+		"description": "Hmmm...chandeliers...canopies..",
 		"reward": 0
 	},
 	"Keeper of the vault in my heart <3": {
-		"description": "Huh? HUH? HUUUHHH? HUUUUUUUUUH????????",
+		"description": "My boss is very powerful. He makes me work/time",
 		"reward": 0
 	}
 }
@@ -66,6 +66,7 @@ var skills = {
 			"sweet spot": Vector2(2,0)
 		},
 		"description": "you sweep the floor sweep sweep",
+		"detailed info": "Deals medium damage in a T shape\nDeals double damage at the tip"
 	},
 	"Trim Bushes": {
 		"shape": [Vector2(1,-1),Vector2(1,1),Vector2(2,0),Vector2(3,-1),Vector2(3,1),Vector2(4,-2),Vector2(4,2)],
@@ -73,7 +74,8 @@ var skills = {
 		"optional effects": {
 			"sweet spot": Vector2(2,0)	# deals double damage at Vector2(1,1)
 		},
-		"description": "Large scissors for cutting large objects"
+		"description": "Large scissors for cutting large objects",
+		"detailed info": "Deals high damage in a scissor shape\nDeals double damage at the tips"
 	},
 	# not legacy code bro
 	"Backstab": {
@@ -84,6 +86,7 @@ var skills = {
 			#"disable": 1,
 		},
 		"description": "Doesn't actually do more damage from behind",
+		"detailed info": "Deals high damage"
 	},
 	"Piercing Ray": {
 		"shape": [Vector2(1,0),Vector2(2,0),Vector2(3,0),Vector2(4,0)],
@@ -92,6 +95,7 @@ var skills = {
 			"sweet spot": Vector2(4,0),
 		},
 		"description": "Bad breath travels a long distance sometimes",
+		"detailed info": "Deals medium damage in a line"
 	},
 	"Your weapons please": { 
 		"shape": [Vector2(1,0), Vector2(2,0)],
@@ -100,6 +104,7 @@ var skills = {
 			"disable": 2	# disables unit for 1 turn
 		},
 		"description": "The bell boy's cart is the second most dangerous thing in this mansion",
+		"detailed info": "Disables units in a line"
 	},
 	"Fleet footed kick": {
 		"shape": [Vector2(2,0),Vector2(2,1),Vector2(2,-1),Vector2(3,0),Vector2(3,1),Vector2(3,-1)],
@@ -108,6 +113,7 @@ var skills = {
 			"dash": null, # just dashes to the target tile. no other variables
 		},
 		"description": "Mastered the flying kick by binge-watching Jackie Chan films",
+		"detailed info": "Deals medium damage to a target within 3 tiles"
 	},
 	"Tea Party for Two": {	# displaces two random units to two locations near the butler separated by a tea table
 		"shape": [],	# is attacking everyone bro thats why
@@ -117,9 +123,11 @@ var skills = {
 			"change terrain": [
 				["tea table", [Vector2(2,0)]]
 			],
-			"immobilize": 1
+			"immobilize": 1,
+			"disable": 1
 		},
-		"description": "Have some tea, and don't get up from your seat for awhile"
+		"description": "Have some tea, and don't get up from your seat for awhile",
+		"detailed info": "Warps 2 random units\nImmobilizes and disables them for 1 turn"
 	},
 	"I come with great news": {	# attacks a unit one tile away. if unit is wet, create a cone of bird shit terrain behind unit.
 		"shape": [Vector2(1,0)],
@@ -128,6 +136,7 @@ var skills = {
 			"splatter droppings": null,
 		},
 		"description": "Pigeon droppings make the floor very slippery",
+		"detailed info": "Deals medium damage\nMakes the target wet for 2 turns\nCreates a slippery trail behind the target"
 	},
 	"Cloister Garth Commoner's Clubs": {
 		"shape": [
@@ -140,7 +149,8 @@ var skills = {
 		"optional effects": {
 			"random gardens": null
 		},
-		"description": "The first of the 4 card attacks."
+		"description": "The first of the 4 card attacks.",
+		"detailed info": "Deals medium damage\nThis skill changes when used on a Cloister Garth"
 	},
 	"Vineyard Merchant's Diamonds": {
 		"shape": [
@@ -152,9 +162,10 @@ var skills = {
 		"damage multiplier": 1,
 		"optional effects": {
 			"random gardens": null,
-			"gain attack": 1,
+			"gain attack": 20,
 		},
-		"description": "Become stronger. Attack evolves if done on a Vineyard"
+		"description": "Become stronger. Attack evolves if done on a Vineyard",
+		"detailed info": "Deals medium damage\nThis unit gains attack permanently\nThis skill changes when used on a Vineyard"
 	},
 	"Flowerbed Lover's Hearts": {
 		"shape": [
@@ -166,10 +177,11 @@ var skills = {
 		"damage multiplier": 1,
 		"optional effects": {
 			"random gardens": null,
-			"gain attack": 1,
-			"gain health": 1,
+			"gain attack": 20,
+			"gain health": 100,
 		},
-		"description": "Become healthier. Attack evolves if done on a Flowerbed"
+		"description": "Become healthier. Attack evolves if done on a Flowerbed",
+		"detailed info": "Deals medium damage\nThis unit gains attack and health permanently\nThis skill changes when used on a Flowerbed"
 	},
 	"Orchard Elite's Spades": {
 		"shape": [
@@ -186,7 +198,8 @@ var skills = {
 			"gain health": 10,
 			"gain movement": 1,
 		},
-		"description": "Become more agile. The last of the 4 card attacks."
+		"description": "Become more agile. The last of the 4 card attacks.",
+		"detailed info": "Deals medium damage\nThis unit gains attack, health and movement permanently\nThis skill changes when used on an Orchard"
 	},
 	"Go Fetch!": {
 		"shape": [
@@ -198,7 +211,8 @@ var skills = {
 			],
 		"damage multiplier": 0,
 		"optional effects": {},
-		"description": "Bite anyone and keep them on a tight leash"
+		"description": "Bite anyone and keep them on a tight leash",
+		"detailed info": "Bites nearby units"
 	},
 	"I love gates": {
 		"shape": [
@@ -217,6 +231,7 @@ var skills = {
 			"yeet self": 7,		# yeets himself into a random tile 7 tiles away
 		},
 		"description": "Use as a last resort",
+		"detailed info": "Deals massive damage\nWarps the user to a random tile 7 tiles away"
 	}
 }
 
@@ -259,31 +274,31 @@ var passives : Dictionary = {
 		"damage multiplier": 1.0
 	},
 	"No hooligans allowed.": { # Disable all enemy units on marble floor 
-		"description": "You deal extra damage on green tiles :-)",
+		"description": "All disable and immobilize effects on Marble tiles last one turn later",
 		"damage multiplier": 1.0
 	},
 	"Take a ride.": {
-		"description": "You deal extra damage on green tiles :-)",
+		"description": "When allies are hit by you, teleport them to a gate",
 		"damage multiplier": 1.0
 	},
 	"Teethed to the arm.": {
-		"description": "You deal extra damage on green tiles :-)",
+		"description": "Bitten units will move together with you",
 		"damage multiplier": 1.0
 	},
 	"Fast runner": {
-		"description": "You deal extra damage on green tiles :-)",
+		"description": "Heals adjacent allies and hurts adjacent enemies at the end of movement",
 		"damage multiplier": 1.0
 	},
 	"Kleptomaniac": {
-		"description": "You deal extra damage on green tiles :-)",
+		"description": "Gains attack each time you disable a unit",
 		"damage multiplier": 1.0
 	},
 	"Pigeon Rider": { # bird shit is a one way portal when you hit a wet enemy
-		"description": "When you touch an enemy, they become wet",
+		"description": "Makes adjacent enemies wet for 2 turns at the end of movement",
 		"damage multiplier": 1.0
 	},
 	"Don't touch my stuff": {
-		"description": "dont tuch my stf!",
+		"description": "If 2 or more tiles away from the vault for 2 turns, you go directly to jail for 3 turns\nDo not pass Go",
 		"damage multiplier": 1.0
 	},
 	
@@ -295,7 +310,7 @@ var bigness_data = {
 	},
 	
 	"Big Hood": {
-		"skill": "My shift is over",
+		"skill": "Backstab",
 	},
 
 	"Big Biceps": {
@@ -320,15 +335,6 @@ func toggle_player_turn():
 	else:
 		WHOSTURNISIT = "P2"
 	return
-
-
-func show_tile_info(tile : Object):
-	if get_tree().current_scene.has_node("UI/HBoxContainer/TileInfo") == false:
-		printerr("Not allowed to show tile_info in scene other than Main.tscn.")
-		return
-	var tile_info = get_tree().current_scene.get_node("UI/HBoxContainer/TileInfo")
-	tile_info.visible = true
-	tile_info.update_info(tile.get_terrain().type, tile.get_terrain().defense, tile.get_terrain().movement_penalty)
 
 
 func show_quest_info(tile: Object):

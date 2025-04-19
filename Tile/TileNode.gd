@@ -33,7 +33,6 @@ func _on_mouse_exited():
 
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		Globals.show_tile_info(self)
 		Globals.show_quest_info(self)
 		if occupied_by["unit"] and Globals.WHOSTURNISIT != occupied_by["unit"].TEAM and not get_parent().attacking:
 			get_parent().attacking = false						
@@ -45,6 +44,9 @@ func _on_input_event(viewport, event, shape_idx):
 ###################################### if player has moved with or used an action ######################################
 		# move already, now want to attack
 		if Globals.TAKENACTION and (available_attack_tile.visible == true or target_tile.visible == true or target_terrain_tile.visible == true):
+			# make skill info on the HUD invisible
+			get_tree().current_scene.get_node("UI/HBoxContainer/SkillHUDInfo").visible = false
+
 			if target_terrain_tile.visible == true:
 				add_terrain(get_tree().current_scene.target_terrain_info[global_position])
 			for tile in get_parent().available_attack_tiles:
@@ -156,6 +158,8 @@ func _on_input_event(viewport, event, shape_idx):
 				
 			# havent move yet but want to attack
 			elif available_attack_tile.visible == true or target_tile.visible == true:
+				# make skill info on the HUD invisible
+				get_tree().current_scene.get_node("UI/HBoxContainer/SkillHUDInfo").visible = false
 				if target_terrain_tile.visible == true:
 					add_terrain(get_tree().current_scene.target_terrain_info[global_position])
 					print("targeting and adding terrain at ", global_position, " with ", get_tree().current_scene.target_terrain_info[global_position])
