@@ -250,6 +250,7 @@ func get_hit(attack_info: Dictionary):
 		await get_tile_node().resolve_droppings_entry_check()
 		
 	if attack_info.has("splatter droppings"):
+		await next_to_pigeon_commander(who_is_hitting)
 		var direction = (global_position - attack_info["who is hitting"].global_position).normalized()
 		var num_affected_tiles = 5
 		var origin_tile_coord = global_position/Globals.TILE_SIZE
